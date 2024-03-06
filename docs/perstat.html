@@ -1,0 +1,4790 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Κώστας Κούδας" />
+
+<meta name="date" content="2024-03-05" />
+
+<title>Περιγραφική Στατιστική</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R🧸Koudas</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-screwdriver-wrench"></span>
+     
+    Εργαλεία
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pinakes.html">Πίνακες δεδομένων</a>
+    </li>
+    <li>
+      <a href="perstat.html">Περιγραφική στατιστική</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-flask-vial"></span>
+     
+    Έρευνες
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apoxi.html">Αποχή στις εκλογές</a>
+    </li>
+    <li>
+      <a href="pisa.html">Εξέταση αποτελεσμάτων PISA</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-mug-saucer"></span>
+     
+    Εντός εκτός κι επί τα αυτά
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dataMathematica.html">Μετατροπή πίνακα για Mathematica</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Περιγραφική Στατιστική</h1>
+<h4 class="author">Κώστας Κούδας</h4>
+<h4 class="date">2024-03-05</h4>
+
+</div>
+
+
+<div id="μελέτη-συχνότητας" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Μελέτη συχνότητας</h1>
+<div id="συχνότητες" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Συχνότητες</h2>
+<div id="πίνακες-συχνοτήτων-από-πρωτογενή-δεδομένα"
+class="section level3" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> Πίνακες συχνοτήτων
+από πρωτογενή δεδομένα</h3>
+<p>Από την σελίδα του Τομέα Μαθηματικών ΣΕΜΦΕ ΕΜΠ αντλήσαμε τις <a
+href="http://www.math.ntua.gr/~loulakis/info/probabF12SHMMY_files/ProbabSHMMY2012grades.pdf">βαθμολογίες
+κάποιων φοιτητών</a> του ΕΜΠ στο μάθημα Θεωρία Πιθανοτήτων και
+Στατιστική κατά την εξεταστική του Φεβρουαρίου του 2013. Τις περάσαμε σε
+ένα αρχείο Excel κι έχουμε διαθέσιμο το αρχείο <em>bathmoi.xlsx</em>.
+Αυτό το εισάγουμε στην R σύμφωνα με τις οδηγίες που έχουμε δει στην
+υποενότητα Αρχεία Excel (.xls, .xlsx) της <a
+href="pinakes.html#13_Εισαγωγή_αρχείων_από_άλλα_προγράμματα">Εισαγωγή
+αρχείων από άλλα προγράμματα</a>, αφού πρώτα διαγράψαμε ό,τι είχαμε
+εισάγει μέχρι τώρα στην R:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…1
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…3
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…4
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…5
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…6
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…7
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…8
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…9
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…10
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…11
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…12
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+3094673
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108086
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3110073
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110812
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111088
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111192
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3098622
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108098
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110075
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111002
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111089
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111193
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3100689
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108120
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110087
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111003
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111090
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111194
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3102688
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108144
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110088
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111004
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111091
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111196
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103156
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3108184
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110089
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111005
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111092
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111198
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103626
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108191
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110089
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111006
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111095
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111202
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103683
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3108203
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110093
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111007
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111096
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111204
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103784
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3108217
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110095
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111008
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111098
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111205
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104616
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108608
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110101
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111010
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111099
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111207
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104654
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3108636
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110112
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111011
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111101
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111403
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104660
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108644
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110115
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111012
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111103
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111409
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104673
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108659
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110129
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111013
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111104
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111416
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104694
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108719
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110130
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111014
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111107
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111417
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104732
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3108720
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110136
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111015
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111109
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111418
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104740
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3108726
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110137
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111016
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111112
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111420
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104775
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3108727
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110147
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111017
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111113
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111423
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105055
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3108771
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110158
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111018
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111114
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111424
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105071
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3108784
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110164
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111019
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111115
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111428
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105149
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108798
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3110188
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111020
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111116
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111501
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105182
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109028
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110197
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111021
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111117
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111506
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105184
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3109043
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110201
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111023
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111119
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111507
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105218
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109054
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110209
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111024
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111121
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111508
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105637
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109072
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110401
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111025
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111122
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111509
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105645
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109079
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110417
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111026
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111123
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111511
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105647
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109127
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110623
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111027
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111125
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111517
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105654
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109130
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110630
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111028
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111126
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111526
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105671
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109147
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110657
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111029
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111128
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111551
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105710
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109173
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110659
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111031
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111129
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111555
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105730
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109189
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110661
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111032
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111131
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111556
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105737
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3109196
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110671
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111033
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111132
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111559
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105742
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3109218
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110678
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111034
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111134
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111560
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105774
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109603
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110680
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111035
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111135
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111561
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105786
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109617
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110688
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111036
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111138
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111566
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106091
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109630
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110689
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111038
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111141
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111569
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106092
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109631
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110692
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111040
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111142
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111572
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106126
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109648
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110693
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111042
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111143
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111573
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106130
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109650
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110697
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111045
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111147
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111574
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106160
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109664
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110698
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111046
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111148
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111575
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106175
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3109665
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110704
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111047
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111149
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111576
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106227
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109671
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110707
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111049
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111151
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111602
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106628
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109683
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110708
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111050
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111152
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111610
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106649
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109698
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110709
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111051
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111153
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111614
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106686
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109701
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110712
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111053
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111154
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111620
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106702
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3109715
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110716
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111054
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111155
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111701
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106708
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109724
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110719
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111055
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111156
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111712
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106736
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109735
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110725
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111056
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111157
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111714
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106762
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109737
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110726
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111059
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111159
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111717
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106780
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109746
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110741
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111060
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111161
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111718
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106800
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109751
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110742
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111064
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111162
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111720
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106802
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3109761
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110743
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111065
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111163
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111722
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107058
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109775
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110744
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111068
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111165
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111724
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107111
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109789
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110747
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111069
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111169
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111727
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107182
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109801
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110750
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111072
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111171
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111731
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107196
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110003
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110753
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111073
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111172
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111739
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107219
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110006
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110757
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111074
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111173
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111743
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107229
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110021
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110764
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111076
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111174
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111901
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107632
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110024
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110775
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111077
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111178
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111904
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107639
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110033
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110777
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111078
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111181
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111907
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107650
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110045
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110781
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111080
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111185
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3112602
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107730
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110049
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110783
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111081
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111186
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107754
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110057
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110787
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111082
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111187
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107762
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3110063
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110788
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111083
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111189
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107779
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110069
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110795
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111084
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111190
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107790
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110072
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110807
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111087
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111191
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Φυσικά, οι Αριθμοί Μητρώου (στήλες <code>ΑΜ</code>) δεν έχουν κανένα
+στατιστικό ενδιαφέρον, οπότε θα κρατήσουμε μόνο τους βαθμούς (στήλες
+<code>BATHMOS</code>) γράφοντας:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">c</span>(bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">2</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">4</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">6</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">8</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">10</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">12</span>)</span></code></pre></div>
+<p>Έτσι έχουμε μια λίστα με τις βαθμολογίες μας, ονόματι
+<code>bathmoi_synolo</code>. Το πλήθος τους μπορούμε να το βρούμε μέσω
+της συνάρτησης <code>length()</code>. Έτσι, εκτελώντας την εντολή:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">length</span>(bathmoi_synolo)</span></code></pre></div>
+<pre><code>## [1] 384</code></pre>
+<p>διαπιστώνουμε ότι έχουμε 384 βαθμολογίες.</p>
+<p>Βέβαια, αν το δούμε προσεκτικά τον πίνακα bathmoi, διαπιστώνουμε
+υπάρχουν κάποιες τιμές που δεν είναι βαθμολογίες. Είναι τα
+<strong><code>NA</code></strong> (<em>Not Avaliable</em>) που προέκυψαν
+επειδή οι δύο τελευταίες στήλες του αρχικού πίνακα είναι κοντύτερες από
+τις υπόλοιπες. Τα NA τα απορρίπτουμε από τη λίστα γράφοντας:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(bathmoi_synolo)</span></code></pre></div>
+<p>Έτσι έχουμε τον πίνακα <code>bathmoi_synolo</code> χωρίς τα
+<strong><code>NA</code></strong>. Πάμε τώρα να υπολογίσουμε πάλι το
+πλήθος των καταγραφών μας:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">length</span>(bathmoi_synolo)</span></code></pre></div>
+<pre><code>## [1] 379</code></pre>
+<p>Εδώ η απάντηση είναι 379 βαθμολογίες, όπερ σημαίνει πως απορρίφθηκαν
+από την αρχική λίστα <code>bathmoi_synolo</code> 5
+<strong><code>NA</code></strong>.</p>
+<p>Με μια πρόχειρη ανάγνωση του πίνακα βλέπουμε ότι κάποιοι βαθμοί (πχ
+το 1) είναι αρκετά συχνοί και κάποιοι άλλοι (πχ το 9) αρκετά σπάνιοι.
+Οδηγούμεστε, λοιπόν, στους κάτωθι ορισμούς.</p>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><mark>απόλυτη συχνότητα</mark></th>
+<th align="center"><mark>σχετική συχνότητα</mark></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><mark>Η <strong>απόλυτη συχνότητα</strong> μιας τιμής
+μιας μεταβλητής είναι το πλήθος των εμφανίσεών της.</mark></td>
+<td align="center"><mark>Η <strong>σχετική συχνότητα</strong> μιας τιμής
+μιας μεταβλητής είναι το ποσοστό των εμφανίσεών της.</mark></td>
+</tr>
+</tbody>
+</table>
+<p>Πώς όμως μπορούν αυτές οι συχνότητες να υπολογιστούν μέσω της; Η
+δουλειά θα γίνει μέσω των συναρτήσεων <code>table()</code> και
+<code>prop.table()</code>. Γράφοντας:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>ApolSyxnBathm <span class="ot">&lt;-</span> <span class="fu">table</span>(bathmoi_synolo)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>ApolSyxnBathm</span></code></pre></div>
+<pre><code>## bathmoi_synolo
+##  1  2  3  4  5  6  7  8  9 10 
+## 62 39 43 43 77 56 24 21 10  4</code></pre>
+<p>έχουμε τον πίνακα απόλυτων συχνοτήτων των βαθμολογιών που
+καταγράψαμε. Παρατηρούμε ότι όντως ο βαθμός 1 έχει πολύ μεγάλη συχνότητα
+(62 φοιτητές έγραψαν μονάδα), ενώ ο 9 είναι αρκετά πιο σπάνιος (10 μόνο
+φοιτητές έγραψαν 9).</p>
+<p>Για τον πίνακα σχετικών συχνοτήτων γράφουμε:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>SxetSyxnBathm <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(ApolSyxnBathm)</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>SxetSyxnBathm</span></code></pre></div>
+<pre><code>## bathmoi_synolo
+##          1          2          3          4          5          6          7 
+## 0.16358839 0.10290237 0.11345646 0.11345646 0.20316623 0.14775726 0.06332454 
+##          8          9         10 
+## 0.05540897 0.02638522 0.01055409</code></pre>
+<p>Παρατηρούμε ότι τα ποσοστά δίνονται με τη μορφή δεκαδικού αριθμού (η
+υποδιαστολή γράφεται ως τελεία). Έτσι διαπιστώνουμε ότι η σχετική
+συχνότητα του βαθμού 1 είναι περίπου 0.1636, άρα το 16,36% των φοιτητών
+έγραψε μονάδα. Από την άλλη, το άριστα (10) έχει σχετική συχνότητα
+περίπου 0.0106. Επομένως μόνο το 1,06% των εξεταζομένων έγραψαν
+άριστα.</p>
+<p>Οι δυνατότητες της συνάρτησης <code>table()</code> δεν σταματάνε εδώ.
+Γράφοντας:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>arista <span class="ot">&lt;-</span> <span class="fu">table</span>(bathmoi_synolo<span class="sc">&gt;=</span><span class="fl">8.5</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>arista</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##   365    14</code></pre>
+<p>προκύπτει ένας πίνακας όπου μας λέει πόσοι έγραψαν άριστα
+(<code>TRUE</code>=14) και πόσοι όχι (<code>FALSE</code>=365).</p>
+<p>Ενώ αν θέλουμε αυτούς που έγραψαν λίαν καλώς δεν έχουμε παρά να
+γράψουμε:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>LianKalos <span class="ot">&lt;-</span> <span class="fu">table</span>(bathmoi_synolo<span class="sc">&gt;=</span><span class="fl">6.5</span> <span class="sc">&amp;</span> bathmoi_synolo<span class="sc">&lt;</span><span class="fl">8.5</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>LianKalos</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##   334    45</code></pre>
+<p>οπότε βλέπουμε ότι 45 έγραψαν λίαν καλώς και 334 κάτι άλλο (ανώτερο ή
+κατώτερο).</p>
+<p>Στην περίπτωση που θέλουμε να μεταχειριστούμε τον έναν ή τον άλλον
+πίνακα με όσα μάθαμε στις ενότητες <a
+href="pinakes.html#2_Επιλογή_στοιχείων_πίνακα">Επιλογή στοιχείων
+πίνακα</a>, <a
+href="pinakes.html#3_Προσθήκη_στοιχείων_σε_πίνακα">Προσθήκη στοιχείων σε
+πίνακα</a> και <a
+href="pinakes.html#4_Αναδιαμόρφωση_πίνακα">Αναδιαμόρφωση πίνακα</a>,
+τότε χρησιμοποιούμε τη συνάρτηση <code>as.data.frame.table()</code>. Για
+παράδειγμα, αν θέλουμε ν’ ασχοληθούμε με τον πίνακα απόλυτων συχνοτήτων
+<code>ApolSyxnBathm</code>, τότε γράφουμε:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>ASBdataframe <span class="ot">&lt;-</span> <span class="fu">as.data.frame.table</span>(ApolSyxnBathm)</span></code></pre></div>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+bathmoi_synolo
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Freq
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>κι έτσι έχουμε τον πίνακα στη μορφή που να μας βολεύει. Δεν είναι το
+ζήτημα εμφανισιακο. Απλώς έχουμε περισσότερες δυνατότητες πάνω του από
+προγραμματιστικής απόψεως στην R.</p>
+</div>
+<div id="από-πίνακα-απόλυτων-συχνοτήτων-σε-σχετικών"
+class="section level3" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> Από πίνακα απόλυτων
+συχνοτήτων σε σχετικών</h3>
+<p>Σε πολλές περιπτώσεις μπορεί να μην έχουμε πρόσβαση στα πρωτογενή
+δεδομένα, στις άμεσες μετρήσεις πάνω στο δείγμα μας. Μπορεί να έχουμε
+απλά έναν πίνακα συχνοτήτων, όπως τον <code>ASBdataframe</code>, χωρίς
+όμως να έχουμε πρόσβαση στα προηγούμενα στοιχεία που τον κατασκεύασαν.
+Πώς μπορούμε να έχουμε τότε τον πίνακα σχετικών συχνοτήτων;</p>
+<p>Γράφοντας:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>SxetSyxnBathm2 <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(ASBdataframe)</span></code></pre></div>
+<p>καταλήγουμε στο κάτωθι σφάλμα:</p>
+<pre><code>Error in FUN(X[[i]], ...) : 
+  only defined on a data frame with all numeric-alike variables</code></pre>
+<p>διότι, πολύ απλά, η R δεν καταλαβαίνει ότι η στήλη <code>Freq</code>
+του <code>ASBdataframe</code> αναπαριστά συχνότητες. Απόλυτα λογικό εκ
+μέρους της. Θα μπορούσε η στήλη αυτή να είναι τα ύψη από κάποιους
+ανθρώπους ή οτιδήποτε άσχετο με συχνότητες.</p>
+<p>Ως εκ τούτου το βάρος της δημιουργίας του πίνακα σχετικών συχνοτήτων
+πέφτει πάνω μας. Αλλά δεν πρόκειται για δύσκολο εγχείρημα. Η σχετική
+συχνότητα είναι η απόλυτη συχνότητα δια το συνολικό πλήθος των
+μετρήσεων. Έτσι υπολογίζουμε αρχικά το συνολικό πλήθος των μετρήσεων
+προσθέτοντας απλά όλες τις συχνότητες (βλ. <a
+href="pinakes.html#22_Νέα_λίστα">Νέα λίστα</a> και <a
+href="pinakes.html#12_Κατασκευή_λίστας_ή_πίνακα_τιμών_στην_R">Κατασκευή
+λίστας ή πίνακα τιμών στην R</a>):</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>athrisma <span class="ot">&lt;-</span> <span class="fu">sum</span>(ASBdataframe<span class="sc">$</span>Freq)</span></code></pre></div>
+<p>και ακολούθως διαιρούμε κάθε στοιχείο της στήλης <code>Freq</code> με
+το <code>athrisma</code> και συγχρόνως επισυνάπτοντας την
+κατασκευασθείσα λίστα ως νέα στήλη ονόματι <code>SxetSyxn</code> σύμφωνα
+με αυτά που μάθαμε στην υποενότητα Προσθήκη στήλης της <a
+href="pinakes.html#3_Προσθήκη_στοιχείων_σε_πίνακα">Προσθήκη στοιχείων σε
+πίνακα</a>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>ASBdataframe<span class="sc">$</span>SxetSyxn <span class="ot">&lt;-</span> (ASBdataframe<span class="sc">$</span>Freq)<span class="sc">/</span>athrisma</span></code></pre></div>
+<p>Οπότε γράφοντας:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">View</span>(ASBdataframe)</span></code></pre></div>
+<p>έχουμε έναν πίνακα απόλυτων και σχετικών συχνοτήτων.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+bathmoi_synolo
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Freq
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+SxetSyxn
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+0.1635884
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+0.1029024
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+0.1134565
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+0.1134565
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+0.2031662
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+0.1477573
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+0.0633245
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+0.0554090
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0.0263852
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0.0105541
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Συνολικά ο κώδικά μας είναι ο κάτωθι:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">c</span>(bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">2</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">4</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">6</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">8</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">10</span>,</span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">12</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a><span class="fu">length</span>(bathmoi_synolo)</span>
+<span id="cb22-9"><a href="#cb22-9" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(bathmoi_synolo)</span>
+<span id="cb22-10"><a href="#cb22-10" tabindex="-1"></a><span class="fu">length</span>(bathmoi_synolo)</span>
+<span id="cb22-11"><a href="#cb22-11" tabindex="-1"></a>ApolSyxnBathm <span class="ot">&lt;-</span> <span class="fu">table</span>(bathmoi_synolo)</span>
+<span id="cb22-12"><a href="#cb22-12" tabindex="-1"></a>ApolSyxnBathm</span>
+<span id="cb22-13"><a href="#cb22-13" tabindex="-1"></a>SxetSyxnBathm <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(ApolSyxnBathm)</span>
+<span id="cb22-14"><a href="#cb22-14" tabindex="-1"></a>SxetSyxnBathm</span>
+<span id="cb22-15"><a href="#cb22-15" tabindex="-1"></a>arista <span class="ot">&lt;-</span> <span class="fu">table</span>(bathmoi_synolo<span class="sc">&gt;=</span><span class="fl">8.5</span>)</span>
+<span id="cb22-16"><a href="#cb22-16" tabindex="-1"></a>arista</span>
+<span id="cb22-17"><a href="#cb22-17" tabindex="-1"></a>LianKalos <span class="ot">&lt;-</span> <span class="fu">table</span>(bathmoi_synolo<span class="sc">&gt;=</span><span class="fl">6.5</span> <span class="sc">&amp;</span> bathmoi_synolo<span class="sc">&lt;</span><span class="fl">8.5</span>)</span>
+<span id="cb22-18"><a href="#cb22-18" tabindex="-1"></a>LianKalos</span>
+<span id="cb22-19"><a href="#cb22-19" tabindex="-1"></a>ASBdataframe <span class="ot">&lt;-</span> <span class="fu">as.data.frame.table</span>(ApolSyxnBathm)</span>
+<span id="cb22-20"><a href="#cb22-20" tabindex="-1"></a>athrisma <span class="ot">&lt;-</span> <span class="fu">sum</span>(ASBdataframe<span class="sc">$</span>Freq)</span>
+<span id="cb22-21"><a href="#cb22-21" tabindex="-1"></a>ASBdataframe<span class="sc">$</span>SxetSyxn <span class="ot">&lt;-</span> (ASBdataframe<span class="sc">$</span>Freq)<span class="sc">/</span>athrisma</span>
+<span id="cb22-22"><a href="#cb22-22" tabindex="-1"></a><span class="fu">View</span>(ASBdataframe)</span></code></pre></div>
+</div>
+</div>
+<div id="μέτρηση-ποικιλομορφίας" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Μέτρηση
+ποικιλομορφίας</h2>
+<div id="ποικιλότητα-shannon" class="section level3" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Ποικιλότητα
+Shannon</h3>
+<p>Στην παρούσα ενότητα θα προσπαθήσουμε να μετρήσουμε τον πλουραλισμό
+και την πολυφωνία σε μια ομάδα. Αρχικά, βέβαια, διαγράφουμε ό,τι έχουμε
+γράψει ως τώρα.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Ας υποθέσουμε ότι ένα σωματείο έχει συνέλευση, στην οποία
+παραβρίσκονται 150 άτομα που πρόσκεινται στη ΝΔ (<em>μπλε</em>), 120
+άτομα που πρόσκεινται στον ΣΥΡΙΖΑ (<em>ροζ</em>), 100 άτομα στο ΠΑΣΟΚ
+(<em>πράσινο</em>) και 90 στο ΚΚΕ (<em>κόκκινο</em>). Αναπαριστούμε με
+την παρακάτω εικόνα την εν λόγω συνέλευση.</p>
+<p><img src="perstat_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>Το σωματείο φαίνεται να έχει όλη τη γκάμα των πολιτικών αποχρώσεων.
+Δεν μπορούμε να πούμε ότι κάποιο πολιτικό κόμμα έχει μόνο τυπική
+παρουσία στο σωματείο.</p>
+<p>Αντίθετα, στο παρακάτω σωματείο φαίνεται να υπάρχει μικρότερη
+ποικιλία απόψεων. Σε αυτό παραβρίσκονται 290 άτομα που πρόσκεινται στη
+ΝΔ (<em>μπλε</em>), 60 άτομα που πρόσκεινται στον ΣΥΡΙΖΑ (<em>ροζ</em>),
+50 άτομα στο ΠΑΣΟΚ (<em>πράσινο</em>) και 40 στο ΚΚΕ
+(<em>κόκκινο</em>).</p>
+<p><img src="perstat_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Σε αυτό φαίνεται να έχει μονοκρατορία η ΝΔ. Η ποικιλία απόψεων είναι
+μόνο σε τυπικό επίπεδο, αφού η παρουσία των υπολοίπων είναι πρακτικά
+ασήμαντη.</p>
+<p>Γενικότερα, όσο λιγότερα είδη φέρει ένας πληθυσμός, τόσο μικρότερη
+ποικιλότητα έχει. Κι όσο περισσότερο μονοπωλεί τον πληθυσμό ένα είδος,
+τόσο επίσης λιγότερη ποικιλότητα έχει. Πώς όμως μπορώ να μετρήσω αυτή
+την ποικιλότητα;</p>
+<p>Ευτυχώς για μας, δεν χρειάζεται να βασιζόμαστε μόνο στη διαίσθησή
+μας. Υπάρχει τρόπος να ορίσουμε τόσο αυστηρά την ποικιλότητα, ώστε να
+μπορεί να προσδιοριστεί με έναν αριθμό. Όσο μεγαλύτερος είναι αυτός,
+τόσο μεγαλύτερη και η ποικιλότητα. Αυτός είναι η λεγόμενη
+<strong>ποικιλότητα Shannon</strong>.</p>
+<p>Εδώ δεν θα ασχοληθούμε, φυσικά, με υποθετικά σωματεία. Θα εξετάσουμε
+την ποικιλότητα της ελληνικής εκλογικής σκηνής στις αναμετρήσεις του
+1996 και του 2000. Προς τούτο αντλήσαμε στοιχεία από τη σελίδα του
+Υπουργείου Εσωτερικών και τ’ αποθηκεύσαμε σε ένα αρχείο ονόματι
+<em>ekloges9600.xlsx</em> ακολουθώντας τις οδηγίες από την ενότητα <a
+href="#εισαγωγή-αρχείων-από-άλλα-προγράμματα">Εισαγωγή αρχείων από άλλα
+προγράμματα</a>.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+komma
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pososto
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+psifoi
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+edres
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+etos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ pAsOK 
+</td>
+<td style="text-align:right;">
+41.49
+</td>
+<td style="text-align:right;">
+2813245
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  Nd 
+</td>
+<td style="text-align:right;">
+38.12
+</td>
+<td style="text-align:right;">
+2584765
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  KKE 
+</td>
+<td style="text-align:right;">
+5.61
+</td>
+<td style="text-align:right;">
+380167
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  sYN 
+</td>
+<td style="text-align:right;">
+5.12
+</td>
+<td style="text-align:right;">
+347051
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  dHKKI 
+</td>
+<td style="text-align:right;">
+4.43
+</td>
+<td style="text-align:right;">
+300671
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  anoixh 
+</td>
+<td style="text-align:right;">
+2.94
+</td>
+<td style="text-align:right;">
+199463
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  EnKent 
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+48677
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  enoikol 
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+19934
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  kunhcoί 
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+17419
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  epen 
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+16501
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  komell 
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+12255
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  mahar 
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+10443
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oikenal 
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+5715
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  hraucή 
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+4487
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  Oikell 
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+4113
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  M-lKKE 
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+4016
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oakke 
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+3485
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  sean 
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+2470
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  AsKE 
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+2108
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  olump 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1619
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  loipa 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1123
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  keell 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+247
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  eldhm 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  elek 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  kadik 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  pAsOK 
+</td>
+<td style="text-align:right;">
+43.79
+</td>
+<td style="text-align:right;">
+3007596
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  Nd 
+</td>
+<td style="text-align:right;">
+42.74
+</td>
+<td style="text-align:right;">
+2935196
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  KKE 
+</td>
+<td style="text-align:right;">
+5.52
+</td>
+<td style="text-align:right;">
+379454
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  sYN 
+</td>
+<td style="text-align:right;">
+3.20
+</td>
+<td style="text-align:right;">
+219880
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  dHKKI 
+</td>
+<td style="text-align:right;">
+2.69
+</td>
+<td style="text-align:right;">
+184598
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  dpe 
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+<td style="text-align:right;">
+32068
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  enkentr 
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+<td style="text-align:right;">
+23228
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  elloik 
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+20446
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  ethnsum 
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+14703
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  prcram 
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+12125
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  mera 
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+8132
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  kke(m-l) 
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+7301
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  komell 
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+6272
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  m-lkkear 
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+5866
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oikenal 
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+3321
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  komfil 
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+2091
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  aske 
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+2026
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  akep 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1145
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oakke 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1126
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  loipa 
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+923
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  hrist 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+305
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  koeel 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  epak 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  olumpismόs 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  padhke 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Για να βρούμε την ποικιλότητα του κάθε εκλογικού τοπίου χρειαζόμαστε
+τις συχνότητες των κομμάτων που το αποτελούν. Αυτές θα επεξεργαστεί η R
+για να βρει την ποικιλότητα Shannon. Δυστυχώς, η R δεν έχει έτοιμη
+συνάρτηση που να υπολογίζει την εν λόγω ποσότητα. Εν πάση περιπτώσει, ο
+γράφων δεν έχει υπ’ όψιν κάτι τέτοιο. Αισίως, όμως, υπάρχει η δυνατότητα
+να κατασκευάσουμε τα δικά μας εργαλεία στην R.</p>
+<p>Παρακάτω ακολουθεί η συνάρτηση που υπολογίζει την ποικιλότητα Shannon
+από μια λίστα με συχνότητες (απόλυτες ή σχετικές). Οποτεδήποτε την
+χρειαστούμε επικολλούμε τις γραμμές αυτές ακριβώς ως έχουν πριν από το
+σημείο που θα την χρησιμοποιήσουμε. Ακολούθως γράφουμε
+<code>shannon_diversity(♔)</code>, όπου <code>♔</code> το όνομα της
+λίστας με τις συχνότητες.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>shannon_diversity <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>  sh</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>}</span></code></pre></div>
+<p>Ακολούθως αποσπούμε τα κομμάτια της στήλης <code>psifoi</code> που
+μας απασχολούν. Θα φτιάξουμε μια λίστα με τις ψήφους του 1996
+(<code>psifoi1996</code>) και μία με τις ψήφους του 2000
+(<code>psifoi1996</code>). Ακολουθώντας τις οδηγίες της υποενότητας <a
+href="pinakes.html#21_Νέος_πίνακας">Νέος πίνακας</a> έχουμε:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>etos1996 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">1996</span></span>
+<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a>psifoi1996 <span class="ot">&lt;-</span> ekloges9600[etos1996,<span class="st">&quot;psifoi&quot;</span>]</span>
+<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a>etos2000 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">2000</span></span>
+<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>psifoi2000 <span class="ot">&lt;-</span> ekloges9600[etos2000,<span class="st">&quot;psifoi&quot;</span>]</span></code></pre></div>
+<p>Οι ποικιλότητες Shannon υπολογίζονται πλέον απλά γράφοντας:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi1996)</span></code></pre></div>
+<pre><code>## [1] 2.055986</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi2000)</span></code></pre></div>
+<pre><code>## [1] 1.759156</code></pre>
+<p>οπότε βρίσκουμε για το 1996 ποικιλότητα 2.0559861 και για το 2000
+ποικιλότητα 1.7591555. Επομένως τα αποτελέσματα του 1996 είχαν
+μεγαλύτερη ποικιλομορφία συγκριτικά με του 2000.</p>
+<p>Ο αναγνώστης θα έχει τώρα την εύλογη απορία «Και πόσο μεγαλύτερη
+είναι η ποικιλότητα το 1996; Είναι οι 0,2968306 μονάδες διαφορά τόσο
+μεγάλη;». Θα χρησιμοποιήσουμε τον τροποποιημένο πίνακα από <a
+href="https://www.researchgate.net/publication/339064707_Ecological_services_of_agroforestry_systems_in_selected_upland_farming_communities_in_the_Philippines/figures?lo=1">εδώ</a>,
+για να δούμε πόσο μεγάλη είναι η κάθε ποικιλότητα:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Τιμή ποικιλότητας</th>
+<th align="center">Αξιολόγηση ποικιλότητας</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">5,049 και πάνω</td>
+<td align="center">Πολύ υψηλή</td>
+</tr>
+<tr class="even">
+<td align="center">4,328 με 5,048</td>
+<td align="center">Υψηλή</td>
+</tr>
+<tr class="odd">
+<td align="center">3,607 με 4,327</td>
+<td align="center">Μέση</td>
+</tr>
+<tr class="even">
+<td align="center">2,885 με 3,606</td>
+<td align="center">Χαμηλή</td>
+</tr>
+<tr class="odd">
+<td align="center">2,884 και χαμηλότερα</td>
+<td align="center">Πολύ χαμηλή</td>
+</tr>
+</tbody>
+</table>
+<p>Βλέπουμε, λοιπόν, ότι και στις δύο εκλογικές αναμετρήσεις είχαμε πολύ
+χαμηλή ποικιλότητα. Η σύγκρισή τους όμως ακόμα δεν είναι εφικτή. Πρέπει
+να δουλέψουμε κι άλλο!</p>
+</div>
+<div id="ισομέρεια-shannon" class="section level3" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Ισομέρεια
+Shannon</h3>
+<p>Ένας τρόπος, λοιπόν, να απαντήσουμε αυτή την απορία είναι
+συγκρίνοντας τις εκάστοτε ποικιλότητες με τη μέγιστη δυνατή ανά
+περίπτωση.</p>
+<p>Η μέγιστη δυνατή ποικιλότητα συμβαίνει όταν όλα τα είδη είναι ισόποσα
+στον πληθυσμό. Αυτή μπορεί να υπολογιστεί μέσω της συνάρτησης:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>shannon_diversity_max <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  sh</span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Γράφοντας όμως:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>προκύπτει ότι η μέγιστη ποικιλότητα είναι μηδέν, οπότε καταλαβαίνουμε
+ότι κάτι δεν πάει καλά με τον κώδικά μας. Αυτό το πρόβλημα προκύπτει
+επειδή τα <code>psifoi1996</code> και <code>psifoi2000</code> στην
+πραγματικότητα είναι πίνακες με μία στήλη κι όχι λίστες. Ναι, είναι
+διαφορετικό για την R, αλλά αυτόν της τον ψυχαναγκασμό μπορούμε να τον
+αντιμετωπίσουμε μέσω της σύνθεσης της συνάρτησης
+<code>unlist</code>:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>psifoi1996L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi1996)</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>psifoi2000L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi2000)</span></code></pre></div>
+<p>Έτσι, υπολογίζουμε την μέγιστη ποικιλότητα των
+<strong>λιστών</strong> <code>psifoi1996L</code> και
+<code>psifoi1996L</code>:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996L)</span></code></pre></div>
+<pre><code>## [1] 4.643856</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000L)</span></code></pre></div>
+<pre><code>## [1] 4.643856</code></pre>
+<p>οπότε βρίσκουμε ότι η μέγιστη δυνατή ποικιλότητα το 1996 θα ήταν
+4.6438562 και το 2000 θα ήταν επίσης 4.6438562.</p>
+<p>Αυτό που βρήκαμε δεν είναι καθόλου παράξενο, αφού και στις δύο
+περιπτώσεις είχαμε 25 κόμματα, πράγμα που διαπιστώνουμε με τον παρακάτω
+κώδικα:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">length</span>(psifoi1996L)</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">length</span>(psifoi2000L)</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<p>Η αρχική μας ιδέα ήταν να συγκριθεί η κάθε ποικιλότητα με την μέγιστη
+της άλλης. Αφού, όμως, οι μέγιστες ποικιλότητες είναι ίσες, δεν έχουμε
+παρά να δούμε τι ποσοστό της μέγιστης ποικιλότητας είναι η κάθε μία
+ξεχωριστά. Αυτό το ποσοστό είναι η ισομέρεια Shannon και υπολογίζεται
+από την συνάρτηση:</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a>shannon_equitability <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a>  shd <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb44-5"><a href="#cb44-5" tabindex="-1"></a>  shm <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb44-6"><a href="#cb44-6" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> shd<span class="sc">/</span>shm</span>
+<span id="cb44-7"><a href="#cb44-7" tabindex="-1"></a>  sh</span>
+<span id="cb44-8"><a href="#cb44-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Κατά συνέπεια, γράφουμε:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi1996L)</span></code></pre></div>
+<pre><code>## [1] 0.4427325</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi2000L)</span></code></pre></div>
+<pre><code>## [1] 0.3788135</code></pre>
+<p>και διαπιστώνουμε ότι ο δείκτης ισομέρειας το 1996 ήταν
+<code>shannon_equitability(psifoi1996L)</code> και το 2000 ήταν
+<code>shannon_equitability(psifoi2000L)</code>. Απ’ ότι φαίνεται,
+τελικά, το 1996 υπήρχε εμφανώς μεγαλύτερη ποικιλομορφία στα εκλογικά
+αποτελέσματα, ενώ το 2000 υπήρξε έντονη συσπείρωση γύρω από τα μεγάλα
+κόμματα.</p>
+<p>Συνολικά ο κώδικας αυτής της ανάρτησης έχει ως εξής:</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb49-2"><a href="#cb49-2" tabindex="-1"></a>shannon_diversity <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb49-3"><a href="#cb49-3" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb49-4"><a href="#cb49-4" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb49-5"><a href="#cb49-5" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb49-6"><a href="#cb49-6" tabindex="-1"></a>  sh</span>
+<span id="cb49-7"><a href="#cb49-7" tabindex="-1"></a>}</span>
+<span id="cb49-8"><a href="#cb49-8" tabindex="-1"></a>etos1996 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">1996</span></span>
+<span id="cb49-9"><a href="#cb49-9" tabindex="-1"></a>psifoi1996 <span class="ot">&lt;-</span> ekloges9600[etos1996,<span class="st">&quot;psifoi&quot;</span>]</span>
+<span id="cb49-10"><a href="#cb49-10" tabindex="-1"></a>etos2000 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">2000</span></span>
+<span id="cb49-11"><a href="#cb49-11" tabindex="-1"></a>psifoi2000 <span class="ot">&lt;-</span> ekloges9600[etos2000,<span class="st">&quot;psifoi&quot;</span>]</span>
+<span id="cb49-12"><a href="#cb49-12" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi1996)</span>
+<span id="cb49-13"><a href="#cb49-13" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi2000)</span>
+<span id="cb49-14"><a href="#cb49-14" tabindex="-1"></a>shannon_diversity_max <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb49-15"><a href="#cb49-15" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb49-16"><a href="#cb49-16" tabindex="-1"></a>  sh</span>
+<span id="cb49-17"><a href="#cb49-17" tabindex="-1"></a>}</span>
+<span id="cb49-18"><a href="#cb49-18" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996) <span class="co"># Τα psifoi1996 και psifoi2000 δεν είναι σε κατάλληλη μορφή</span></span>
+<span id="cb49-19"><a href="#cb49-19" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000)</span>
+<span id="cb49-20"><a href="#cb49-20" tabindex="-1"></a>psifoi1996L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi1996)</span>
+<span id="cb49-21"><a href="#cb49-21" tabindex="-1"></a>psifoi2000L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi2000)</span>
+<span id="cb49-22"><a href="#cb49-22" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996L) <span class="co"># Τα psifoi1996L και psifoi2000L είναι σε κατάλληλη μορφή</span></span>
+<span id="cb49-23"><a href="#cb49-23" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000L)</span>
+<span id="cb49-24"><a href="#cb49-24" tabindex="-1"></a><span class="fu">length</span>(psifoi1996L)</span>
+<span id="cb49-25"><a href="#cb49-25" tabindex="-1"></a><span class="fu">length</span>(psifoi2000L)</span>
+<span id="cb49-26"><a href="#cb49-26" tabindex="-1"></a>shannon_equitability <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb49-27"><a href="#cb49-27" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb49-28"><a href="#cb49-28" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb49-29"><a href="#cb49-29" tabindex="-1"></a>  shd <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb49-30"><a href="#cb49-30" tabindex="-1"></a>  shm <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb49-31"><a href="#cb49-31" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> shd<span class="sc">/</span>shm</span>
+<span id="cb49-32"><a href="#cb49-32" tabindex="-1"></a>  sh</span>
+<span id="cb49-33"><a href="#cb49-33" tabindex="-1"></a>}</span>
+<span id="cb49-34"><a href="#cb49-34" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi1996L)</span>
+<span id="cb49-35"><a href="#cb49-35" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi2000L)</span></code></pre></div>
+</div>
+</div>
+<div id="κυκλικό-διάγραμμα" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Κυκλικό
+διάγραμμα</h2>
+<p>Υπάρχουν φορές που μπορεί να μην μας απασχολεί τόσο η σύγκριση των
+συχνοτήτων των τιμών μεταξύ τους, αλλά με το σύνολο. Μπορεί να μας
+απασχολεί να απεικονίσουμε την σχέση της κάθε εργασιακής κατάστασης μιας
+γυναίκας (απασχολούμενη, άνεργη, μη ενεργή) σε σχέση με το σύνολο των
+γυναικών. Δηλαδή να απαντήσουμε στα ερωτήματα «Τι μέρος των γυναικών
+εργάζονται;», «Τι μέρος των γυναικών είναι άνεργες;» κτλ. Το
+<strong>κυκλικό διάγραμμα</strong> (ή <strong>πίτα</strong>) είναι
+ιδανικό γι’ αυτή τη δουλειά.</p>
+<p>Όπως ανέκαθεν, διαγράφουμε τις παλιές μεταβλητές και προχωράμε:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Από τη <a
+href="https://isotita.gr/wp-content/uploads/2019/04/%CE%A0%CE%B1%CF%81%CE%B1%CF%84%CE%B7%CF%81%CE%B7%CF%84%CE%AE%CF%81%CE%B9%CE%BF-%CE%93%CE%93%CE%99%CE%A6-19%CE%BF-%CE%95%CE%BD%CE%B7%CE%BC%CE%B5%CF%81%CF%89%CF%84%CE%B9%CE%BA%CF%8C-%CE%A3%CE%B7%CE%BC%CE%B5%CE%AF%CF%89%CE%BC%CE%B1-%CE%93%CF%85%CE%BD%CE%B1%CE%B9%CE%BA%CE%B5%CE%AF%CE%B1-%CE%91%CE%BD%CE%B5%CF%81%CE%B3%CE%AF%CE%B1.pdf">Γενική
+Γραμματεία Ισότητας</a> αντλούμε κάποιες πληροφορίες σχετικά με την
+εργασιακή απασχόληση το Δ’ τρίμηνο του 2018 ανά φύλο. Θα φτιάξουμε
+αρχικά ένα γρήγορο κυκλικό διάγραμμα που να απεικονίζει την εργασιακή
+κατάσταση των αντρών, δηλαδή να δείχνει πόσοι άντρες είναι
+απασχολούμενοι, πόσοι άνεργοι και πόσοι μη ενεργοί σε σχέση με το σύνολο
+των αντρών. Για να γίνει αυτό στην θα χρειαστούμε την λίστα με τα
+αντίστοιχα νούμερα (<code>posa</code>) και φυσικά τι αντιπροσωπεύει το
+κάθε ένα (<code>etiketes</code>):</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>posa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2249.7</span>, <span class="fl">388.3</span>, <span class="fl">1760.6</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a>etiketes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apasx_antras&quot;</span>, <span class="st">&quot;anerg_antras&quot;</span>, <span class="st">&quot;mh_energ_antras&quot;</span>)</span></code></pre></div>
+<p>Η πίτα είναι έτοιμη να φτιαχτεί:</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a><span class="fu">pie</span>(posa, <span class="at">labels =</span> etiketes)</span></code></pre></div>
+<p><img src="perstat_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p>Θα κάνουμε κι ένα επιπλέον κυκλικό διάγραμμα που να αφορά τις
+γυναίκες. Θα μπορούσαμε να την καταχωρήσουμε εύκολα πάλι μέσω της
+συνάρτησης c(), όμως θα επιλέξουμε να την αντλήσουμε από έναν πίνακα για
+να δοθεί μια γενικότητα στη μέθοδο και για να φρεσκάρουμε τις τεχνικές
+που μάθαμε στην υποερνότητα <a href="pinakes.html#22_Νέα_λίστα">Νέα
+λίστα</a>.</p>
+<p>Θα σχηματοποιούμε πίνακα και μετά θα επιχειρήσουμε να αντλήσουμε από
+αυτόν τις πληροφορίες που θέλουμε. Κατά τα γνωστά (βλ. υποενότητα <a
+href="pinakes.html#122_Κατασκευή_πίνακα">Κατασκευή πίνακα</a>)
+έχουμε:</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>filo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;gynaika&quot;</span>, <span class="st">&quot;andras&quot;</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a>apasx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1584</span>, <span class="fl">2249.7</span>)</span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a>anerg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">492.8</span>, <span class="fl">388.3</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" tabindex="-1"></a>mh_energ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2650.9</span>, <span class="fl">1760.6</span>)</span></code></pre></div>
+<p>και τέλος:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>Apasxolisi <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FYLO=</span>filo, <span class="at">APASXOLOYMENOS=</span>apasx, <span class="at">ANERGOS=</span>anerg, <span class="at">MH_ENERGOS=</span>mh_energ)</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>Apasxolisi</span></code></pre></div>
+<pre><code>##      FYLO APASXOLOYMENOS ANERGOS MH_ENERGOS
+## 1 gynaika         1584.0   492.8     2650.9
+## 2  andras         2249.7   388.3     1760.6</code></pre>
+<p>όπου τα νούμερα δίνονται σε χιλιάδες.</p>
+<p>Από αυτόν τον πίνακα θα πάρουμε τα δεδομένα που χρειαζόμαστε, χωρίς
+να χρειαστεί να τα εισάγουμε εκ νέου. Έτσι, αρχικά αποκόπτουμε από τον
+πίνακα <code>Apasxolisi</code> το κομμάτι με τις μετρήσεις που μας
+ενδιαφέρει ν’ απεικονίσουμε στο κυκλικό διάγραμμα:</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>Apasxolisimetr <span class="ot">&lt;-</span> Apasxolisi[<span class="dv">1</span> , <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)]</span></code></pre></div>
+<p>Και ακολούθως μετατρέπουμε σε λίστα αυτές τις μετρήσεις (βλ. τον
+ψυχαναγκασμό της R και στην υποενότητα <a
+href="#ισομέρεια-shannon">Ισομέρεια Shannon</a>):</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>apasxG <span class="ot">&lt;-</span>   <span class="fu">unlist</span>(Apasxolisimetr)</span></code></pre></div>
+<p>κι αποκτάμε την λίστα με τον αριθμό των γυναικών ανά εργασιακή
+κατάσταση.</p>
+<p>Με την εντολή:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a>    katastasi <span class="ot">&lt;-</span> <span class="fu">colnames</span>(Apasxolisimetr)</span></code></pre></div>
+<p>φτιάχνουμε μια λίστα ονόματι <code>katastasi</code>, η οποία περιέχει
+τους τίτλους από τις στήλες του πίνακα.</p>
+<p>Η πίτα είναι έτοιμη να φτιαχτεί! Δίνουμε την εντολή:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a><span class="fu">pie</span>(apasxG, <span class="at">labels =</span> katastasi, <span class="at">main =</span> <span class="st">&quot;Ergasiaki Katastasi&quot;</span>)</span></code></pre></div>
+<p><img src="perstat_files/figure-html/unnamed-chunk-42-1.png" width="672" /></p>
+<p>οπότε έχουμε ένα κυκλικό διάγραμμα, που:</p>
+<ul>
+<li>καταγράφει τα ποσά της λίστας <code>apasxG</code>,</li>
+<li>δίπλα από το κάθε κομμάτι της πίτας έχει ετικέτα τα στοιχεία της
+λίστας <code>katastasi</code> (<code>labels = katastasi</code>),</li>
+<li>έχει τίτλο <code>Ergasiaki Katastasi</code>
+(<code>main = "Ergasiaki Katastasi</code>).</li>
+</ul>
+<p>Κάποιοι μπορεί να δυσαρεστηθούν από τα ξεθωριασμένα χρώματα της
+πίτας. Αυτοί θα ικανοποιηθούν με την συνάρτηση <code>rainbow()</code>.
+Γράφοντας σαν παράμετρο της πίτας <code>col = rainbow(★★★)</code>θα
+χρησιμοποιηθούν <code>★★★</code> σε πλήθος χρώματα του ουράνιου τόξου
+για τον χρωματισμό της. Συγκεκριμένα αν γράψουμε:</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a><span class="fu">pie</span>(apasxG, <span class="at">labels =</span> katastasi, <span class="at">main =</span> <span class="st">&quot;Ergasiaki Katastasi&quot;</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">3</span>))</span></code></pre></div>
+<p><img src="perstat_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>θα έχουμε την ίδια πίτα με πριν, απλά θα χρησιμοποιηθούν 3 χρώματα
+του ουράνιου τόξου για την βαφή της.</p>
+<p>Αν θέλουμε να καταγράφονται και τα αντίστοιχα ποσοστά στις ετικέτες,
+τότε θα χρησιμοποιήσουμε την συνάρτηση <code>paste()</code>, για να
+κολλήσουμε στις ετικέτες (<code>labels</code>) τα ποσοστά. Έτσι, αρχικά
+υπολογίζουμε τα αντίστοιχα ποσοστά:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a>apasxGp <span class="ot">&lt;-</span> <span class="fu">round</span>(apasxG<span class="sc">/</span><span class="fu">sum</span>(apasxG)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p>όπου η συνάρτηση <code>round()</code> στρογγυλοποιεί τα αποτελέσματα
+κρατώντας το πολύ δύο δεκαδικά ψηφία (<code>digits = 2</code>). Επίσης
+τα οποία πολλαπλασιάσαμε με 100, ώστε να μην είναι σε δεκαδική
+μορφή.</p>
+<p>Ακολούθως γράφουμε διαδοχικά:</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a>katast_pososta <span class="ot">&lt;-</span> <span class="fu">paste</span>(katastasi, apasxGp, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" tabindex="-1"></a>katast_pososta <span class="ot">&lt;-</span> <span class="fu">paste</span>(katast_pososta, <span class="st">&quot;%&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<p>ώστε:</p>
+<ul>
+<li>αρχικά να ενωθούν οι ενδείξεις των λιστών <code>katastasi</code> και
+<code>apasxGp</code> με κενό ανάμεσά τους (<code>sep = " "</code>)</li>
+<li>και ακολούθως να μπει το σύμβολο «<code>%</code>» δίπλα από το
+αντίστοιχο νούμερο χωρίς κενό ανάμεσά τους (<code>sep = ""</code>).</li>
+</ul>
+<p>Τέλος, γράφουμε:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="fu">pie</span>(apasxG,<span class="at">labels =</span> katast_pososta,<span class="at">main =</span> <span class="st">&quot;Ergasiaki Katastasi&quot;</span>)</span></code></pre></div>
+<p><img src="perstat_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p>κι έχουμε την πίτα με ετικέτες τους προηγούμενους τίτλους μαζί με τα
+ποσοστά. Προφανώς τα έντονα χρώματα μπορούν να χρησιμοποιηθούν και πάλι
+μέσω της επιλογής <code>col = rainbow(3)</code>.</p>
+<p>Συνολικά ο κώδικας που γράψαμε είναι ο κάτωθι:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb64-2"><a href="#cb64-2" tabindex="-1"></a>posa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2249.7</span>, <span class="fl">388.3</span>, <span class="fl">1760.6</span>)</span>
+<span id="cb64-3"><a href="#cb64-3" tabindex="-1"></a>etiketes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apasx_antras&quot;</span>, <span class="st">&quot;anerg_antras&quot;</span>, <span class="st">&quot;mh_energ_antras&quot;</span>)</span>
+<span id="cb64-4"><a href="#cb64-4" tabindex="-1"></a><span class="fu">pie</span>(posa, <span class="at">labels =</span> etiketes)</span>
+<span id="cb64-5"><a href="#cb64-5" tabindex="-1"></a>filo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;gynaika&quot;</span>, <span class="st">&quot;andras&quot;</span>)</span>
+<span id="cb64-6"><a href="#cb64-6" tabindex="-1"></a>apasx <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1584</span>, <span class="fl">2249.7</span>)</span>
+<span id="cb64-7"><a href="#cb64-7" tabindex="-1"></a>anerg <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">492.8</span>, <span class="fl">388.3</span>)</span>
+<span id="cb64-8"><a href="#cb64-8" tabindex="-1"></a>mh_energ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2650.9</span>, <span class="fl">1760.6</span>)</span>
+<span id="cb64-9"><a href="#cb64-9" tabindex="-1"></a>Apasxolisi <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">FYLO=</span>filo, <span class="at">APASXOLOYMENOS=</span>apasx, <span class="at">ANERGOS=</span>anerg, <span class="at">MH_ENERGOS=</span>mh_energ)</span>
+<span id="cb64-10"><a href="#cb64-10" tabindex="-1"></a>Apasxolisi</span>
+<span id="cb64-11"><a href="#cb64-11" tabindex="-1"></a>Apasxolisimetr <span class="ot">&lt;-</span> Apasxolisi[<span class="dv">1</span> , <span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>)]</span>
+<span id="cb64-12"><a href="#cb64-12" tabindex="-1"></a>apasxG <span class="ot">&lt;-</span>   <span class="fu">unlist</span>(Apasxolisimetr)</span>
+<span id="cb64-13"><a href="#cb64-13" tabindex="-1"></a>katastasi <span class="ot">&lt;-</span> <span class="fu">colnames</span>(Apasxolisimetr)</span>
+<span id="cb64-14"><a href="#cb64-14" tabindex="-1"></a><span class="fu">pie</span>(apasxG, <span class="at">labels =</span> katastasi, <span class="at">main =</span> <span class="st">&quot;Ergasiaki Katastasi&quot;</span>)</span>
+<span id="cb64-15"><a href="#cb64-15" tabindex="-1"></a><span class="fu">pie</span>(apasxG,<span class="at">labels =</span> katastasi,<span class="at">main =</span> <span class="st">&quot;Ergasiaki Katastasi&quot;</span>, <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">3</span>))</span>
+<span id="cb64-16"><a href="#cb64-16" tabindex="-1"></a>apasxGp <span class="ot">&lt;-</span> <span class="fu">round</span>(apasxG<span class="sc">/</span><span class="fu">sum</span>(apasxG)<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span>
+<span id="cb64-17"><a href="#cb64-17" tabindex="-1"></a>katast_pososta <span class="ot">&lt;-</span> <span class="fu">paste</span>(katastasi,apasxGp,<span class="at">sep =</span> <span class="st">&quot; &quot;</span>)</span>
+<span id="cb64-18"><a href="#cb64-18" tabindex="-1"></a>katast_pososta <span class="ot">&lt;-</span> <span class="fu">paste</span>(katast_pososta, <span class="st">&quot;%&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb64-19"><a href="#cb64-19" tabindex="-1"></a><span class="fu">pie</span>(apasxG,<span class="at">labels =</span> katast_pososta,<span class="at">main =</span> <span class="st">&quot;Ergasiaki Katastasi&quot;</span>)</span></code></pre></div>
+</div>
+<div id="ραβδόγραμμα" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Ραβδόγραμμα</h2>
+<div id="απεικόνιση-μίας-μεταβλητής" class="section level3"
+number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Απεικόνιση μίας
+μεταβλητής</h3>
+</div>
+<div id="από-λίστα-τιμών" class="section level3" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Από λίστα
+τιμών</h3>
+<p>Εδώ θ’ ασχοληθούμε πάλι με τα δεδομένα από τη <a
+href="https://isotita.gr/wp-content/uploads/2019/04/%CE%A0%CE%B1%CF%81%CE%B1%CF%84%CE%B7%CF%81%CE%B7%CF%84%CE%AE%CF%81%CE%B9%CE%BF-%CE%93%CE%93%CE%99%CE%A6-19%CE%BF-%CE%95%CE%BD%CE%B7%CE%BC%CE%B5%CF%81%CF%89%CF%84%CE%B9%CE%BA%CF%8C-%CE%A3%CE%B7%CE%BC%CE%B5%CE%AF%CF%89%CE%BC%CE%B1-%CE%93%CF%85%CE%BD%CE%B1%CE%B9%CE%BA%CE%B5%CE%AF%CE%B1-%CE%91%CE%BD%CE%B5%CF%81%CE%B3%CE%AF%CE%B1.pdf">Γενική
+Γραμματεία Ισότητας</a>, όπως κάναμε στην ενότητα <a
+href="#κυκλικό-διάγραμμα">Κυκλικό διάγραμμα</a>.</p>
+<p>Είναι φανερό ότι το κυκλικό διάγραμμα δεν μπορεί ν’ απεικονίσει
+ευδιάκριτα μικροδιαφορές που μπορεί να έχουν οι τιμές. Αν, όμως, μας
+ενδιαφέρει αυτό, αλλά όχι τόσο η σύγκριση με το σύνολο, το ιδανικό είναι
+το ραβδόγραμμα.</p>
+<p>Θα ασχοληθούμε αρχικά με κάτι απλό. Θα φτιάξουμε αρχικά ένα γρήγορο
+ραβδόγραμμα που να απεικονίζει την εργασιακή κατάσταση των αντρών,
+δηλαδή να δείχνει πόσοι άντρες είναι απασχολούμενοι, πόσοι άνεργοι και
+πόσοι μη ενεργοί και οι τιμές να συγκρίνονται εύκολα μεταξύ τους.</p>
+<p>Για να γίνει αυτό στην R θα χρειαστούμε την λίστα με τα αντίστοιχα
+νούμερα (<code>posa</code>) και φυσικά τι αντιπροσωπεύει το κάθε ένα
+(<code>etiketes</code>). Μαζί με τη διαγραφή των προηγουμένων έχουμε τις
+παρακάτω εντολές:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a>posa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">2249.7</span>, <span class="fl">388.3</span>, <span class="fl">1760.6</span>)</span>
+<span id="cb65-3"><a href="#cb65-3" tabindex="-1"></a>etiketes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apasx_antras&quot;</span>, <span class="st">&quot;anerg_antras&quot;</span>, <span class="st">&quot;mh_energ_antras&quot;</span>)</span></code></pre></div>
+<p>και το ραβδόγραμμα είναι έτοιμο να φτιαχτεί:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" tabindex="-1"></a><span class="fu">barplot</span>(posa, <span class="at">names.arg =</span> etiketes)</span></code></pre></div>
+<p><img src="perstat_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p>Πριν προχωρήσουμε σε κάτι άλλο, θα εξετάσουμε κάποιες επιπλέον
+παραμέτρους της συνάρτησης <code>barplot()</code>. Γράφοντας:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a><span class="fu">barplot</span>(posa,</span>
+<span id="cb67-2"><a href="#cb67-2" tabindex="-1"></a>        <span class="at">names.arg =</span> etiketes,</span>
+<span id="cb67-3"><a href="#cb67-3" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Apasxolisi stoys antres&quot;</span>,</span>
+<span id="cb67-4"><a href="#cb67-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;ergasiaki katastasi&quot;</span>,</span>
+<span id="cb67-5"><a href="#cb67-5" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;xiliades andron&quot;</span>,</span>
+<span id="cb67-6"><a href="#cb67-6" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb67-7"><a href="#cb67-7" tabindex="-1"></a>        <span class="at">density =</span> <span class="dv">10</span>)</span></code></pre></div>
+<p><img src="perstat_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<ul>
+<li>δώσαμε τίτλο στο γράφημά μας τον Apasxolisi stoys antres
+(<code>main = "Apasxolisi stoys antres"</code>),</li>
+<li>δώσαμε τίτλο στον οριζόντιο άξονα ergasiaki katastasi
+(<code>xlab = "ergasiaki katastasi"</code>),</li>
+<li>δώσαμε τίτλο στον κατακόρυφο άξονα xiliades andron
+(<code>ylab = "xiliades andron"</code>),</li>
+<li>χρωματίσαμε μπλε τις μπάρες (<code>col = "blue"</code>) και</li>
+<li>γραμμοσκιάσαμε τις μπάρες (εδώ δώσαμε <code>density = 10</code>, αν
+δίναμε πχ <code>density = 20</code>, η γραμμοσκίαση θα ήταν πιο
+πυκνή).</li>
+</ul>
+<p>Ας πειραματιστούμε κι άλλο λίγο με κάποιες άλλες παραμέτρους:</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">barplot</span>(posa,</span>
+<span id="cb68-2"><a href="#cb68-2" tabindex="-1"></a>        <span class="at">names.arg =</span> etiketes,</span>
+<span id="cb68-3"><a href="#cb68-3" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">&quot;Apasxolisi stoys antres&quot;</span>,</span>
+<span id="cb68-4"><a href="#cb68-4" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&quot;xiliades andron&quot;</span>,</span>
+<span id="cb68-5"><a href="#cb68-5" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">&quot;ergasiaki katastasi&quot;</span>,</span>
+<span id="cb68-6"><a href="#cb68-6" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>,</span>
+<span id="cb68-7"><a href="#cb68-7" tabindex="-1"></a>        <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="perstat_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>Εδώ:</p>
+<ul>
+<li>δώσαμε πάλι τίτλο στο γράφημά μας τον Apasxolisi stoys antres
+(<code>main = "Apasxolisi stoys antres"</code>)</li>
+<li>δώσαμε τίτλο στον οριζόντιο άξονα xiliades andron
+(<code>ylab = "xiliades andron"</code>),</li>
+<li>δώσαμε τίτλο στον κατακόρυφο άξονα ergasiaki katastasi
+(<code>xlab = "ergasiaki katastasi"</code>),</li>
+<li>χρωματίσαμε μπλε τις μπάρες (<code>col = "blue"</code>),</li>
+<li>διώξαμε τη γραμμοσκίαση (σβήσαμε την παράμετρο <code>density</code>)
+και</li>
+<li>κάναμε οριζόντιο το ραβδόγραμμα (<code>horiz = TRUE</code>)</li>
+</ul>
+</div>
+<div id="από-πίνακα-δεδομένων" class="section level3" number="1.4.3">
+<h3><span class="header-section-number">1.4.3</span> Από πίνακα
+δεδομένων</h3>
+<p>Σε αυτό το σημείο θα δούμε και ένα επιπλέον πακέτο της R, το
+<code>ggplot2</code>, που μας επιτρέπει να κάνουμε περισσότερα ακόμα με
+τα γραφήματά μας. Προς τούτο το εγκαθιστούμε και το φορτώνουμε:</p>
+</div>
+<div id="απεικόνιση-πολλών-μεταβλητών" class="section level3"
+number="1.4.4">
+<h3><span class="header-section-number">1.4.4</span> Απεικόνιση πολλών
+μεταβλητών</h3>
+</div>
+<div id="διόρθωση-σειράς" class="section level3" number="1.4.5">
+<h3><span class="header-section-number">1.4.5</span> Διόρθωση
+σειράς</h3>
+</div>
+</div>
+<div id="ιστόγραμμα" class="section level2" number="1.5">
+<h2><span class="header-section-number">1.5</span> Ιστόγραμμα</h2>
+<p>Να δω και πιο περίτεχνα από PISA</p>
+</div>
+</div>
+<div id="μέτρα-συσχέτισης" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Μέτρα συσχέτισης</h1>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

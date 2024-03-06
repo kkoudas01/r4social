@@ -1,0 +1,29 @@
+name: "r-koudas"
+output_dir: "docs"
+navbar:
+  title: "R🧸Koudas"
+  left:
+    - text: "Εργαλεία"
+      icon: fa-solid fa-screwdriver-wrench
+      menu:
+      - text: "Πίνακες δεδομένων"
+        href: pinakes.html
+      - text: "Περιγραφική στατιστική"
+        href: perstat.html
+    - text: "Έρευνες"
+      icon: fa-solid fa-flask-vial
+      menu:
+      - text: "Αποχή στις εκλογές"
+        href: apoxi.html
+      - text: "Εξέταση αποτελεσμάτων PISA"
+        href: pisa.html
+    - text: "Εντός εκτός κι επί τα αυτά"
+      icon: fa-solid fa-mug-saucer
+      menu:
+      - text: "Μετατροπή πίνακα για Mathematica"
+        href: dataMathematica.html
+output:
+  html_document:
+    theme: default
+    highlight: tango
+    css: styles.css

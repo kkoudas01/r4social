@@ -1,0 +1,6 @@
+"0","c1 <- c(1,2,3,4)"
+"0","c2 <- c(5,1,7,8)"
+"0","dataTest <- data.frame(c1,c2)"
+"0",""
+"0","DFtoMATHEMATICA(dataTest)"
+"0","VtoMATHEMATICA(c1)"

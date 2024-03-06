@@ -1,0 +1,32 @@
+{
+    "id": "09DE119C",
+    "path": "~/ArxeiaKostas/eggrafa/NotaBene/Rexamples/stat4sosial/perstat.Rmd",
+    "project_path": "perstat.Rmd",
+    "type": "r_markdown",
+    "hash": "1256582969",
+    "contents": "",
+    "dirty": false,
+    "created": 1709491851863.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "docOutlineVisible": "1",
+        "cursorPosition": "650,0",
+        "scrollLine": "620",
+        "rmdVisualMode": "false",
+        "rmdVisualWrapConfigured": "true",
+        "rmdVisualModeLocation": "23272:12422.400390625",
+        "rmdVisualCollapsedChunks": "",
+        "last_setup_crc32": ""
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1709638756,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1709638756502,
+    "read_only": false,
+    "read_only_alternatives": []
+}
