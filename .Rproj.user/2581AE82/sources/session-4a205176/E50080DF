@@ -1,9 +1,9 @@
 {
     "id": "E50080DF",
-    "path": "~/ArxeiaKostas/eggrafa/NotaBene/Rexamples/stat4sosial/index.Rmd",
+    "path": "~/GitHub/r4social/index.Rmd",
     "project_path": "index.Rmd",
     "type": "r_markdown",
-    "hash": "3988297934",
+    "hash": "3632109883",
     "contents": "",
     "dirty": false,
     "created": 1709492417410.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "148,47",
-        "scrollLine": "0",
+        "cursorPosition": "149,0",
+        "scrollLine": "142",
         "docOutlineVisible": "1"
     },
     "folds": "",
-    "lastKnownWriteTime": 1709539052,
+    "lastKnownWriteTime": 1709759327,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1709539052457,
+    "last_content_update": 1709759327399,
     "read_only": false,
     "read_only_alternatives": []
 }
