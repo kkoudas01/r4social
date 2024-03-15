@@ -9,7 +9,23 @@ navbar:
       - text: "Πίνακες δεδομένων"
         href: pinakes.html
       - text: "Περιγραφική στατιστική"
-        href: perstat.html
+        menu:
+        - text: "Συχνότητες"
+          menu:
+          - text: "Συχνότητες"
+            href: syxnotites.html
+          - text: "Μέτρηση ποικιλομορφίας"
+            href: pikilomorfia.html
+          - text: "Κυκλικό διάγραμμα"
+            href: piechart.html
+          - text: "Ραβδόγραμμα"
+            href: barplot.html
+          - text: "Ιστόγραμμα"
+            href: histogram.html
+        - text: "Μέτρα θέσης"
+          href: metrathesis.html
+        - text: "Μέτρα διασποράς"
+          href: metradiasporas.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:

@@ -1,0 +1,5611 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Κώστας Κούδας" />
+
+<meta name="date" content="2024-03-15" />
+
+<title>Μέτρα διασποράς</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R🧸Koudas</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-screwdriver-wrench"></span>
+     
+    Εργαλεία
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pinakes.html">Πίνακες δεδομένων</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Περιγραφική στατιστική</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συχνότητες</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="syxnotites.html">Συχνότητες</a>
+            </li>
+            <li>
+              <a href="pikilomorfia.html">Μέτρηση ποικιλομορφίας</a>
+            </li>
+            <li>
+              <a href="piechart.html">Κυκλικό διάγραμμα</a>
+            </li>
+            <li>
+              <a href="barplot.html">Ραβδόγραμμα</a>
+            </li>
+            <li>
+              <a href="histogram.html">Ιστόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="metrathesis.html">Μέτρα θέσης</a>
+        </li>
+        <li>
+          <a href="metradiasporas.html">Μέτρα διασποράς</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-flask-vial"></span>
+     
+    Έρευνες
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apoxi.html">Αποχή στις εκλογές</a>
+    </li>
+    <li>
+      <a href="pisa.html">Εξέταση αποτελεσμάτων PISA</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-mug-saucer"></span>
+     
+    Εντός εκτός κι επί τα αυτά
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dataMathematica.html">Μετατροπή πίνακα για Mathematica</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Μέτρα διασποράς</h1>
+<h4 class="author">Κώστας Κούδας</h4>
+<h4 class="date">2024-03-15</h4>
+
+</div>
+
+
+<p>Στο παρόν κεφάλαιο θ’ ασχοληθούμε πάλι με τις τουρκικές παραβιάσεις
+του Εθνικού Εναέριου Χώρου και των Εθνικών Χωρικών Υδάτων, οπότε θα
+χρησιμοποιήσουμε τους πίνακες enaerParab.xlsx και ydataParab.xlsx, αφού
+πρώτα διαγράψουμε τα προηγούμενα.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<ul>
+<li><em>ydataParab.xlsx</em> (για τα θαλάσια συμβάντα):</li>
+</ul>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+ETOS
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+MHNAS
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PARAB_EXY
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+116
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+117
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+168
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+290
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+135
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+160
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+172
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+142
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+189
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+179
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+137
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+124
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+120
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+108
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+119
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+146
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+92
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+141
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+134
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+122
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+143
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+113
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+117
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+111
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+143
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+239
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+151
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+368
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+274
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+265
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+187
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+141
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+171
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+254
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+229
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+182
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+144
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+115
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+366
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>και <em>enaerParab.xlsx</em> (για τα εναέρια):</li>
+</ul>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+ETOS
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+MHNAS
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PARAB_KEK
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+PARAB_EEX
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+OPL_SXHM
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+EMPLOKES
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+YPERPT_ETH_ED
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+SYNOLO_AER
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+250
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+259
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+306
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+229
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+163
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+281
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+146
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+247
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+217
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+310
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+225
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+293
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+103
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+253
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+204
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+219
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+106
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+227
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+239
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+220
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+114
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+324
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+77
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+239
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+129
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+266
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+292
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+316
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+87
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+246
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+105
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+233
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+92
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+215
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+206
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+234
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+274
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+265
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+245
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+254
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+128
+</td>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+232
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+212
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+198
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+192
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+89
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+127
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+42
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+96
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+147
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+146
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+174
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+110
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+107
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+194
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+157
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+96
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+49
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+135
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+91
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+103
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+88
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+118
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+119
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+105
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+109
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+99
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+239
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+138
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+105
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+109
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:right;">
+426
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+156
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:right;">
+196
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+119
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+96
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+104
+</td>
+<td style="text-align:right;">
+249
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+129
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+88
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+79
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+86
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+124
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+35
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+210
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+127
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+136
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:right;">
+362
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+276
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+143
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+61
+</td>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+111
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+87
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+100
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+118
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:right;">
+75
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+80
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+83
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+76
+</td>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+101
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+109
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+130
+</td>
+<td style="text-align:right;">
+267
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+133
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+321
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+159
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+78
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:right;">
+126
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+145
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+66
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+85
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+133
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+257
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+254
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+97
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:right;">
+642
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+201
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+71
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+96
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+187
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+84
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+111
+</td>
+<td style="text-align:right;">
+346
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+139
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+343
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+168
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:right;">
+401
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+143
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+212
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+94
+</td>
+<td style="text-align:right;">
+353
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+89
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+82
+</td>
+<td style="text-align:right;">
+377
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+90
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+70
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+101
+</td>
+<td style="text-align:right;">
+280
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+124
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+202
+</td>
+<td style="text-align:right;">
+361
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+239
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+98
+</td>
+<td style="text-align:right;">
+385
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+161
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+271
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+126
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:right;">
+276
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+109
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+113
+</td>
+<td style="text-align:right;">
+273
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+161
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+214
+</td>
+<td style="text-align:right;">
+381
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+236
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+134
+</td>
+<td style="text-align:right;">
+233
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+180
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+141
+</td>
+<td style="text-align:right;">
+325
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+192
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+146
+</td>
+<td style="text-align:right;">
+338
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+199
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+245
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+124
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+135
+</td>
+<td style="text-align:right;">
+378
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+193
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+136
+</td>
+<td style="text-align:right;">
+281
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+184
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+290
+</td>
+<td style="text-align:right;">
+506
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+327
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+127
+</td>
+<td style="text-align:right;">
+663
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+137
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+118
+</td>
+<td style="text-align:right;">
+355
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+161
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+95
+</td>
+<td style="text-align:right;">
+341
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+106
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Se
+</td>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:right;">
+413
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+171
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+Ok
+</td>
+<td style="text-align:right;">
+139
+</td>
+<td style="text-align:right;">
+507
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+180
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+199
+</td>
+<td style="text-align:right;">
+342
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+208
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:left;">
+De
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:right;">
+444
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+57
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+234
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Ir
+</td>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:right;">
+597
+</td>
+<td style="text-align:right;">
+55
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:right;">
+261
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Fe
+</td>
+<td style="text-align:right;">
+131
+</td>
+<td style="text-align:right;">
+541
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+172
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Mr
+</td>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:right;">
+425
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:right;">
+58
+</td>
+<td style="text-align:right;">
+190
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Ar
+</td>
+<td style="text-align:right;">
+132
+</td>
+<td style="text-align:right;">
+507
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:right;">
+160
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Ma
+</td>
+<td style="text-align:right;">
+93
+</td>
+<td style="text-align:right;">
+420
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+120
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+In
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+459
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:right;">
+149
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Il
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+558
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+142
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:left;">
+Au
+</td>
+<td style="text-align:right;">
+281
+</td>
+<td style="text-align:right;">
+457
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+283
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Είδαμε ότι η μέση τιμή των παραβιάσεων, η διάμεσος κτλ είναι αριθμοί
+ενδεικτικοί του συνόλου των τιμών των παραβιάσεων. Πόσο όμως το
+αντιπροσωπεύουν; Γράφοντας:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<pre><code>## [1] 190.3857</code></pre>
+<p>βρίσκουμε ότι η μέση τιμή των παραβιάσεων είναι 190.3857143
+παραβιάσεις το μήνα. Αν πχ το πλήθος των παραβιάσεων είναι από 180 έως
+200 το μήνα, η μέση τιμή που βρήκαμε αντιπροσωπεύει επαρκέστατα καθεμία
+τιμή. Αν όμως οι τιμές είναι απλωμένες σε ένα πολύ ευρύτερο διάστημα,
+τότε η τιμή αυτή δεν είναι καθόλου αντιπροσωπευτική.</p>
+<p>Εδώ θα εξετάσουμε διάφορους τρόπους με τους οποίους ανακαλύπτουμε
+πόσο απλωμένες είναι οι τιμές κάποιων παρατηρήσεων.</p>
+<div id="εύρος" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Εύρος</h1>
+<p>Το πιο απλό μέτρο διασποράς είναι το εύρος.</p>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><mark>Εύρος</mark></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><mark>Το <strong>εύρος</strong> ενός συνόλου
+μετρήσεων (δείγματος ή πληθυσμού) είναι η διαφορά της μικρότερης από την
+μεγαλύτερη τιμή.</mark></td>
+</tr>
+</tbody>
+</table>
+<p>Για να βρούμε το εύρος στην R θα χρησιμοποιήσουμε την συνάρτηση
+<code>range()</code>. Γράφοντας:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">range</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<pre><code>## [1]  26 663</code></pre>
+<p>εξάγονται οι αριθμοί 26 και 663. Αυτοί είναι οι ανώτερη και η
+κατώτερη τιμή της λίστας των παραβιάσεων ΕΕΧ. Προφανώς, το εύρος θα
+είναι 663-26=637.</p>
+</div>
+<div id="τυπική-απόκλιση" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Τυπική απόκλιση</h1>
+<p>Δυστυχώς, το εύρος είναι αρκετά ευαίσθητο στις ακραίες τιμές. Αν, επί
+παραδείγματι, σ’ ένα μήνα έγιναν 1000 παραβιάσεις και σ’ έναν άλλο μόνο
+1, το εύρος θα πάρει αυτομάτως την τιμή 999, χωρίς όμως αυτή να
+αντιπροσωπεύει κάτι ουσιαστικό, αφού αυτές οι ακραίες τιμές έγιναν μόνο
+δύο φορές.</p>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><mark>Τυπική απόκλιση</mark></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><mark>Η <strong>τυπική απόκλιση</strong> ενός συνόλου
+τιμών είναι ένα μέτρο της απόστασής τους από τη μέση τιμή
+τους.</mark></td>
+</tr>
+</tbody>
+</table>
+<p>Η τυπική απόκλειση υπολογίζεται διαφορετικά, όταν μιλάμε για πληθυσμό
+σε σχέση με όταν μιλάμε για δείγμα. Έτσι, η τυπική δειγματική τυπική
+απόκλιση υπολογίζεται στην R μέσω της συνάρτησης <code>sd()</code>.
+Οπότε, γράφοντας:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<pre><code>## [1] 147.9733</code></pre>
+<p>βρίσκουμε ότι η τυπική απόκλιση των παραβιάσεων ΕΕΧ είναι 147.9733393
+παραβιάσεις.</p>
+<p>Όπως αναφέραμε, η R υπολογίζει διαφορετικά την πληθυσμιακή τυπική
+απόκλιση. Για την ακρίβεια δεν έχει έτοιμη συνάρτηση για τον υπολογισμό
+της τυπικής απόκλισης πληθυσμού, οπότε πάλι θα χρειαστεί να την
+φτιάξουμε εμείς. Αυτό θα γίνει με την εντολή:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>sdPop <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(<span class="fu">mean</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
+<div id="απομονωμένα-σημεία" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Απομονωμένα
+σημεία</h2>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><mark>Απομονωμένα σημεία</mark></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><mark>Μια τιμή από ένα σύνολο μετρήσεων (δείγματος ή
+πληθυσμού), η οποία είναι πολύ μεγάλη ή πολύ μικρή σε σχέση με τις
+υπόλοιπες ονομάζεται <strong>απομονωμένο σημείο</strong>.</mark></td>
+</tr>
+</tbody>
+</table>
+<p>Η σημασία της τυπικής απόκλισης θα φανεί μέσα από τα απομονωμένα
+σημεία, μέσω του κάτωθι θεωρήματος.</p>
+<p><mark>Οτιδήποτε βρίσκεται σε απόσταση από την μέση τιμή μεγαλύτερη
+από τρεις τυπικές αποκλίσεις είναι πιθανό παράτυπο σημείο. Σχεδόν όλο το
+δείγμα (τουλάχιστον το 88.8%) βρίσκεται σε μικρότερη απόσταση από τρεις
+τυπικές αποκλίσεις.</mark></p>
+<p>Όσον αφορά τις παραβιάσεις ΕΕΧ, γράφοντας:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<pre><code>## [1] -253.5343</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">+</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<pre><code>## [1] 634.3057</code></pre>
+<p>βρίσκουμε τους αριθμούς -253.5343036 και 634.3057322 που είναι τα
+άκρα του διαστήματος εκτός του οποίου εντός του οποίου, όπως είπαμε,
+βρίσκεται τουλάχιστον το 88.8% του δείγματος. Και όντως! Γράφοντας:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>enaerParabApon <span class="ot">&lt;-</span> enaerParab[enaerParab<span class="sc">$</span>PARAB_EEX<span class="sc">&gt;</span><span class="fl">634.3057</span>, ]</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>enaerParabApon</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 8
+##    ETOS MHNAS PARAB_KEK PARAB_EEX OPL_SXHM EMPLOKES YPERPT_ETH_ED SYNOLO_AER
+##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+## 1  2017 Ma          190       642       30       29             1        201
+## 2  2019 In          127       663       28       30            10        137</code></pre>
+<p>βρίσκουμε ότι μόνο σε δύο μήνες (Μάιος 2017 και Ιούνιος 2019) ότι
+υπήρξαν παραβιάσεις εκτός του διαστήματος (-253.5343036, 634.3057322).
+Προφανώς δεν έχει αξία να ψάξουμε για τιμές πλήθους παραβιάσεων
+μικρότερες του -253.5343036.</p>
+</div>
+</div>
+<div id="ενδοτεταρτημοριακό-εύρος" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Ενδοτεταρτημοριακό
+εύρος</h1>
+<p>Ενίοτε μπορεί να μη μας απασχολεί το εύρος όλων των μετρήσεων που
+διαθέτουμε, αλλά κάποιων κεντρικών τιμών τους. Το ενδοτεταρτημοριακό
+εύρος είναι σε αυτά τα πλαίσια και προσδιορίζει το εύρος του κεντρικού
+50% των τιμών. Με άλλα λόγια:</p>
+<table>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"><mark>Ενδοτεταρτημοριακό εύρος</mark></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><mark>Το <strong>ενδοτεταρτημοριακό εύρος</strong>
+ενός συνόλου μετρήσεων (δείγματος ή πληθυσμού) είναι η διαφορά μεταξύ
+του 1ου και του 3ου ταταρτημορίου.</mark></td>
+</tr>
+</tbody>
+</table>
+<p>Το ενδοτεταρτημοριακό εύρος στην R υπολογίζεται μέσω της συνάρτησης
+<code>IQR()</code>. Δηλαδή, αν γράψουμε:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">IQR</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<pre><code>## [1] 189</code></pre>
+<p>παίρνουμε σαν απάντηση την τιμή 189, όπερ σημαίνει ότι οι τιμές του
+κεντρικού 50% του δείγματος εκτείνονται σ’ ένα διάστημα πλάτους 189
+μονάδων. Αυτό μπορούμε να το εξακριβώσουμε γράφοντας επίσης:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">quantile</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<pre><code>##    0%   25%   50%   75%  100% 
+##  26.0  82.5 133.0 271.5 663.0</code></pre>
+<p>οπότε διαπιστώνουμε ότι το κεντρικό 50% του δείγματος είναι μεταξύ
+των τιμών 82.5 και 271.5, οι οποίες, προφανώς, απέχουν μεταξύ τους 189
+μονάδες.</p>
+</div>
+<div id="θηκόγραμμα" class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Θηκόγραμμα</h1>
+<p>Με θηκόγραμμα απεικονίζονται τα τεταρτημόρια και τονίζονται τα
+απομονωμένα σημεία. Αυτό κείτεται παράλληλα με τον άξονα των τιμών της
+μεταβλητής μας και αποτελείται από:</p>
+<ul>
+<li><p>ένα κουτί που αρχίζει από την ένδειξη του 1ου τεταρτημορίου και
+τελειώνει στην ένδειξη του 3ου,</p></li>
+<li><p>μία γραμμή στη θέση της διαμέσου, η οποία χωρίζει το κουτί σε δύο
+κομμάτια,</p></li>
+<li><p>δύο γραμμές ως συνέχεια του κουτιού, οι οποίες εκτείνονται έξω
+από τα όρια του 1ου και του 3ου τεταρτημορίου και καθεμία τους έχει
+μήκος ενάμιση ενδοτεταρτημοριακό εύρος, εκτός κι αν έχει ξεπεράσει την
+ανώτατη ή την κατώτατη τιμή (οπότε σταματάει εκεί),</p></li>
+<li><p>τα σημεία έξω από τις προαναφερθείσες γραμμές είναι πιθανά
+απομονωμένα σημεία κι έχουν ξεχωριστή σήμανση.</p></li>
+</ul>
+<p>Μια εύκολη και γρήγορη κατασκευή ενός θηκογράμματος γίνεται μέσω της
+συνάρτησης <code>boxplot()</code>. Έτσι, δεν έχουμε παρά να
+γράψουμε:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Αν το θέλουμε οριζόντιο, τότε γράφουμε:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX, <span class="at">horizontal=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Για θηκογράμματα με περισσότερη ποικιλία θα απευθυνθούμε στο πακέτο
+ggplot2, το οποίο επικαλούμαστε μέσω της εντολής
+<code>library(ggplot2)</code>.</p>
+<p>Οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)){</span>
+<span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" tabindex="-1"></a>    <span class="fu">library</span>(ggplot2)</span>
+<span id="cb21-4"><a href="#cb21-4" tabindex="-1"></a>}</span>
+<span id="cb21-5"><a href="#cb21-5" tabindex="-1"></a>ParabEEXbox <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb21-6"><a href="#cb21-6" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Οπότε έχουμε το θηκόγραμμα που ζητούσαμε. Ο ρόλος της παραμέτρου
+<code>x=""</code> θα φανεί σε λίγο.</p>
+<p>Στην περίπτωση που θελήσουμε το θηκόγραμμα οριζόντιο, δεν έχουμε παρά
+να γράψουμε:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Δίνοντας κατάλληλες τιμές εντός του geom_boxplot() στα:</p>
+<ul>
+<li><p><code>outlier.shape =</code> και</p></li>
+<li><p><code>outlier.size =</code></p></li>
+</ul>
+<p>αλλάξουμε σχήμα και μέγεθος στα απομονωμένα σημεία. Συγκεκριμένα,
+γράφοντας:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="dv">0</span>, <span class="at">outlier.size =</span> <span class="dv">4</span>)</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>κάναμε τα απομονωμένα σημεία τετράγωνου σχήματος και πιο μεγάλα.</p>
+<p>Ενίοτε μπορεί να θελήσουμε να παραστήσουμε το θηκόγραμμα σε συνδυασμό
+μ’ ένα σημειόγραμμα. Τοιαύτη περιπτώσει γράφουμε:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_dotplot</span>(<span class="at">binaxis=</span><span class="st">&#39;y&#39;</span>, <span class="at">stackdir=</span><span class="st">&#39;center&#39;</span>, <span class="at">dotsize=</span><span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## Bin width defaults to 1/30 of the range of the data. Pick better value with `binwidth`.</code></pre>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Το σημειόγραμμα θα ήταν πιο ενδιαφέρον, αν τα σημεία του ήταν ατάκτως
+διατεταγμένα γύρω από τον άξονα συμμετρίας του θηκογράμματος. Αυτό θα
+επιτευχθεί προσθέτοντας την επιλογή
+<code>geom_jitter(shape=16, size=1,position=position_jitter(0.2))</code>.
+Αν όμως γράψουμε κατευθείαν:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>θα προκύψουν διπλάσια απομονωμένα σημεία, αφού θα υπάρχουν αυτά από
+την επιλογή <code>geom_boxplot()</code> και αυτά από τα σημεία που μόλις
+προσθέσαμε (αυτό μπορεί να γίνει φανερό αλλάζοντας το σχήμα ή το μέγεθος
+των απομονωμένων σημείων μέσω των επιλογών <code>shape=</code> ή
+<code>size=</code>).</p>
+<p>Οπότε θα πρέπει να σβήσουμε τα απομονωμένα σημεία του θηκογράμματος,
+πράγμα που θα γίνει είτε μέσω της αλλαγής
+<code>geom_boxplot(outlier.shape = NA)</code> είτε μέσω της αλλαγής
+<code>geom_boxplot(outlier.size = -1)</code>. Οπότε, για να έχουμε το
+επιθυμητό θηκόγραμμα, γράφουμε:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Όσον αφορά την παράμετρο <code>shape=</code> της
+<code>geom_jitter()</code>, αυτή μας δίνει την επιλογή του σχήματος των
+σημείων, η <code>size=</code> του μεγέθους και η <code>position=</code>
+του πόσο απλωμένα θα είναι τα σημεία.</p>
+<p>Ας υποθέσουμε τώρα ότι θέλουμε να φτιάξουμε ένα θηκόγραμμα για κάθε
+έτος ξεχωριστά. Αυτό θα γίνει δίνοντας την οδηγία ο οριζόντιος άξονας
+(<code>x=</code>) να έχει τα έτη (κι όχι να είναι κενός ενδείξεων,
+γράφοντας <code>x=""</code>). Αν όμως γράψουμε:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>ETOS, <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>## Warning: Continuous x aesthetic
+## ℹ did you forget `aes(group = ...)`?</code></pre>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>τότε ούτε προκύπτει το επιθυμητό αποτέλεσμα κι έχουμε και μήνυμα
+σφάλαματος. Αυτό λόγω του ότι οι τιμές της στήλης <code>ETOS</code>
+είναι αριθμητικές. Θα υπερβούμε αυτό το πρόβλημα μετατρέποντάς τες σε
+χαρακτήρες, γράφοντας <code>as.character(ETOS)</code>, δηλαδή:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.character</span>(ETOS), <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>Φυσικά, αν θελήσουμε να υπάρχουν και σημεία συγχρόνως, γράφουμε:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Πάνω στα τελευταία θηκογράμματα θα μπορούσαμε να κάναμε κάποιες
+αισθητικές παρεμβάσεις μέσω των επιλογών <code>color=</code> και
+<code>fill=</code>. Ας υποθέσουμε ότι φτιάχνουμε μια νέα σειρά από
+θηκογράμματα με βάση τις παραβιάσεις του κάθε μήνα. Αυτό θα γίνει
+γράφοντας αρχικά:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>mines <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ir&quot;</span>,<span class="st">&quot;Fe&quot;</span>,<span class="st">&quot;Mr&quot;</span>,<span class="st">&quot;Ar&quot;</span>,<span class="st">&quot;Ma&quot;</span>,<span class="st">&quot;In&quot;</span>,<span class="st">&quot;Il&quot;</span>,<span class="st">&quot;Au&quot;</span>,<span class="st">&quot;Se&quot;</span>,<span class="st">&quot;Ok&quot;</span>,<span class="st">&quot;No&quot;</span>,<span class="st">&quot;De&quot;</span>)</span></code></pre></div>
+<p>και ακολούθως:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>ParabEEXboxMinas1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">color=</span>MHNAS))</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>ParabEEXboxMinas1 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>Όπου, φυσικά, η προσθήκη της <code>xlim(mines)</code> έγινε για να
+μπουν οι μήνες στη σωστή σειρά.</p>
+<p>Αν τώρα θέλουμε να διαφοροποιούνται βάσει του χρώματος γεμίσματος,
+γράφουμε:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>ParabEEXboxMinas2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">fill=</span>MHNAS))</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>ParabEEXboxMinas2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
+<p><img src="metradiasporas_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Ο κώδικας όλης αυτής της ενότητας είναι ο:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="fu">range</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a>sdPop <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(<span class="fu">mean</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span> <span class="dv">2</span>))</span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">+</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-8"><a href="#cb35-8" tabindex="-1"></a>enaerParabApon <span class="ot">&lt;-</span> enaerParab[enaerParab<span class="sc">$</span>PARAB_EEX<span class="sc">&gt;</span><span class="fl">634.3057</span>, ]</span>
+<span id="cb35-9"><a href="#cb35-9" tabindex="-1"></a>enaerParabApon</span>
+<span id="cb35-10"><a href="#cb35-10" tabindex="-1"></a><span class="fu">IQR</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-11"><a href="#cb35-11" tabindex="-1"></a><span class="fu">quantile</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-12"><a href="#cb35-12" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb35-13"><a href="#cb35-13" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX, <span class="at">horizontal=</span><span class="cn">TRUE</span>)</span>
+<span id="cb35-14"><a href="#cb35-14" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)){</span>
+<span id="cb35-15"><a href="#cb35-15" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb35-16"><a href="#cb35-16" tabindex="-1"></a>    <span class="fu">library</span>(ggplot2)</span>
+<span id="cb35-17"><a href="#cb35-17" tabindex="-1"></a>}</span>
+<span id="cb35-18"><a href="#cb35-18" tabindex="-1"></a>ParabEEXbox <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb35-19"><a href="#cb35-19" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb35-20"><a href="#cb35-20" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
+<span id="cb35-21"><a href="#cb35-21" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="dv">0</span>, <span class="at">outlier.size =</span> <span class="dv">4</span>)</span>
+<span id="cb35-22"><a href="#cb35-22" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_dotplot</span>(<span class="at">binaxis=</span><span class="st">&#39;y&#39;</span>, <span class="at">stackdir=</span><span class="st">&#39;center&#39;</span>, <span class="at">dotsize=</span><span class="dv">1</span>)</span>
+<span id="cb35-23"><a href="#cb35-23" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
+<span id="cb35-24"><a href="#cb35-24" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
+<span id="cb35-25"><a href="#cb35-25" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>ETOS, <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb35-26"><a href="#cb35-26" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb35-27"><a href="#cb35-27" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.character</span>(ETOS), <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb35-28"><a href="#cb35-28" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb35-29"><a href="#cb35-29" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
+<span id="cb35-30"><a href="#cb35-30" tabindex="-1"></a>mines <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ir&quot;</span>,<span class="st">&quot;Fe&quot;</span>,<span class="st">&quot;Mr&quot;</span>,<span class="st">&quot;Ar&quot;</span>,<span class="st">&quot;Ma&quot;</span>,<span class="st">&quot;In&quot;</span>,<span class="st">&quot;Il&quot;</span>,<span class="st">&quot;Au&quot;</span>,<span class="st">&quot;Se&quot;</span>,<span class="st">&quot;Ok&quot;</span>,<span class="st">&quot;No&quot;</span>,<span class="st">&quot;De&quot;</span>)</span>
+<span id="cb35-31"><a href="#cb35-31" tabindex="-1"></a>ParabEEXboxMinas1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">color=</span>MHNAS))</span>
+<span id="cb35-32"><a href="#cb35-32" tabindex="-1"></a>ParabEEXboxMinas1 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span>
+<span id="cb35-33"><a href="#cb35-33" tabindex="-1"></a>ParabEEXboxMinas2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">fill=</span>MHNAS))</span>
+<span id="cb35-34"><a href="#cb35-34" tabindex="-1"></a>ParabEEXboxMinas2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

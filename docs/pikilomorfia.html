@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Κώστας Κούδας" />
+
+<meta name="date" content="2024-03-15" />
+
+<title>Μέτρηση ποικιλομορφίας</title>
+
+<script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R🧸Koudas</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-screwdriver-wrench"></span>
+     
+    Εργαλεία
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pinakes.html">Πίνακες δεδομένων</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Περιγραφική στατιστική</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συχνότητες</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="syxnotites.html">Συχνότητες</a>
+            </li>
+            <li>
+              <a href="pikilomorfia.html">Μέτρηση ποικιλομορφίας</a>
+            </li>
+            <li>
+              <a href="piechart.html">Κυκλικό διάγραμμα</a>
+            </li>
+            <li>
+              <a href="barplot.html">Ραβδόγραμμα</a>
+            </li>
+            <li>
+              <a href="histogram.html">Ιστόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="metrathesis.html">Μέτρα θέσης</a>
+        </li>
+        <li>
+          <a href="metradiasporas.html">Μέτρα διασποράς</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-flask-vial"></span>
+     
+    Έρευνες
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apoxi.html">Αποχή στις εκλογές</a>
+    </li>
+    <li>
+      <a href="pisa.html">Εξέταση αποτελεσμάτων PISA</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-mug-saucer"></span>
+     
+    Εντός εκτός κι επί τα αυτά
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dataMathematica.html">Μετατροπή πίνακα για Mathematica</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Μέτρηση ποικιλομορφίας</h1>
+<h4 class="author">Κώστας Κούδας</h4>
+<h4 class="date">2024-03-15</h4>
+
+</div>
+
+
+<div id="ποικιλότητα-shannon" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Ποικιλότητα
+Shannon</h1>
+<p>Στην παρούσα ενότητα θα προσπαθήσουμε να μετρήσουμε τον πλουραλισμό
+και την πολυφωνία σε μια ομάδα. Αρχικά, βέβαια, διαγράφουμε ό,τι έχουμε
+γράψει ως τώρα.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Ας υποθέσουμε ότι ένα σωματείο έχει συνέλευση, στην οποία
+παραβρίσκονται 150 άτομα που πρόσκεινται στη ΝΔ (<em>μπλε</em>), 120
+άτομα που πρόσκεινται στον ΣΥΡΙΖΑ (<em>ροζ</em>), 100 άτομα στο ΠΑΣΟΚ
+(<em>πράσινο</em>) και 90 στο ΚΚΕ (<em>κόκκινο</em>). Αναπαριστούμε με
+την παρακάτω εικόνα την εν λόγω συνέλευση.</p>
+<p><img src="pikilomorfia_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Το σωματείο φαίνεται να έχει όλη τη γκάμα των πολιτικών αποχρώσεων.
+Δεν μπορούμε να πούμε ότι κάποιο πολιτικό κόμμα έχει μόνο τυπική
+παρουσία στο σωματείο.</p>
+<p>Αντίθετα, στο παρακάτω σωματείο φαίνεται να υπάρχει μικρότερη
+ποικιλία απόψεων. Σε αυτό παραβρίσκονται 290 άτομα που πρόσκεινται στη
+ΝΔ (<em>μπλε</em>), 60 άτομα που πρόσκεινται στον ΣΥΡΙΖΑ (<em>ροζ</em>),
+50 άτομα στο ΠΑΣΟΚ (<em>πράσινο</em>) και 40 στο ΚΚΕ
+(<em>κόκκινο</em>).</p>
+<p><img src="pikilomorfia_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Σε αυτό φαίνεται να έχει μονοκρατορία η ΝΔ. Η ποικιλία απόψεων είναι
+μόνο σε τυπικό επίπεδο, αφού η παρουσία των υπολοίπων είναι πρακτικά
+ασήμαντη.</p>
+<p>Γενικότερα, όσο λιγότερα είδη φέρει ένας πληθυσμός, τόσο μικρότερη
+ποικιλότητα έχει. Κι όσο περισσότερο μονοπωλεί τον πληθυσμό ένα είδος,
+τόσο επίσης λιγότερη ποικιλότητα έχει. Πώς όμως μπορώ να μετρήσω αυτή
+την ποικιλότητα;</p>
+<p>Ευτυχώς για μας, δεν χρειάζεται να βασιζόμαστε μόνο στη διαίσθησή
+μας. Υπάρχει τρόπος να ορίσουμε τόσο αυστηρά την ποικιλότητα, ώστε να
+μπορεί να προσδιοριστεί με έναν αριθμό. Όσο μεγαλύτερος είναι αυτός,
+τόσο μεγαλύτερη και η ποικιλότητα. Αυτός είναι η λεγόμενη
+<strong>ποικιλότητα Shannon</strong>.</p>
+<p>Εδώ δεν θα ασχοληθούμε, φυσικά, με υποθετικά σωματεία. Θα εξετάσουμε
+την ποικιλότητα της ελληνικής εκλογικής σκηνής στις αναμετρήσεις του
+1996 και του 2000. Προς τούτο αντλήσαμε στοιχεία από τη σελίδα του
+Υπουργείου Εσωτερικών και τ’ αποθηκεύσαμε σε ένα αρχείο ονόματι
+<em>ekloges9600.xlsx</em> ακολουθώντας τις οδηγίες από την ενότητα <a
+href="#εισαγωγή-αρχείων-από-άλλα-προγράμματα">Εισαγωγή αρχείων από άλλα
+προγράμματα</a>.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+komma
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pososto
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+psifoi
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+edres
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+etos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+ pAsOK 
+</td>
+<td style="text-align:right;">
+41.49
+</td>
+<td style="text-align:right;">
+2813245
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  Nd 
+</td>
+<td style="text-align:right;">
+38.12
+</td>
+<td style="text-align:right;">
+2584765
+</td>
+<td style="text-align:right;">
+108
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  KKE 
+</td>
+<td style="text-align:right;">
+5.61
+</td>
+<td style="text-align:right;">
+380167
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  sYN 
+</td>
+<td style="text-align:right;">
+5.12
+</td>
+<td style="text-align:right;">
+347051
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  dHKKI 
+</td>
+<td style="text-align:right;">
+4.43
+</td>
+<td style="text-align:right;">
+300671
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  anoixh 
+</td>
+<td style="text-align:right;">
+2.94
+</td>
+<td style="text-align:right;">
+199463
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  EnKent 
+</td>
+<td style="text-align:right;">
+0.72
+</td>
+<td style="text-align:right;">
+48677
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  enoikol 
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+19934
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  kunhcoί 
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+17419
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  epen 
+</td>
+<td style="text-align:right;">
+0.24
+</td>
+<td style="text-align:right;">
+16501
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  komell 
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+12255
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  mahar 
+</td>
+<td style="text-align:right;">
+0.15
+</td>
+<td style="text-align:right;">
+10443
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oikenal 
+</td>
+<td style="text-align:right;">
+0.08
+</td>
+<td style="text-align:right;">
+5715
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  hraucή 
+</td>
+<td style="text-align:right;">
+0.07
+</td>
+<td style="text-align:right;">
+4487
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  Oikell 
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+4113
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  M-lKKE 
+</td>
+<td style="text-align:right;">
+0.06
+</td>
+<td style="text-align:right;">
+4016
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oakke 
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+3485
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  sean 
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+2470
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  AsKE 
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+2108
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  olump 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1619
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  loipa 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1123
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  keell 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+247
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  eldhm 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  elek 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  kadik 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  pAsOK 
+</td>
+<td style="text-align:right;">
+43.79
+</td>
+<td style="text-align:right;">
+3007596
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  Nd 
+</td>
+<td style="text-align:right;">
+42.74
+</td>
+<td style="text-align:right;">
+2935196
+</td>
+<td style="text-align:right;">
+125
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  KKE 
+</td>
+<td style="text-align:right;">
+5.52
+</td>
+<td style="text-align:right;">
+379454
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  sYN 
+</td>
+<td style="text-align:right;">
+3.20
+</td>
+<td style="text-align:right;">
+219880
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  dHKKI 
+</td>
+<td style="text-align:right;">
+2.69
+</td>
+<td style="text-align:right;">
+184598
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  dpe 
+</td>
+<td style="text-align:right;">
+0.47
+</td>
+<td style="text-align:right;">
+32068
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  enkentr 
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+<td style="text-align:right;">
+23228
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  elloik 
+</td>
+<td style="text-align:right;">
+0.30
+</td>
+<td style="text-align:right;">
+20446
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  ethnsum 
+</td>
+<td style="text-align:right;">
+0.21
+</td>
+<td style="text-align:right;">
+14703
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  prcram 
+</td>
+<td style="text-align:right;">
+0.18
+</td>
+<td style="text-align:right;">
+12125
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  mera 
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+8132
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  kke(m-l) 
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+7301
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  komell 
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+6272
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  m-lkkear 
+</td>
+<td style="text-align:right;">
+0.09
+</td>
+<td style="text-align:right;">
+5866
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oikenal 
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+3321
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  komfil 
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+2091
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  aske 
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+2026
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  akep 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1145
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  oakke 
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+1126
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  loipa 
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+923
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  hrist 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+305
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  koeel 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  epak 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  olumpismόs 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+  padhke 
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2000
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Για να βρούμε την ποικιλότητα του κάθε εκλογικού τοπίου χρειαζόμαστε
+τις συχνότητες των κομμάτων που το αποτελούν. Αυτές θα επεξεργαστεί η R
+για να βρει την ποικιλότητα Shannon. Δυστυχώς, η R δεν έχει έτοιμη
+συνάρτηση που να υπολογίζει την εν λόγω ποσότητα. Εν πάση περιπτώσει, ο
+γράφων δεν έχει υπ’ όψιν κάτι τέτοιο. Αισίως, όμως, υπάρχει η δυνατότητα
+να κατασκευάσουμε τα δικά μας εργαλεία στην R.</p>
+<p>Παρακάτω ακολουθεί η συνάρτηση που υπολογίζει την ποικιλότητα Shannon
+από μια λίστα με συχνότητες (απόλυτες ή σχετικές). Οποτεδήποτε την
+χρειαστούμε επικολλούμε τις γραμμές αυτές ακριβώς ως έχουν πριν από το
+σημείο που θα την χρησιμοποιήσουμε. Ακολούθως γράφουμε
+<code>shannon_diversity(♔)</code>, όπου <code>♔</code> το όνομα της
+λίστας με τις συχνότητες.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>shannon_diversity <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  sh</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>}</span></code></pre></div>
+<p>Ακολούθως αποσπούμε τα κομμάτια της στήλης <code>psifoi</code> που
+μας απασχολούν. Θα φτιάξουμε μια λίστα με τις ψήφους του 1996
+(<code>psifoi1996</code>) και μία με τις ψήφους του 2000
+(<code>psifoi1996</code>). Ακολουθώντας τις οδηγίες της υποενότητας <a
+href="pinakes.html#21_Νέος_πίνακας">Νέος πίνακας</a> έχουμε:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>etos1996 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">1996</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>psifoi1996 <span class="ot">&lt;-</span> ekloges9600[etos1996,<span class="st">&quot;psifoi&quot;</span>]</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>etos2000 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">2000</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>psifoi2000 <span class="ot">&lt;-</span> ekloges9600[etos2000,<span class="st">&quot;psifoi&quot;</span>]</span></code></pre></div>
+<p>Οι ποικιλότητες Shannon υπολογίζονται πλέον απλά γράφοντας:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi1996)</span></code></pre></div>
+<pre><code>## [1] 2.055986</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi2000)</span></code></pre></div>
+<pre><code>## [1] 1.759156</code></pre>
+<p>οπότε βρίσκουμε για το 1996 ποικιλότητα 2.0559861 και για το 2000
+ποικιλότητα 1.7591555. Επομένως τα αποτελέσματα του 1996 είχαν
+μεγαλύτερη ποικιλομορφία συγκριτικά με του 2000.</p>
+<p>Ο αναγνώστης θα έχει τώρα την εύλογη απορία «Και πόσο μεγαλύτερη
+είναι η ποικιλότητα το 1996; Είναι οι 0,2968306 μονάδες διαφορά τόσο
+μεγάλη;». Θα χρησιμοποιήσουμε τον τροποποιημένο πίνακα από <a
+href="https://www.researchgate.net/publication/339064707_Ecological_services_of_agroforestry_systems_in_selected_upland_farming_communities_in_the_Philippines/figures?lo=1">εδώ</a>,
+για να δούμε πόσο μεγάλη είναι η κάθε ποικιλότητα:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Τιμή ποικιλότητας</th>
+<th align="center">Αξιολόγηση ποικιλότητας</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">5,049 και πάνω</td>
+<td align="center">Πολύ υψηλή</td>
+</tr>
+<tr class="even">
+<td align="center">4,328 με 5,048</td>
+<td align="center">Υψηλή</td>
+</tr>
+<tr class="odd">
+<td align="center">3,607 με 4,327</td>
+<td align="center">Μέση</td>
+</tr>
+<tr class="even">
+<td align="center">2,885 με 3,606</td>
+<td align="center">Χαμηλή</td>
+</tr>
+<tr class="odd">
+<td align="center">2,884 και χαμηλότερα</td>
+<td align="center">Πολύ χαμηλή</td>
+</tr>
+</tbody>
+</table>
+<p>Βλέπουμε, λοιπόν, ότι και στις δύο εκλογικές αναμετρήσεις είχαμε πολύ
+χαμηλή ποικιλότητα. Η σύγκρισή τους όμως ακόμα δεν είναι εφικτή. Πρέπει
+να δουλέψουμε κι άλλο!</p>
+</div>
+<div id="ισομέρεια-shannon" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Ισομέρεια Shannon</h1>
+<p>Ένας τρόπος, λοιπόν, να απαντήσουμε αυτή την απορία είναι
+συγκρίνοντας τις εκάστοτε ποικιλότητες με τη μέγιστη δυνατή ανά
+περίπτωση.</p>
+<p>Η μέγιστη δυνατή ποικιλότητα συμβαίνει όταν όλα τα είδη είναι ισόποσα
+στον πληθυσμό. Αυτή μπορεί να υπολογιστεί μέσω της συνάρτησης:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>shannon_diversity_max <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  sh</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Γράφοντας όμως:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000)</span></code></pre></div>
+<pre><code>## [1] 0</code></pre>
+<p>προκύπτει ότι η μέγιστη ποικιλότητα είναι μηδέν, οπότε καταλαβαίνουμε
+ότι κάτι δεν πάει καλά με τον κώδικά μας. Αυτό το πρόβλημα προκύπτει
+επειδή τα <code>psifoi1996</code> και <code>psifoi2000</code> στην
+πραγματικότητα είναι πίνακες με μία στήλη κι όχι λίστες. Ναι, είναι
+διαφορετικό για την R, αλλά αυτόν της τον ψυχαναγκασμό μπορούμε να τον
+αντιμετωπίσουμε μέσω της σύνθεσης της συνάρτησης
+<code>unlist</code>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>psifoi1996L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi1996)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>psifoi2000L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi2000)</span></code></pre></div>
+<p>Έτσι, υπολογίζουμε την μέγιστη ποικιλότητα των
+<strong>λιστών</strong> <code>psifoi1996L</code> και
+<code>psifoi1996L</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996L)</span></code></pre></div>
+<pre><code>## [1] 4.643856</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000L)</span></code></pre></div>
+<pre><code>## [1] 4.643856</code></pre>
+<p>οπότε βρίσκουμε ότι η μέγιστη δυνατή ποικιλότητα το 1996 θα ήταν
+4.6438562 και το 2000 θα ήταν επίσης 4.6438562.</p>
+<p>Αυτό που βρήκαμε δεν είναι καθόλου παράξενο, αφού και στις δύο
+περιπτώσεις είχαμε 25 κόμματα, πράγμα που διαπιστώνουμε με τον παρακάτω
+κώδικα:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">length</span>(psifoi1996L)</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">length</span>(psifoi2000L)</span></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<p>Η αρχική μας ιδέα ήταν να συγκριθεί η κάθε ποικιλότητα με την μέγιστη
+της άλλης. Αφού, όμως, οι μέγιστες ποικιλότητες είναι ίσες, δεν έχουμε
+παρά να δούμε τι ποσοστό της μέγιστης ποικιλότητας είναι η κάθε μία
+ξεχωριστά. Αυτό το ποσοστό είναι η ισομέρεια Shannon και υπολογίζεται
+από την συνάρτηση:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>shannon_equitability <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>  shd <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb22-5"><a href="#cb22-5" tabindex="-1"></a>  shm <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb22-6"><a href="#cb22-6" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> shd<span class="sc">/</span>shm</span>
+<span id="cb22-7"><a href="#cb22-7" tabindex="-1"></a>  sh</span>
+<span id="cb22-8"><a href="#cb22-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Κατά συνέπεια, γράφουμε:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi1996L)</span></code></pre></div>
+<pre><code>## [1] 0.4427325</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi2000L)</span></code></pre></div>
+<pre><code>## [1] 0.3788135</code></pre>
+<p>και διαπιστώνουμε ότι ο δείκτης ισομέρειας το 1996 ήταν
+<code>shannon_equitability(psifoi1996L)</code> και το 2000 ήταν
+<code>shannon_equitability(psifoi2000L)</code>. Απ’ ότι φαίνεται,
+τελικά, το 1996 υπήρχε εμφανώς μεγαλύτερη ποικιλομορφία στα εκλογικά
+αποτελέσματα, ενώ το 2000 υπήρξε έντονη συσπείρωση γύρω από τα μεγάλα
+κόμματα.</p>
+<p>Συνολικά ο κώδικας αυτής της ανάρτησης έχει ως εξής:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>shannon_diversity <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>  sh</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>}</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>etos1996 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">1996</span></span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>psifoi1996 <span class="ot">&lt;-</span> ekloges9600[etos1996,<span class="st">&quot;psifoi&quot;</span>]</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a>etos2000 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">2000</span></span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a>psifoi2000 <span class="ot">&lt;-</span> ekloges9600[etos2000,<span class="st">&quot;psifoi&quot;</span>]</span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi1996)</span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="fu">shannon_diversity</span>(psifoi2000)</span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a>shannon_diversity_max <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a>  sh</span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a>}</span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996) <span class="co"># Τα psifoi1996 και psifoi2000 δεν είναι σε κατάλληλη μορφή</span></span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000)</span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a>psifoi1996L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi1996)</span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a>psifoi2000L <span class="ot">&lt;-</span> <span class="fu">unlist</span>(psifoi2000)</span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi1996L) <span class="co"># Τα psifoi1996L και psifoi2000L είναι σε κατάλληλη μορφή</span></span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a><span class="fu">shannon_diversity_max</span>(psifoi2000L)</span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1"></a><span class="fu">length</span>(psifoi1996L)</span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1"></a><span class="fu">length</span>(psifoi2000L)</span>
+<span id="cb27-26"><a href="#cb27-26" tabindex="-1"></a>shannon_equitability <span class="ot">&lt;-</span> <span class="cf">function</span>(my_freq) {</span>
+<span id="cb27-27"><a href="#cb27-27" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sum</span>(my_freq)</span>
+<span id="cb27-28"><a href="#cb27-28" tabindex="-1"></a>  temp <span class="ot">&lt;-</span> my_freq<span class="sc">/</span>s</span>
+<span id="cb27-29"><a href="#cb27-29" tabindex="-1"></a>  shd <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">sum</span>(temp<span class="sc">*</span><span class="fu">log2</span>(temp))</span>
+<span id="cb27-30"><a href="#cb27-30" tabindex="-1"></a>  shm <span class="ot">&lt;-</span> <span class="fu">log2</span>(<span class="fu">length</span>(my_freq))</span>
+<span id="cb27-31"><a href="#cb27-31" tabindex="-1"></a>  sh <span class="ot">&lt;-</span> shd<span class="sc">/</span>shm</span>
+<span id="cb27-32"><a href="#cb27-32" tabindex="-1"></a>  sh</span>
+<span id="cb27-33"><a href="#cb27-33" tabindex="-1"></a>}</span>
+<span id="cb27-34"><a href="#cb27-34" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi1996L)</span>
+<span id="cb27-35"><a href="#cb27-35" tabindex="-1"></a><span class="fu">shannon_equitability</span>(psifoi2000L)</span></code></pre></div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
