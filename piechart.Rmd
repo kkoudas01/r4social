@@ -64,7 +64,7 @@ Apasxolisi
 Apasxolisimetr <- Apasxolisi[1 , c(2:4)]
 ```
 
-Και ακολούθως μετατρέπουμε σε λίστα αυτές τις μετρήσεις (βλ. τον ψυχαναγκασμό της R και στην υποενότητα [Ισομέρεια Shannon](pikilomorfia.html#ισομέρεια-shannon)):
+Και ακολούθως μετατρέπουμε σε λίστα αυτές τις μετρήσεις (βλ. τον ψυχαναγκασμό της R και στην υποενότητα [Ισομέρεια Shannon](pikilomorfia.html#2_Ισομέρεια_Shannon)):
 
 ```{r}
 apasxG <-   unlist(Apasxolisimetr)
