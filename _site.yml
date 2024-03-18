@@ -26,6 +26,20 @@ navbar:
           href: metrathesis.html
         - text: "Μέτρα διασποράς"
           href: metradiasporas.html
+        - text: "Μέτρα ασυμμετρίας"
+          href: asymmetria.html
+        - text: "Συσχέτιση"
+          menu:
+          - text: "Μέτρα συσχέτισης"
+            href: metrasysxetisis.html
+          - text: "Προσδιορισμός συσχέτισης"
+            menu:
+            - text: "Διαγράμματα"
+              href: diagramSysxet.html
+            - text: "Ευθείες παλινδρόμησης"
+              href: eytheiesPalindr.html
+            - text: "Καμπύλες παλινδρόμησης"
+              href: kampylesPalindr.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:
