@@ -1,5 +1,5 @@
 ---
-title: "Μέτρα ασυμμετρίας"
+title: "Ευθείες παλινδρόμησης"
 author: "Κώστας Κούδας"
 cache: TRUE
 date: "`r Sys.Date()`"
@@ -128,7 +128,62 @@ DocNurcEyth + geom_smooth(method='lm')
 DocNurcEyth + geom_point() + geom_smooth(method='lm')
 ```
 
+Για να δούμε περισσότερες αισθητικές παρεμβάσεις θα χρησιμοποιήσουμε κάποια επιπλέον δεδομένα. Αντλήσαμε από το [datahub](https://datahub.io/JohnSnowLabs/country-and-continent-codes-list#resource-country-and-continent-codes-list-csv) στοιχεία για τις χώρες και τις ηπείρους που ανήκουν. Τα δεδομένα αποθηκεύτηκαν σ’ ένα αρχείο ονόματι XoresHpiroi2.txt.
+
+```{r echo = F, results='asis', message=FALSE}
+XoresHpiroi2 <- read.delim("XoresHpiroi2.txt", header = TRUE, sep = ",")
+knitr::kable(XoresHpiroi2) %>%
+  kable_styling("striped", full_width = F) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+Αυτά συνενώθηκαν με τον πίνακα DocNurc γράφοντας πρώτα:
+
+```{r}
+names(XoresHpiroi2)[names(XoresHpiroi2) == "Three_Letter_Country_Code"] <- "LOCATION"
+```
+
+για να μετονομάσουμε την στήλη `Three_Letter_Country_Code` σε `LOCATION`
+
+Ακολούθως:
+
+```{r}
+DocNurcCont <- merge(DocNurc,XoresHpiroi2,by = "LOCATION")
+```
+
+```{r echo = F, results='asis', message=FALSE}
+knitr::kable(head(DocNurcCont,n=100)) %>%
+  kable_styling("striped", full_width = F) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+Κατόπιν από αυτόν τον πίνακα κρατήσαμε τις χώρες της Αμερικής, γράφοντας:
+
+```{r}
+DocNurcAm <- DocNurcCont[DocNurcCont$Continent_Name == "South America" | DocNurcCont$Continent_Name == "North America", ]
+```
+
+```{r echo = F, results='asis', message=FALSE}
+knitr::kable(DocNurcAm) %>%
+  kable_styling("striped", full_width = F) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+Έτσι γράφουμε:
+
+```{r}
+DocNurcEythAm <- ggplot(DocNurcAm, aes(x = Value.y, y = Value.x, color=LOCATION))
+DocNurcEythAm + geom_point() + geom_smooth(method='lm')
+```
+
 
 ## Τυπικό σφάλμα εκτίμησης
+
+Προφανώς, η σχέση $[giatroi]=1.9248+0.1308\cdot[nosok]$ κάνει μια εκτίμηση του αριθμού των γιατρών, δεδομένου του αριθμού των νοσοκόμων. Δεν δίνει ακριβή τιμή για το πλήθος των γιατρών. Συνεπώς θα θέλαμε να ξέρουμε πόσο έξω πέφτει η πρόβλεψή μας από την πραγματικότητα. Αυτή τη δουλειά την κάνει το τυπικό σφάλμα εκτίμησης, και για να υπολογιστεί αυτό στην R γράφουμε:
+
+```{r}
+GramGiatNos <- lm(giatroi ~ nosok)
+summary(GramGiatNos)
+```
 
 # Ποσοστημοριακή παλινδρόμηση

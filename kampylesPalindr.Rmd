@@ -1,5 +1,5 @@
 ---
-title: "Μέτρα ασυμμετρίας"
+title: "Καμπύλες παλινδρόμησης"
 author: "Κώστας Κούδας"
 cache: TRUE
 date: "`r Sys.Date()`"
