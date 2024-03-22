@@ -40,6 +40,14 @@ navbar:
               href: eytheiesPalindr.html
             - text: "Καμπύλες παλινδρόμησης"
               href: kampylesPalindr.html
+      - text: "Εκτιμητική"
+        menu:
+        - text: "Για μέση τιμή"
+          href: ektimMean.html
+        - text: "Για το ποσοστό"
+          href: ektimPososto.html
+        - text: "Μέθοδος Bootstrap"
+          href: bootstrapMethod.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:
