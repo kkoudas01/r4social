@@ -48,6 +48,18 @@ navbar:
           href: ektimPososto.html
         - text: "Μέθοδος Bootstrap"
           href: bootstrapMethod.html
+      - text: "Έλεγχος υποθέσεων"
+        menu:
+        - text: "t-έλεγχος για το ποσοστό"
+          href: tTest.html
+        - text: "t-έλεγχος για τη μέση τιμή"
+          href: tTestMean.html
+        - text: "z-έλεγχος για διαφορά ποσοστών"
+          href: zTest.html
+        - text: "χ2 έλεγχος για την ανεξαρτησία"
+          href: x2Test.html
+        - text: "Επίδραση ενός παράγοντα"
+          href: anova.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:

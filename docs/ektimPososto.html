@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-03-22" />
+<meta name="date" content="2024-03-24" />
 
 <title>Εκτίμηση ποσοστού</title>
 
@@ -49,6 +49,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -393,6 +494,26 @@ div.tocify {
         </li>
       </ul>
     </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Έλεγχος υποθέσεων</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="tTest.html">t-έλεγχος για το ποσοστό</a>
+        </li>
+        <li>
+          <a href="tTestMean.html">t-έλεγχος για τη μέση τιμή</a>
+        </li>
+        <li>
+          <a href="zTest.html">z-έλεγχος για διαφορά ποσοστών</a>
+        </li>
+        <li>
+          <a href="x2Test.html">χ2 έλεγχος για την ανεξαρτησία</a>
+        </li>
+        <li>
+          <a href="anova.html">Επίδραση ενός παράγοντα</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -440,7 +561,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Εκτίμηση ποσοστού</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-03-22</h4>
+<h4 class="date">2024-03-24</h4>
 
 </div>
 
@@ -448,10 +569,136 @@ div.tocify {
 <div id="επίπεδο-εμπιστοσύνης" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Επίπεδο
 εμπιστοσύνης</h1>
+<p>Σε μία δημοσκόπηση, λοιπόν, στην ομάδα <a
+href="https://www.facebook.com/groups/119060981470596">Μαθηματικό
+Εργαστήρι</a> του facebook <a
+href="https://www.facebook.com/groups/119060981470596/permalink/2811760268867307/">ρωτήθηκαν</a>
+τα μέλη της αν θεωρούν ισοδύναμες τις εξισώσεις:</p>
+<p><span class="math inline">\(2x+\tan(x)=6+\tan(x)\)</span> και <span
+class="math inline">\(2x=6\)</span>.</p>
+<p>Κλήθηκαν λοιπόν να διαλέξουν ανάμεσα στις επιλογές:</p>
+<ul>
+<li><p>Δεν είναι ισοδύναμες, διότι αν εκληφθούν ως προτασιακοί τύποι,
+δεν έχουν το ίδιο σύνολο ορισμού.</p></li>
+<li><p>Είναι ισοδύναμες, διότι έχουν τις ίδιες ακριβώς λύσεις.</p></li>
+</ul>
+<p>Την πρώτη επιλογή (δεν είναι ισοδύναμες) υποστήριξαν 56 συνάδερφοι,
+ενώ την δεύτερη (είναι ισοδύναμες) 48. Από αυτά υπολογίζουμε ότι η
+αναλογία του «δεν είναι ισοδύναμες» στο δείγμα μας ήταν:</p>
+<p><span
+class="math display">\[\dfrac{56}{56+48}=0.5384615.\]</span></p>
+<p>Ζητάμε να βρούμε πόσο σίγουροι μπορούμε να είμαστε ότι η αναλογία
+αυτής της άποψης στο σύνολο των μαθηματικών της χώρας δεν θα αποκλίνει
+από αυτή που βρήκαμε περισσότερο από π.χ. 2 ποσοστιαίες μονάδες (0.02).
+Αρχικά, βέβαια, διαγράφουμε τα προηγούμενα.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Γι’ αυτό το σκοπό θα φτιάξουμε μια συνάρτηση που κάνει αυτή τη
+δουλειά. Η συνάρτηση αυτή θα ονοματιστεί:
+<code>EpipEmpistPos(🍺🍺🍺, 👨👨👨, 🚂🚂🚂)</code>.</p>
+<ul>
+<li><p>Στη θέση του <code>🍺🍺🍺</code> γράφουμε το ποσοστό που βρήκαμε
+(δηλαδή το 0.5384615),</p></li>
+<li><p>στη θέση του <code>👨👨👨</code> γράφουμε το πλήθος των τιμών
+(των συμμετεχόντων μαθηματικών, δηλαδή 56+48=104) και</p></li>
+<li><p>στη θέση του <code>🚂🚂🚂</code> γράφουμε την απόσταση που
+θέλουμε να δούμε αν απέχει η πληθυσμιακή μέση τιμή από τη δειγματική
+(εδώ αυτή, όπως είπαμε, θέλουμε να είναι 2%=0,02).</p></li>
+</ul>
+<p>Έχουμε λοιπόν:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>EpipEmpistPos <span class="ot">&lt;-</span> <span class="cf">function</span>(pososto, plithos, apost) {</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pososto<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pososto)<span class="sc">/</span>plithos)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(apost<span class="sc">/</span>s,plithos<span class="dv">-1</span>)<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε γράφοντας:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">EpipEmpistPos</span>(<span class="fl">0.5384615</span>, <span class="dv">104</span>, <span class="fl">0.02</span>)</span></code></pre></div>
+<pre><code>## [1] 0.316709</code></pre>
+<p>εξάγεται η απάντηση 0.316709. Αυτό σημαίνει ότι μπορούμε να είμαστε
+31.67% σίγουροι ότι η πραγματική αναλογία είναι μεταξύ των αριθμών:</p>
+<p>0.5384615-0.02 και 0.5384615+0.02,</p>
+<p>δηλαδή ανάμεσα στα ποσοστά:</p>
+<p>51.84% και 55.84%.</p>
+<p>Συνολικά, ο κώδικάς μας ήταν ο παρακάτω:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>EpipEmpistPos <span class="ot">&lt;-</span> <span class="cf">function</span>(pososto, plithos, apost) {</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pososto<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pososto)<span class="sc">/</span>plithos)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(apost<span class="sc">/</span>s,plithos<span class="dv">-1</span>)<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>}</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="fu">EpipEmpistPos</span>(<span class="fl">0.5384615</span>, <span class="dv">104</span>, <span class="fl">0.02</span>)</span></code></pre></div>
 </div>
 <div id="διάστημα-εμπιστοσύνης" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Διάστημα
 εμπιστοσύνης</h1>
+<p>Στην έρευνα <a
+href="https://link.springer.com/article/10.1007/s10461-017-1803-9">Estimating
+the Population Size of Female Sex Workerεκπορνευόμενων Tehran, Iran:
+Application of Directεπιλέχθηκανcapture Method</a> γίνεται απόπειρα να
+εκτιμηθεί ο συνολικός αριθμός εκπορνευομένων γυναικών στην Τεχεράνη.
+Προς τούτο επιλέχθηκαν αρχικά τυχαία 247 ιερόδουλες, στις οποίες δόθηκαν
+κοντομάνικα μπλουζάκια, αφού τους έγινε ενημέρωση για την έρευνα που
+διεξάγεται. Για να βρεθεί ο συνολικός αριθμός των ιερόδουλων, αρκεί να
+βρούμε τι μέρος τους έχει λάβει μπλουζάκι. Αν π.χ. βρούμε ότι το 50%
+έχει πάρει μπλουζάκι, τότε οι ιερόδουλες της Τεχεράνης είναι
+2·247=494.</p>
+<p>Για να υπολογιστεί το εν λόγω ποσοστό έγινε μία ακόμα δειγματοληψία 8
+μέρες μετά. Εκεί δόθηκαν βραχιολάκια σε 190 ιερόδουλες και τους έγιναν
+κάποιες ερωτήσεις, μεταξύ των οποίων και αν έλαβαν μπλουζάκι από την
+προηγούμενη έρευνα. 68 εξ αυτών απάντησαν πως είχαν λάβει, οπότε
+συμπεραίνουμε πως η συγκεκριμένη δειγματική αναλογία:</p>
+<p>ισούται με:</p>
+<p>=0.3578947</p>
+<p>Θα θέλαμε βάσει αυτής να κάνουμε μια εκτίμηση της πληθυσμιακής
+αναλογίας (άρα και του πραγματικού πλήθους των εκπορνευομένων γυναικών),
+για την οποία να είμαστε σίγουροι κατά 98%. Η πληθυσμιακή αναλογία,
+καθόσον ερευνήσαμε μεγάλο πλήθος ιερόδουλων (&gt;30), περιμένουμε ότι θα
+είναι κοντά στην δειγματική. Πάμε όμως να δούμε πόσο κοντά θα είναι με
+σιγουριά 98%, αφού όμως διαγράψουμε τις προηγούμενες μεταβλητές:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>Η δουλειά που θέλαμε θα γίνει μέσω μιας συνάρτησης που θα φτιάξουμε,
+της <code>DiastEmpistPos(🍺🍺🍺,👨👨👨,🎲🎲🎲)</code>.</p>
+<ul>
+<li><p>Στη θέση του <code>🍺🍺🍺</code> γράφουμε το ποσοστό του
+δείγματος που βρήκαμε (εδώ το 0.3578947),</p></li>
+<li><p>στη θέση του <code>👨👨👨</code> θα πάει το πλήθος των τιμών
+(δηλαδή οι 190 ιερόδουλες) και</p></li>
+<li><p>στη θέση του <code>🎲🎲🎲</code> θα πάει η σιγουριά που θέλουμε
+να έχουμε (εν προκειμένω θέλουμε να είμαστε σίγουροι κατά
+98%=0.98).</p></li>
+</ul>
+<p>Η συνάρτησή μας είναι λοιπόν η:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>DiastEmpistPos <span class="ot">&lt;-</span> <span class="cf">function</span>(pososto, plithos, pith) {</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pososto<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pososto)<span class="sc">/</span>plithos)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>pith)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> pososto<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> pososto<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">DiastEmpistPos</span>(<span class="fl">0.3578947</span>, <span class="dv">190</span>, <span class="fl">0.98</span>)</span></code></pre></div>
+<pre><code>## [1] 0.2762973 0.4394921</code></pre>
+<p>Εξάγεται έτσι η διπλανή απάντηση, όπερ σημαίνει ότι μπορούμε να
+είμαστε σίγουροι κατά 98% ότι η (πληθυσμιακή) αναλογία των ιερόδουλων με
+μπλουζάκι στο σύνολο των ιερόδουλων της Τεχεράνης θα είναι ανάμεσα στις
+τιμές 0.2762973 και 0.4394921.</p>
+<p>Όμως μπλουζάκι πήραν 247 ιερόδουλες. Έτσι, αν αυτές είναι το 27-43%
+όλων των ιερόδουλων, τότε όλες οι ιερόδουλες της Τεχεράνης θα είναι
+ανάμεσα στις τιμές:</p>
+<p><span class="math inline">\(\dfrac{247}{0.2762973}\approx
+562\)</span> και <span
+class="math inline">\(\dfrac{247}{0.4394921}\approx 894\)</span>.</p>
+<p>Δηλαδή οι ιερόδουλες της Τεχεράνης είναι από 562 έως 894 με 98%
+σιγουριά.</p>
+<p>Συνολικά γράψαμε τον κώδικα:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>DiastEmpistPos <span class="ot">&lt;-</span> <span class="cf">function</span>(pososto, plithos, pith) {</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  s <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(pososto<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>pososto)<span class="sc">/</span>plithos)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  a <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>pith)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> pososto<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> pososto<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>}</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="fu">DiastEmpistPos</span>(<span class="fl">0.3578947</span>,<span class="dv">190</span>,<span class="fl">0.98</span>)</span></code></pre></div>
 </div>
 
 

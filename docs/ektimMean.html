@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-03-22" />
+<meta name="date" content="2024-03-24" />
 
 <title>Εκτίμηση μέσης τιμής</title>
 
@@ -35,6 +35,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -49,6 +51,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -393,6 +496,26 @@ div.tocify {
         </li>
       </ul>
     </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Έλεγχος υποθέσεων</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="tTest.html">t-έλεγχος για το ποσοστό</a>
+        </li>
+        <li>
+          <a href="tTestMean.html">t-έλεγχος για τη μέση τιμή</a>
+        </li>
+        <li>
+          <a href="zTest.html">z-έλεγχος για διαφορά ποσοστών</a>
+        </li>
+        <li>
+          <a href="x2Test.html">χ2 έλεγχος για την ανεξαρτησία</a>
+        </li>
+        <li>
+          <a href="anova.html">Επίδραση ενός παράγοντα</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -440,7 +563,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Εκτίμηση μέσης τιμής</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-03-22</h4>
+<h4 class="date">2024-03-24</h4>
 
 </div>
 
@@ -448,10 +571,2616 @@ div.tocify {
 <div id="επίπεδο-εμπιστοσύνης" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Επίπεδο
 εμπιστοσύνης</h1>
+<p>Ας πάρουμε τώρα τις βαθμολογίες των φοιτητών του ΕΜΠ στο μάθημα
+Θεωρία Πιθανοτήτων και Στατιστική κατά την εξεταστική του Φεβρουαρίου
+του 2013 που αναφέραμε στην ενότητα <a
+href="syxnotites.html">Συχνότητες</a>, αφού πρώτα διαγράψαμε ό,τι είχαμε
+εισάγει μέχρι τώρα στην R:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…1
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…3
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…4
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…5
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…6
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…7
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…8
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…9
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…10
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+AM…11
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+BATHMOS…12
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+3094673
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108086
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3110073
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110812
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111088
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111192
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3098622
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108098
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110075
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111002
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111089
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111193
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3100689
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108120
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110087
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111003
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111090
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111194
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3102688
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108144
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110088
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111004
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111091
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111196
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103156
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3108184
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110089
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111005
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111092
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111198
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103626
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108191
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110089
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111006
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111095
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111202
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103683
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3108203
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110093
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111007
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111096
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111204
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3103784
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3108217
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110095
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111008
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111098
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111205
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104616
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108608
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110101
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111010
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111099
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111207
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104654
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3108636
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110112
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111011
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111101
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111403
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104660
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108644
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110115
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111012
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111103
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111409
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104673
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108659
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110129
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111013
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111104
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111416
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104694
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3108719
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110130
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111014
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111107
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111417
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104732
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3108720
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110136
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111015
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111109
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111418
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104740
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3108726
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110137
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111016
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111112
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111420
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3104775
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3108727
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110147
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111017
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111113
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111423
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105055
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3108771
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110158
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111018
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111114
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111424
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105071
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3108784
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110164
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111019
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111115
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111428
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105149
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3108798
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3110188
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111020
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111116
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111501
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105182
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109028
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110197
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111021
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111117
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111506
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105184
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3109043
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110201
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111023
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111119
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111507
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105218
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109054
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110209
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111024
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111121
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111508
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105637
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109072
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110401
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111025
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111122
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111509
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105645
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109079
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110417
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111026
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111123
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111511
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105647
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109127
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110623
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111027
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111125
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111517
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105654
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109130
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110630
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111028
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111126
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111526
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105671
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109147
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110657
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111029
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111128
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111551
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105710
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109173
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110659
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111031
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111129
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111555
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105730
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109189
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110661
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111032
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111131
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111556
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105737
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3109196
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110671
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111033
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111132
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111559
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105742
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3109218
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110678
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111034
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111134
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111560
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105774
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109603
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110680
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111035
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111135
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111561
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3105786
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109617
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110688
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111036
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111138
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111566
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106091
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109630
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110689
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111038
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111141
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111569
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106092
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109631
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110692
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111040
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111142
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111572
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106126
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109648
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110693
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111042
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111143
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111573
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106130
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109650
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110697
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111045
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111147
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111574
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106160
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109664
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110698
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111046
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111148
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111575
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106175
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3109665
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110704
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111047
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111149
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111576
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106227
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109671
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110707
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111049
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111151
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111602
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106628
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3109683
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110708
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111050
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111152
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111610
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106649
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109698
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110709
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111051
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111153
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+3111614
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106686
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109701
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110712
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111053
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111154
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111620
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106702
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3109715
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110716
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111054
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111155
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111701
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106708
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109724
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110719
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111055
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111156
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111712
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106736
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3109735
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110725
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111056
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111157
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111714
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106762
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3109737
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110726
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111059
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111159
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111717
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106780
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109746
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110741
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111060
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111161
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111718
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106800
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109751
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110742
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111064
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+3111162
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111720
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3106802
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3109761
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110743
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111065
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111163
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111722
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107058
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3109775
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110744
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111068
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111165
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111724
+</td>
+<td style="text-align:right;">
+6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107111
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109789
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110747
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111069
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111169
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111727
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107182
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3109801
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110750
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111072
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111171
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111731
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107196
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3110003
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110753
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111073
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111172
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111739
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107219
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110006
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110757
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111074
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3111173
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111743
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107229
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110021
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3110764
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3111076
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+3111174
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111901
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107632
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110024
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110775
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111077
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111178
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3111904
+</td>
+<td style="text-align:right;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107639
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110033
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3110777
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111078
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111181
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111907
+</td>
+<td style="text-align:right;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107650
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110045
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110781
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111080
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111185
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3112602
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107730
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110049
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110783
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111081
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111186
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107754
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110057
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110787
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111082
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111187
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107762
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3110063
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110788
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111083
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3111189
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107779
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110069
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3110795
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+3111084
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111190
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3107790
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3110072
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3110807
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3111087
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+3111191
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Αρχικά, όπως και τότε, κρατάμε από τον πίνακα τις βαθμολογίες και
+απορρίπτουμε τους Αριθμούς Μητρώου και τα <code>NA</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">c</span>(bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">2</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">4</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">6</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">8</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">10</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">12</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(bathmoi_synolo)</span></code></pre></div>
+<p>Ακολούθως, η μέση τιμή αυτού του δείγματος θα υπολογιστεί
+γράφοντας:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">mean</span>(bathmoi_synolo)</span></code></pre></div>
+<pre><code>## [1] 4.295515</code></pre>
+<p>Βρίσκουμε ότι αυτή είναι 4.2955145. Θα είχε ενδιαφέρον να γνωρίζουμε
+τη μέση τιμή των βαθμολογιών στο μάθημα αυτό σε περισσότερες
+εξεταστικές, πχ σε βάθος δεκαετίας. Δηλαδή πλέον η μέση τιμή 4.2955145
+είναι δειγματική μέση τιμή και ψάχνουμε την πληθυσμιακή μέση τιμή όλων
+των εξεταστικών της δεκαετίας. Θα προσπαθήσουμε να εκτιμήσουμε την
+πληθυσμιακή μέση τιμή, οπότε θέλουμε να βρούμε πόσο σίγουροι μπορούμε να
+είμαστε για το ότι αυτή θα απέχει το πολύ π.χ. μισή μονάδα από την
+δειγματική μέση τιμή που βρήκαμε.</p>
+<p>Προς τούτο θα χρειαστούμε την τυπική απόκλιση του δείγματος των
+βαθμολογών. Λογικό αυτό, καθόσον αυτή μάς δείχνει πόσο απλωμένες είναι
+οι βαθμολογίες ή, με άλλα λόγια, πόσο συγκεντρωμένες είναι αυτές γύρω
+από τη μέση τιμή.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">sd</span>(bathmoi_synolo)</span></code></pre></div>
+<pre><code>## [1] 2.283424</code></pre>
+<p>Οπότε βρίσκουμε 2.2834245. Πάμε τώρα να βρούμε πόσο πιθανό είναι να
+απέχει η πληθυσμιακή μέση τιμή από την 2.2834245 το πολύ 0.5. Γι’ αυτό
+το σκοπό θα φτιάξουμε μια συνάρτηση που κάνει αυτή τη δουλειά. Η
+συνάρτηση αυτή θα ονοματιστεί:
+<code>EpipEmpist(💞💞💞, 👨👨👨, 🚂🚂🚂)</code>.</p>
+<ul>
+<li><p>Στη θέση του <code>💞💞💞</code> γράφουμε την τυπική απόκλιση που
+βρήκαμε,</p></li>
+<li><p>στη θέση του <code>👨👨👨</code> γράφουμε το πλήθος των τιμών
+(των βαθμών, δηλαδή, εν προκειμένω) και</p></li>
+<li><p>στη θέση του <code>🚂🚂🚂</code> γράφουμε την απόσταση που
+θέλουμε να δούμε αν απέχει η πληθυσμιακή μέση τιμή από τη δειγματική
+(εδώ αυτή, όπως είπαμε, είναι 0,5).</p></li>
+</ul>
+<p>Έχουμε λοιπόν:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>EpipEmpist <span class="ot">&lt;-</span> <span class="cf">function</span>(tipiki_apokl, plithos, apost) {</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(apost<span class="sc">/</span>s, plithos<span class="dv">-1</span>)<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Ακολούθως, γράφοντας:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">length</span>(bathmoi_synolo)</span></code></pre></div>
+<pre><code>## [1] 379</code></pre>
+<p>βρίσκουμε ότι το πλήθος των βαθμολογιών της εξεταστικής του 2013
+είναι 379. Έτσι με την εντολή:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">EpipEmpist</span>(<span class="fl">2.148323</span>, <span class="dv">379</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.9999921</code></pre>
+<p>εξάγεται απάντηση 0.9999921. Αυτό σημαίνει ότι μπορούμε να είμαστε
+99.99% σίγουροι ότι γενικώς κατά τις εξεταστικές περιόδους η μέση
+βαθμολογία στο μάθημα Θεωρία Πιθανοτήτων και Στατιστική θα απέχει ±0.5
+από τη μέση βαθμολογία του δείγματος, δηλαδή την 4.2955145.</p>
 </div>
 <div id="διάστημα-εμπιστοσύνης" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Διάστημα
 εμπιστοσύνης</h1>
+<p>Θα πάρουμε και πάλι τις βαθμολογίες των φοιτητών του ΕΜΠ στο μάθημα
+Θεωρία Πιθανοτήτων και Στατιστική κατά την εξεταστική του Φεβρουαρίου
+του 2013.</p>
+<p>Αυτή τη φορά όμως θα το πάρουμε ανάποδα. Ας υποθέσουμε ότι θέλουμε να
+είμαστε 95% σίγουροι για τη γνωμάτευση που θέλουμε να κάνουμε για τους
+βαθμούς του εν λόγω μαθήματος σε όλη τη δεκαετία. Ψάχνουμε, λοιπόν, να
+βρούμε δύο αριθμούς ανάμεσα στους οποίους να είναι κατά 95% πιθανό ότι
+βρίσκεται η μέση τιμή όλων των βαθμολογιών της δεκαετίας στο μάθημα
+αυτό.</p>
+<p>Βρήκαμε πριν ότι η μέση τιμή είναι 4.2955145 και ότι η τυπική
+απόκλιση είναι 2.2834245. Επίσης είπαμε ότι έχουμε 379 βαθμολογίες. Η
+δουλειά που θέλαμε θα γίνει μέσω μιας συνάρτησης που θα φτιάξουμε, της
+<code>DiastEmpist(🔪🔪🔪,💞💞💞,👨👨👨,🎲🎲🎲)</code>.</p>
+<ul>
+<li><p>Στη θέση του <code>🔪🔪🔪</code> γράφουμε τη μέση τιμή του
+δείγματος,</p></li>
+<li><p>στη θέση του <code>💞💞💞</code> γράφουμε τη δειγματική τυπική
+απόκλιση,</p></li>
+<li><p>στη θέση του <code>👨👨👨</code> θα πάει το πλήθος των τιμών
+και</p></li>
+<li><p>στη θέση του <code>🎲🎲🎲</code> θα πάει η σιγουριά που θέλουμε
+να έχουμε.</p></li>
+</ul>
+<p>Η συνάρτησή μας είναι λοιπόν η:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>DiastEmpist <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timi, tipiki_apokl, plithos, pith) {</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>pith)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> mesi_timi<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> mesi_timi<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">DiastEmpist</span>(<span class="fl">4.295515</span>, <span class="fl">2.283424</span>, <span class="dv">379</span>, <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## [1] 4.064889 4.526141</code></pre>
+<p>Τι σημαίνει η παραπάνω απάντηση; Σημαίνει ότι μπορούμε να είμαστε
+κατά 95% σίγουροι ότι η μέση τιμή των βαθμολογιών στο μάθημα αυτό σε όλη
+τη δεκαετία θα είναι μεταξύ των αριθμών 4.0648892 και 4.5261408.</p>
+<p>Ο κώδικας που χρησιμοποιήσαμε ήταν συνολικά ο κάτωθι:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">c</span>(bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">2</span>,</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">4</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">6</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">8</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">10</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>                    bathmoi<span class="sc">$</span>BATHMOS...<span class="dv">12</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>bathmoi_synolo <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(bathmoi_synolo)</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="fu">mean</span>(bathmoi_synolo)</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="fu">sd</span>(bathmoi_synolo)</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>EpipEmpist <span class="ot">&lt;-</span> <span class="cf">function</span>(tipiki_apokl, plithos, apost) {</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a>  <span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(apost<span class="sc">/</span>s,plithos<span class="dv">-1</span>)<span class="sc">-</span><span class="dv">1</span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a>}</span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="fu">length</span>(bathmoi_synolo)</span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="fu">EpipEmpist</span>(<span class="fl">2.148323</span>, <span class="dv">379</span>, <span class="fl">0.5</span>)</span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a>DiastEmpist <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timi, tipiki_apokl, plithos, pith) {</span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a>  a <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>pith)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> mesi_timi<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> mesi_timi<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a>}</span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="fu">DiastEmpist</span>(<span class="fl">4.295515</span>, <span class="fl">2.283424</span>, <span class="dv">379</span>, <span class="fl">0.95</span>)</span></code></pre></div>
 </div>
 
 
