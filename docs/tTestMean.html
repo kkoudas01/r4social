@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-03-24" />
+<meta name="date" content="2024-03-25" />
 
 <title>t-έλεγχος για τη μέση τιμή</title>
 
@@ -49,6 +49,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -460,12 +561,425 @@ div.tocify {
 
 <h1 class="title toc-ignore">t-έλεγχος για τη μέση τιμή</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-03-24</h4>
+<h4 class="date">2024-03-25</h4>
 
 </div>
 
 
-
+<div id="θεμελίωση-υποθέσεων" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Θεμελίωση
+υποθέσεων</h1>
+<p>Το <a
+href="https://journals.sagepub.com/doi/abs/10.1177/1096348012442546">Clothing
+Color and Tipping: Gentlemen Patrons Give More Tips to Waitresses with
+Red Clothes</a> ερευνά την επίδραση του χρώματος ενδυμασίας μιας
+γυναίκας στην έλξη που δημιουργεί σ’ έναν άντρα. Ένας τρόπος εξέτασης
+αυτού ήταν η εξέταση του φιλοδωρήματος που εισπράττει μια σερβιτόρα
+φορώντας κόκκινο κοντομάνικο ή μπλε κ.τ.λ. Οι διαφορές που
+παρουσιάζονται είναι εντυπωσιακές με γυμνό μάτι. Για παράδειγμα, όταν οι
+κοπέλες φορούσαν κόκκινο μπλουζάκι, από τους 69 πελάτες, οι 40 (δηλαδή
+το 58%) έδωσαν φιλοδώρημα. Από την άλλη όταν αυτές φορούσαν μαύρο
+μπλουζάκι μόνο οι 20 από τους 71 πελάτες (το 28%) έδωσαν φιλοδώρημα. Για
+περισσότερες λεπτομέρειες δείτε τον κάτωθι πίνακα.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="20%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"><strong>Μαύρο</strong></td>
+<td align="center"><strong>Άσπρο</strong></td>
+<td align="center"><strong>Κόκκινο</strong></td>
+<td align="center"><strong>Κίτρινο</strong></td>
+<td align="center"><strong>Μπλε</strong></td>
+<td align="center"><strong>Πράσινο</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Άνδρες που έδωσαν φιλοδώρημα</strong></td>
+<td align="center">22</td>
+<td align="center">25</td>
+<td align="center">40</td>
+<td align="center">31</td>
+<td align="center">25</td>
+<td align="center">27</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Σύνολο ανδρών πελατών</strong></td>
+<td align="center">71</td>
+<td align="center">68</td>
+<td align="center">69</td>
+<td align="center">73</td>
+<td align="center">67</td>
+<td align="center">70</td>
+</tr>
+</tbody>
+</table>
+<p>Οι διαφορές είναι εντυπωσιακές και όσον αφορά το μέγεθος του
+φιλοδωρήματος. Αυτές που φορούσαν κόκκινο μπλουζάκι πήραν κατά μέσο όρο
+1.30€ φιλοδώρημα, ενώ π.χ. αυτές που φορούσαν μαύρο φιλοδωρήθηκαν κατά
+μέσο όρο με 0.96€.</p>
+<table style="width:100%;">
+<colgroup>
+<col width="30%" />
+<col width="10%" />
+<col width="10%" />
+<col width="12%" />
+<col width="12%" />
+<col width="9%" />
+<col width="12%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="center"></td>
+<td align="center"><strong>Μαύρο</strong></td>
+<td align="center"><strong>Άσπρο</strong></td>
+<td align="center"><strong>Κόκκινο</strong></td>
+<td align="center"><strong>Κίτρινο</strong></td>
+<td align="center"><strong>Μπλε</strong></td>
+<td align="center"><strong>Πράσινο</strong></td>
+</tr>
+<tr class="even">
+<td align="center"><strong>Μέσο φιλοδώρημα ανά άνδρα</strong></td>
+<td align="center">0.96€</td>
+<td align="center">0.96€</td>
+<td align="center">1.30€</td>
+<td align="center">1.11€</td>
+<td align="center">1.01€</td>
+<td align="center">0.96€</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>Τυπική απόκλιση</strong></td>
+<td align="center">0.27€</td>
+<td align="center">0.36€</td>
+<td align="center">0.46€</td>
+<td align="center">0.42€</td>
+<td align="center">0.34€</td>
+<td align="center">0.34€</td>
+</tr>
+</tbody>
+</table>
+<p>Ένα επίσης εντυπωσιακό στοιχείο, με το οποίο όμως δε θα καταπιαστούμε
+εδώ, είναι ότι το κόκκινο χρώμα έχει την μικρότερη απήχηση στον
+γυναικείο πληθυσμό (28.3%).</p>
+</div>
+<div id="εκτίμηση-μέσης-τιμής-πληθυσμού" class="section level1"
+number="2">
+<h1><span class="header-section-number">2</span> Εκτίμηση μέσης τιμής
+πληθυσμού</h1>
+<p>Για να προχωρήσει η δικιά μας έρευνα, θα χρειαστούμε τη μέση τιμή του
+φιλοδωρήματος όλων των αντρών που δίνουν κάποιο φιλοδώρημα (μελετούμε
+μόνο αυτούς που δίνουν φιλοδώρημα κι όχι αυτούς που δεν δίνουν, διότι
+εξετάζουμε την επιρροή της ενδυμασίας στην ποσότητα φιλοδωρήματος κι όχι
+στο κίνητρο να δώσει κάποιος ή όχι). Δυστυχώς εδώ έχουμε διαθέσιμους
+μόνο 170 πελάτες και όχι όλους τους πελάτες όλων των καφετεριών της Γης.
+Σαν να μην έφτανε αυτό δεν διαθέτουμε ούτε το μέσο φιλοδώρημα που
+δέχονται οι σερβιτόρες στην καφετέρια, αλλά έχουμε ξεχωριστά τα
+φιλοδωρήματα ανάλογα με το μπλουζάκι της κάθε μίας.</p>
+<p>Το δεύτερο πρόβλημα για να λυθεί χρειάστηκαν λίγα περίεργα
+μαθηματικά. Όχι κάτι παραπάνω από Α’ Λυκείου, αλλά αρκετά για να
+εξοστρακιστούν από αυτή τη σελίδα. Παραταύτα παραθέτουμε ένα πρόγραμμα
+στην R που να κάνει τη δουλειά του υπολογισμού του μέσου φιλοδωρήματος
+έχοντας διαθέσιμα τα επιμέρους φιλοδωρήματα:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1η μέση τιμή: &quot;</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1ο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>Sm <span class="ot">&lt;-</span> m1<span class="sc">*</span>n1</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> n1</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="cf">while</span> (test <span class="sc">!=</span> <span class="st">&#39;Q&#39;</span>) {</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  m_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενη μέση τιμή: &quot;</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>  n_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>  Sm <span class="ot">&lt;-</span> m_a<span class="sc">*</span>n_a<span class="sc">+</span>Sm</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>  Sn <span class="ot">&lt;-</span> n_a<span class="sc">+</span>Sn</span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a>}</span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>Sm<span class="sc">/</span>Sn</span></code></pre></div>
+<p>Το ίδιο πρόβλημα αντιμετωπίζουμε και με την τυπική απόκλιση. Έχουμε
+τις επιμέρους τυπικές αποκλίσεις, αλλά δεν έχουμε την τυπική απόκλιση
+από τα φιλοδωρήματα γενικώς. Πάλι θα κάνει τη δουλειά μας ένα άλλο
+προγραμματάκι. Αυτό θα είναι μια τροποποίηση του παραπάνω, καθόσον θα
+μας χρειάζονται και πάλι οι μέσες τιμές:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1η μέση τιμή: &quot;</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1ο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1η τυπική απόκλιση: &quot;</span>))</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>Sm <span class="ot">&lt;-</span> m1<span class="sc">*</span>n1</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> n1</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>Sq <span class="ot">&lt;-</span> (s1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>(n1<span class="dv">-1</span>)<span class="sc">+</span>n1<span class="sc">*</span>m1<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a><span class="cf">while</span> (test <span class="sc">!=</span> <span class="st">&#39;Q&#39;</span>) {</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  m_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενη μέση τιμή: &quot;</span>))</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  n_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  s_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενη τυπική απόκλιση: &quot;</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  Sm <span class="ot">&lt;-</span> m_a<span class="sc">*</span>n_a<span class="sc">+</span>Sm</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  Sn <span class="ot">&lt;-</span> n_a<span class="sc">+</span>Sn</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>  Sq <span class="ot">&lt;-</span> Sq<span class="sc">+</span>(s_a<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>(n_a<span class="dv">-1</span>)<span class="sc">+</span>n_a<span class="sc">*</span>m_a<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>}</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>m <span class="ot">&lt;-</span> Sm<span class="sc">/</span>Sn</span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>m</span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="fu">sqrt</span>((Sq<span class="sc">-</span>Sn<span class="sc">*</span>m<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(Sn<span class="dv">-1</span>))</span></code></pre></div>
+<p>Βρήκαμε λοιπόν ότι οι σερβιτόρες σε αυτή την καφετέρια την περίοδο
+της στατιστικής έρευνας αυτής φιλοδωρούνται με κατά μέσο όρο 1.089412€
+με τυπική απόκλιση 0.3733317€. Πάμε να κάνουμε τώρα μια εκτίμηση της
+μέσης τιμής του πληθυσμού. Προς τούτο θα χρησιμοποιήσουμε τη συνάρτηση
+<code>DiastEmpist()</code> που είχαμε δημιουργήσει παλαιότερα (βλ.
+ενότητα <a href="ektimMean.html#2_Διάστημα_εμπιστοσύνης">Διάστημα
+εμπιστοσύνης</a>).</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>DiastEmpist <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timi, tipiki_apokl, plithos, pith) {</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>pith)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> mesi_timi<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> mesi_timi<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">DiastEmpist</span>(<span class="fl">1.089412</span>, <span class="fl">0.3733317</span>, <span class="dv">170</span>, <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>## [1] 1.032887 1.145937</code></pre>
+<p>Συνεπώς βρίσκουμε ότι είναι σίγουρο κατά 95% ότι οι σερβιτόρες
+δέχονται φιλοδώρημα μεταξύ των 1.032887€ και 1.145937€, δηλαδή ανάμεσα
+στα 1€3Λ και 1€14Λ. Αυτό σημαίνει ότι η δειγματική μέση τιμή 1.089412€
+(1€9Λ) είναι αρκετά αντιπροσωπευτική. Όλα αυτά ισχύουν εφόσον, φυσικά,
+στην καφετέρια αυτή δεν συμβαίνει κάτι το ιδιαίτερο που να κάνει τα
+φιλοδωρήματα να είναι μεγαλύτερα ή μικρότερα απ’ ό,τι συνήθως.</p>
+<p>Στις παρακάτω ενότητες θα εξετάσουμε αν η κόκκινη ενδυμασία επηρεάζει
+το μέγεθος του φιλοδωρήματος.</p>
+<ul>
+<li><p>Η μηδενική υπόθεση, προφανώς, θα ισχυρίζεται πως η ενδυμασία έχει
+μηδενική επίδραση στο φιλοδώρημα. Θα υποστηρίζει ότι ακόμα κι αν ντύναμε
+όλες τις σερβιτόρες με κόκκινα ρούχα, ακόμα και τότε το φιλοδώρημα θα
+ήταν κατά μέσο όρο πάλι 1.09€ ανά άτομο.</p></li>
+<li><p>Η εναλλακτική υπόθεση, κατά τα γνωστά, θα ισχυρίζεται πως η
+ενδυμασία ασκεί μια επίδραση στον άντρα, η οποία αντικατοπτρίζεται στη
+γενναιοδωρία που επιδεικνύει στην γυναίκα που φοράει κόκκινα ρούχα. Με
+άλλα λόγια, θα υποστηρίζει ότι, αν ντύναμε στα κόκκινα όλες τις
+σερβιτόρες, τότε το μέσο φιλοδώρημα θα διαφοροποιούνταν.</p></li>
+</ul>
+</div>
+<div id="τιμή-σημαντικότητας-p-τιμή" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Τιμή σημαντικότητας –
+(p-τιμή)</h1>
+<p>Πώς διαψεύδεται σ’ αυτή την περίπτωση η μηδενική υπόθεση; Στην
+ενότητα <a href="tTest.html#2_Τιμή_σημαντικότητας_–_(p-τιμή)">Τιμή
+σημαντικότητας – (p-τιμή)</a> εξηγήσαμε πως η <span
+class="math inline">\(\boldsymbol{\mathcal{H}_0}\)</span> διαψεύδεται
+όταν καταλήγει να θεωρεί απίθανα τα γεγονότα που παρατηρούμε. Έτσι κι
+εδώ! Θα πρέπει να απαντήσουμε τα παρακάτω ερωτήματα:</p>
+<ul>
+<li><p>Είναι αναμενόμενες διαφοροποιήσεις δειγματικών μέσων τιμών σαν
+την δειγματική μέση τιμή 1.30€ ή και χειρότερες, οπότε η <span
+class="math inline">\(\boldsymbol{\mathcal{H}_0}\)</span> δεν μπορεί ν’
+απορριφθεί;</p></li>
+<li><p>Ή μήπως αυτές οι διαφοροποιήσεις είναι κάτι το απίθανο, οπότε θα
+πρέπει να απορρίψουμε την σφαλερή υπόθεση <span
+class="math inline">\(\boldsymbol{\mathcal{H}_0}\)</span>,
+υποστηρίζοντας ότι λογικά θα είναι τελικά κάτι όντως ξεχωριστό το
+φιλοδώρημα τν 1.30€ στην περίπτωση που φοράνε κόκκινα
+μπλουζάκια;</p></li>
+</ul>
+<p>Για να απαντήσουμε αυτά τα ερωτήματα θα χρειαστούμε τη συνάρτηση
+<code>p_timi(🔪🔪🔪,💞💞💞, 🗡🗡️🗡,👦👦👦)</code>.</p>
+<ul>
+<li><p>Στη θέση του <code>🔪🔪🔪</code> γράφουμε τη μέση τιμή που
+παρατηρούμε στο τμήμα του δείγματος με τα κόκκινα μπλουζάκια (εδώ αυτή
+είναι 1.30€),</p></li>
+<li><p>στη θέση του <code>💞💞💞</code> γράφουμε την τυπική απόκλιση
+όλου του δείγματος (αυτή που βρήκαμε ότι είναι 0.3733317€, όχι την 0.46€
+που αφορούσε τα κόκκινα μπλουζάκια), στη θέση του 🗡️🗡️🗡️ γράφουμε την
+μέση τιμή του πληθυσμού (δηλαδή τα 1.089412€) και</p></li>
+<li><p>στη θέση του <code>👨👨👨</code> το μέγεθος όλου του δείγματος
+(το οποίο είναι εδώ 170 πελάτες).</p></li>
+</ul>
+<p>Η συνάρτηση που θέλαμε είναι η κάτωθι:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>p_timi <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timiDigm, tipiki_apoklPlith, mesi_timiPlith, plithos) {</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">abs</span>(mesi_timiDigm<span class="sc">-</span>mesi_timiPlith)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apoklPlith<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="dv">2-2</span><span class="sc">*</span><span class="fu">pt</span>(a<span class="sc">/</span>s, plithos<span class="dv">-1</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">p_timi</span>(<span class="fl">1.3</span>, <span class="fl">0.3733317</span>, <span class="fl">1.089412</span>, <span class="dv">170</span>)</span></code></pre></div>
+<pre><code>## [1] 7.890133e-12</code></pre>
+<p>Και βρίσκουμε ότι η p-τιμή είναι 7.890133e-12, δηλαδή η πιθανότητα να
+τύχουμε δείγμα με τέτοιο μέσο φιλοδώρημα από έναν πληθυσμό που φιλοδωρεί
+κατά μέσο όρο με 1.09€ είναι <span class="math inline">\(7.890133\cdot
+10^{-12}\approx\frac{8}{1000000000000}\)</span>.</p>
+<p>Όμως πόσο μικρή είναι αυτή η πιθανότητα; Ας φανταστούμε το εξής
+τυχερό παιχνίδι: Βρίσκεστε σε μια παραλία ενός στρέμματος και διαλέγετε
+έναν απλό κόκκο άμμου. Τοποθετείτε κάπου στην παραλία αυτόν τον κόκκο
+άμμου (μπορείτε και να σκάψετε και να τον θάψετε!) και και μετά καλούμαι
+εγώ να τον βρω. Η πιθανότητα να διαλέξω έναν κόκκο άμμου στην τύχη και
+να είναι αυτός που κρύψατε, η πιθανότητα να τον βρω, δηλαδή, με τη μία
+είναι μεγαλύτερη από την πιθανότητα <span
+class="math inline">\(\frac{8}{1000000000000}\)</span> που βρήκαμε
+πριν.</p>
+<p>Συνεπώς, συμπεραίνουμε ότι το να τύχουμε κάποιο τόσο ακραίο
+φιλοδώρημα δεν είναι καθόλου πιθανό. Επομένως οφείλουμε να απορρίψουμε
+τη μηδενική υπόθεση, δηλαδή το ότι τίποτα το αξιοπερίεργο δεν συμβαίνει,
+και να υιοθετήσουμε την εναλλακτική υπόθεση, ότι δηλαδή το κόκκινο χρώμα
+της μπλούζας ασκεί κάποια επίδραση στο μέγεθος του φιλοδωρήματος.</p>
+</div>
+<div id="επίπεδο-σημαντικότητας-α-τιμή" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Επίπεδο σημαντικότητας
+– (α-τιμή)</h1>
+<p>Εναλλακτική προσέγγιση στο ζήτημα, όπως έχουμε δει και στην ενότητα
+<a href="tTest.html#3_Επίπεδο_σημαντικότητας_–_(α-τιμή)">Επίπεδο
+σημαντικότητας – (α-τιμή)</a>, θα ήταν να βρίσκαμε πρώτα το επίπεδο
+σημαντικότητας και κατόπιν να ελέγχαμε αν το δείγμα μας ήταν στατιστικά
+σημαντικό. Έτσι λοιπόν, όπως και εκεί, έτσι κι εδώ θα θεωρήσουμε ως
+επίπεδο σημαντικότητας το α=0.05. Ψάχνουμε, δηλαδή, το 5% των πιο
+ακραίων δειγμάτων, αυτών που το μέσο φιλοδώρημα είναι είτε αρκετά πιο
+γενναιόδωρο είτε αρκετά πιο φειδωλό από το μέσο των 1.09€ ανά
+πελάτη.</p>
+<p>Από αυτά που προλέχθηκαν καταλαβαίνουμε ότι ψάχνουμε το 2.5% των πιο
+μεγάλων μέσων φιλοδωρημάτων και το 2.5% των πιο μικρών, ώστε να έχουμε
+συνολικά το 5% των πιο ακραίων. Με άλλα λόγια, ψάχνουμε δύο νούμερα,
+ανάμεσα στα οποία να βρίσκονται τα συνηθισμένα φιλοδωρήματα και έξω από
+τα οποία να βρίσκονται τα αφύσικα, τα σπάνια, αυτά που υπό φυσιολογικές
+συνθήκες θα είχαν μόνο 5% πιθανότητα να συμβούν.</p>
+<p>Για να υπολογιστούν αυτά θα χρησιμοποιήσουμε τη συνάρτηση
+<code>a_timi(🗡️🗡️🗡️, 💞💞💞, 👨👨👨, 👑👑👑)</code>.</p>
+<ul>
+<li><p>Στη θέση του <code>🗡️🗡️🗡️</code> γράφουμε την μέση τιμή του
+πληθυσμού (δηλαδή τα 1.089412€),</p></li>
+<li><p>στη θέση του <code>💞💞💞</code> γράφουμε την τυπική απόκλιση
+όλου του δείγματος (αυτή που βρήκαμε ότι είναι 0.3733317€, όχι την 0.46€
+που αφορούσε τα κόκκινα μπλουζάκια),</p></li>
+<li><p>στη θέση του <code>👨👨👨</code> το μέγεθος όλου του δείγματος
+(το οποίο είναι εδώ 170 πελάτες) και</p></li>
+<li><p>στη θέση του <code>👑👑👑</code> θα πάει το ποσοστό που θεωρούμε
+ότι αντιπροσωπεύει τα σπάνια συμβάντα, το οποίο σε μας είναι το 5%,
+δηλαδή το 0.05.</p></li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>a_timi <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timiPlith, tipiki_apokl, plithos, spaniotita) {</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  a <span class="ot">&lt;-</span> spaniotita<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> mesi_timiPlith<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> mesi_timiPlith<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Γράφουμε, λοιπόν:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">a_timi</span>(<span class="fl">1.089412</span>, <span class="fl">0.3733317</span>, <span class="dv">170</span>, <span class="fl">0.05</span>)</span></code></pre></div>
+<pre><code>## [1] 1.032887 1.145937</code></pre>
+<p>Βρίσκουμε λοιπόν ότι το 95% των συνηθισμένων φιλοδωρημάτων θα είναι
+ανάμεσα στα ποσά 1.03€ και 1.15€. Το 1.30€, λοιπόν, είναι ένα σπάνιο
+φιλοδώρημα, δηλαδή ένα φιλοδώρημα που κατά πάσα πιθανότητα δεν θα
+δινόταν, οπότε καταλαβαίνουμε ότι κάτι το ξεχωριστό συμβαίνει εκεί.</p>
+</div>
+<div id="μέγεθος-επίδρασης" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Μέγεθος επίδρασης</h1>
+<p>Είδαμε ότι το κόκκινο χρώμα ασκεί επίδραση στο μέγεθος του
+φιλοδωρήματος. Πόσο μεγάλη είναι όμως αυτή; Αυτό το ερώτημα θα μας το
+απαντήσει το d του Cohen. Η συνάρτηση που το υπολογίζει είναι η
+<code>d_cohen(🗡️🗡️🗡️, 💞💞💞, 👑👑👑)</code>, όπου:</p>
+<ul>
+<li><p>στη θέση του <code>🗡️🗡️🗡️</code> γράφουμε την μέση τιμή του
+πληθυσμού (δηλαδή τα 1.089412€),</p></li>
+<li><p>στη θέση του <code>💞💞💞</code> γράφουμε την τυπική απόκλιση
+όλου του δείγματος (αυτή που βρήκαμε ότι είναι 0.3733317€, όχι την 0.46€
+που αφορούσε τα κόκκινα μπλουζάκια) και</p></li>
+<li><p>στη θέση του <code>👑👑👑</code> θα πάει το ποσοστό που θεωρούμε
+ότι αντιπροσωπεύει τα σπάνια συμβάντα, το οποίο σε μας είναι το 5%,
+δηλαδή το 0.05.</p></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>d_cohen <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timiDigm, tipiki_apoklPlith, mesi_timiPlith){</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  (mesi_timiDigm<span class="sc">-</span>mesi_timiPlith)<span class="sc">/</span>tipiki_apoklPlith</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε γράφοντας:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">d_cohen</span>(<span class="fl">1.3</span>, <span class="fl">0.3733317</span>, <span class="fl">1.089412</span>)</span></code></pre></div>
+<pre><code>## [1] 0.5640775</code></pre>
+<p>βρίσκουμε ότι αυτό είναι 0.5640775. Κι αυτό τι σημαίνει τώρα; Οι
+παρακάτω οδηγίες από <a
+href="https://pubmed.ncbi.nlm.nih.gov/22530580/">εδώ</a> θα μας δώσουν
+μια απάντηση:</p>
+<ul>
+<li><p>αν το d του Cohen είναι 0 ή ±0.1, τότε το μέγεθος επίδρασης είναι
+ασήμαντο,</p></li>
+<li><p>αν το d του Cohen είναι ±0.2, ±0.3 ή ±0.4, τότε το μέγεθος
+επίδρασης είναι μικρό,</p></li>
+<li><p>αν το d του Cohen είναι ±0.5, ±0.6 ή ±0.7, τότε το μέγεθος
+επίδρασης είναι μέτριο,</p></li>
+<li><p>αν το d του Cohen είναι ±0.8, ±0.9 κτλ, τότε το μέγεθος επίδρασης
+είναι μεγάλο,</p></li>
+</ul>
+<p>Οπότε, αφού εμείς βρήκαμε 0.5640775, καταλαβαίνουμε ότι είναι μέτριο
+το μέγεθος της επίδρασης από το κόκκινο μπλουζάκι στο ύψος του
+φιλοδωρήματος.</p>
+<p>Όλος ο κώδικας που χρησιμοποιήσαμε είναι ο κάτωθι:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Υπολογισμός μέσης τιμής</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1η μέση τιμή: &quot;</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1ο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>Sm <span class="ot">&lt;-</span> m1<span class="sc">*</span>n1</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> n1</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="cf">while</span> (test <span class="sc">!=</span> <span class="st">&#39;Q&#39;</span>) {</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>  m_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενη μέση τιμή: &quot;</span>))</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>  n_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>  Sm <span class="ot">&lt;-</span> m_a<span class="sc">*</span>n_a<span class="sc">+</span>Sm</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>  Sn <span class="ot">&lt;-</span> n_a<span class="sc">+</span>Sn</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a>}</span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a>Sm<span class="sc">/</span>Sn</span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co"># Υπολογισμός τυπικής απόκλισης</span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1η μέση τιμή: &quot;</span>))</span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a>n1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1ο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a>s1 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε 1η τυπική απόκλιση: &quot;</span>))</span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a>Sm <span class="ot">&lt;-</span> m1<span class="sc">*</span>n1</span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a>Sn <span class="ot">&lt;-</span> n1</span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a>Sq <span class="ot">&lt;-</span> (s1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>(n1<span class="dv">-1</span>)<span class="sc">+</span>n1<span class="sc">*</span>m1<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a>test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="cf">while</span> (test <span class="sc">!=</span> <span class="st">&#39;Q&#39;</span>) {</span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a>  m_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενη μέση τιμή: &quot;</span>))</span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a>  n_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενο πλήθος τιμών: &quot;</span>))</span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a>  s_a <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Δώσε επόμενη τυπική απόκλιση: &quot;</span>))</span>
+<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a>  Sm <span class="ot">&lt;-</span> m_a<span class="sc">*</span>n_a<span class="sc">+</span>Sm</span>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a>  Sn <span class="ot">&lt;-</span> n_a<span class="sc">+</span>Sn</span>
+<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a>  Sq <span class="ot">&lt;-</span> Sq<span class="sc">+</span>(s_a<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>(n_a<span class="dv">-1</span>)<span class="sc">+</span>n_a<span class="sc">*</span>m_a<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a>  test <span class="ot">&lt;-</span> <span class="fu">readline</span>(<span class="at">prompt=</span><span class="st">&quot;Σταματάμε τη διαδικασία; Γράψε &#39;Q&#39; για &#39;ναι&#39;: &quot;</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a>}</span>
+<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a>m <span class="ot">&lt;-</span> Sm<span class="sc">/</span>Sn</span>
+<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a>m</span>
+<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a><span class="fu">sqrt</span>((Sq<span class="sc">-</span>Sn<span class="sc">*</span>m<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(Sn<span class="dv">-1</span>))</span>
+<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a><span class="co"># Εκτίμηση πληθυσμιακής μέσης τιμής</span></span>
+<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a>DiastEmpist <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timi, tipiki_apokl, plithos, pith) {</span>
+<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb15-38"><a href="#cb15-38" tabindex="-1"></a>  a <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">-</span>pith)<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb15-39"><a href="#cb15-39" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb15-40"><a href="#cb15-40" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> mesi_timi<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb15-41"><a href="#cb15-41" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> mesi_timi<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb15-42"><a href="#cb15-42" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb15-43"><a href="#cb15-43" tabindex="-1"></a>}</span>
+<span id="cb15-44"><a href="#cb15-44" tabindex="-1"></a><span class="fu">DiastEmpist</span>(<span class="fl">1.089412</span>, <span class="fl">0.3733317</span>, <span class="dv">170</span>, <span class="fl">0.95</span>)</span>
+<span id="cb15-45"><a href="#cb15-45" tabindex="-1"></a><span class="co"># p-τιμή</span></span>
+<span id="cb15-46"><a href="#cb15-46" tabindex="-1"></a>p_timi <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timiDigm, tipiki_apoklPlith, mesi_timiPlith, plithos) {</span>
+<span id="cb15-47"><a href="#cb15-47" tabindex="-1"></a>  a <span class="ot">&lt;-</span> <span class="fu">abs</span>(mesi_timiDigm<span class="sc">-</span>mesi_timiPlith)</span>
+<span id="cb15-48"><a href="#cb15-48" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apoklPlith<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb15-49"><a href="#cb15-49" tabindex="-1"></a>  <span class="dv">2-2</span><span class="sc">*</span><span class="fu">pt</span>(a<span class="sc">/</span>s, plithos<span class="dv">-1</span>)</span>
+<span id="cb15-50"><a href="#cb15-50" tabindex="-1"></a>}</span>
+<span id="cb15-51"><a href="#cb15-51" tabindex="-1"></a><span class="fu">p_timi</span>(<span class="fl">1.3</span>, <span class="fl">0.3733317</span>, <span class="fl">1.089412</span>, <span class="dv">170</span>)</span>
+<span id="cb15-52"><a href="#cb15-52" tabindex="-1"></a><span class="co"># α-τιμή</span></span>
+<span id="cb15-53"><a href="#cb15-53" tabindex="-1"></a>a_timi <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timiPlith, tipiki_apokl, plithos, spaniotita) {</span>
+<span id="cb15-54"><a href="#cb15-54" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
+<span id="cb15-55"><a href="#cb15-55" tabindex="-1"></a>  a <span class="ot">&lt;-</span> spaniotita<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb15-56"><a href="#cb15-56" tabindex="-1"></a>  t <span class="ot">&lt;-</span> <span class="fu">qt</span>(a, plithos<span class="dv">-1</span>, <span class="at">lower.tail=</span>F)</span>
+<span id="cb15-57"><a href="#cb15-57" tabindex="-1"></a>  m1 <span class="ot">&lt;-</span> mesi_timiPlith<span class="sc">-</span>t<span class="sc">*</span>s</span>
+<span id="cb15-58"><a href="#cb15-58" tabindex="-1"></a>  m2 <span class="ot">&lt;-</span> mesi_timiPlith<span class="sc">+</span>t<span class="sc">*</span>s</span>
+<span id="cb15-59"><a href="#cb15-59" tabindex="-1"></a>  <span class="fu">c</span>(m1, m2)</span>
+<span id="cb15-60"><a href="#cb15-60" tabindex="-1"></a>}</span>
+<span id="cb15-61"><a href="#cb15-61" tabindex="-1"></a><span class="fu">a_timi</span>(<span class="fl">1.089412</span>, <span class="fl">0.3733317</span>, <span class="dv">170</span>, <span class="fl">0.05</span>)</span>
+<span id="cb15-62"><a href="#cb15-62" tabindex="-1"></a><span class="co"># Μέγεθος επίδρασης</span></span>
+<span id="cb15-63"><a href="#cb15-63" tabindex="-1"></a>d_cohen <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timiDigm, tipiki_apoklPlith, mesi_timiPlith){</span>
+<span id="cb15-64"><a href="#cb15-64" tabindex="-1"></a>  (mesi_timiDigm<span class="sc">-</span>mesi_timiPlith)<span class="sc">/</span>tipiki_apoklPlith</span>
+<span id="cb15-65"><a href="#cb15-65" tabindex="-1"></a>}</span>
+<span id="cb15-66"><a href="#cb15-66" tabindex="-1"></a><span class="fu">d_cohen</span>(<span class="fl">1.3</span>, <span class="fl">0.3733317</span>, <span class="fl">1.089412</span>)</span></code></pre></div>
+</div>
 
 
 

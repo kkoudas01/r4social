@@ -16,6 +16,18 @@ knitr::opts_chunk$set(echo = TRUE)
 library(kableExtra)
 ```
 
+# Εισαγωγή δεδομένων
 
+# Ανάλυση διασποράς – ANOVA
+
+# Έλεγχος Kruskal-Wallis
+
+# Έλεγχος Wilcoxon
+
+# Μέγεθος επίδρασης
+
+## Cohen d
+
+## Wilcoxon r
 
 
