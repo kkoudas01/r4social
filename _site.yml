@@ -40,6 +40,36 @@ navbar:
               href: eytheiesPalindr.html
             - text: "Καμπύλες παλινδρόμησης"
               href: kampylesPalindr.html
+      - text: "Πιθανότητες"
+        menu:
+        - text: "Η έννοια της πιθανότητας"
+          href: ennoiaPith.html
+        - text: "Βασικά εργαλεία"
+          href: ergaliaPith.html
+        - text: "Διακριτές κατανομές"
+          menu:
+          - text: "Ομοιόμορφη διακριτή κατανομή"
+            href: uniformDiscr.html
+          - text: "Διωνυμική κατανομή"
+            href: binom.html
+          - text: "Υπεργεωμετρική κατανομή"
+            href: hyperGeom.html
+          - text: "Γεωμετρική κατανομή"
+            href: geom.html
+          - text: "Αρνητική διωνυμική κατανομή"
+            href: nBinom.html
+          - text: "Κατανομή Poisson"
+            href: poisson.html
+        - text: "Συνεχείς κατανομές"
+          menu:
+          - text: "Ομοιόμορφη συνεχής κατανομή"
+            href: uniformCont.html
+          - text: "Εκθετική κατανομή"
+            href: expDist.html
+          - text: "Κατανομή Γάμμα"
+            href: gammaDist.html
+          - text: "Κανονική κατανομή"
+            href: normalDist.html
       - text: "Εκτιμητική"
         menu:
         - text: "Για μέση τιμή"
