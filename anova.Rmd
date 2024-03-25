@@ -28,6 +28,8 @@ library(kableExtra)
 
 ## Cohen d
 
+(βλ. επίσης υποενότητα [Μέγεθος επίδρασης](tTestMean.html#5_Μέγεθος_επίδρασης))
+
 ## Wilcoxon r
 
 
