@@ -60,6 +60,14 @@ navbar:
           href: x2Test.html
         - text: "Επίδραση ενός παράγοντα"
           href: anova.html
+      - text: "Προσδιορισμός κατανομής"
+        menu:
+        - text: "Προσδιορισμός κατανομής"
+          href: findDist.html
+        - text: "Έλεγχος κανονικότητας"
+          href: NormTest.html
+        - text: "Γραφικός προσδιορισμός κατανομής"
+          href: GraphFindDist.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:

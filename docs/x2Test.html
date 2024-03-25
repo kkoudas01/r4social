@@ -35,6 +35,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -49,6 +51,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -413,6 +516,20 @@ div.tocify {
         </li>
       </ul>
     </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Προσδιορισμός κατανομής</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="findDist.html">Προσδιορισμός κατανομής</a>
+        </li>
+        <li>
+          <a href="NormTest.html">Έλεγχος κανονικότητας</a>
+        </li>
+        <li>
+          <a href="GraphFindDist.html">Γραφικός προσδιορισμός κατανομής</a>
+        </li>
+      </ul>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -465,7 +582,5428 @@ div.tocify {
 </div>
 
 
-
+<div id="από-πίνακα-συχνοτήτων" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Από πίνακα
+συχνοτήτων</h1>
+<p>Στην παρούσα ενότητα θα εξετάσουμε αν δύο μεταβλητές είναι
+ανεξάρτητες. Συγκεκριμένα, αντλήσαμε στοιχεία από τη σελίδα του <a
+href="https://ucr.fbi.gov/nibrs/2018/tables/data-tables">FBI</a> που
+αφορούν τη σχέση του θύματος στο εκάστοτε έγκλημα με τον θύτη του. Για
+παράδειγμα βλέπουμε <a
+href="https://ucr.fbi.gov/nibrs/2018/tables/pdfs/relationship_of_victims_to_offenders_by_offense_category_2018.pdf/at_download/file">εκεί</a>
+ότι 25105 σεξουαλικές επιθέσεις γίνονται από μέλη της οικογένειας, ενώ
+μόνο 6796 γίνονται από αγνώστους.</p>
+<p>Τα στοιχεία αυτά αποθηκεύτηκαν σε ένα αρχείο ονόματι
+egklUSA2018.xlsx.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+…1
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Family Member
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Family Member and Other
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Known to Victim and Other
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Stranger
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+All Other
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Assault Offenses
+</td>
+<td style="text-align:right;">
+318101
+</td>
+<td style="text-align:right;">
+43614
+</td>
+<td style="text-align:right;">
+731611
+</td>
+<td style="text-align:right;">
+131014
+</td>
+<td style="text-align:right;">
+168924
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Homicide Offenses
+</td>
+<td style="text-align:right;">
+783
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+1756
+</td>
+<td style="text-align:right;">
+558
+</td>
+<td style="text-align:right;">
+1847
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Human Trafficking Offenses
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+294
+</td>
+<td style="text-align:right;">
+69
+</td>
+<td style="text-align:right;">
+127
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Kidnapping/Abduction
+</td>
+<td style="text-align:right;">
+4301
+</td>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:right;">
+11586
+</td>
+<td style="text-align:right;">
+1883
+</td>
+<td style="text-align:right;">
+2246
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sex Offenses
+</td>
+<td style="text-align:right;">
+25105
+</td>
+<td style="text-align:right;">
+788
+</td>
+<td style="text-align:right;">
+52893
+</td>
+<td style="text-align:right;">
+6796
+</td>
+<td style="text-align:right;">
+13327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Robbery
+</td>
+<td style="text-align:right;">
+943
+</td>
+<td style="text-align:right;">
+236
+</td>
+<td style="text-align:right;">
+15193
+</td>
+<td style="text-align:right;">
+30135
+</td>
+<td style="text-align:right;">
+28872
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Θέλουμε να δούμε αν σε ένα έγκλημα η σχέση του θύματος με τον θύτη
+και το είδος του εγκλήματος είναι ανεξάρτητα πράγματα.</p>
+<ul>
+<li><p>Θέλουμε να δούμε, δηλαδή, αν η γνώση του είδους του εγκλήματος
+προσφέρει κάτι στην γνώση της σχέσης θύματος-θύτη. Π.χ. αν έχει γίνει
+μια σεξουαλική επίθεση, κάνει πιο πιθανό να είναι ο δράστης της
+οικογενείας, σε σχέση με το να γινόταν κάποιο άλλο έγκλημα, όπως π.χ. η
+ληστεία; Ή μήπως το είδος του εγκλήματος αφήνει ανεπηρέαστη την
+πιθανότητα ο δράστης να είναι της οικογενείας;</p></li>
+<li><p>Και αντίστροφα: Θέλουμε να δούμε αν η γνώση της σχέσης
+θύματος-θύτη προσφέρει κάτι στη γνώση του εγκλήματος. Αν π.χ. τελέσει
+ένα έγκλημα ένας άγνωστος στο θύμα θύτης, κάνει πιο πιθανό αυτό το
+έγκλημα να είναι μια ληστεία, σε σχέση με το να ήταν ο θύτης μέλος της
+οικογενείας; Ή μήπως η σχέση θύματος-θύτη αφήνει ανεπηρέαστη την
+πιθανότητα να είναι το έγκλημα ληστεία; Ορίζουμε ως μηδενική υπόθεση το
+ότι οι μεταβλητές «σχέση με το θύμα» και «είδος εγκλήματος» είναι
+ανεξάρτητες και θα δούμε κατά πόσον αυτή θα απορριφθεί, οπότε τελικά θα
+αποδειχθεί ότι δεν ήταν ανεξάρτητες.</p></li>
+</ul>
+<p>Ο πίνακάς μας είναι σχεδόν σε βολική μορφή, διότι:</p>
+<ul>
+<li><p>η κάθε στήλη αποτελείται από τις συχνότητες των εγκλημάτων με
+βάση τη σχέση με το θύμα,</p></li>
+<li><p>η κάθε γραμμή αποτελείται τις συχνότητες των εγκλημάτων με βάση
+το είδος του εγκλήματος.</p></li>
+</ul>
+<p>Είναι <u>σχεδόν</u> σε βολική μορφή, διότι περιέχει και στήλη με
+μη-αριθμητικά δεδομένα, κι αυτή είναι η 1η. Συνεπώς, για να έχουμε
+στήλες μόνο με αριθμητικά δεδομένα, γράφουμε:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>egklUSA <span class="ot">&lt;-</span> egklUSA2018[ , <span class="fu">c</span>(<span class="st">&quot;Family Member&quot;</span>, <span class="st">&quot;Family Member and Other&quot;</span>, <span class="st">&quot;Known to Victim and Other&quot;</span>, <span class="st">&quot;Stranger&quot;</span>)]</span></code></pre></div>
+<p>Οπότε έτσι έχει πεταχτεί εκτός η πρώτη στήλη.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Family Member
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Family Member and Other
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Known to Victim and Other
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Stranger
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+318101
+</td>
+<td style="text-align:right;">
+43614
+</td>
+<td style="text-align:right;">
+731611
+</td>
+<td style="text-align:right;">
+131014
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+783
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+1756
+</td>
+<td style="text-align:right;">
+558
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+294
+</td>
+<td style="text-align:right;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4301
+</td>
+<td style="text-align:right;">
+227
+</td>
+<td style="text-align:right;">
+11586
+</td>
+<td style="text-align:right;">
+1883
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+25105
+</td>
+<td style="text-align:right;">
+788
+</td>
+<td style="text-align:right;">
+52893
+</td>
+<td style="text-align:right;">
+6796
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+943
+</td>
+<td style="text-align:right;">
+236
+</td>
+<td style="text-align:right;">
+15193
+</td>
+<td style="text-align:right;">
+30135
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Τέλος γράφουμε:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">chisq.test</span>(egklUSA)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  egklUSA
+## X-squared = 127270, df = 15, p-value &lt; 2.2e-16</code></pre>
+<p>Η p-τιμή είναι πάρα πολύ μικρή. Αυτό σημαίνει ότι η μηδενική υπόθεση
+απορρίπτεται, διότι διαφορετικά η πιθανότητα να τύχουμε κάτι τέτοιο θα
+είναι λιγότερο από 1 στα 1000000000000000. Άρα οι μεταβλητές «σχέση με
+το θύμα» και «είδος εγκλήματος» <u>δεν</u> είναι ανεξάρτητες.</p>
+<p>Δηλαδή:</p>
+<ul>
+<li><p>Αν π.χ. έχει γίνει μια σεξουαλική επίθεση επηρεάζεται η
+πιθανότητα ο θύτης να είναι άγνωστος, σε σχέση με το αν ξέραμε ότι έχει
+γίνει ληστεία. Με άλλα λόγια, κάποια εγκλήματα κάνουν πιο πιθανό να
+είναι ο θύτης άγνωστος, σε σχέση με κάποια άλλα.</p></li>
+<li><p>Ή, αν π.χ. τελέσει ένα έγκλημα ένας άγνωστος στο θύμα θύτης,
+επηρεάζεται η πιθανότητα το έγκλημα αυτό να ήταν ληστεία, σε σχέση με το
+αν ξέραμε ότι ήταν σεξουαλική παρενόχληση. Με άλλα λόγια, κάποιοι θύτες
+κάνουν πιο πιθανό ένα έγκλημα, σε σχέση με κάποιους άλλους
+θύτες.</p></li>
+</ul>
+<p>Συνολικά, ο λιγοστός κώδικας που γράψαμε ήταν ο κάτωθι:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>egklUSA <span class="ot">&lt;-</span> egklUSA2018[ , <span class="fu">c</span>(<span class="st">&quot;Family Member&quot;</span>, <span class="st">&quot;Family Member and Other&quot;</span>, <span class="st">&quot;Known to Victim and Other&quot;</span>, <span class="st">&quot;Stranger&quot;</span>)]</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">chisq.test</span>(egklUSA)</span></code></pre></div>
+</div>
+<div id="από-πίνακα-δεδομένων" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Από πίνακα
+δεδομένων</h1>
+<p>Εδώ θα χρησιμοποιήσουμε έναν πίνακα άλλης μορφής. Θα χρησιμοποιήσουμε
+τα στατιστικά στοιχεία του <a href="https://www.fu-berlin.de/en/">Freie
+Universität</a> που τα αποθηκεύσαμε σε ένα αρχείο ονόματι students.xlsx.
+Παραθέτουμε τις πρώτες 100 καταχωρήσεις του πίνακα, για λόγους ταχύτητας
+εκτέλεσης του κώδικα.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+stud.id
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+name
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+gender
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+age
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+height
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+weight
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+religion
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+nc.score
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+semester
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+major
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+minor
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+score1
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+score2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+online.tutorial
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+graduated
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+salary
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+833917
+</td>
+<td style="text-align:left;">
+Gonzales, Christina
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+64.8
+</td>
+<td style="text-align:left;">
+Muslim
+</td>
+<td style="text-align:right;">
+1.91
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+898539
+</td>
+<td style="text-align:left;">
+Lozano, T’Hani
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+73.0
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.56
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+379678
+</td>
+<td style="text-align:left;">
+Williams, Hanh
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+70.6
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.24
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+807564
+</td>
+<td style="text-align:left;">
+Nem, Denzel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+79.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.37
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+383291
+</td>
+<td style="text-align:left;">
+Powell, Heather
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+71.4
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.46
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+256074
+</td>
+<td style="text-align:left;">
+Perez, Jadrian
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:right;">
+85.8
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.34
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+754591
+</td>
+<td style="text-align:left;">
+Clardy, Anita
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:right;">
+65.9
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.11
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+146494
+</td>
+<td style="text-align:left;">
+Allen, Rebecca Marie
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+65.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.03
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+58
+</td>
+<td style="text-align:left;">
+62
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+723584
+</td>
+<td style="text-align:left;">
+Tracy, Robert
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+195
+</td>
+<td style="text-align:right;">
+94.4
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.29
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+314281
+</td>
+<td style="text-align:left;">
+Nimmons, Laura
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+165
+</td>
+<td style="text-align:right;">
+66.0
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.19
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+200803
+</td>
+<td style="text-align:left;">
+Lang, Mackenzie
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+66.8
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.04
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+62
+</td>
+<td style="text-align:left;">
+61
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+45254.108020687003
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+444907
+</td>
+<td style="text-align:left;">
+Rodriguez, Brianna
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+66.8
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+3.81
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+82
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+354271
+</td>
+<td style="text-align:left;">
+Covar Orendain, Christopher
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:right;">
+84.6
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+40552.790242531002
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+317812
+</td>
+<td style="text-align:left;">
+Lopez, Monique
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+64.4
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.50
+</td>
+<td style="text-align:left;">
+6th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+66
+</td>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+27007.030294282002
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+604115
+</td>
+<td style="text-align:left;">
+Davis, Shagun
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+66.3
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.92
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+889551
+</td>
+<td style="text-align:left;">
+Adams, Jose
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+73.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+3.61
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+87
+</td>
+<td style="text-align:left;">
+91
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+350040
+</td>
+<td style="text-align:left;">
+Hines, Haileigh
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+156
+</td>
+<td style="text-align:right;">
+61.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.27
+</td>
+<td style="text-align:left;">
+6th
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:left;">
+54
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+33969.159268048999
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+240279
+</td>
+<td style="text-align:left;">
+Daugherty, Jesus
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:right;">
+82.1
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.42
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+865835
+</td>
+<td style="text-align:left;">
+Roybal, Ebony
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+69.2
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.32
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+137196
+</td>
+<td style="text-align:left;">
+Baysinger, Tanisha
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+70.9
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+2.33
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+708242
+</td>
+<td style="text-align:left;">
+Phillips, Laiba
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+68.5
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.79
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+499002
+</td>
+<td style="text-align:left;">
+Culbertson, Deshawn
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+70.4
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.97
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+873149
+</td>
+<td style="text-align:left;">
+O Reilly, Joshua
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+70.3
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.68
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+807361
+</td>
+<td style="text-align:left;">
+Johnson, Stephanie
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:right;">
+67.0
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.30
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+531029
+</td>
+<td style="text-align:left;">
+Mix, Aziel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+81.8
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.11
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+970589
+</td>
+<td style="text-align:left;">
+Gonzalez, Dixie
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+145
+</td>
+<td style="text-align:right;">
+54.0
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.14
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+250298
+</td>
+<td style="text-align:left;">
+Clark, Janelle
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+66.8
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.45
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+45
+</td>
+<td style="text-align:left;">
+37
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+763393
+</td>
+<td style="text-align:left;">
+Woolsey, Bronson
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:right;">
+80.1
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.09
+</td>
+<td style="text-align:left;">
+5th
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+61
+</td>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+50617.641869938998
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+544433
+</td>
+<td style="text-align:left;">
+Diawara, Erica
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+71.4
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.75
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+252935
+</td>
+<td style="text-align:left;">
+Lord, Benjamin
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+69.6
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+3.94
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+89
+</td>
+<td style="text-align:left;">
+90
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+453762
+</td>
+<td style="text-align:left;">
+Cordova, Justin
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+73.0
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.26
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+759365
+</td>
+<td style="text-align:left;">
+Hayes, Vamshi
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+192
+</td>
+<td style="text-align:right;">
+88.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.19
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+44
+</td>
+<td style="text-align:left;">
+36
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+662678
+</td>
+<td style="text-align:left;">
+French, Sidney
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+175
+</td>
+<td style="text-align:right;">
+72.6
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+3.03
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:left;">
+70
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+188703
+</td>
+<td style="text-align:left;">
+Torres, Andrew
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:right;">
+75.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.19
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+806369
+</td>
+<td style="text-align:left;">
+Medina, Diamond
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+71.6
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+2.27
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+679521
+</td>
+<td style="text-align:left;">
+Pascua, Burphy
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:right;">
+74.1
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+4.00
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+371307
+</td>
+<td style="text-align:left;">
+Glenn-Bracey, Mia
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:right;">
+75.6
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.09
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+411253
+</td>
+<td style="text-align:left;">
+Yang, Manuel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+185
+</td>
+<td style="text-align:right;">
+80.7
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+3.15
+</td>
+<td style="text-align:left;">
+5th
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+54
+</td>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+37391.872365386
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+835757
+</td>
+<td style="text-align:left;">
+Lujan, Malia
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+172
+</td>
+<td style="text-align:right;">
+68.3
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+2.12
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+86
+</td>
+<td style="text-align:left;">
+92
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+35598.881686346998
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+232384
+</td>
+<td style="text-align:left;">
+Formby, Christina
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:right;">
+74.5
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.43
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+871735
+</td>
+<td style="text-align:left;">
+Nelson, Anddi
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:right;">
+64.9
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.15
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+503879
+</td>
+<td style="text-align:left;">
+Lucas, Asashia
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+64.4
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.66
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:left;">
+33
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+186259
+</td>
+<td style="text-align:left;">
+Holguin, Lance
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+190
+</td>
+<td style="text-align:right;">
+89.3
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+3.46
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+890074
+</td>
+<td style="text-align:left;">
+Ontiveros, Aleena
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:right;">
+78.3
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+2.67
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+493398
+</td>
+<td style="text-align:left;">
+Clark, Marlana
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+68.0
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.45
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+902697
+</td>
+<td style="text-align:left;">
+Phan, Edeer
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+62.2
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.92
+</td>
+<td style="text-align:left;">
+5th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+78
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+39703.744884975997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+679949
+</td>
+<td style="text-align:left;">
+Robles Escamilla, Rosario
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+69.6
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+3.23
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+509606
+</td>
+<td style="text-align:left;">
+Longwolf, Addam
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:right;">
+72.1
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+2.03
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+773757
+</td>
+<td style="text-align:left;">
+Romero, Keyanna
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+66.2
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.37
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+889115
+</td>
+<td style="text-align:left;">
+Carter, Robert
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:right;">
+76.2
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.32
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+280980
+</td>
+<td style="text-align:left;">
+Jumbo, Isiah
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+161
+</td>
+<td style="text-align:right;">
+66.7
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.41
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+55
+</td>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+879108
+</td>
+<td style="text-align:left;">
+Dillenberg, Soraya
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+164
+</td>
+<td style="text-align:right;">
+65.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.43
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+756828
+</td>
+<td style="text-align:left;">
+Nguyen, Juancarlos
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+170
+</td>
+<td style="text-align:right;">
+68.0
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.83
+</td>
+<td style="text-align:left;">
+5th
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+873225
+</td>
+<td style="text-align:left;">
+Shanahan, Carlos
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+72.8
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.89
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+267025
+</td>
+<td style="text-align:left;">
+Brown, Nhan
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:right;">
+65.7
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.77
+</td>
+<td style="text-align:left;">
+&gt;6th
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+57
+</td>
+<td style="text-align:left;">
+58
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+30086.764812451998
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+865072
+</td>
+<td style="text-align:left;">
+Tak, Ruben
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+184
+</td>
+<td style="text-align:right;">
+83.3
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.87
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+67
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+180057
+</td>
+<td style="text-align:left;">
+Hussainy, Luis
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:right;">
+73.2
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.80
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+350628
+</td>
+<td style="text-align:left;">
+Maven, Yee Joo
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+73.3
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.13
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+809000
+</td>
+<td style="text-align:left;">
+Payte, Alexander
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:right;">
+83.5
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+2.23
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+286216
+</td>
+<td style="text-align:left;">
+Tate, Shelby
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:right;">
+63.0
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.01
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+373120
+</td>
+<td style="text-align:left;">
+Livingston, Sarah
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+69.0
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.51
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+56
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+31494.320815455001
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+797140
+</td>
+<td style="text-align:left;">
+Vang, Austin
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+81.8
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+3.14
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+201130
+</td>
+<td style="text-align:left;">
+Cebrun, Linda
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+157
+</td>
+<td style="text-align:right;">
+62.9
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+2.59
+</td>
+<td style="text-align:left;">
+&gt;6th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+64
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+32519.224081044998
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+655450
+</td>
+<td style="text-align:left;">
+Meza Ramirez, Maricela
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:right;">
+78.1
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+2.08
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+401840
+</td>
+<td style="text-align:left;">
+Nicholson, Willow
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+32
+</td>
+<td style="text-align:right;">
+171
+</td>
+<td style="text-align:right;">
+67.6
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.53
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+88
+</td>
+<td style="text-align:left;">
+93
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+358005
+</td>
+<td style="text-align:left;">
+Eydi Shahroodi, Erik
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:right;">
+77.4
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+3.82
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+42593.260382113003
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+680483
+</td>
+<td style="text-align:left;">
+Truong, Patrick
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+71.6
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+3.80
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:left;">
+73
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+60407.317266003003
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+275470
+</td>
+<td style="text-align:left;">
+Vasquez, Timothy
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+65.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+3.96
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+89
+</td>
+<td style="text-align:left;">
+93
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+258961
+</td>
+<td style="text-align:left;">
+Warren, Justin
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+70.7
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.46
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+495076
+</td>
+<td style="text-align:left;">
+Frost, Yuvorn
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:right;">
+194
+</td>
+<td style="text-align:right;">
+94.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.78
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+156460
+</td>
+<td style="text-align:left;">
+Minor, Alex
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+182
+</td>
+<td style="text-align:right;">
+82.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+1.22
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+38
+</td>
+<td style="text-align:left;">
+49
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+249571
+</td>
+<td style="text-align:left;">
+Arkadie, Houa
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+152
+</td>
+<td style="text-align:right;">
+64.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.73
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+962284
+</td>
+<td style="text-align:left;">
+Iverson, Sierra
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+154
+</td>
+<td style="text-align:right;">
+63.0
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.30
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+870282
+</td>
+<td style="text-align:left;">
+Bustamante-Harrison, Sierra
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:right;">
+60.6
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.88
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:left;">
+42
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+308092
+</td>
+<td style="text-align:left;">
+Treto, Teonna
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+153
+</td>
+<td style="text-align:right;">
+63.2
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+3.18
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+694127
+</td>
+<td style="text-align:left;">
+Gonzales, Brianna
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+63.3
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.62
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+841076
+</td>
+<td style="text-align:left;">
+Pacheco, Cydney
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+167
+</td>
+<td style="text-align:right;">
+72.8
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.73
+</td>
+<td style="text-align:left;">
+&gt;6th
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:left;">
+81
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+49111.427488433997
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+794058
+</td>
+<td style="text-align:left;">
+Castaneda-Amaya, Tyandra
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:right;">
+149
+</td>
+<td style="text-align:right;">
+56.2
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.02
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+61
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+518947
+</td>
+<td style="text-align:left;">
+Garcia, Yamel
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:right;">
+62.1
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.36
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+216224
+</td>
+<td style="text-align:left;">
+Ho, Javier
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:right;">
+77.5
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+2.17
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+980136
+</td>
+<td style="text-align:left;">
+Munoz, Derrick
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+180
+</td>
+<td style="text-align:right;">
+77.1
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.63
+</td>
+<td style="text-align:left;">
+5th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+69
+</td>
+<td style="text-align:left;">
+68
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+33068.848645060003
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+253731
+</td>
+<td style="text-align:left;">
+Castillo, Anastasia
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:right;">
+62.2
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.27
+</td>
+<td style="text-align:left;">
+6th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+63
+</td>
+<td style="text-align:left;">
+75
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+37803.513208607001
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+416538
+</td>
+<td style="text-align:left;">
+Serrano, Shanae
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+71.1
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.42
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+83
+</td>
+<td style="text-align:left;">
+79
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+888830
+</td>
+<td style="text-align:left;">
+Park, Damien
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+174
+</td>
+<td style="text-align:right;">
+74.9
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.49
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+306032
+</td>
+<td style="text-align:left;">
+Lesley, Tiffany
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+159
+</td>
+<td style="text-align:right;">
+62.4
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.76
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+536813
+</td>
+<td style="text-align:left;">
+Turner, Savannah
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+160
+</td>
+<td style="text-align:right;">
+65.3
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.38
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+78
+</td>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+732709
+</td>
+<td style="text-align:left;">
+Begay-Watson, Anthony
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+68.0
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+3.06
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+53
+</td>
+<td style="text-align:left;">
+46
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+514389
+</td>
+<td style="text-align:left;">
+Picard, Brittney
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+67.9
+</td>
+<td style="text-align:left;">
+Muslim
+</td>
+<td style="text-align:right;">
+2.26
+</td>
+<td style="text-align:left;">
+5th
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+72
+</td>
+<td style="text-align:left;">
+77
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+35191.662764719003
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+367719
+</td>
+<td style="text-align:left;">
+Wilson, Navya
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+155
+</td>
+<td style="text-align:right;">
+67.5
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.03
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+71
+</td>
+<td style="text-align:left;">
+74
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+362637
+</td>
+<td style="text-align:left;">
+Dinh, Fidel
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+26
+</td>
+<td style="text-align:right;">
+178
+</td>
+<td style="text-align:right;">
+76.7
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.45
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+76
+</td>
+<td style="text-align:left;">
+79
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+409917
+</td>
+<td style="text-align:left;">
+Huddleston, Tina
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+162
+</td>
+<td style="text-align:right;">
+61.8
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.21
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+977593
+</td>
+<td style="text-align:left;">
+Gonzalez, Merissa
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:right;">
+79.0
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.53
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:left;">
+65
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+884302
+</td>
+<td style="text-align:left;">
+Norris, Lauren
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+168
+</td>
+<td style="text-align:right;">
+69.4
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+2.45
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+689045
+</td>
+<td style="text-align:left;">
+Kim, Eaba
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+181
+</td>
+<td style="text-align:right;">
+80.0
+</td>
+<td style="text-align:left;">
+Other
+</td>
+<td style="text-align:right;">
+2.83
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+706060
+</td>
+<td style="text-align:left;">
+Miranda Quintero, Olivia
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+158
+</td>
+<td style="text-align:right;">
+60.6
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+1.46
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+43
+</td>
+<td style="text-align:left;">
+52
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+168184
+</td>
+<td style="text-align:left;">
+Briseno, Davie
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+177
+</td>
+<td style="text-align:right;">
+79.4
+</td>
+<td style="text-align:left;">
+Muslim
+</td>
+<td style="text-align:right;">
+2.02
+</td>
+<td style="text-align:left;">
+4th
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+93
+</td>
+<td style="text-align:left;">
+87
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+39342.522668919002
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+890431
+</td>
+<td style="text-align:left;">
+Garcia, Kush
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+169
+</td>
+<td style="text-align:right;">
+73.8
+</td>
+<td style="text-align:left;">
+Catholic
+</td>
+<td style="text-align:right;">
+1.41
+</td>
+<td style="text-align:left;">
+5th
+</td>
+<td style="text-align:left;">
+Mathematics and Statistics
+</td>
+<td style="text-align:left;">
+Social Sciences
+</td>
+<td style="text-align:left;">
+78
+</td>
+<td style="text-align:left;">
+90
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+345772
+</td>
+<td style="text-align:left;">
+Chandramouli, Nelson
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+176
+</td>
+<td style="text-align:right;">
+76.4
+</td>
+<td style="text-align:left;">
+Orthodox
+</td>
+<td style="text-align:right;">
+2.56
+</td>
+<td style="text-align:left;">
+2nd
+</td>
+<td style="text-align:left;">
+Environmental Sciences
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+167649
+</td>
+<td style="text-align:left;">
+Edwards, Linh
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+166
+</td>
+<td style="text-align:right;">
+64.3
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.99
+</td>
+<td style="text-align:left;">
+1st
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Economics and Finance
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+372924
+</td>
+<td style="text-align:left;">
+Cook, Macallyson
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+173
+</td>
+<td style="text-align:right;">
+71.6
+</td>
+<td style="text-align:left;">
+Protestant
+</td>
+<td style="text-align:right;">
+1.41
+</td>
+<td style="text-align:left;">
+3rd
+</td>
+<td style="text-align:left;">
+Biology
+</td>
+<td style="text-align:left;">
+Political Science
+</td>
+<td style="text-align:left;">
+80
+</td>
+<td style="text-align:left;">
+79
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Εδώ, όπως βλέπει κι ο αναγνώστης, δεν μας δίνονται οι συχνότητες πχ
+των αγοριών ή των κοριτσιών. Έχουμε μια λίστα με φοιτητές κι από δίπλα
+τα προσωπικά, βιολογία και ακαδημαϊκά χαρακτηριστικά του καθενός.</p>
+<p>Ας υποθέσουμε, λοιπόν, ότι θέλουμε να εξετάσουμε αν το φύλο και η
+θρησκεία είναι ανεξάρτητες μεταβλητές. Δηλαδή η γνώση του θρησκεύματος
+ενός φοιτητή δίνει κάποιες πληροφορίες για το αν αυτός είναι αγόρι ή
+μήπως όχι; Ή η γνώση του φύλου του φοιτητή κάνει πιο πιθανό είναι αυτός
+π.χ. μουσουλμάνος;</p>
+<p>Γράφουμε:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">chisq.test</span>(students<span class="sc">$</span>gender, students<span class="sc">$</span>religion)</span></code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test
+## 
+## data:  students$gender and students$religion
+## X-squared = 6.3987, df = 4, p-value = 0.1713</code></pre>
+<p>Βρίσκουμε ότι η p-τιμή είναι 0.1713, δηλαδή μεγαλύτερη από το 0.05
+που διαλέγουμε συνήθως ως επίπεδο σημαντικότητας. Επομένως δεν μπορούμε
+να απορρίψουμε τη μηδενική υπόθεση.</p>
+<p>Βλέπουμε δηλαδή ότι η ανεξαρτησία των μεταβλητών «φύλο» και
+«θρησκεία» δεν μπορεί να απορριφθεί, αν θέλουμε να είμαστε αρκετά
+αυστηροί. Η p-τιμή που βρήκαμε δείχνει ότι τέτοια δείγματα σαν αυτό που
+διαχειριζόμαστε τώρα είναι κα΄τα 17.13% πιθανό να επιλεγούν στην
+περίπτωση που το φύλο και η θρησκεία ήταν ανεξάρτητα. Δηλαδή δεν μιλάμε
+για κάτι τόσο απίθανο να συμβεί, που να μας κάνει να παραδεχτούμε ότι
+κάτι άλλο πέραν της τύχης συμβαίνει.</p>
+<p>Συνολικά χρησιμοποιήσαμε τον παρακάτω κώδικα:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">chisq.test</span>(students<span class="sc">$</span>gender, students<span class="sc">$</span>religion)</span></code></pre></div>
+</div>
 
 
 
