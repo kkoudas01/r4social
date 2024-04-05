@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-04-05" />
 
 <title>Κανονική κατανομή</title>
 
@@ -49,6 +49,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -525,12 +626,80 @@ div.tocify {
 
 <h1 class="title toc-ignore">Κανονική κατανομή</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-03-25</h4>
+<h4 class="date">2024-04-05</h4>
 
 </div>
 
 
-
+<p><mark>Έστω ότι έχουμε έναν πληθυσμό και παίρνουμε από αυτόν μεγάλα
+δείγματα συγκεκριμένου μεγέθους (&gt;30) για να μετρήσουμε κάποια
+μεταβλητή. Οι μέσες τιμές αυτής της μεταβλητής από αυτά τα δείγματα
+ακολουθούν την <strong>κανονική κατανομή</strong>. Επίσης το άθροισμα
+των τιμών του κάθε δείγματος ακολουθεί την <strong>κανονική
+κατανομή</strong>.</mark></p>
+<p>Συγκεκριμένα, αν ξέρουμε την πληθυσμιακή μέση τιμή και την
+πληθυσμιακή τυπική απόκλιση τότε οι δειγματικές μέσες τιμές ακολουθούν
+μια πλήρως προσδιορισμένη κανονική κατανομή και τα αθροίσματα μιαν άλλη
+κανονική κατανομή.</p>
+<p>Αλλά ας το δούμε πιο συγκεκριμένα! Υποθέτουμε ότι έχουμε κάποιες
+μηλιές που παράγουν μήλα με μέσο βάρος 50 γραμμάρια και τυπική απόκλιση
+10 γραμμάρια. Παίρνουμε ένα δείγμα 400 μήλων και ψάχνουμε (α’) το μέσο
+βάρος των μήλων του δείγματος και (β’) το συνολικό βάρος των μήλων του
+δείγματος. Αυτά τα μεγέθη θ’ ακολουθούν τις κανονικές κατανομές <span
+class="math inline">\(\mathcal{N}(50,\frac{10}{\sqrt{400}})\)</span> και
+<span class="math inline">\(\mathcal{N}(50\cdot
+10,10\sqrt{400})\)</span> αντίστοιχα.</p>
+<p>Για να δούμε καλύτερα πώς συμπεριφέρονται τα μέσα βάρη από τα μήλα,
+θα πάρουμε 1000 καφάσια με 400 μήλα έκαστο. Οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) )</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  xilia_kafasia <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) </span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">hist</span>(xilia_kafasia)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="normalDist_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Αυτό σημαίνει ότι ως επί το πλείστον το μέσο βάρος θα είναι 50±0.5
+γραμμάρια, ενώ είναι εντελώς απίθανο να τύχουμε μέσο βάρος πάνω από 51
+γραμμάρια σε κάποιο καφάσι με 400 μήλα.</p>
+<p>Από την άλλη, για το συνολικό βάρος του καφασιού γράφουμε:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) )</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  xilia_kafasia <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">500</span>, <span class="at">sd =</span> <span class="dv">200</span>) </span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">hist</span>(xilia_kafasia)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="normalDist_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Αυτό σημαίνει ότι από τα 1000 καφάσια που εξετάσαμε, τα περισσότερα
+έχουν βάρος 500±50 γραμμάρια, ενώ είναι απίθανο να τύχουμε καφάσι με
+βάρος κάτω από 100 γραμμάρια.</p>
+<p>Πώς θα μπορούσαμε να βρούμε κάποιες πιθανότητες με περισσότερη
+ακρίβεια και χωρίς ιστογράμματα; Ας υποθέσουμε ότι θέλουμε να δούμε ποια
+είναι η πιθανότητα να τύχουμε καφάσι με μέσο βάρος μήλων 51 με 52
+γραμμάρια. Προς τούτο γράφουμε:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">52</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">51</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 0.02271846</code></pre>
+<p>Βρίσκουμε 0.02271846, δηλαδή είναι 2.27% πιθανό να τύχουμε καφάσι με
+τέτοιο μέσο βάρος.</p>
+<p>Από την άλλη, για να βρούμε την πιθανότητα ένα καφάσι να ζυγίζει
+50-150 γραμμάρια θα γράψουμε:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">150</span>, <span class="at">mean =</span> <span class="dv">500</span>, <span class="at">sd =</span> <span class="dv">200</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">500</span>, <span class="at">sd =</span> <span class="dv">200</span>)</span></code></pre></div>
+<pre><code>## [1] 0.02783468</code></pre>
+<p>και θα βρούμε 0.02783468, δηλαδή μπορούμε να είμαστε 2.78% σίγουροι
+ότι θα τύχουμε καφάσι με τέτοιο βάρος.</p>
+<p>Συνολικά ο κώδικας που γράψαμε είναι ο:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) )</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  xilia_kafasia <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) </span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="fu">hist</span>(xilia_kafasia)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>}</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>  xilia_kafasia <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">500</span>, <span class="at">sd =</span> <span class="dv">200</span>) </span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>  <span class="fu">hist</span>(xilia_kafasia)</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a>}</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">52</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">51</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">150</span>, <span class="at">mean =</span> <span class="dv">500</span>, <span class="at">sd =</span> <span class="dv">200</span>)<span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">50</span>, <span class="at">mean =</span> <span class="dv">500</span>, <span class="at">sd =</span> <span class="dv">200</span>)</span></code></pre></div>
 
 
 

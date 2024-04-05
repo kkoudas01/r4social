@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-03-25" />
+<meta name="date" content="2024-04-05" />
 
 <title>Ομοιόμορφη συνεχής κατανομή</title>
 
@@ -49,6 +49,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -525,12 +626,63 @@ div.tocify {
 
 <h1 class="title toc-ignore">Ομοιόμορφη συνεχής κατανομή</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-03-25</h4>
+<h4 class="date">2024-04-05</h4>
 
 </div>
 
 
-
+<p><mark>Διαλέγουμε στην τύχη έναν αριθμό ανάμεσα σε δύο άλλους. Οι
+αριθμοί αυτοί που διαλέγουμε έτσι ακολουθούν την <strong>ομοιόμορφη
+κατανομή</strong>.</mark></p>
+<p>Ας υποθέσουμε, για παράδειγμα, ότι η Τροχαία στήνει μπλόκο κάπου σε
+έναν δρόμο 900 μέτρων. Το μπλόκο μπορεί να είναι οπουδήποτε στον δρόμο
+αυτό, άρα η θέση του μπορεί να είναι σε οσαδήποτε μέτρα από 0 έως 900
+από την αρχή του δρόμου. Με άλλα λόγια, η θέση του είναι κάποια μέτρα
+στην τύχη στο διάστημα 0 έως 900 από την αρχή του δρόμου. Πόσο πιθανόν
+είναι, λοιπόν, η αστυνομία να βρίσκεται στη μία ή την άλλη θέση; Θα
+παρακολουθήσουμε τα μπλόκα αυτά για 1000 μέρες και θα επαναλάβουμε το
+πείραμα 4 φορές.</p>
+<p>Έτσι, γράφουμε:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) )</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  xilies_imeres <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>) </span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  <span class="fu">hist</span>(xilies_imeres)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="uniformCont_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Από αυτά τα ιστογράμματα βλέπουμε ότι δεν έχει εμφανή πιθανότητα
+παραπάνω να συναντήσει κανείς μπλόκο στα πρώτα 200 μέτρα, έναντι πχ στα
+επόμενα 200 μέτρα. Το ίδιο συχνά θα δει κανείς μπλόκο πχ στο κεντρικό
+διάστημα 400 με 500 μέτρα από την αρχή του δρόμου, και το ίδιο λίγο-πολύ
+συχνά θα δει κανείς μπλόκο σε κάποιο άλλο διάστημα πλάτους 100 μέτρων
+(για παράδειγμα στο 800-900).</p>
+<p>Πόσο όμως είναι η πιθανότητα να τύχουμε μπλόκο στο διάστημα 400-500;
+Γράφουμε:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">500</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)<span class="sc">-</span><span class="fu">punif</span>(<span class="dv">400</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1111111</code></pre>
+<p>Οπότε βρίσκουμε 0.1111111, δηλαδή είμαστε κατά 11.11% σίγουροι ότι θα
+τύχουμε μπλόκο στο διάστημα αυτό. Στο ίδιο αποτέλεσμα, φυσικά,
+καταλήγουμε αν πάρουμε οποιοδήποτε άλλο διάστημα πλάτους 100 μέτρων,
+όπως πχ το 137-237:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">237</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)<span class="sc">-</span><span class="fu">punif</span>(<span class="dv">137</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)</span></code></pre></div>
+<pre><code>## [1] 0.1111111</code></pre>
+<p>Από την άλλη, αν θέλαμε να ξέρουμε κάτι περισσότερο ακριβές, αν
+θέλαμε επί παραδείγματι το μπλόκο να είναι κάπου ανάμεσα στα 270-280
+μέτρα, τότε γράφουμε:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">280</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)<span class="sc">-</span><span class="fu">punif</span>(<span class="dv">270</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)</span></code></pre></div>
+<pre><code>## [1] 0.01111111</code></pre>
+<p>και βρίσκουμε 0.01111111, πράγμα που σημαίνει πολύ μικρότερη σιγουριά
+(1.11%) για το ότι θα βρίσκεται εκεί η αστυνομία.</p>
+<p>Όλος ο κώδικάς μας παρατίθεται πιο κάτω:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) )</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>  xilies_imeres <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">1000</span>, <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>) </span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>  <span class="fu">hist</span>(xilies_imeres)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>}</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">500</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)<span class="sc">-</span><span class="fu">punif</span>(<span class="dv">400</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">237</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)<span class="sc">-</span><span class="fu">punif</span>(<span class="dv">137</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="fu">punif</span>(<span class="dv">280</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)<span class="sc">-</span><span class="fu">punif</span>(<span class="dv">270</span>,  <span class="at">min =</span> <span class="dv">0</span>, <span class="at">max =</span> <span class="dv">900</span>)</span></code></pre></div>
 
 
 
