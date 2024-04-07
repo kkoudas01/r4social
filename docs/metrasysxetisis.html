@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-05" />
+<meta name="date" content="2024-04-07" />
 
 <title>Μέτρα ασυμμετρίας</title>
 
@@ -628,7 +628,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μέτρα ασυμμετρίας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-05</h4>
+<h4 class="date">2024-04-07</h4>
 
 </div>
 
@@ -145795,21 +145795,19 @@ Au
 <span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
 <span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
 <span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Loading required package: corrplot</code></pre>
-<pre><code>## corrplot 0.92 loaded</code></pre>
 <p>Κατόπιν κατασκευάζουμε τη συνάρτηση
 <code>pinakas_sysxetisis()</code>:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>pinakas_sysxetisis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">methodos =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">morfi =</span> <span class="st">&quot;color&quot;</span>) {</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>  dedomenaNA <span class="ot">&lt;-</span> dedomena <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.na</span>(.)))</span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">cor</span>(dedomenaNA, <span class="at">method =</span> methodos)</span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomenaCor)</span>
-<span id="cb30-5"><a href="#cb30-5" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaCor, <span class="at">method=</span>morfi, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
-<span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>pinakas_sysxetisis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">methodos =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">morfi =</span> <span class="st">&quot;color&quot;</span>) {</span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>  dedomenaNA <span class="ot">&lt;-</span> dedomena <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.na</span>(.)))</span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">cor</span>(dedomenaNA, <span class="at">method =</span> methodos)</span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomenaCor)</span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaCor, <span class="at">method=</span>morfi, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Εφόσον εμείς θέλουμε να συσχετίσουμε τις παραβάσεις ΚΕΚ (ICAO), τις
 παραβιάσεις ΕΕΧ, τους οπλισμένους σχηματισμούς, τις εμπλοκές, τις
 υπερπτήσεις εθνικού εδάφους και το πλήθος των αεροσκαφών, θα
 συσχετίσουμε τις στήλες 3 έως 8 του πίνακά μας. Οπότε γράφουμε:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>])</span></code></pre></div>
 <p><img src="metrasysxetisis_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>Οπότε έχουμε τον πίνακα που δίνει τον συντελεστή γραμμικής συσχέτισης
 Pearson για κάθε πιθανό συνδυασμό. Π.χ. το σύνολο των αεροσκαφών και οι
@@ -145826,7 +145824,7 @@ Pearson για κάθε πιθανό συνδυασμό. Π.χ. το σύνολ�
 <p>Αν ενδιαφερόμαστε για άλλου είδους συσχέτιση, π.χ. για τον συντελεστή
 μονοτονικής συσχέτισης Kendall, τότε μπορούμε απλά να το επισημάνουμε
 γράφοντας:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>)</span></code></pre></div>
 <p><img src="metrasysxetisis_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>Έτσι προκύπτει ένας παρόμοιος πίνακας με πριν, με τη διαφορά ότι
 περιέχει τους συντελεστές Kendall.</p>
@@ -145834,29 +145832,29 @@ Pearson για κάθε πιθανό συνδυασμό. Π.χ. το σύνολ�
 πίνακα. Γράφοντας μία από τις επιλογές circle, square, ellipse, number,
 shade, color και pie, έχουμε μια ποικιλία παρουσιάσεων. Επί
 παραδείγματι, με την εντολή:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>, <span class="st">&quot;circle&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>, <span class="st">&quot;circle&quot;</span>)</span></code></pre></div>
 <p><img src="metrasysxetisis_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>οι συσχετίσεις απεικονίζονται, πέραν από το χρώμα, και από το μέγεθος
 κάποιων κύκλων.</p>
 <p>Το σύνολο του κώδικα που γράψαμε είναι το παρακάτω.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(dplyr)){</span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a>    <span class="fu">library</span>(dplyr)</span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a>}</span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(corrplot)){</span>
-<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
-<span id="cb34-8"><a href="#cb34-8" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
-<span id="cb34-9"><a href="#cb34-9" tabindex="-1"></a>}</span>
-<span id="cb34-10"><a href="#cb34-10" tabindex="-1"></a>pinakas_sysxetisis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">methodos =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">morfi =</span> <span class="st">&quot;color&quot;</span>) {</span>
-<span id="cb34-11"><a href="#cb34-11" tabindex="-1"></a>  dedomenaNA <span class="ot">&lt;-</span> dedomena <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.na</span>(.)))</span>
-<span id="cb34-12"><a href="#cb34-12" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">cor</span>(dedomenaNA, <span class="at">method =</span> methodos)</span>
-<span id="cb34-13"><a href="#cb34-13" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomenaCor)</span>
-<span id="cb34-14"><a href="#cb34-14" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaCor, <span class="at">method=</span>morfi, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
-<span id="cb34-15"><a href="#cb34-15" tabindex="-1"></a>}</span>
-<span id="cb34-16"><a href="#cb34-16" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>])</span>
-<span id="cb34-17"><a href="#cb34-17" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>)</span>
-<span id="cb34-18"><a href="#cb34-18" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>, <span class="st">&quot;circle&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(dplyr)){</span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a>    <span class="fu">library</span>(dplyr)</span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a>}</span>
+<span id="cb32-6"><a href="#cb32-6" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(corrplot)){</span>
+<span id="cb32-7"><a href="#cb32-7" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
+<span id="cb32-9"><a href="#cb32-9" tabindex="-1"></a>}</span>
+<span id="cb32-10"><a href="#cb32-10" tabindex="-1"></a>pinakas_sysxetisis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">methodos =</span> <span class="st">&quot;pearson&quot;</span>, <span class="at">morfi =</span> <span class="st">&quot;color&quot;</span>) {</span>
+<span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a>  dedomenaNA <span class="ot">&lt;-</span> dedomena <span class="sc">%&gt;%</span> <span class="fu">select_if</span>(<span class="sc">~</span> <span class="sc">!</span><span class="fu">any</span>(<span class="fu">is.na</span>(.)))</span>
+<span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">cor</span>(dedomenaNA, <span class="at">method =</span> methodos)</span>
+<span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a>  dedomenaCor <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomenaCor)</span>
+<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaCor, <span class="at">method=</span>morfi, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
+<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a>}</span>
+<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>])</span>
+<span id="cb32-17"><a href="#cb32-17" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>)</span>
+<span id="cb32-18"><a href="#cb32-18" tabindex="-1"></a><span class="fu">pinakas_sysxetisis</span>(enaerParab[,<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>], <span class="st">&quot;kendall&quot;</span>, <span class="st">&quot;circle&quot;</span>)</span></code></pre></div>
 </div>
 
 
