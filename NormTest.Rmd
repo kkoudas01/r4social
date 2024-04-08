@@ -58,7 +58,7 @@ ad.test(students$weight)
 
 
 
-# Γραφικός έλεγχος
+# Γραφικός έλεγχος {.tabset .tabset-fade .tabset-pills}
 
 ## Καμπύλη κανονικής κατανομής πάνω από ιστόγραμμα
 

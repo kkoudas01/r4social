@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-07" />
+<meta name="date" content="2024-04-08" />
 
 <title>Γραφικός προσδιορισμός κατανομής</title>
 
@@ -51,6 +51,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -527,7 +628,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Γραφικός προσδιορισμός κατανομής</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-07</h4>
+<h4 class="date">2024-04-08</h4>
 
 </div>
 
@@ -538,6 +639,9 @@ Frey</h1>
 <p>Εδώ θα ασχοληθούμε με τις διαμέτρους των δέντρων και τις θέσεις
 στάθμευσης στην περιοχή Camden του Λονδίνου. Τα σχετικά δεδομένα έχουν
 αποθηκευτεί στα αρχεία Trees_In_Camden.csv και Parking_Bays.csv.</p>
+<ul>
+<li>Trees_In_Camden.csv</li>
+</ul>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -11251,6 +11355,9 @@ class="uri">http://opendatacommunities.org/id/london-borough-council/camden</a>
 </tbody>
 </table>
 </div>
+<ul>
+<li>Parking_Bays.csv</li>
+</ul>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:400px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -19947,11 +20054,75 @@ class="uri">http://opendatacommunities.org/id/london-borough-council/camden</a>
 ήταν το σχήμα του. Πιο συγκεκριμένα ήταν η ασυμμετρία και η κυρτότητά
 του.</p>
 <p>Έτσι λοιπόν, θα λάβουμε υπ’ όψιν την <a
-href="asymmetria.html">ασυμμετρία</a> και την κυρτότητα στα δύο αυτά
+href="asymmetria.html">ασυμμετρία</a> και την <a
+href="NormTest.html#2_Γραφικός_έλεγχος">κυρτότητα</a> στα δύο αυτά
 δεδομένα και θα τις συγκρίνουμε με τις ασυμμετρίες και τις κυρτότητες
 κάποιων γνωστών κατανομών.</p>
-<p>Αρχικά συλλέγουμε τις διαμέτρους των δέντρων και ξεφορτωνόμαστε τα NA
-γράφοντας:</p>
+<p>Αρχικά συλλέγουμε τις διαμέτρους των δέντρων και ξεφορτωνόμαστε τα
+<code>NA</code> γράφοντας:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>diametros <span class="ot">&lt;-</span> Trees_In_Camden<span class="sc">$</span>Diameter.In.Centimetres.At.Breast.Height</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>diametrosNA <span class="ot">&lt;-</span> diametros[<span class="sc">!</span><span class="fu">is.na</span>(diametros)]</span></code></pre></div>
+<p>Το ίδιο κάνουμε και με τις θέσεις στάθμευσης:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>thesis <span class="ot">&lt;-</span> Parking_Bays<span class="sc">$</span>Parking.Spaces</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>thesisNA <span class="ot">&lt;-</span> thesis[<span class="sc">!</span><span class="fu">is.na</span>(thesis)]</span></code></pre></div>
+<p>Ακολούθως εγκαθιστούμε και θέτουμε σε χρήση το πακέτο
+<code>fitdistrplus</code>, ώστε να φτιάξουμε το γράφημα Cullen και Frey,
+το οποίο πρακτικά συγκρίνει τις ασυμμετρίες και τις κυρτότητες των
+δεδομένων μας με κάποιες βασικές κατανομές:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(fitdistrplus)){</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;fitdistrplus&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>    <span class="fu">library</span>(fitdistrplus)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Έτσι γράφουμε:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">descdist</span>(diametrosNA, <span class="at">discrete =</span> <span class="cn">FALSE</span>, <span class="at">boot =</span> <span class="dv">200</span>)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre><code>## summary statistics
+## ------
+## min:  0   max:  347 
+## median:  25 
+## mean:  31.88197 
+## estimated sd:  26.48466 
+## estimated skewness:  1.50607 
+## estimated kurtosis:  7.11373</code></pre>
+<p>Όπου:</p>
+<ul>
+<li><p>το <code>discrete = FALSE</code> μπήκε επειδή η διάμετρος είναι
+συνεχής μεταβλητή, όχι διακριτή, και</p></li>
+<li><p>το <code>boot = 200</code> έδωσε εντολή να γίνουν 200 <a
+href="bootstrapMethod.html">επαναλαμβανόμενες δειγματοληψίες</a> και
+επανυπολογισμοί ασυμμετριών και κυρτοτήτων ώστε να φανεί αν υπάρχει
+κάποια τάση προς κάποια κατανομή.</p></li>
+</ul>
+<p>Ο μπλε δίσκος δείχνει πού βρίσκεται το δείγμα μας, ενώ τα πορτοκαλί
+κυκλάκια δείχνουν πού βρίσκονται οι επαναλαμβανόμενες μετρήσεις που
+δώσαμε εντολή να γίνουν με το boot = 200. Βλέπουμε ότι από άποψη
+ασυμμετρίας και κυρτότητας δεν συγκαταλέγεται σε κάποια από τις γνωστές
+μας. Υπάρχει μια υπόνοια συσχέτισης με εκθετική κατανομή διότι το δείγμα
+φαίνεται να έχει σχεδόν ίδια κυρτότητα με την αντίστοιχη εκθετική, ενώ
+τα bootstrap δείγματα φαίνονται να έχουν κατά το ήμισυ και μια τάση να
+εξισώσουν και την ασυμμετρία με την εκθετική. Αλλά ως εκεί, τίποτα
+παραπάνω. Περισσότερο φαίνεται να είναι λογαριθμοκανονική με έντονη
+σχέση με κατανομή-γάμμα για κάποιες κατάλληλες παραμέτρους των κατανομών
+αυτών.</p>
+<p>Δεν θα εμβαθύνουμε παραπάνω, αλλά θα πάμε να δούμε τι είδους κατανομή
+ακολουθεί το δείγμα με τις θέσεις στάθμευσης. Γράφουμε λοιπόν:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">descdist</span>(thesisNA, <span class="at">discrete =</span> <span class="cn">TRUE</span>, <span class="at">boot =</span> <span class="dv">200</span>)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre><code>## summary statistics
+## ------
+## min:  1   max:  60 
+## median:  2 
+## mean:  4.337514 
+## estimated sd:  5.230646 
+## estimated skewness:  3.174424 
+## estimated kurtosis:  17.35687</code></pre>
+<p>Φυσικά, αυτή τη φορά βάλαμε <code>discrete = TRUE</code>, αφού οι
+θέσεις στάθμευσης είναι διακριτή κατανομή.</p>
+<p>Και πάλι φαίνεται να επαληθεύεται αυτό που ξέραμε και με τους
+στατιστικούς ελέγχους, ότι δεν είναι κάποια από τις κατανομές που
+δοκιμάσαμε. Φαίνεται όμως να είναι κάποιο είδος αρνητικής διωνυμικής.
+Όχι αυτή που δοκιμάσαμε μεις, αλλά ίσως κάποια άλλη με άλλες
+παραμέτρους.</p>
 </div>
 <div id="γράφημα-q-q" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Γράφημα Q-Q</h1>
@@ -19959,11 +20130,425 @@ href="asymmetria.html">ασυμμετρία</a> και την κυρτότητα
 number="2.1">
 <h2><span class="header-section-number">2.1</span> Για σύγκριση με
 γνωστή κατανομή</h2>
+<p>Το γράφημα Q-Q χρησιμεύει για να εξετάζουμε αν μια κατανομή ακολουθεί
+μια συγκεκριμένη κατανομή. Το εξετάσαμε βαθύτερα ως προς την κανονική
+κατανομή <a href="NormTest.html#2_Γραφικός_έλεγχος">αλλού</a>, εδώ θα
+αρκεστούμε στην παρουσίαση της συνάρτησης που το δημιουργεί και σε
+κάποιες άλλες βασικές επισημάνσεις.</p>
+<p>Καταρχάς, όμως, πρέπει να εγκαταστήσουμε το πακέτο
+<code>car</code>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(car)){</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>    <span class="fu">library</span>(car)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Θα χρησιμοποιήσουμε τη συνάρτηση
+<code>qqPlot(⚗️⚗️⚗️, dist = "📖📖📖")</code>, όπου:</p>
+<ul>
+<li><p>στη θέση του <code>⚗️⚗️⚗️</code> θα βάλουμε τη λίστα με τα
+δεδομένα μας και</p></li>
+<li><p>στη θέση του <code>📖📖📖</code> θα βάλουμε το όνομα της
+θεωρητικής κατανομής που εξετάζουμε και ίσως κάποιες παραμέτρους που
+χρειάζεται να εξειδικεύσουμε.</p></li>
+</ul>
+<p>Έτσι, για να δούμε αν οι διάμετροι των δέντρων ακολουθούν την
+ομοιόμορφη κατανομή γράφουμε:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">qqPlot</span>(diametrosNA, <span class="at">dist =</span> <span class="st">&quot;unif&quot;</span>)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre><code>## [1] 16909 14410</code></pre>
+<p>Εξάγεται, λοιπόν, το παραπάνω γράφημα. Για να πούμε ότι ακολουθεί την
+κατανομή που ελέγχουμε, θα πρέπει το γράφημα Q-Q να είναι ευθεία γραμμή,
+κάτι που απέχει παρασάγγας από το να συμβαίνει εδώ. Άρα και πάλι
+βλέπουμε ότι δεν ακολουθεί την ομοιόμορφη κατανομή.</p>
+<p>Για την εκθετική κατανομή θα γράψουμε:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">qqPlot</span>(diametrosNA, <span class="at">dist =</span> <span class="st">&quot;exp&quot;</span>)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre><code>## [1] 16909 14410</code></pre>
+<p>Και βλέπουμε και πάλι ότι το γράφημα Q-Q δεν είναι ευθεία.</p>
+<p>Στο σημείο αυτό θα πρέπει να πούμε ότι δεν μας απασχολεί να είναι
+ακριβώς ευθεία γραμμή. Μάς αρκεί το γράφημα Q-Q να βρίσκεται εντός της
+μπλε περιοχής γύρω από την μπλε ευθεία για να δεχτούμε ότι τα δεδομένα
+μας ακολουθούν την κατανομή που εξετάζουμε.</p>
+<p>Πάμε τώρα να εξετάσουμε τις θέσεις πάρκινγκ. Αρχικά θα δούμε αν αυτές
+ακολουθούν την ομοιόμορφη κατανομή, οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;unif&quot;</span>)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre><code>## [1] 6131 7435</code></pre>
+<p>Το γράφημα Q-Q δείχνει ότι ούτε οι θέσεις πάρκινγκ ακολουθούν την
+ομοιόμορφη κατανομή, αφού αυτό δεν είναι ευθεία γραμμή.</p>
+<p>Ακολούθως θα εξετάσουμε αν ακολουθεί την διωνυμική κατανομή
+γράφοντας:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;binom&quot;</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre><code>## [1] 6131 7435</code></pre>
+<p>Αυτή τη φορά ο κώδικας απαιτούσε να εξειδικεύσουμε την περίπτωση της
+διωνυμικής κατανομής γράφοντας <code>size = 10</code> και
+<code>prob = 1/6</code>. Βρήκαμε ότι ούτε με αυτήν την κατανομή
+ταιριάζουν τα δεδομένα μας. Φυσικά, θα μπορούσαμε να δοκιμάσουμε άλλες
+τιμές μήπως ταιριάζει καλύτερα με κάποιαν άλλη διωνυμική κατανομή, αλλά
+το μέγεθος της απόκλισης από την ευθεία γραμμή μάς αποθαρρύνει για κάτι
+τέτοιο.</p>
+<p>Δεν θα κουράσουμε τον αναγνώστη με πολυλογίες. Την γεωμετρική
+κατανομή, την αρνητική διωνυμική κατανομή και την κατανομή Poisson θα
+τις παρουσιάσουμε όλες μαζί, αφού μοιράσουμε την εικόνα σε 6
+περιοχές.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;unif&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] 6131 7435</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;binom&quot;</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## [1] 6131 7435</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;geom&quot;</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span></code></pre></div>
+<pre><code>## [1] 6131 7435</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;nbinom&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="dv">18</span><span class="sc">/</span><span class="dv">37</span>)</span></code></pre></div>
+<pre><code>## [1] 6131 7435</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;pois&quot;</span>, <span class="at">lambda =</span> <span class="dv">8</span>)</span></code></pre></div>
+<pre><code>## [1] 6131 7435</code></pre>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>Επειδή η προαναφερθείσα συνάρτηση <code>qqPlot()</code> του πακέτου
+<code>car</code> μπορεί να παρουσιάσει διάφορα προβλήματα λόγω ελλιπούς
+ενημέρωσης του πακέτου, αποφασίσαμε να φτιάξουμε και μία άλλη, την
+<code>qqPlot_epipleon_katanomes(⚗️⚗️⚗️, 📖📖📖)</code>, όπου, όπως και
+πριν:</p>
+<ul>
+<li><p>στη θέση του <code>⚗️⚗️⚗️</code> θα βάλουμε τη λίστα με τα
+δεδομένα μας και</p></li>
+<li><p>στη θέση του <code>📖📖📖</code> θα βάλουμε το όνομα της
+θεωρητικής κατανομής που εξετάζουμε και ίσως κάποιες παραμέτρους που
+χρειάζεται να εξειδικεύσουμε.</p></li>
+</ul>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>qqPlot_epipleon_katanomes <span class="ot">&lt;-</span> <span class="cf">function</span>(data, distribution, <span class="at">params =</span> <span class="cn">NULL</span>, <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">n_points =</span> <span class="dv">100</span>) {</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>  sorted_data <span class="ot">&lt;-</span> <span class="fu">sort</span>(data)</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qunif</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>))  <span class="co"># Default to uniform quantiles</span></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>   </span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>  <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;exponential&quot;</span>) {</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">mean</span>(data)</span>
+<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a>    }</span>
+<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qexp</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">rate =</span> params)</span>
+<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;normal&quot;</span>) {</span>
+<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(data), <span class="fu">sd</span>(data))</span>
+<span id="cb27-14"><a href="#cb27-14" tabindex="-1"></a>    }</span>
+<span id="cb27-15"><a href="#cb27-15" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">mean =</span> params[<span class="dv">1</span>], <span class="at">sd =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-16"><a href="#cb27-16" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;uniform&quot;</span>) {</span>
+<span id="cb27-17"><a href="#cb27-17" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-18"><a href="#cb27-18" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(data), <span class="fu">max</span>(data))</span>
+<span id="cb27-19"><a href="#cb27-19" tabindex="-1"></a>    }</span>
+<span id="cb27-20"><a href="#cb27-20" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qunif</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">min =</span> params[<span class="dv">1</span>], <span class="at">max =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-21"><a href="#cb27-21" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;binomial&quot;</span>) {</span>
+<span id="cb27-22"><a href="#cb27-22" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-23"><a href="#cb27-23" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">n =</span> <span class="fu">length</span>(data), <span class="at">p =</span> <span class="fl">0.5</span>)</span>
+<span id="cb27-24"><a href="#cb27-24" tabindex="-1"></a>    }</span>
+<span id="cb27-25"><a href="#cb27-25" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qbinom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">size =</span> params[<span class="dv">1</span>], <span class="at">prob =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-26"><a href="#cb27-26" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;geometric&quot;</span>) {</span>
+<span id="cb27-27"><a href="#cb27-27" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-28"><a href="#cb27-28" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb27-29"><a href="#cb27-29" tabindex="-1"></a>    }</span>
+<span id="cb27-30"><a href="#cb27-30" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qgeom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">prob =</span> params)</span>
+<span id="cb27-31"><a href="#cb27-31" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;hypergeometric&quot;</span>) {</span>
+<span id="cb27-32"><a href="#cb27-32" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-33"><a href="#cb27-33" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">m =</span> n<span class="sc">/</span><span class="dv">2</span>, <span class="at">n =</span> n<span class="sc">/</span><span class="dv">2</span>, <span class="at">k =</span> n<span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb27-34"><a href="#cb27-34" tabindex="-1"></a>    }</span>
+<span id="cb27-35"><a href="#cb27-35" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qhyper</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">m =</span> params[<span class="dv">1</span>], <span class="at">n =</span> params[<span class="dv">2</span>], <span class="at">k =</span> params[<span class="dv">3</span>])</span>
+<span id="cb27-36"><a href="#cb27-36" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;negative_binomial&quot;</span>) {</span>
+<span id="cb27-37"><a href="#cb27-37" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-38"><a href="#cb27-38" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb27-39"><a href="#cb27-39" tabindex="-1"></a>    }</span>
+<span id="cb27-40"><a href="#cb27-40" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qnbinom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">size =</span> params[<span class="dv">1</span>], <span class="at">prob =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-41"><a href="#cb27-41" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;poisson&quot;</span>) {</span>
+<span id="cb27-42"><a href="#cb27-42" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-43"><a href="#cb27-43" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb27-44"><a href="#cb27-44" tabindex="-1"></a>    }</span>
+<span id="cb27-45"><a href="#cb27-45" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qpois</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">lambda =</span> params)</span>
+<span id="cb27-46"><a href="#cb27-46" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;logarithmic&quot;</span>) {</span>
+<span id="cb27-47"><a href="#cb27-47" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-48"><a href="#cb27-48" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb27-49"><a href="#cb27-49" tabindex="-1"></a>    }</span>
+<span id="cb27-50"><a href="#cb27-50" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qlogis</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">location =</span> params)</span>
+<span id="cb27-51"><a href="#cb27-51" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;gamma&quot;</span>) {</span>
+<span id="cb27-52"><a href="#cb27-52" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-53"><a href="#cb27-53" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape =</span> <span class="dv">2</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span>
+<span id="cb27-54"><a href="#cb27-54" tabindex="-1"></a>    }</span>
+<span id="cb27-55"><a href="#cb27-55" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qgamma</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape =</span> params[<span class="dv">1</span>], <span class="at">rate =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-56"><a href="#cb27-56" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;beta&quot;</span>) {</span>
+<span id="cb27-57"><a href="#cb27-57" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-58"><a href="#cb27-58" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape1 =</span> <span class="dv">2</span>, <span class="at">shape2 =</span> <span class="dv">5</span>)</span>
+<span id="cb27-59"><a href="#cb27-59" tabindex="-1"></a>    }</span>
+<span id="cb27-60"><a href="#cb27-60" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qbeta</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape1 =</span> params[<span class="dv">1</span>], <span class="at">shape2 =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-61"><a href="#cb27-61" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;chisq&quot;</span>) {</span>
+<span id="cb27-62"><a href="#cb27-62" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-63"><a href="#cb27-63" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb27-64"><a href="#cb27-64" tabindex="-1"></a>    }</span>
+<span id="cb27-65"><a href="#cb27-65" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qchisq</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">df =</span> params)</span>
+<span id="cb27-66"><a href="#cb27-66" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;t&quot;</span>) {</span>
+<span id="cb27-67"><a href="#cb27-67" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-68"><a href="#cb27-68" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb27-69"><a href="#cb27-69" tabindex="-1"></a>    }</span>
+<span id="cb27-70"><a href="#cb27-70" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">df =</span> params)</span>
+<span id="cb27-71"><a href="#cb27-71" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;cauchy&quot;</span>) {</span>
+<span id="cb27-72"><a href="#cb27-72" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-73"><a href="#cb27-73" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>)</span>
+<span id="cb27-74"><a href="#cb27-74" tabindex="-1"></a>    }</span>
+<span id="cb27-75"><a href="#cb27-75" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qcauchy</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">location =</span> params[<span class="dv">1</span>], <span class="at">scale =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-76"><a href="#cb27-76" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;weibull&quot;</span>) {</span>
+<span id="cb27-77"><a href="#cb27-77" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-78"><a href="#cb27-78" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> <span class="dv">1</span>)</span>
+<span id="cb27-79"><a href="#cb27-79" tabindex="-1"></a>    }</span>
+<span id="cb27-80"><a href="#cb27-80" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qweibull</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape =</span> params[<span class="dv">1</span>], <span class="at">scale =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-81"><a href="#cb27-81" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;lnorm&quot;</span>) {</span>
+<span id="cb27-82"><a href="#cb27-82" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-83"><a href="#cb27-83" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">meanlog =</span> <span class="dv">0</span>, <span class="at">sdlog =</span> <span class="dv">1</span>)</span>
+<span id="cb27-84"><a href="#cb27-84" tabindex="-1"></a>    }</span>
+<span id="cb27-85"><a href="#cb27-85" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qlnorm</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">meanlog =</span> params[<span class="dv">1</span>], <span class="at">sdlog =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-86"><a href="#cb27-86" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;nbinom&quot;</span>) {</span>
+<span id="cb27-87"><a href="#cb27-87" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-88"><a href="#cb27-88" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb27-89"><a href="#cb27-89" tabindex="-1"></a>    }</span>
+<span id="cb27-90"><a href="#cb27-90" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qnbinom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">size =</span> params[<span class="dv">1</span>], <span class="at">prob =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-91"><a href="#cb27-91" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;poisgamma&quot;</span>) {</span>
+<span id="cb27-92"><a href="#cb27-92" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-93"><a href="#cb27-93" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">lambda =</span> <span class="dv">2</span>, <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">1</span>)</span>
+<span id="cb27-94"><a href="#cb27-94" tabindex="-1"></a>    }</span>
+<span id="cb27-95"><a href="#cb27-95" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qpoisgamma</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">lambda =</span> params[<span class="dv">1</span>], <span class="at">p =</span> params[<span class="dv">2</span>], <span class="at">a =</span> params[<span class="dv">3</span>], <span class="at">b =</span> params[<span class="dv">4</span>])</span>
+<span id="cb27-96"><a href="#cb27-96" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;gammaalt&quot;</span>) {</span>
+<span id="cb27-97"><a href="#cb27-97" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb27-98"><a href="#cb27-98" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> <span class="dv">1</span>)</span>
+<span id="cb27-99"><a href="#cb27-99" tabindex="-1"></a>    }</span>
+<span id="cb27-100"><a href="#cb27-100" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qgammaalt</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape =</span> params[<span class="dv">1</span>], <span class="at">scale =</span> params[<span class="dv">2</span>])</span>
+<span id="cb27-101"><a href="#cb27-101" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb27-102"><a href="#cb27-102" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;Unsupported distribution&quot;</span>)</span>
+<span id="cb27-103"><a href="#cb27-103" tabindex="-1"></a>  }</span>
+<span id="cb27-104"><a href="#cb27-104" tabindex="-1"></a>   </span>
+<span id="cb27-105"><a href="#cb27-105" tabindex="-1"></a>  t1_index <span class="ot">&lt;-</span> <span class="fu">round</span>(quantiles[<span class="dv">1</span>] <span class="sc">*</span> n)</span>
+<span id="cb27-106"><a href="#cb27-106" tabindex="-1"></a>  t3_index <span class="ot">&lt;-</span> <span class="fu">round</span>(quantiles[<span class="dv">2</span>] <span class="sc">*</span> n)</span>
+<span id="cb27-107"><a href="#cb27-107" tabindex="-1"></a>  t1 <span class="ot">&lt;-</span> theoretical_quantiles[t1_index]</span>
+<span id="cb27-108"><a href="#cb27-108" tabindex="-1"></a>  r1 <span class="ot">&lt;-</span> sorted_data[t1_index]</span>
+<span id="cb27-109"><a href="#cb27-109" tabindex="-1"></a>  t3 <span class="ot">&lt;-</span> theoretical_quantiles[t3_index]</span>
+<span id="cb27-110"><a href="#cb27-110" tabindex="-1"></a>  r3 <span class="ot">&lt;-</span> sorted_data[t3_index]</span>
+<span id="cb27-111"><a href="#cb27-111" tabindex="-1"></a>  l <span class="ot">&lt;-</span> (r3<span class="sc">-</span>r1)<span class="sc">/</span>(t3<span class="sc">-</span>t1)</span>
+<span id="cb27-112"><a href="#cb27-112" tabindex="-1"></a>  y0 <span class="ot">&lt;-</span> r1<span class="sc">-</span>l<span class="sc">*</span>t1</span>
+<span id="cb27-113"><a href="#cb27-113" tabindex="-1"></a>   </span>
+<span id="cb27-114"><a href="#cb27-114" tabindex="-1"></a>  <span class="fu">plot</span>(theoretical_quantiles, sorted_data, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb27-115"><a href="#cb27-115" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&#39;Theoretical Quantiles&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Sample Quantiles&#39;</span>,</span>
+<span id="cb27-116"><a href="#cb27-116" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Q-Q Plot for&quot;</span>, distribution, <span class="st">&quot;Distribution&quot;</span>),</span>
+<span id="cb27-117"><a href="#cb27-117" tabindex="-1"></a>       <span class="at">sub =</span> <span class="fu">paste</span>(<span class="st">&quot;Sample Size:&quot;</span>, n, <span class="st">&quot;Quantiles:&quot;</span>, quantiles[<span class="dv">1</span>], <span class="st">&quot;and&quot;</span>, quantiles[<span class="dv">2</span>]))</span>
+<span id="cb27-118"><a href="#cb27-118" tabindex="-1"></a>   </span>
+<span id="cb27-119"><a href="#cb27-119" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> y0, <span class="at">b =</span> l, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb27-120"><a href="#cb27-120" tabindex="-1"></a> </span>
+<span id="cb27-121"><a href="#cb27-121" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;Sample Quantiles&#39;</span>, <span class="st">&#39;Theoretical Quantiles&#39;</span>),</span>
+<span id="cb27-122"><a href="#cb27-122" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>))</span>
+<span id="cb27-123"><a href="#cb27-123" tabindex="-1"></a>}</span></code></pre></div>
+<p>Έχουμε λοιπόν για την υπεργεωμετρική κατανομή:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">qqPlot_epipleon_katanomes</span>(thesisNA, <span class="at">distribution =</span> <span class="st">&quot;hypergeometric&quot;</span>)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Βλέπουμε ότι ούτε αυτή τη φορά προκύπτει να είναι ευθεία γραμμή το
+γράφημα Q-Q, άρα ούτε την υπεργεωμετρική κατανομή ακολουθούν οι θέσεις
+στάθμευσης, όπως άλλωστε αναμέναμε και από τα ιστογράμματα.</p>
+<p>Στο σημείο αυτό θα πρέπει να σημειωθεί ότι μπορεί να ταιριάζει κάποια
+άλλη υπεργεωμετρική κατανομή. Μη καθορίζοντας τις παραμέτρους, η
+συνάρτηση <code>qqPlot_epipleon_katanomes()</code> έβαλε αυτές που έχουν
+προκαθοριστεί. Μπορεί να θελήσουμε επί παραδείγματι να θέσουμε
+παραμέτρους <code>m = 120</code>, <code>n = 100</code> και
+<code>k = 70</code>. Τοιαύτη περιπτώσει γράφουμε:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">qqPlot_epipleon_katanomes</span>(thesisNA, <span class="at">distribution =</span> <span class="st">&quot;hypergeometric&quot;</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">m =</span> <span class="dv">120</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">k =</span> <span class="dv">70</span>))</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Οπότε βλέπουμε ότι και πάλι έχουμε απόκλιση και από αυτήν την
+περίπτωση υπεργεωμετρικής κατανομής.</p>
 </div>
 <div id="για-εξακρίβωση-ομοιότητας-κατανομών-δειγμάτων"
 class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Για εξακρίβωση
 ομοιότητας κατανομών δειγμάτων</h2>
+<p>Το γράφημα Q-Q είναι ένα πολύ χρήσιμο εργαλείο και πέραν από τη
+διαπίστωση, αν κάποια δεδομένα ακολουθούν την τάδε ή τη δείνα κατανομή.
+Με αυτό το γράφημα μπορούμε επίσης να εξετάσουμε αν δύο δεδομένα
+ακολουθούν την ίδια κατανομή ή όχι.</p>
+<p>Εδώ θα συγκρίνουμε τις διαμέτρους των δέντρων με τα ύψη τους. Οπότε
+γράφουμε αρχικά:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>ipsos <span class="ot">&lt;-</span> Trees_In_Camden<span class="sc">$</span>Height.In.Metres</span></code></pre></div>
+<p>ώστε να αντλήσουμε τα ύψη των δέντρων.</p>
+<p>Η συνάρτηση που θα χρησιμοποιήσουμε είναι η παρακάτω:</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>grafima_qq_sigkr <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena1, dedomena2) {</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>  <span class="fu">qqplot</span>(dedomena1, dedomena2)</span>
+<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a>   </span>
+<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a>  q1_1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena1, <span class="at">probs =</span> <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a>  q1_2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena2, <span class="at">probs =</span> <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb31-6"><a href="#cb31-6" tabindex="-1"></a>  q3_1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena1, <span class="at">probs =</span> <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb31-7"><a href="#cb31-7" tabindex="-1"></a>  q3_2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena2, <span class="at">probs =</span> <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb31-8"><a href="#cb31-8" tabindex="-1"></a>   </span>
+<span id="cb31-9"><a href="#cb31-9" tabindex="-1"></a>  synt_dieyth <span class="ot">&lt;-</span> (q3_2<span class="sc">-</span>q1_2) <span class="sc">/</span> (q3_1<span class="sc">-</span>q1_1)</span>
+<span id="cb31-10"><a href="#cb31-10" tabindex="-1"></a>  y0 <span class="ot">&lt;-</span> q1_2 <span class="sc">-</span> synt_dieyth <span class="sc">*</span> q1_1</span>
+<span id="cb31-11"><a href="#cb31-11" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> y0, <span class="at">b =</span> synt_dieyth)</span>
+<span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a>}</span></code></pre></div>
+<p>Έτσι, γράφουμε:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">grafima_qq_sigkr</span>(diametros,ipsos)</span></code></pre></div>
+<p><img src="GraphFindDist_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>κι έχουμε ότι το γράφημα Q-Q που σχηματίζεται αντιστοιχώντας τα
+ποσοστημόρια των διαμέσων στα ποσοστημόρια των υψών δεν είναι ευθεία
+γραμμή. Αυτό σημαίνει ότι οι δύο αυτές μεταβλητές δεν ακολουθούν την
+ίδια κατανομή.</p>
+<p>Όλος ο κώδικας που χρησιμοποιήσαμε είναι ο:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>diametros <span class="ot">&lt;-</span> Trees_In_Camden<span class="sc">$</span><span class="st">`</span><span class="at">Diameter In Centimetres At Breast Height</span><span class="st">`</span></span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>diametrosNA <span class="ot">&lt;-</span> diametros[<span class="sc">!</span><span class="fu">is.na</span>(diametros)]</span>
+<span id="cb33-3"><a href="#cb33-3" tabindex="-1"></a>thesis <span class="ot">&lt;-</span> Parking_Bays<span class="sc">$</span><span class="st">`</span><span class="at">Parking Spaces</span><span class="st">`</span></span>
+<span id="cb33-4"><a href="#cb33-4" tabindex="-1"></a>thesisNA <span class="ot">&lt;-</span> thesis[<span class="sc">!</span><span class="fu">is.na</span>(thesis)]</span>
+<span id="cb33-5"><a href="#cb33-5" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(fitdistrplus)){</span>
+<span id="cb33-6"><a href="#cb33-6" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;fitdistrplus&quot;</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" tabindex="-1"></a>    <span class="fu">library</span>(fitdistrplus)</span>
+<span id="cb33-8"><a href="#cb33-8" tabindex="-1"></a>}</span>
+<span id="cb33-9"><a href="#cb33-9" tabindex="-1"></a><span class="fu">descdist</span>(diametrosNA, <span class="at">discrete =</span> <span class="cn">FALSE</span>, <span class="at">boot =</span> <span class="dv">200</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" tabindex="-1"></a><span class="fu">descdist</span>(thesisNA, <span class="at">discrete =</span> <span class="cn">TRUE</span>, <span class="at">boot =</span> <span class="dv">200</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(car)){</span>
+<span id="cb33-12"><a href="#cb33-12" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;car&quot;</span>)</span>
+<span id="cb33-13"><a href="#cb33-13" tabindex="-1"></a>    <span class="fu">library</span>(car)</span>
+<span id="cb33-14"><a href="#cb33-14" tabindex="-1"></a>}</span>
+<span id="cb33-15"><a href="#cb33-15" tabindex="-1"></a><span class="fu">qqPlot</span>(diametrosNA, <span class="at">dist =</span> <span class="st">&quot;unif&quot;</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" tabindex="-1"></a><span class="fu">qqPlot</span>(diametrosNA, <span class="at">dist =</span> <span class="st">&quot;exp&quot;</span>)</span>
+<span id="cb33-17"><a href="#cb33-17" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</span>
+<span id="cb33-18"><a href="#cb33-18" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;unif&quot;</span>)</span>
+<span id="cb33-19"><a href="#cb33-19" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;binom&quot;</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span>
+<span id="cb33-20"><a href="#cb33-20" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;geom&quot;</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb33-21"><a href="#cb33-21" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;nbinom&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>, <span class="at">prob =</span> <span class="dv">18</span><span class="sc">/</span><span class="dv">37</span>)</span>
+<span id="cb33-22"><a href="#cb33-22" tabindex="-1"></a><span class="fu">qqPlot</span>(thesisNA, <span class="at">dist =</span> <span class="st">&quot;pois&quot;</span>, <span class="at">lambda =</span> <span class="dv">8</span>)</span>
+<span id="cb33-23"><a href="#cb33-23" tabindex="-1"></a>qqPlot_epipleon_katanomes <span class="ot">&lt;-</span> <span class="cf">function</span>(data, distribution, <span class="at">params =</span> <span class="cn">NULL</span>, <span class="at">quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.75</span>), <span class="at">n_points =</span> <span class="dv">100</span>) {</span>
+<span id="cb33-24"><a href="#cb33-24" tabindex="-1"></a>  sorted_data <span class="ot">&lt;-</span> <span class="fu">sort</span>(data)</span>
+<span id="cb33-25"><a href="#cb33-25" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(data)</span>
+<span id="cb33-26"><a href="#cb33-26" tabindex="-1"></a>  theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qunif</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>))  <span class="co"># Default to uniform quantiles</span></span>
+<span id="cb33-27"><a href="#cb33-27" tabindex="-1"></a>   </span>
+<span id="cb33-28"><a href="#cb33-28" tabindex="-1"></a>  <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;exponential&quot;</span>) {</span>
+<span id="cb33-29"><a href="#cb33-29" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-30"><a href="#cb33-30" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">mean</span>(data)</span>
+<span id="cb33-31"><a href="#cb33-31" tabindex="-1"></a>    }</span>
+<span id="cb33-32"><a href="#cb33-32" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qexp</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">rate =</span> params)</span>
+<span id="cb33-33"><a href="#cb33-33" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;normal&quot;</span>) {</span>
+<span id="cb33-34"><a href="#cb33-34" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-35"><a href="#cb33-35" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">mean</span>(data), <span class="fu">sd</span>(data))</span>
+<span id="cb33-36"><a href="#cb33-36" tabindex="-1"></a>    }</span>
+<span id="cb33-37"><a href="#cb33-37" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">mean =</span> params[<span class="dv">1</span>], <span class="at">sd =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-38"><a href="#cb33-38" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;uniform&quot;</span>) {</span>
+<span id="cb33-39"><a href="#cb33-39" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-40"><a href="#cb33-40" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">min</span>(data), <span class="fu">max</span>(data))</span>
+<span id="cb33-41"><a href="#cb33-41" tabindex="-1"></a>    }</span>
+<span id="cb33-42"><a href="#cb33-42" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qunif</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">min =</span> params[<span class="dv">1</span>], <span class="at">max =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-43"><a href="#cb33-43" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;binomial&quot;</span>) {</span>
+<span id="cb33-44"><a href="#cb33-44" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-45"><a href="#cb33-45" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">n =</span> <span class="fu">length</span>(data), <span class="at">p =</span> <span class="fl">0.5</span>)</span>
+<span id="cb33-46"><a href="#cb33-46" tabindex="-1"></a>    }</span>
+<span id="cb33-47"><a href="#cb33-47" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qbinom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">size =</span> params[<span class="dv">1</span>], <span class="at">prob =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-48"><a href="#cb33-48" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;geometric&quot;</span>) {</span>
+<span id="cb33-49"><a href="#cb33-49" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-50"><a href="#cb33-50" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb33-51"><a href="#cb33-51" tabindex="-1"></a>    }</span>
+<span id="cb33-52"><a href="#cb33-52" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qgeom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">prob =</span> params)</span>
+<span id="cb33-53"><a href="#cb33-53" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;hypergeometric&quot;</span>) {</span>
+<span id="cb33-54"><a href="#cb33-54" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-55"><a href="#cb33-55" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">m =</span> n<span class="sc">/</span><span class="dv">2</span>, <span class="at">n =</span> n<span class="sc">/</span><span class="dv">2</span>, <span class="at">k =</span> n<span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb33-56"><a href="#cb33-56" tabindex="-1"></a>    }</span>
+<span id="cb33-57"><a href="#cb33-57" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qhyper</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">m =</span> params[<span class="dv">1</span>], <span class="at">n =</span> params[<span class="dv">2</span>], <span class="at">k =</span> params[<span class="dv">3</span>])</span>
+<span id="cb33-58"><a href="#cb33-58" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;negative_binomial&quot;</span>) {</span>
+<span id="cb33-59"><a href="#cb33-59" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-60"><a href="#cb33-60" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb33-61"><a href="#cb33-61" tabindex="-1"></a>    }</span>
+<span id="cb33-62"><a href="#cb33-62" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qnbinom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">size =</span> params[<span class="dv">1</span>], <span class="at">prob =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-63"><a href="#cb33-63" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;poisson&quot;</span>) {</span>
+<span id="cb33-64"><a href="#cb33-64" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-65"><a href="#cb33-65" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb33-66"><a href="#cb33-66" tabindex="-1"></a>    }</span>
+<span id="cb33-67"><a href="#cb33-67" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qpois</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">lambda =</span> params)</span>
+<span id="cb33-68"><a href="#cb33-68" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;logarithmic&quot;</span>) {</span>
+<span id="cb33-69"><a href="#cb33-69" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-70"><a href="#cb33-70" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb33-71"><a href="#cb33-71" tabindex="-1"></a>    }</span>
+<span id="cb33-72"><a href="#cb33-72" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qlogis</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">location =</span> params)</span>
+<span id="cb33-73"><a href="#cb33-73" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;gamma&quot;</span>) {</span>
+<span id="cb33-74"><a href="#cb33-74" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-75"><a href="#cb33-75" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape =</span> <span class="dv">2</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span>
+<span id="cb33-76"><a href="#cb33-76" tabindex="-1"></a>    }</span>
+<span id="cb33-77"><a href="#cb33-77" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qgamma</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape =</span> params[<span class="dv">1</span>], <span class="at">rate =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-78"><a href="#cb33-78" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;beta&quot;</span>) {</span>
+<span id="cb33-79"><a href="#cb33-79" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-80"><a href="#cb33-80" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape1 =</span> <span class="dv">2</span>, <span class="at">shape2 =</span> <span class="dv">5</span>)</span>
+<span id="cb33-81"><a href="#cb33-81" tabindex="-1"></a>    }</span>
+<span id="cb33-82"><a href="#cb33-82" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qbeta</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape1 =</span> params[<span class="dv">1</span>], <span class="at">shape2 =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-83"><a href="#cb33-83" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;chisq&quot;</span>) {</span>
+<span id="cb33-84"><a href="#cb33-84" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-85"><a href="#cb33-85" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb33-86"><a href="#cb33-86" tabindex="-1"></a>    }</span>
+<span id="cb33-87"><a href="#cb33-87" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qchisq</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">df =</span> params)</span>
+<span id="cb33-88"><a href="#cb33-88" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;t&quot;</span>) {</span>
+<span id="cb33-89"><a href="#cb33-89" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-90"><a href="#cb33-90" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb33-91"><a href="#cb33-91" tabindex="-1"></a>    }</span>
+<span id="cb33-92"><a href="#cb33-92" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qt</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">df =</span> params)</span>
+<span id="cb33-93"><a href="#cb33-93" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;cauchy&quot;</span>) {</span>
+<span id="cb33-94"><a href="#cb33-94" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-95"><a href="#cb33-95" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">location =</span> <span class="dv">0</span>, <span class="at">scale =</span> <span class="dv">1</span>)</span>
+<span id="cb33-96"><a href="#cb33-96" tabindex="-1"></a>    }</span>
+<span id="cb33-97"><a href="#cb33-97" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qcauchy</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">location =</span> params[<span class="dv">1</span>], <span class="at">scale =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-98"><a href="#cb33-98" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;weibull&quot;</span>) {</span>
+<span id="cb33-99"><a href="#cb33-99" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-100"><a href="#cb33-100" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> <span class="dv">1</span>)</span>
+<span id="cb33-101"><a href="#cb33-101" tabindex="-1"></a>    }</span>
+<span id="cb33-102"><a href="#cb33-102" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qweibull</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape =</span> params[<span class="dv">1</span>], <span class="at">scale =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-103"><a href="#cb33-103" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;lnorm&quot;</span>) {</span>
+<span id="cb33-104"><a href="#cb33-104" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-105"><a href="#cb33-105" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">meanlog =</span> <span class="dv">0</span>, <span class="at">sdlog =</span> <span class="dv">1</span>)</span>
+<span id="cb33-106"><a href="#cb33-106" tabindex="-1"></a>    }</span>
+<span id="cb33-107"><a href="#cb33-107" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qlnorm</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">meanlog =</span> params[<span class="dv">1</span>], <span class="at">sdlog =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-108"><a href="#cb33-108" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;nbinom&quot;</span>) {</span>
+<span id="cb33-109"><a href="#cb33-109" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-110"><a href="#cb33-110" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">size =</span> <span class="dv">5</span>, <span class="at">prob =</span> <span class="fl">0.5</span>)</span>
+<span id="cb33-111"><a href="#cb33-111" tabindex="-1"></a>    }</span>
+<span id="cb33-112"><a href="#cb33-112" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qnbinom</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">size =</span> params[<span class="dv">1</span>], <span class="at">prob =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-113"><a href="#cb33-113" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;poisgamma&quot;</span>) {</span>
+<span id="cb33-114"><a href="#cb33-114" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-115"><a href="#cb33-115" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">lambda =</span> <span class="dv">2</span>, <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">a =</span> <span class="dv">1</span>, <span class="at">b =</span> <span class="dv">1</span>)</span>
+<span id="cb33-116"><a href="#cb33-116" tabindex="-1"></a>    }</span>
+<span id="cb33-117"><a href="#cb33-117" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qpoisgamma</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">lambda =</span> params[<span class="dv">1</span>], <span class="at">p =</span> params[<span class="dv">2</span>], <span class="at">a =</span> params[<span class="dv">3</span>], <span class="at">b =</span> params[<span class="dv">4</span>])</span>
+<span id="cb33-118"><a href="#cb33-118" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (distribution <span class="sc">==</span> <span class="st">&quot;gammaalt&quot;</span>) {</span>
+<span id="cb33-119"><a href="#cb33-119" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.null</span>(params)) {</span>
+<span id="cb33-120"><a href="#cb33-120" tabindex="-1"></a>      params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">shape =</span> <span class="dv">2</span>, <span class="at">scale =</span> <span class="dv">1</span>)</span>
+<span id="cb33-121"><a href="#cb33-121" tabindex="-1"></a>    }</span>
+<span id="cb33-122"><a href="#cb33-122" tabindex="-1"></a>    theoretical_quantiles <span class="ot">&lt;-</span> <span class="fu">qgammaalt</span>((<span class="dv">1</span><span class="sc">:</span>n) <span class="sc">/</span> (n <span class="sc">+</span> <span class="dv">1</span>), <span class="at">shape =</span> params[<span class="dv">1</span>], <span class="at">scale =</span> params[<span class="dv">2</span>])</span>
+<span id="cb33-123"><a href="#cb33-123" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb33-124"><a href="#cb33-124" tabindex="-1"></a>    <span class="fu">stop</span>(<span class="st">&quot;Unsupported distribution&quot;</span>)</span>
+<span id="cb33-125"><a href="#cb33-125" tabindex="-1"></a>  }</span>
+<span id="cb33-126"><a href="#cb33-126" tabindex="-1"></a>   </span>
+<span id="cb33-127"><a href="#cb33-127" tabindex="-1"></a>  t1_index <span class="ot">&lt;-</span> <span class="fu">round</span>(quantiles[<span class="dv">1</span>] <span class="sc">*</span> n)</span>
+<span id="cb33-128"><a href="#cb33-128" tabindex="-1"></a>  t3_index <span class="ot">&lt;-</span> <span class="fu">round</span>(quantiles[<span class="dv">2</span>] <span class="sc">*</span> n)</span>
+<span id="cb33-129"><a href="#cb33-129" tabindex="-1"></a>  t1 <span class="ot">&lt;-</span> theoretical_quantiles[t1_index]</span>
+<span id="cb33-130"><a href="#cb33-130" tabindex="-1"></a>  r1 <span class="ot">&lt;-</span> sorted_data[t1_index]</span>
+<span id="cb33-131"><a href="#cb33-131" tabindex="-1"></a>  t3 <span class="ot">&lt;-</span> theoretical_quantiles[t3_index]</span>
+<span id="cb33-132"><a href="#cb33-132" tabindex="-1"></a>  r3 <span class="ot">&lt;-</span> sorted_data[t3_index]</span>
+<span id="cb33-133"><a href="#cb33-133" tabindex="-1"></a>  l <span class="ot">&lt;-</span> (r3<span class="sc">-</span>r1)<span class="sc">/</span>(t3<span class="sc">-</span>t1)</span>
+<span id="cb33-134"><a href="#cb33-134" tabindex="-1"></a>  y0 <span class="ot">&lt;-</span> r1<span class="sc">-</span>l<span class="sc">*</span>t1</span>
+<span id="cb33-135"><a href="#cb33-135" tabindex="-1"></a>   </span>
+<span id="cb33-136"><a href="#cb33-136" tabindex="-1"></a>  <span class="fu">plot</span>(theoretical_quantiles, sorted_data, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb33-137"><a href="#cb33-137" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&#39;Theoretical Quantiles&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Sample Quantiles&#39;</span>,</span>
+<span id="cb33-138"><a href="#cb33-138" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">&quot;Q-Q Plot for&quot;</span>, distribution, <span class="st">&quot;Distribution&quot;</span>),</span>
+<span id="cb33-139"><a href="#cb33-139" tabindex="-1"></a>       <span class="at">sub =</span> <span class="fu">paste</span>(<span class="st">&quot;Sample Size:&quot;</span>, n, <span class="st">&quot;Quantiles:&quot;</span>, quantiles[<span class="dv">1</span>], <span class="st">&quot;and&quot;</span>, quantiles[<span class="dv">2</span>]))</span>
+<span id="cb33-140"><a href="#cb33-140" tabindex="-1"></a>   </span>
+<span id="cb33-141"><a href="#cb33-141" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> y0, <span class="at">b =</span> l, <span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">lty =</span> <span class="dv">2</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb33-142"><a href="#cb33-142" tabindex="-1"></a> </span>
+<span id="cb33-143"><a href="#cb33-143" tabindex="-1"></a>  <span class="fu">legend</span>(<span class="st">&#39;topleft&#39;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&#39;Sample Quantiles&#39;</span>, <span class="st">&#39;Theoretical Quantiles&#39;</span>),</span>
+<span id="cb33-144"><a href="#cb33-144" tabindex="-1"></a>         <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&#39;blue&#39;</span>, <span class="st">&#39;red&#39;</span>), <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">16</span>))</span>
+<span id="cb33-145"><a href="#cb33-145" tabindex="-1"></a>}</span>
+<span id="cb33-146"><a href="#cb33-146" tabindex="-1"></a><span class="fu">qqPlot_epipleon_katanomes</span>(thesisNA, <span class="at">distribution =</span> <span class="st">&quot;hypergeometric&quot;</span>)</span>
+<span id="cb33-147"><a href="#cb33-147" tabindex="-1"></a><span class="fu">qqPlot_epipleon_katanomes</span>(thesisNA, <span class="at">distribution =</span> <span class="st">&quot;hypergeometric&quot;</span>, <span class="at">params =</span> <span class="fu">c</span>(<span class="at">m =</span> <span class="dv">120</span>, <span class="at">n =</span> <span class="dv">100</span>, <span class="at">k =</span> <span class="dv">70</span>))</span>
+<span id="cb33-148"><a href="#cb33-148" tabindex="-1"></a>ipsos <span class="ot">&lt;-</span> Trees_In_Camden<span class="sc">$</span><span class="st">`</span><span class="at">Height In Metres</span><span class="st">`</span></span>
+<span id="cb33-149"><a href="#cb33-149" tabindex="-1"></a>grafima_qq_sigkr <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena1, dedomena2) {</span>
+<span id="cb33-150"><a href="#cb33-150" tabindex="-1"></a>  <span class="fu">qqplot</span>(dedomena1, dedomena2)</span>
+<span id="cb33-151"><a href="#cb33-151" tabindex="-1"></a>   </span>
+<span id="cb33-152"><a href="#cb33-152" tabindex="-1"></a>  q1_1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena1, <span class="at">probs =</span> <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb33-153"><a href="#cb33-153" tabindex="-1"></a>  q1_2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena2, <span class="at">probs =</span> <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb33-154"><a href="#cb33-154" tabindex="-1"></a>  q3_1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena1, <span class="at">probs =</span> <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb33-155"><a href="#cb33-155" tabindex="-1"></a>  q3_2 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(dedomena2, <span class="at">probs =</span> <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]</span>
+<span id="cb33-156"><a href="#cb33-156" tabindex="-1"></a>   </span>
+<span id="cb33-157"><a href="#cb33-157" tabindex="-1"></a>  synt_dieyth <span class="ot">&lt;-</span> (q3_2<span class="sc">-</span>q1_2) <span class="sc">/</span> (q3_1<span class="sc">-</span>q1_1)</span>
+<span id="cb33-158"><a href="#cb33-158" tabindex="-1"></a>  y0 <span class="ot">&lt;-</span> q1_2 <span class="sc">-</span> synt_dieyth <span class="sc">*</span> q1_1</span>
+<span id="cb33-159"><a href="#cb33-159" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> y0, <span class="at">b =</span> synt_dieyth)</span>
+<span id="cb33-160"><a href="#cb33-160" tabindex="-1"></a>}</span>
+<span id="cb33-161"><a href="#cb33-161" tabindex="-1"></a><span class="fu">grafima_qq_sigkr</span>(diametros,ipsos)</span></code></pre></div>
 </div>
 </div>
 
