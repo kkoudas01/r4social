@@ -1,0 +1,21 @@
+---
+title: "Μήτρα απόστασης – δεντρόγραμμα"
+author: "Κώστας Κούδας"
+cache: TRUE
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+```
+
+```{r, echo=F}
+rm(list = ls())
+```

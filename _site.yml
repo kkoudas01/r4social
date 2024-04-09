@@ -98,6 +98,32 @@ navbar:
           href: NormTest.html
         - text: "Γραφικός προσδιορισμός κατανομής"
           href: GraphFindDist.html
+      - text: "Μαρκοβιανές αλυσίδες"
+        menu:
+        - text: "Περιγραφή μεταβάσεων"
+          href: metabMarkov.html
+        - text: "Μεταβάσεις σε περισσότερα βήματα"
+          href: metabMarkovPol.html
+      - text: "Χρονικές σειρές"
+        menu:
+        - text: "Βασικά εργαλεία"
+          href: timeBasic.html
+        - text: "Μοτίβα"
+          href: motiba.html
+        - text: "Πρόβλεψη χρονοσειρών με μοντέλα ARIMA"
+          href: arima.html
+        - text: "Μελέτη περιοδικότητας"
+          href: periodikotita.html
+      - text: "Πολυμεταβλητή ανάλυση"
+        menu:
+        - text: "Περιγραφική στατιστική"
+          menu:
+          - text: "Αστρόγραμμα"
+            href: astrogramma.html
+        - text: "Ανάλυση συστοιχιών"
+          menu:
+          - text: "Μήτρα απόστασης – δεντρόγραμμα"
+            href: distTree.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:

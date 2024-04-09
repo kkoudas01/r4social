@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-08" />
+<meta name="date" content="2024-04-09" />
 
 <title>Μέτρα ασυμμετρίας</title>
 
@@ -581,6 +581,55 @@ div.tocify {
         </li>
       </ul>
     </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μαρκοβιανές αλυσίδες</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="metabMarkov.html">Περιγραφή μεταβάσεων</a>
+        </li>
+        <li>
+          <a href="metabMarkovPol.html">Μεταβάσεις σε περισσότερα βήματα</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Χρονικές σειρές</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="timeBasic.html">Βασικά εργαλεία</a>
+        </li>
+        <li>
+          <a href="motiba.html">Μοτίβα</a>
+        </li>
+        <li>
+          <a href="arima.html">Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</a>
+        </li>
+        <li>
+          <a href="periodikotita.html">Μελέτη περιοδικότητας</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πολυμεταβλητή ανάλυση</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Περιγραφική στατιστική</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="astrogramma.html">Αστρόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ανάλυση συστοιχιών</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="distTree.html">Μήτρα απόστασης – δεντρόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -628,7 +677,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μέτρα ασυμμετρίας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-08</h4>
+<h4 class="date">2024-04-09</h4>
 
 </div>
 
@@ -20382,6 +20431,7 @@ href="metradiasporas.html#4_Θηκόγραμμα">Θηκόγραμμα</a>), π�
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="fu">library</span>(packHV)</span>
 <span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Loading required package: packHV</code></pre>
+<pre><code>## Loading required package: survival</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;packHV&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:rstatix&#39;:
@@ -20389,9 +20439,9 @@ href="metradiasporas.html#4_Θηκόγραμμα">Θηκόγραμμα</a>), π�
 ##     desc</code></pre>
 <p>Ακολούθως, για να σχηματίσουμε να επιθυμητά
 ιστογράμματα-θηκογράμματα, γράφουμε:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">hist_boxplot</span>(kost2021)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">hist_boxplot</span>(kost2021)</span></code></pre></div>
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">hist_boxplot</span>(fag2021)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">hist_boxplot</span>(fag2021)</span></code></pre></div>
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
 <p>Παρατηρώντας τα απομονωμένα σημεία (βλ. υποενότητα <a
 href="metradiasporas.html#21_Απομονωμένα_σημεία">Απομονωμένα σημεία</a>)
@@ -20429,16 +20479,16 @@ href="metrathesis.html#2_Διάμεσος">Διάμεσος</a>) βλέπουμ�
 ευθεία γραμμή, τα δεδομένα μας είναι συμμετρικά.</p>
 <p>Δυστυχώς, δεν υπάρχει έτοιμη συνάρτηση γι’ αυτό το σκοπό στην , οπότε
 θα φτιάξουμε εμείς μία, την <code>graf_symmetrias</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>graf_symmetrias <span class="ot">&lt;-</span>  <span class="cf">function</span>(x)  {</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>  n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>  n2 <span class="ot">=</span> n <span class="sc">%/%</span> <span class="dv">2</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  sx <span class="ot">=</span> <span class="fu">sort</span>(x)</span>
-<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  mx <span class="ot">=</span> <span class="fu">median</span>(x)</span>
-<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="fu">plot</span>(mx <span class="sc">-</span> sx[<span class="dv">1</span><span class="sc">:</span>n2], <span class="fu">rev</span>(sx)[<span class="dv">1</span><span class="sc">:</span>n2] <span class="sc">-</span> mx,</span>
-<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Distance Below Median&quot;</span>,</span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Distance Above Median&quot;</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="st">&quot;dotted&quot;</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>graf_symmetrias <span class="ot">&lt;-</span>  <span class="cf">function</span>(x)  {</span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>  n2 <span class="ot">=</span> n <span class="sc">%/%</span> <span class="dv">2</span></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  sx <span class="ot">=</span> <span class="fu">sort</span>(x)</span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  mx <span class="ot">=</span> <span class="fu">median</span>(x)</span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  <span class="fu">plot</span>(mx <span class="sc">-</span> sx[<span class="dv">1</span><span class="sc">:</span>n2], <span class="fu">rev</span>(sx)[<span class="dv">1</span><span class="sc">:</span>n2] <span class="sc">-</span> mx,</span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Distance Below Median&quot;</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Distance Above Median&quot;</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="st">&quot;dotted&quot;</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>}</span></code></pre></div>
 <p>Και ας δρούμε πώς αυτή δρα στις διάφορες περιπτώσεις συμμετρίας ή
 ασυμμετρίας.</p>
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
@@ -20446,9 +20496,9 @@ href="metrathesis.html#2_Διάμεσος">Διάμεσος</a>) βλέπουμ�
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Επιστρέφουμε στο παράδειγμά μας και γράφουμε:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(kost2021)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(kost2021)</span></code></pre></div>
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(fag2021)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(fag2021)</span></code></pre></div>
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
 <p>Παρατηρούμε πλέον καθαρά ότι δεν έχει συμμετρία κανένα από τα δύο
 σύνολα δεδομένων. Και πάλι, βέβαια, φαίνεται να είναι τα ημερήσια κόστη
@@ -20456,36 +20506,36 @@ href="metrathesis.html#2_Διάμεσος">Διάμεσος</a>) βλέπουμ�
 όπως και να ’χει η απόκλιση από τη συμμετρία είναι ηλίου φαεινότερη και
 στα δύο.</p>
 <p>Όλος ο κώδικας είναι ο παρακάτω:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>kostos2021 <span class="ot">&lt;-</span> costHealthyDiet[costHealthyDiet<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>, ]</span>
-<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a>kost2021 <span class="ot">&lt;-</span> kostos2021<span class="sc">$</span><span class="st">`</span><span class="at">Cost of a healthy diet</span><span class="st">`</span></span>
-<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>fagito2021 <span class="ot">&lt;-</span> foodExpenditureYear[foodExpenditureYear<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>, ]</span>
-<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>fag2021 <span class="ot">&lt;-</span> fagito2021<span class="sc">$</span><span class="st">`</span><span class="at">Total food expenditure</span><span class="st">`</span></span>
-<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="fu">hist</span>(kost2021)</span>
-<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a><span class="fu">hist</span>(fag2021)</span>
-<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a>asimetriaP <span class="ot">&lt;-</span> <span class="cf">function</span>(v){</span>
-<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(v)<span class="sc">-</span><span class="fu">median</span>(v))<span class="sc">/</span><span class="fu">sd</span>(v)</span>
-<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a>}</span>
-<span id="cb19-11"><a href="#cb19-11" tabindex="-1"></a><span class="fu">asimetriaP</span>(kost2021)</span>
-<span id="cb19-12"><a href="#cb19-12" tabindex="-1"></a><span class="fu">asimetriaP</span>(fag2021)</span>
-<span id="cb19-13"><a href="#cb19-13" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(packHV)){</span>
-<span id="cb19-14"><a href="#cb19-14" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;packHV&quot;</span>)</span>
-<span id="cb19-15"><a href="#cb19-15" tabindex="-1"></a>    <span class="fu">library</span>(packHV)</span>
-<span id="cb19-16"><a href="#cb19-16" tabindex="-1"></a>}</span>
-<span id="cb19-17"><a href="#cb19-17" tabindex="-1"></a><span class="fu">hist_boxplot</span>(kost2021)</span>
-<span id="cb19-18"><a href="#cb19-18" tabindex="-1"></a><span class="fu">hist_boxplot</span>(fag2021)</span>
-<span id="cb19-19"><a href="#cb19-19" tabindex="-1"></a>graf_symmetrias <span class="ot">&lt;-</span>  <span class="cf">function</span>(x)  {</span>
-<span id="cb19-20"><a href="#cb19-20" tabindex="-1"></a>  n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
-<span id="cb19-21"><a href="#cb19-21" tabindex="-1"></a>  n2 <span class="ot">=</span> n <span class="sc">%/%</span> <span class="dv">2</span></span>
-<span id="cb19-22"><a href="#cb19-22" tabindex="-1"></a>  sx <span class="ot">=</span> <span class="fu">sort</span>(x)</span>
-<span id="cb19-23"><a href="#cb19-23" tabindex="-1"></a>  mx <span class="ot">=</span> <span class="fu">median</span>(x)</span>
-<span id="cb19-24"><a href="#cb19-24" tabindex="-1"></a>  <span class="fu">plot</span>(mx <span class="sc">-</span> sx[<span class="dv">1</span><span class="sc">:</span>n2], <span class="fu">rev</span>(sx)[<span class="dv">1</span><span class="sc">:</span>n2] <span class="sc">-</span> mx,</span>
-<span id="cb19-25"><a href="#cb19-25" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Distance Below Median&quot;</span>,</span>
-<span id="cb19-26"><a href="#cb19-26" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Distance Above Median&quot;</span>)</span>
-<span id="cb19-27"><a href="#cb19-27" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="st">&quot;dotted&quot;</span>)</span>
-<span id="cb19-28"><a href="#cb19-28" tabindex="-1"></a>}</span>
-<span id="cb19-29"><a href="#cb19-29" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(kost2021)</span>
-<span id="cb19-30"><a href="#cb19-30" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(fag2021)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>kostos2021 <span class="ot">&lt;-</span> costHealthyDiet[costHealthyDiet<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>, ]</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a>kost2021 <span class="ot">&lt;-</span> kostos2021<span class="sc">$</span><span class="st">`</span><span class="at">Cost of a healthy diet</span><span class="st">`</span></span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a>fagito2021 <span class="ot">&lt;-</span> foodExpenditureYear[foodExpenditureYear<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>, ]</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>fag2021 <span class="ot">&lt;-</span> fagito2021<span class="sc">$</span><span class="st">`</span><span class="at">Total food expenditure</span><span class="st">`</span></span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a><span class="fu">hist</span>(kost2021)</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a><span class="fu">hist</span>(fag2021)</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a>asimetriaP <span class="ot">&lt;-</span> <span class="cf">function</span>(v){</span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(v)<span class="sc">-</span><span class="fu">median</span>(v))<span class="sc">/</span><span class="fu">sd</span>(v)</span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a>}</span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a><span class="fu">asimetriaP</span>(kost2021)</span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="fu">asimetriaP</span>(fag2021)</span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(packHV)){</span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;packHV&quot;</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" tabindex="-1"></a>    <span class="fu">library</span>(packHV)</span>
+<span id="cb20-16"><a href="#cb20-16" tabindex="-1"></a>}</span>
+<span id="cb20-17"><a href="#cb20-17" tabindex="-1"></a><span class="fu">hist_boxplot</span>(kost2021)</span>
+<span id="cb20-18"><a href="#cb20-18" tabindex="-1"></a><span class="fu">hist_boxplot</span>(fag2021)</span>
+<span id="cb20-19"><a href="#cb20-19" tabindex="-1"></a>graf_symmetrias <span class="ot">&lt;-</span>  <span class="cf">function</span>(x)  {</span>
+<span id="cb20-20"><a href="#cb20-20" tabindex="-1"></a>  n <span class="ot">=</span> <span class="fu">length</span>(x)</span>
+<span id="cb20-21"><a href="#cb20-21" tabindex="-1"></a>  n2 <span class="ot">=</span> n <span class="sc">%/%</span> <span class="dv">2</span></span>
+<span id="cb20-22"><a href="#cb20-22" tabindex="-1"></a>  sx <span class="ot">=</span> <span class="fu">sort</span>(x)</span>
+<span id="cb20-23"><a href="#cb20-23" tabindex="-1"></a>  mx <span class="ot">=</span> <span class="fu">median</span>(x)</span>
+<span id="cb20-24"><a href="#cb20-24" tabindex="-1"></a>  <span class="fu">plot</span>(mx <span class="sc">-</span> sx[<span class="dv">1</span><span class="sc">:</span>n2], <span class="fu">rev</span>(sx)[<span class="dv">1</span><span class="sc">:</span>n2] <span class="sc">-</span> mx,</span>
+<span id="cb20-25"><a href="#cb20-25" tabindex="-1"></a>       <span class="at">xlab =</span> <span class="st">&quot;Distance Below Median&quot;</span>,</span>
+<span id="cb20-26"><a href="#cb20-26" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">&quot;Distance Above Median&quot;</span>)</span>
+<span id="cb20-27"><a href="#cb20-27" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">a =</span> <span class="dv">0</span>, <span class="at">b =</span> <span class="dv">1</span>, <span class="at">lty =</span> <span class="st">&quot;dotted&quot;</span>)</span>
+<span id="cb20-28"><a href="#cb20-28" tabindex="-1"></a>}</span>
+<span id="cb20-29"><a href="#cb20-29" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(kost2021)</span>
+<span id="cb20-30"><a href="#cb20-30" tabindex="-1"></a><span class="fu">graf_symmetrias</span>(fag2021)</span></code></pre></div>
 </div>
 </div>
 
