@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
 <title>Μεταβάσεις σε περισσότερα βήματα</title>
 
@@ -49,6 +49,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -574,12 +675,103 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μεταβάσεις σε περισσότερα βήματα</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-09</h4>
+<h4 class="date">2024-04-10</h4>
 
 </div>
 
 
-
+<p>Ας επανέλθουμε στη μελέτη των μεταβάσεων από την κοινωνική τάξη του
+πατέρα στην κοινωνική τάξη του γιου που μελετήσαμε <a
+href="metabMarkov.html">αλλού</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>EA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.388</span>, <span class="fl">0.107</span>, <span class="fl">0.035</span>, <span class="fl">0.021</span>, <span class="fl">0.009</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>MA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.146</span>, <span class="fl">0.267</span>, <span class="fl">0.101</span>, <span class="fl">0.039</span>, <span class="fl">0.024</span>, <span class="fl">0.013</span>, <span class="fl">0.008</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>PA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.202</span>, <span class="fl">0.227</span>, <span class="fl">0.188</span>, <span class="fl">0.112</span>, <span class="fl">0.075</span>, <span class="fl">0.041</span>, <span class="fl">0.036</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>PH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.062</span>, <span class="fl">0.120</span>, <span class="fl">0.191</span>, <span class="fl">0.212</span>, <span class="fl">0.123</span>, <span class="fl">0.088</span>, <span class="fl">0.083</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>EH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.140</span>, <span class="fl">0.206</span>, <span class="fl">0.357</span>, <span class="fl">0.430</span>, <span class="fl">0.473</span>, <span class="fl">0.391</span>, <span class="fl">0.364</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>IH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.047</span>, <span class="fl">0.053</span>, <span class="fl">0.067</span>, <span class="fl">0.124</span>, <span class="fl">0.171</span>, <span class="fl">0.312</span>, <span class="fl">0.235</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>AH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.015</span>, <span class="fl">0.020</span>, <span class="fl">0.061</span>, <span class="fl">0.062</span>, <span class="fl">0.125</span>, <span class="fl">0.155</span>, <span class="fl">0.274</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>pin_met <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(EA, MA, PA, PH, EH, IH, AH)</span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="fu">rownames</span>(pin_met) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met)</span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a>pin_met</span></code></pre></div>
+<pre><code>##       EA    MA    PA    PH    EH    IH    AH
+## EA 0.388 0.146 0.202 0.062 0.140 0.047 0.015
+## MA 0.107 0.267 0.227 0.120 0.206 0.053 0.020
+## PA 0.035 0.101 0.188 0.191 0.357 0.067 0.061
+## PH 0.021 0.039 0.112 0.212 0.430 0.124 0.062
+## EH 0.009 0.024 0.075 0.123 0.473 0.171 0.125
+## IH 0.000 0.013 0.041 0.088 0.391 0.312 0.155
+## AH 0.000 0.008 0.036 0.083 0.364 0.235 0.274</code></pre>
+<p>Τι γίνεται αν μας ενδιαφέρει η πιθανότητα να είναι ο εγγονός μιας
+τάδε κοινωνικής τάξης, δεδομένου ότι ο παππούς του ήταν μιας δείνα
+κοινωνικής τάξης; Στο ερώτημα αυτό θα μας βοηθήσει η συνάρτηση
+<code>pinakas_metabasisΒ()</code> μέσα στην οποία θα εκχωρήσουμε τα
+δεδομένα μας, αλλά και το πλήθος των βημάτων. Έτσι, αν ενδιαφερόμαστε
+για την πιθανότητα ο παππούς να ήταν μάνατζερ ή ανώτερο στέλεχος
+(<code>MA</code>), αλλά ο εγγονός να προέκυψε ειδικευμένος χειρώνακτος ή
+απλός μη χειρώνακτας (<code>EH</code>), τότε θέλουμε να κάνουμε δύο
+βήματα: ένα από τον παππού στον πατέρα, κι ένα από τον πατέρα στον
+γιο.</p>
+<p>Η συνάρτηση αυτή για να φτιαχτεί απαιτεί το πακέτο <code>expm</code>,
+πέραν του πακέτου <code>corrplot</code>, οπότε γράφουμε αρχικά:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(corrplot)){</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(expm)){</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;expm&quot;</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>    <span class="fu">library</span>(expm)</span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a>}</span></code></pre></div>
+<p>Και ακολούθως ορίζουμε την <code>pinakas_metabasisΒ()</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>pinakas_metabasisΒ <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, bima, <span class="at">arxi =</span> <span class="cn">NULL</span>, <span class="at">telos =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  dedomenaM <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomena)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  dedomenaM <span class="ot">&lt;-</span> dedomenaM<span class="sc">%^%</span>bima</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  eyros <span class="ot">&lt;-</span> <span class="fu">c</span>(arxi, telos)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaM, <span class="at">is.corr =</span> <span class="cn">FALSE</span>, <span class="at">method=</span><span class="st">&quot;color&quot;</span>, <span class="at">col.lim =</span> eyros, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>pinakas_metabasisΒ(pin_met, <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="metabMarkovPol_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Έτσι έχουμε τον πίνακα μετάβασης από τη γενιά του παππού στη γενιά
+του εγγονού.</p>
+<p>Βλέπουμε πλέον ότι, αν ο παππούς ήταν μάνατζερ ή ανώτερο στέλεχος
+(<code>MA</code>), τότε ο εγγονός θα ήταν ειδικευμένος χειρώνακτας ή
+απλός μη χειρώνακτας (<code>EH</code>) με πιθανότητα 0.33. Αν συνέβαινε
+το ανάποδο, δηλαδή ο παππούς ήταν ειδικευμένος χειρώνακτας ή απλός μη
+χειρώνακτας (<code>EH</code>), τότε ο εγγονός θα μπορούσε να είναι
+μάνατζερ ή ανώτερο στέλεχος (<code>MA</code>) με πιθανότητα πολύ
+μικρότερη, δηλαδή 0.03.</p>
+<p>Και πάλι τα χρωματικά όρια μπορούμε να τα προσδιορίσουμε βάσει της
+αρεσκείας μας. Εδώ θα τα βάλουμε πάλι μεταξύ του 0 και του 0.5, ώστε να
+μην είναι πλέον μεταξύ του 0.01 και του 0.42.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>pinakas_metabasisΒ(pin_met, <span class="dv">2</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="metabMarkovPol_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Συνολικά γράψαμε τον κώδικα:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>EA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.388</span>, <span class="fl">0.107</span>, <span class="fl">0.035</span>, <span class="fl">0.021</span>, <span class="fl">0.009</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>MA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.146</span>, <span class="fl">0.267</span>, <span class="fl">0.101</span>, <span class="fl">0.039</span>, <span class="fl">0.024</span>, <span class="fl">0.013</span>, <span class="fl">0.008</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>PA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.202</span>, <span class="fl">0.227</span>, <span class="fl">0.188</span>, <span class="fl">0.112</span>, <span class="fl">0.075</span>, <span class="fl">0.041</span>, <span class="fl">0.036</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>PH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.062</span>, <span class="fl">0.120</span>, <span class="fl">0.191</span>, <span class="fl">0.212</span>, <span class="fl">0.123</span>, <span class="fl">0.088</span>, <span class="fl">0.083</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>EH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.140</span>, <span class="fl">0.206</span>, <span class="fl">0.357</span>, <span class="fl">0.430</span>, <span class="fl">0.473</span>, <span class="fl">0.391</span>, <span class="fl">0.364</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>IH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.047</span>, <span class="fl">0.053</span>, <span class="fl">0.067</span>, <span class="fl">0.124</span>, <span class="fl">0.171</span>, <span class="fl">0.312</span>, <span class="fl">0.235</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>AH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.015</span>, <span class="fl">0.020</span>, <span class="fl">0.061</span>, <span class="fl">0.062</span>, <span class="fl">0.125</span>, <span class="fl">0.155</span>, <span class="fl">0.274</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>pin_met <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(EA, MA, PA, PH, EH, IH, AH)</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="fu">rownames</span>(pin_met) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met)</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a>pin_met</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(corrplot)){</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a>}</span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(expm)){</span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;expm&quot;</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a>    <span class="fu">library</span>(expm)</span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a>}</span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a>pinakas_metabasisΒ <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, bima, <span class="at">arxi =</span> <span class="cn">NULL</span>, <span class="at">telos =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a>  dedomenaM <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomena)</span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a>  dedomenaM <span class="ot">&lt;-</span> dedomenaM<span class="sc">%^%</span>bima</span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a>  eyros <span class="ot">&lt;-</span> <span class="fu">c</span>(arxi, telos)</span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaM, <span class="at">is.corr =</span> <span class="cn">FALSE</span>, <span class="at">method=</span><span class="st">&quot;color&quot;</span>, <span class="at">col.lim =</span> eyros, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a>}</span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a>pinakas_metabasisΒ(pin_met, <span class="dv">2</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" tabindex="-1"></a>pinakas_metabasisΒ(pin_met, <span class="dv">2</span>, <span class="dv">0</span>, <span class="fl">0.5</span>)</span></code></pre></div>
 
 
 
