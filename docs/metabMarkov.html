@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-09" />
+<meta name="date" content="2024-04-10" />
 
 <title>Περιγραφή μεταβάσεων</title>
 
@@ -49,6 +49,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -574,12 +675,161 @@ div.tocify {
 
 <h1 class="title toc-ignore">Περιγραφή μεταβάσεων</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-09</h4>
+<h4 class="date">2024-04-10</h4>
 
 </div>
 
 
-
+<div id="πίνακας-μετάβασης" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Πίνακας μετάβασης</h1>
+<p>Στο <a
+href="https://www.routledge.com/Social-Mobility-in-Britain/Glass/p/book/9780415868396">Social
+Mobility in Britain</a> εκτιμάται η πιθανότητα να έχει ένας γιος
+διαφορετική κοινωνική τάξη από αυτή που είχε ο πατέρας του στην Αγγλία
+και την Ουαλία του 1949. Ο Glass παρουσιάζει 7 κοινωνικές τάξεις:</p>
+<table>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>Τάξη</strong></td>
+<td align="center"><strong>Συμβολισμός</strong></td>
+</tr>
+<tr class="even">
+<td align="center">Επαγγελματίες και ανώτερα διοικητικά στελέχη</td>
+<td align="center">EA</td>
+</tr>
+<tr class="odd">
+<td align="center">Μάνατζερ και ανώτερα στελέχη</td>
+<td align="center">MA</td>
+</tr>
+<tr class="even">
+<td align="center">Προϊστάμενοι ανώτερου επιπέδου μη χειρώνακτες</td>
+<td align="center">PA</td>
+</tr>
+<tr class="odd">
+<td align="center">Προϊστάμενοι χαμηλότερου επιπέδου μη χειρώνακτες</td>
+<td align="center">PH</td>
+</tr>
+<tr class="even">
+<td align="center">Ειδικευμένοι χειρώνακτες και απλοί μη
+χειρώνακτες</td>
+<td align="center">EH</td>
+</tr>
+<tr class="odd">
+<td align="center">Ημιειδικευμένοι χειρώνακτες</td>
+<td align="center">IH</td>
+</tr>
+<tr class="even">
+<td align="center">Ανειδίκευτοι χειρόνακτες</td>
+<td align="center">AH</td>
+</tr>
+</tbody>
+</table>
+<p>Ο πίνακας που δίνει τις πιθανότητες μετάβασης ενός γιου από την
+κοινωνική τάξη του πατέρα είναι ο κάτωθι. Η κατακόρυφες ενδείξεις
+παρουσιάζουν την κοινωνική τάξη του πατέρα και οι οριζόντιες του
+γιού.</p>
+<pre><code>##       EA    MA    PA    PH    EH    IH    AH
+## EA 0.388 0.146 0.202 0.062 0.140 0.047 0.015
+## MA 0.107 0.267 0.227 0.120 0.206 0.053 0.020
+## PA 0.035 0.101 0.188 0.191 0.357 0.067 0.061
+## PH 0.021 0.039 0.112 0.212 0.430 0.124 0.062
+## EH 0.009 0.024 0.075 0.123 0.473 0.171 0.125
+## IH 0.000 0.013 0.041 0.088 0.391 0.312 0.155
+## AH 0.000 0.008 0.036 0.083 0.364 0.235 0.274</code></pre>
+<p>Έτσι, αν ο πατέρας ήταν μάνατζερ ή ανώτερο στέλεχος
+(<code>MA</code>), τότε ο γιος θα ήταν ειδικευμένος χειρώνακτας ή απλός
+μη χειρώνακτας (<code>EH</code>) με πιθανότητα 0.206. Αν συνέβαινε το
+ανάποδο, δηλαδή ο πατέρας ήταν ειδικευμένος χειρώνακτας ή απλός μη
+χειρώνακτας (<code>EH</code>), τότε ο γιος θα μπορούσε να είναι μάνατζερ
+ή ανώτερο στέλεχος (<code>MA</code>) με πιθανότητα πολύ μικρότερη,
+δηλαδή 0.024.</p>
+<p>Για να φτιάξουμε τον παραπάνω πίνακα χρησιμοποιήσαμε τον κάτωθι
+κώδικα. Η εντολή <code>rownames(pin_met) &lt;- colnames(pin_met)</code>
+ήταν για να δώσει τα ονόματα των στηλών στις γραμμές.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>EA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.388</span>, <span class="fl">0.107</span>, <span class="fl">0.035</span>, <span class="fl">0.021</span>, <span class="fl">0.009</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>MA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.146</span>, <span class="fl">0.267</span>, <span class="fl">0.101</span>, <span class="fl">0.039</span>, <span class="fl">0.024</span>, <span class="fl">0.013</span>, <span class="fl">0.008</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>PA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.202</span>, <span class="fl">0.227</span>, <span class="fl">0.188</span>, <span class="fl">0.112</span>, <span class="fl">0.075</span>, <span class="fl">0.041</span>, <span class="fl">0.036</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>PH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.062</span>, <span class="fl">0.120</span>, <span class="fl">0.191</span>, <span class="fl">0.212</span>, <span class="fl">0.123</span>, <span class="fl">0.088</span>, <span class="fl">0.083</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>EH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.140</span>, <span class="fl">0.206</span>, <span class="fl">0.357</span>, <span class="fl">0.430</span>, <span class="fl">0.473</span>, <span class="fl">0.391</span>, <span class="fl">0.364</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>IH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.047</span>, <span class="fl">0.053</span>, <span class="fl">0.067</span>, <span class="fl">0.124</span>, <span class="fl">0.171</span>, <span class="fl">0.312</span>, <span class="fl">0.235</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>AH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.015</span>, <span class="fl">0.020</span>, <span class="fl">0.061</span>, <span class="fl">0.062</span>, <span class="fl">0.125</span>, <span class="fl">0.155</span>, <span class="fl">0.274</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>pin_met <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(EA, MA, PA, PH, EH, IH, AH)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="fu">rownames</span>(pin_met) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met)</span></code></pre></div>
+<p>Μπορούμε να χρησιμοποιήσουμε το πακέτο corrplot για να κάνουμε λίγο
+ομορφότερο και πιο κατατοπιστικό τον πίνακά μας:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(corrplot)){</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Ακολούθως ορίζουμε τη συνάρτηση <code>pinakas_metabasis()</code>,
+στην οποία θα εισάγουμε τον παραπάνω πίνακα:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>pinakas_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">arxi =</span> <span class="cn">NULL</span>, <span class="at">telos =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>  dedomenaM <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomena)</span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>  eyros <span class="ot">&lt;-</span> <span class="fu">c</span>(arxi, telos)</span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaM, <span class="at">is.corr =</span> <span class="cn">FALSE</span>, <span class="at">method=</span><span class="st">&quot;color&quot;</span>, <span class="at">col.lim =</span> eyros, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a>}</span></code></pre></div>
+<p>Ακολούθως, γράφουμε:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">pinakas_metabasis</span>(pin_met)</span></code></pre></div>
+<p><img src="metabMarkov_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Έτσι προκύπτει ο ίδιος πίνακας μετάβασης που είχαμε πριν, απλά οι
+τιμές έχουν χρωματιστεί, για να διακρίνονται ευκολότερα οι διαφορές
+τους.</p>
+<p>Έτσι πλέον βλέπουμε εύκολα ότι είναι δυσκολότερο για ένα παιδί ενός
+πατέρα κατώτερης κοινωνικής τάξης, να μπορέσει να ανέλθει σε μία
+ανώτερη. Συνήθως είτε θα παραμείνει εκεί που ήταν ο πατέρας του ή θα
+πέσει χαμηλότερα.</p>
+<p>Κάποιος μπορεί να δυσαρεστηθεί από το άκομψο άνω φράγμα 0.47. Ίσως να
+ήταν ομορφότερο να είναι το 0.5. Στην περίπτωση που επιθυμούμε κάτι
+τέτοιο, μπορούμε να συμπληρώσουμε στη συνάρτηση
+<code>pinakas_metabasis()</code> τα όρια στα οποία θα βρίσκονται οι
+χρωματισμοί μας. Επειδή εδώ οι πιθανότητες αρχίζουν από το 0, βάλαμε και
+αυτό για αρχή.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">pinakas_metabasis</span>(pin_met, <span class="dv">0</span>, <span class="fl">0.5</span>)</span></code></pre></div>
+<p><img src="metabMarkov_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Βλέπουμε λοιπόν ότι τα όρια των χρωμάτων κειμένονται από 0 έως 0.5,
+όπως επιθυμούσαμε.</p>
+</div>
+<div id="διάγραμμα-μετάβασης" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Διάγραμμα
+μετάβασης</h1>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(igraph)){</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    <span class="fu">library</span>(igraph)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(markovchain)){</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;markovchain&quot;</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>    <span class="fu">library</span>(markovchain)</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="co"># Δημιουργία του πίνακα πιθανοτήτων μετάβασης</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>MX <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.594</span>, <span class="fl">0.211</span>, <span class="fl">0.252</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>XR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.396</span>, <span class="fl">0.782</span>, <span class="fl">0.641</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>KT <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.009</span>, <span class="fl">0.007</span>, <span class="fl">0.108</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a>pin_met2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(MX, XR, KT)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="fu">rownames</span>(pin_met2) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met2)</span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a>pin_met2</span></code></pre></div>
+<pre><code>##       MX    XR    KT
+## MX 0.594 0.396 0.009
+## XR 0.211 0.782 0.007
+## KT 0.252 0.641 0.108</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>diagramma_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  dedomena2 <span class="ot">&lt;-</span> dedomena<span class="sc">/</span><span class="fu">rowSums</span>(dedomena)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  graph <span class="ot">&lt;-</span> <span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(dedomena2), <span class="at">mode =</span> <span class="st">&quot;directed&quot;</span>, <span class="at">weighted =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># Σχεδίαση του γράφου με καμπυλόγραμμα βέλη και ετικέτες</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>plot_result <span class="ot">&lt;-</span> <span class="fu">plot</span>(graph, <span class="at">layout =</span> <span class="fu">layout.circle</span>(graph), <span class="at">edge.curved =</span> <span class="fl">0.3</span>, <span class="at">arrow.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>                    <span class="at">edge.label =</span> <span class="fu">round</span>(<span class="fu">edge_attr</span>(graph, <span class="st">&quot;weight&quot;</span>), <span class="dv">3</span>),</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>                    <span class="at">edge.label.pos =</span> <span class="fl">0.5</span>, <span class="at">edge.label.dist =</span> <span class="fl">0.2</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met2)</span></code></pre></div>
+<p><img src="metabMarkov_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met)</span></code></pre></div>
+<p><img src="metabMarkov_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>pin_met2b <span class="ot">&lt;-</span> pin_met2<span class="sc">/</span><span class="fu">rowSums</span>(pin_met2)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>markovChain2 <span class="ot">&lt;-</span> <span class="fu">new</span>(<span class="st">&quot;markovchain&quot;</span>, <span class="at">states =</span> <span class="fu">colnames</span>(pin_met2b),</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>                    <span class="at">transitionMatrix =</span> <span class="fu">as.matrix</span>(pin_met2b))</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="fu">plot</span>(markovChain2)</span></code></pre></div>
+<p><img src="metabMarkov_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
 
 
 
