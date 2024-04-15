@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-13" />
+<meta name="date" content="2024-04-15" />
 
 <title>Μελέτη περιοδικότητας</title>
 
@@ -35,6 +35,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -49,6 +51,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -499,10 +602,10 @@ div.tocify {
           <a href="motiba.html">Μοτίβα</a>
         </li>
         <li>
-          <a href="arima.html">Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</a>
+          <a href="periodikotita.html">Μελέτη περιοδικότητας</a>
         </li>
         <li>
-          <a href="periodikotita.html">Μελέτη περιοδικότητας</a>
+          <a href="arima.html">Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</a>
         </li>
       </ul>
     </li>
@@ -574,12 +677,2810 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μελέτη περιοδικότητας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-13</h4>
+<h4 class="date">2024-04-15</h4>
 
 </div>
 
 
-
+<div id="υποψία-περιοδικότητας" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Υποψία
+περιοδικότητας</h1>
+<p>Σε <a href="motiba.html">προηγούμενη ενότητα</a> αναφέρθηκε η έννοια
+της εποχικότητας. Εδώ θα εμβαθύνουμε λίγο παραπάνω.</p>
+<p>Από το <a href="https://trends.google.com/trends/">Google Trends</a>
+κατεβάσαμε το αρχείο massExt.csv, το οποίο περιέχει το πλήθος των
+«γκουγκλαρισμάτων» της φράσης «mass extinction» στις ΗΠΑ από 1/1/2004
+έως και σήμερα 14/4/2024. Για την ακρίβεια, στο εν λόγω αρχείο δεν
+παρουσιάζεται ακριβώς το πλήθος, αλλά έχει αυτό κανονικοποηθεί ως προς
+τη μέγιστη τιμή του. Δηλαδή, αυτή ετέθη 100 και οτιδήποτε άλλο πάει
+συγκριτικά με αυτήν.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Month
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+mass.extinction…United.States.
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+2004-01
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-02
+</td>
+<td style="text-align:right;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-03
+</td>
+<td style="text-align:right;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-04
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-05
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-06
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-07
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-08
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-09
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-10
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-11
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2004-12
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-01
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-02
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-03
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-04
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-05
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-06
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-07
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-08
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-09
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-10
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-11
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2005-12
+</td>
+<td style="text-align:right;">
+34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-01
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-02
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-03
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-04
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-05
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-06
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-07
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-08
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-09
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-10
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-11
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2006-12
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-01
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-02
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-03
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-04
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-05
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-06
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-07
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-08
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-09
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-10
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-11
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2007-12
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-01
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-02
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-03
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-04
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-05
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-06
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-07
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-08
+</td>
+<td style="text-align:right;">
+8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-09
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-10
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-11
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2008-12
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-01
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-02
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-03
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-04
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-05
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-06
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-07
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-08
+</td>
+<td style="text-align:right;">
+7
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-09
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-10
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-11
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2009-12
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-01
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-02
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-03
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-04
+</td>
+<td style="text-align:right;">
+38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-05
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-06
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-07
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-08
+</td>
+<td style="text-align:right;">
+10
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-09
+</td>
+<td style="text-align:right;">
+18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-10
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-11
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2010-12
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-01
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-02
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-03
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-04
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-05
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-06
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-07
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-08
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-09
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-10
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-11
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2011-12
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-01
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-02
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-03
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-04
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-05
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-06
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-07
+</td>
+<td style="text-align:right;">
+13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-08
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-09
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-10
+</td>
+<td style="text-align:right;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-11
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2012-12
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-01
+</td>
+<td style="text-align:right;">
+29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-02
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-03
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-04
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-05
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-06
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-07
+</td>
+<td style="text-align:right;">
+11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-08
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-09
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-10
+</td>
+<td style="text-align:right;">
+35
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-11
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2013-12
+</td>
+<td style="text-align:right;">
+31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-01
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-02
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-03
+</td>
+<td style="text-align:right;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-04
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-05
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-06
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-07
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-08
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-09
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-10
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-11
+</td>
+<td style="text-align:right;">
+39
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2014-12
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-01
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-02
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-03
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-04
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-05
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-06
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-07
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-08
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-09
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-10
+</td>
+<td style="text-align:right;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-11
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2015-12
+</td>
+<td style="text-align:right;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-01
+</td>
+<td style="text-align:right;">
+46
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-02
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-03
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-04
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-05
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-06
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-07
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-08
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-09
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-10
+</td>
+<td style="text-align:right;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-11
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2016-12
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-01
+</td>
+<td style="text-align:right;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-02
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-03
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-04
+</td>
+<td style="text-align:right;">
+68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-05
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-06
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-07
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-08
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-09
+</td>
+<td style="text-align:right;">
+47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-10
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-11
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2017-12
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-01
+</td>
+<td style="text-align:right;">
+45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-02
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-03
+</td>
+<td style="text-align:right;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-04
+</td>
+<td style="text-align:right;">
+72
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-05
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-06
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-07
+</td>
+<td style="text-align:right;">
+17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-08
+</td>
+<td style="text-align:right;">
+22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-09
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-10
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-11
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2018-12
+</td>
+<td style="text-align:right;">
+51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-01
+</td>
+<td style="text-align:right;">
+54
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-02
+</td>
+<td style="text-align:right;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-03
+</td>
+<td style="text-align:right;">
+75
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-04
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-05
+</td>
+<td style="text-align:right;">
+66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-06
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-07
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-08
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-09
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-10
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-11
+</td>
+<td style="text-align:right;">
+53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2019-12
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-01
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-02
+</td>
+<td style="text-align:right;">
+67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-03
+</td>
+<td style="text-align:right;">
+62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-04
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-05
+</td>
+<td style="text-align:right;">
+60
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-06
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-07
+</td>
+<td style="text-align:right;">
+15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-08
+</td>
+<td style="text-align:right;">
+24
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-09
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-10
+</td>
+<td style="text-align:right;">
+55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-11
+</td>
+<td style="text-align:right;">
+40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2020-12
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-01
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-02
+</td>
+<td style="text-align:right;">
+43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-03
+</td>
+<td style="text-align:right;">
+48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-04
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-05
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-06
+</td>
+<td style="text-align:right;">
+23
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-07
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-08
+</td>
+<td style="text-align:right;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-09
+</td>
+<td style="text-align:right;">
+32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-10
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-11
+</td>
+<td style="text-align:right;">
+36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2021-12
+</td>
+<td style="text-align:right;">
+33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-01
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-02
+</td>
+<td style="text-align:right;">
+52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-03
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-04
+</td>
+<td style="text-align:right;">
+100
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-05
+</td>
+<td style="text-align:right;">
+80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-06
+</td>
+<td style="text-align:right;">
+30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-07
+</td>
+<td style="text-align:right;">
+20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-08
+</td>
+<td style="text-align:right;">
+25
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-09
+</td>
+<td style="text-align:right;">
+44
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-10
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-11
+</td>
+<td style="text-align:right;">
+56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2022-12
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-01
+</td>
+<td style="text-align:right;">
+65
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-02
+</td>
+<td style="text-align:right;">
+76
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-03
+</td>
+<td style="text-align:right;">
+81
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-04
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-05
+</td>
+<td style="text-align:right;">
+69
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-06
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-07
+</td>
+<td style="text-align:right;">
+21
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-08
+</td>
+<td style="text-align:right;">
+26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-09
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-10
+</td>
+<td style="text-align:right;">
+73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-11
+</td>
+<td style="text-align:right;">
+79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2023-12
+</td>
+<td style="text-align:right;">
+70
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2024-01
+</td>
+<td style="text-align:right;">
+59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2024-02
+</td>
+<td style="text-align:right;">
+83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2024-03
+</td>
+<td style="text-align:right;">
+74
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2024-04
+</td>
+<td style="text-align:right;">
+75
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Επίσης από το <a href="https://www.statista.com/">Statista</a>
+κατεβάσαμε δεδομένα που αφορούν τους γάμους που έγιναν στην Ελλάδα από
+το 1980 έως και το 2022. Τα δεδομένα καταχωρήθηκν στο αρχείο gamoi.xlsx,
+όπου η μία στήλη δίνει το έτος, η άλλη το πλήθος γάμων ανά 1000 άτομα
+και η τελευταία το πλήθος των γάμων γενικώς.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Etos
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+GamoiAna1000
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+GamoiSynolo
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1980
+</td>
+<td style="text-align:right;">
+6.47
+</td>
+<td style="text-align:right;">
+62352
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1981
+</td>
+<td style="text-align:right;">
+7.32
+</td>
+<td style="text-align:right;">
+71178
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1982
+</td>
+<td style="text-align:right;">
+6.92
+</td>
+<td style="text-align:right;">
+67784
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1983
+</td>
+<td style="text-align:right;">
+7.23
+</td>
+<td style="text-align:right;">
+71143
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1984
+</td>
+<td style="text-align:right;">
+5.54
+</td>
+<td style="text-align:right;">
+54793
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1985
+</td>
+<td style="text-align:right;">
+6.41
+</td>
+<td style="text-align:right;">
+63709
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1986
+</td>
+<td style="text-align:right;">
+5.83
+</td>
+<td style="text-align:right;">
+58091
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1987
+</td>
+<td style="text-align:right;">
+6.62
+</td>
+<td style="text-align:right;">
+66166
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1988
+</td>
+<td style="text-align:right;">
+4.77
+</td>
+<td style="text-align:right;">
+47873
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1989
+</td>
+<td style="text-align:right;">
+6.13
+</td>
+<td style="text-align:right;">
+61884
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+5.81
+</td>
+<td style="text-align:right;">
+59052
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1991
+</td>
+<td style="text-align:right;">
+6.39
+</td>
+<td style="text-align:right;">
+65568
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1992
+</td>
+<td style="text-align:right;">
+4.69
+</td>
+<td style="text-align:right;">
+48631
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1993
+</td>
+<td style="text-align:right;">
+5.94
+</td>
+<td style="text-align:right;">
+62195
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1994
+</td>
+<td style="text-align:right;">
+5.38
+</td>
+<td style="text-align:right;">
+56813
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1995
+</td>
+<td style="text-align:right;">
+6.02
+</td>
+<td style="text-align:right;">
+63987
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1996
+</td>
+<td style="text-align:right;">
+4.24
+</td>
+<td style="text-align:right;">
+45408
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1997
+</td>
+<td style="text-align:right;">
+5.62
+</td>
+<td style="text-align:right;">
+60535
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1998
+</td>
+<td style="text-align:right;">
+5.12
+</td>
+<td style="text-align:right;">
+55489
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1999
+</td>
+<td style="text-align:right;">
+5.62
+</td>
+<td style="text-align:right;">
+61165
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+4.48
+</td>
+<td style="text-align:right;">
+48880
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:right;">
+5.34
+</td>
+<td style="text-align:right;">
+58491
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2002
+</td>
+<td style="text-align:right;">
+5.27
+</td>
+<td style="text-align:right;">
+57872
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2003
+</td>
+<td style="text-align:right;">
+5.54
+</td>
+<td style="text-align:right;">
+61081
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:right;">
+4.64
+</td>
+<td style="text-align:right;">
+51377
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2005
+</td>
+<td style="text-align:right;">
+5.50
+</td>
+<td style="text-align:right;">
+61043
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2006
+</td>
+<td style="text-align:right;">
+5.18
+</td>
+<td style="text-align:right;">
+57802
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2007
+</td>
+<td style="text-align:right;">
+5.48
+</td>
+<td style="text-align:right;">
+61377
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+4.76
+</td>
+<td style="text-align:right;">
+53500
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2009
+</td>
+<td style="text-align:right;">
+5.25
+</td>
+<td style="text-align:right;">
+59212
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+4.98
+</td>
+<td style="text-align:right;">
+56338
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2011
+</td>
+<td style="text-align:right;">
+4.95
+</td>
+<td style="text-align:right;">
+55099
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:right;">
+4.48
+</td>
+<td style="text-align:right;">
+49705
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2013
+</td>
+<td style="text-align:right;">
+4.63
+</td>
+<td style="text-align:right;">
+51256
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2014
+</td>
+<td style="text-align:right;">
+4.86
+</td>
+<td style="text-align:right;">
+53105
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:right;">
+4.94
+</td>
+<td style="text-align:right;">
+53672
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2016
+</td>
+<td style="text-align:right;">
+4.60
+</td>
+<td style="text-align:right;">
+49632
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:right;">
+4.66
+</td>
+<td style="text-align:right;">
+50138
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2018
+</td>
+<td style="text-align:right;">
+4.42
+</td>
+<td style="text-align:right;">
+47428
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2019
+</td>
+<td style="text-align:right;">
+4.40
+</td>
+<td style="text-align:right;">
+47137
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2020
+</td>
+<td style="text-align:right;">
+2.94
+</td>
+<td style="text-align:right;">
+31475
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2021
+</td>
+<td style="text-align:right;">
+3.90
+</td>
+<td style="text-align:right;">
+40759
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+43355
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Κατόπιν εξάγουμε τις λίστες με τα δεδομένα που μας απασχολούν: τα
+γκουγκλαρίσματα και τους γάμους.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>massExt <span class="ot">&lt;-</span> massExtDF<span class="sc">$</span>mass.extinction...United.States.</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>gamoiSynolo <span class="ot">&lt;-</span> gamoi<span class="sc">$</span>GamoiSynolo</span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> x)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> x)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code></pre></div>
+<div id="χρονόγραμμα" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Χρονόγραμμα</h2>
+<p>Κάνουμε μια πρώτη απόπειρα αναπαράστασής τους. Δεν θα παραστήσουμε
+καν την ένδειξη του χρόνου, για να είμαστε τελείως απερίσπαστοι.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(massExt, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Παρατηρούμε μια κυκλική συμπεριφορά των γκουγκλαρισμάτων. Ανά τακτά
+διαστήματα έχουμε κάποιες παρόμοιες αυξομοιώσεις. Ας δούμε τώρα και τους
+γάμους.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolo, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Αν εξαιρέσουμε την εμφανή πτωτική τάση προς το τέλος, εν γένει κι
+αυτοί εμφανίζουν μια περιοδικότητα.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="διάγραμμα-υστέρησης" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Διάγραμμα
+υστέρησης</h2>
+<p>Συνεχίζουμε με τα διαγράμματα υστέρησης, για να επιβεβαιώσουμε όσα
+υποψιαστήκαμε πριν.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">gglagplot</span>(massExt, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Παρατηρούμε ότι το lag = 12 κείτεται επί της ευθείας <span
+class="math inline">\(y=x\)</span>, όπερ δείχνει ισχυρή συσχέτηση ανά 12
+μονάδες του χρόνου, ήτοι μια περιοδική επανάληψη ανά 12 χρονικές
+μονάδες.</p>
+<p>Ας δούμε τι παίζει και με τους γάμους.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">gglagplot</span>(gamoiSynolo, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Εδώ φαίνεται να υπάρχει περιοδικότητα ανά 4 χρονικές μονάδες, αλλά
+όχι τόσο εμφανής, όσο προηγουμένως. παρατηρούμε επίσης και μια
+μετατώπιση του γραφήματος σιγά-σιγά κάτω από την <span
+class="math inline">\(y=x\)</span>, πράγμα που υποδηλώνει πτωτική τάση
+των γάμων.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">gglagplot</span>(y, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="ιάγραµµα-αυτοσυσχέτισης" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> ∆ιάγραµµα
+αυτοσυσχέτισης</h2>
+<p>Τώρα θα σχεδιάσουμε το διάγραµµα αυτοσυσχέτισης από την κάθε
+περίπτωση. Αρχικά ερευνούμε τα γκουγκλαρίσματα.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">acf</span>(massExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Κι εδώ παρατηρούμε ισχυρή αυτοσυσχέτιση ανά 12 χρονικές μονάδες.</p>
+<p>Ας δοκιμάσουμε την ισχύ της διαίσθησής μας και στην περίπτωση των
+γάμων.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">acf</span>(gamoiSynolo)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Ανά 4 μονάδες του χρόνου παρατιρείται ισχυρή συσχέτιση, άρα
+επανάληψη, η οποία όμως εξασθενεί στην πορεία του χρόνου, πιθανότατα
+λόγω της προαναφερθείσας πτωτικής τάσης.</p>
+</div>
+<div id="περιοδόγραμμα-lomb-scargle" class="section level2"
+number="1.4">
+<h2><span class="header-section-number">1.4</span> Περιοδόγραμμα
+Lomb-Scargle</h2>
+<div id="γράφημα" class="section level3" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Γράφημα</h3>
+<p>Ένας επιπλέον τρόπος να δούμε αν υφίσταται περιοδικότητα και ποια
+είναι αυτή είναι το <strong>περιοδόγραμμα Lomb-Scargle</strong>. Το
+περιοδόγραμμα αυτό δίνει το βαθμό ταύτισης της χρονοσειράς μας με μια
+λίστα ημιτονοειδών χρονοσειρών διαφόρων συχνοτήτων. Οι συγκρίσεις
+γίνονται μέσω του τεστ <span class="math inline">\(\chi^2\)</span> (βλ.
+<a href="findDist.html#3_Έλεγχος_χ2_για_διακριτές_κατανομές">Έλεγχος χ2
+για διακριτές κατανομές</a>).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lomb)){</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;lomb&quot;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>    <span class="fu">library</span>(lomb)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Η προκαθορισμένη εκδοχή του περιοδογράμματος Lomb-Scargle εξάγει τη
+συχνότητα του φαινομένου. Εν προκειμένω η κυρίαρχη συχνότητα είναι
+περίπου 0.08 γκουγκλαρίσματα ανά χρονική μονάδα. Δηλαδή το τεστ <span
+class="math inline">\(\chi^2\)</span> υποδηλώνει ουκ ευκαταφρόνητη
+στατιστική εξαρτηση με ημιτονοειδή σερά συχνότητας περίπου 0.08. Επί τη
+ευκαιρία, η μπλε διακεκκομμένη γραμμή δίνει το επίεδο σημαντικότητας. Οι
+κορυφές των αντίστοιχων συχνοτήτων κάτω από αυτήν θεωρούνται αρκετά
+απίθανο να συνδέονται με κάποια αντίστοιχη ημιτονοειδή χρονοσειρά.</p>
+<p>Όμως, σε τι χρονικές μονάδες αυτό αντικατοπτρίζεται η συχνότητα 0.08;
+Σε <span class="math inline">\(\frac{1}{0.08}\approx 12\)</span>, όπως
+είχαμε βρει κι εμείς από τις άλλες περιπτώσεις. Αλλά ας το δούμε και πιο
+«ετοιματζίδικα» χρησιμοποιώντας την παράμετρο <code>type</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt,<span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Εμφανίζεται η περίοδος πλέον, αλλά όχι πολύ καθαρά. Δεν είναι καθόλου
+προφανές ποια είναι αυτή. Φαίνεται να είναι κάπου ανάμεσα στο 5 και στο
+25, αλλά δεν είναι ευδιάκριτο. Θα περιορίσουμε, λοιπόν, το περιοδόγραμμα
+εκεί προσδιορίζοντας ανάλογα τις παραμέτρους <code>from</code> και
+<code>to</code>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>Πλέον είναι φανερή η περιοδική συμπεριφορά ανά 12 περίπου χρονικές
+μονάδες.</p>
+<p>Ας δούμε τώρα κάποιες παραμέτρους ακόμα. Η μπλε διακεκκομένη γραμμή
+δίνει, όπως είπαμε, το επίπεδο σημαντικότητας. Η προκαθορισμένη τιμή
+είναι το 0.01, ήτοι ίσως αρκετά μικρή για έναν κοινωνικό επιστήμονα.
+Μπορούμε να δοκιμάσουμε κάποια μεγαλύτερη, όπως την 0.05 πειράζοντας την
+παράμετρο <code>alpha</code> ως ακολούθως.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>Βλέπουμε πλέον ότι ίσως να μην είναι απίθανη η σύνδεση της
+χρονοσειράς μας με μια ημιτονοειδή χρονοσειρά περιόδου περίπου 6
+χρονικών μονάδων.</p>
+<p>Ο αναγνώστης ίσως να έχει παρατηρήσει την έντονα πολυγωνική μορφή του
+περιοδοδιαγράμματος. Αυτό οφείλεται στο ότι έχουν γίνει συγκρίσεις της
+χρονοσειράς μας με λίγες ημιτονοειδείς χρονοσειρές. Μπορούμε ν’
+αυξήσουμε το πλήθος τους «παίζοντας» με την παράμετρο <code>ofac</code>.
+Εδώ θα κάνουμε τη σύγκριση με 100 ημιτονοειδείς χρονοσειρές και θα
+έχουμε έτσι ένα πιο λείο περιοδόγραμμα.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>    <span class="at">ofac =</span> <span class="dv">100</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Ας κάνουμε μια παρόμοια μελέτη για τους γάμους.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolo)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>Εδώ το περιοδόγραμμα αρνείται κάθε ενδεχόμενο επαναληπτικότητας. Αυτό
+οφείλεται στο ότι το εν λόγω γράφημα εντοπίζει καθαρή επαναληπτικότητα,
+μη αναμεμειγμένη με πτωτικές ή ανωδικές τάσεις, όπως η χρονοσειρά των
+γάμων.</p>
+</div>
+<div id="προσδιορισμός-περιόδου-και-συχνότητας" class="section level3"
+number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Προσδιορισμός
+περιόδου και συχνότητας</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>prosdiorismosPerSyxn <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">apo =</span> <span class="cn">NULL</span>, <span class="at">eos =</span> <span class="cn">NULL</span>){</span>
+<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  periodogramma <span class="ot">&lt;-</span> <span class="fu">lsp</span>(dedomena, <span class="at">times =</span> <span class="cn">NULL</span>, <span class="at">from =</span> apo, <span class="at">to =</span> eos, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
+<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>      <span class="at">ofac =</span> <span class="dv">130</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>, <span class="at">normalize=</span><span class="st">&quot;press&quot;</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  per <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">1</span>]</span>
+<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>  syxn <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">2</span>]</span>
+<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>  Period <span class="ot">&lt;-</span> <span class="fu">c</span>(per)</span>
+<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  Frequency <span class="ot">&lt;-</span> <span class="fu">c</span>(syxn)</span>
+<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="fu">data.frame</span>(Period,Frequency)</span>
+<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">4</span>, <span class="dv">15</span>)</span></code></pre></div>
+<pre><code>##     Period  Frequency
+## 1 11.97952 0.08347578</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">4</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##     Period Frequency
+## 1 5.987491 0.1670149</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">10</span>, <span class="dv">15</span>)</span></code></pre></div>
+<pre><code>##     Period  Frequency
+## 1 11.97952 0.08347578</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolo, <span class="dv">3</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>##    Period Frequency
+## 1 4.08377 0.2448718</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>massExtts <span class="ot">&lt;-</span> <span class="fu">ts</span>(massExtDF<span class="sc">$</span>mass.extinction...United.States., <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2004</span>, <span class="dv">1</span>), <span class="at">freq=</span><span class="dv">12</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>gamoiSynolots <span class="ot">&lt;-</span> <span class="fu">ts</span>(gamoi<span class="sc">$</span>GamoiSynolo, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">freq=</span><span class="dv">4</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>yTs <span class="ot">&lt;-</span> <span class="fu">ts</span>(y, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">frequency =</span> <span class="dv">6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">plot</span>(massExtts)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolots)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
+</div>
+</div>
+</div>
+<div id="έλεγχος-εποχικότητας." class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Έλεγχος
+εποχικότητας.</h1>
+<p>Παίζει ρόλο το freq που έχουμε δόσει στην ts.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(seastests)){</span>
+<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;seastests&quot;</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>    <span class="fu">library</span>(seastests)</span>
+<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExtts)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolots)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(yTs)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="έλεγχος-περιοδικότητας." class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Έλεγχος
+περιοδικότητας.</h1>
+<p>Τεστ. Να αναλύσω περισσότερο. Ίσως όμως και οκ.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ptest)){</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;ptest&quot;</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>    <span class="fu">library</span>(ptest)</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">ptestg</span>(massExt)</span></code></pre></div>
+<pre><code>## $obsStat
+## [1] 0.3022865
+## 
+## $pvalue
+## [1] 2.108835e-17
+## 
+## $freq
+## [1] 0.004098361
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;Htest&quot;</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">ptestg</span>(gamoiSynolots)</span></code></pre></div>
+<pre><code>## $obsStat
+## [1] 0.1907637
+## 
+## $pvalue
+## [1] 0.2905724
+## 
+## $freq
+## [1] 0.04651163
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;Htest&quot;</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">ptestg</span>(yTs)</span></code></pre></div>
+<pre><code>## $obsStat
+## [1] 0.5830667
+## 
+## $pvalue
+## [1] 2.840486e-17
+## 
+## $freq
+## [1] 0.01
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;Htest&quot;</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="fu">ptestg</span>(massExt, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;Fisher&quot;</span>, <span class="st">&quot;robust&quot;</span>, <span class="st">&quot;extended&quot;</span>, <span class="st">&quot;extendedRobust&quot;</span>,</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>                     <span class="st">&quot;FisherRSR&quot;</span>), <span class="at">multiple =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<pre><code>## $obsStat
+## [1] 0.3022865
+## 
+## $pvalue
+## [1] 2.108835e-17
+## 
+## $freq
+## [1] 0.004098361
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;Htest&quot;</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a><span class="fu">ptestg</span>(massExt,<span class="at">method=</span><span class="st">&quot;Fisher&quot;</span>)</span></code></pre></div>
+<pre><code>## $obsStat
+## [1] 0.3022865
+## 
+## $pvalue
+## [1] 2.108835e-17
+## 
+## $freq
+## [1] 0.004098361
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;Htest&quot;</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" tabindex="-1"></a><span class="fu">ptestg</span>(gamoiSynolots,<span class="at">method=</span><span class="st">&quot;Fisher&quot;</span>)</span></code></pre></div>
+<pre><code>## $obsStat
+## [1] 0.1907637
+## 
+## $pvalue
+## [1] 0.2905724
+## 
+## $freq
+## [1] 0.04651163
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;Htest&quot;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;robust&quot;)</span></span>
+<span id="cb50-2"><a href="#cb50-2" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;extended&quot;)</span></span>
+<span id="cb50-3"><a href="#cb50-3" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;extendedRobust&quot;)</span></span>
+<span id="cb50-4"><a href="#cb50-4" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;FisherRSR&quot;)</span></span></code></pre></div>
+</div>
+<div id="ανάλυση-χρονοσειράς-στα-εξ-ων-συνετέθη" class="section level1"
+number="4">
+<h1><span class="header-section-number">4</span> Ανάλυση χρονοσειράς στα
+εξ ων συνετέθη</h1>
+<p>Αποσύνθεση. Θέλει ίσως αρκετή δουλειά ακόμη</p>
+<p>Δεν ανιχνεύει την περίοδο. Πιθαώς στο ts(y, start = 0, frequency = 6)
+πρέπει η συχνότητα να τεθεί όσο ηπερίοδος επανάληψης</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>massExttsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(massExtts, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a><span class="fu">plot</span>(massExttsComp)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" tabindex="-1"></a>yTsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(yTs, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" tabindex="-1"></a><span class="fu">plot</span>(yTsComp)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>gamoiSynolotsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(gamoiSynolots, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a><span class="co">#gamoiSynolotsComp &lt;- decompose(gamoiSynolots)</span></span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolotsComp)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+</div>
+<div id="συντελεστές-fourier" class="section level1" number="5">
+<h1><span class="header-section-number">5</span> Συντελεστές
+Fourier</h1>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>seiraFourier <span class="ot">&lt;-</span> <span class="cf">function</span>(t,dedomena, listPeriod){</span>
+<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(listPeriod)</span>
+<span id="cb54-3"><a href="#cb54-3" tabindex="-1"></a>  T <span class="ot">&lt;-</span> listPeriod[<span class="dv">1</span>]</span>
+<span id="cb54-4"><a href="#cb54-4" tabindex="-1"></a>  seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" tabindex="-1"></a>  <span class="cf">if</span> (n<span class="sc">&gt;</span><span class="dv">1</span>) {</span>
+<span id="cb54-6"><a href="#cb54-6" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) {</span>
+<span id="cb54-7"><a href="#cb54-7" tabindex="-1"></a>    T <span class="ot">&lt;-</span> listPeriod[i]</span>
+<span id="cb54-8"><a href="#cb54-8" tabindex="-1"></a>    orosN <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb54-9"><a href="#cb54-9" tabindex="-1"></a>    seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(seira,orosN), <span class="at">collapse=</span><span class="st">&quot;+&quot;</span>)</span>
+<span id="cb54-10"><a href="#cb54-10" tabindex="-1"></a>  }</span>
+<span id="cb54-11"><a href="#cb54-11" tabindex="-1"></a>  }</span>
+<span id="cb54-12"><a href="#cb54-12" tabindex="-1"></a>  formula_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;dedomena ~&quot;</span>, seira)</span>
+<span id="cb54-13"><a href="#cb54-13" tabindex="-1"></a>  lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(formula_string))</span>
+<span id="cb54-14"><a href="#cb54-14" tabindex="-1"></a>  lm_model</span>
+<span id="cb54-15"><a href="#cb54-15" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>tt <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)<span class="sc">/</span><span class="dv">10</span></span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="dv">75</span><span class="sc">+</span> <span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">7</span>) <span class="sc">*</span> tt)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> tt)<span class="sc">+</span><span class="dv">100</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">7</span>) <span class="sc">*</span> tt)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">1000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(tt,dd,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.formula(formula_string))
+## 
+## Coefficients:
+##          (Intercept)  I(sin(2 * pi * t/6))  I(cos(2 * pi * t/6))  I(sin(2 * pi * t/7))  
+##             74.98883              -0.01088              -3.99355             105.97974  
+## I(cos(2 * pi * t/7))  
+##             -0.01453</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="fu">plot</span>(tt,dd)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+</div>
 
 
 

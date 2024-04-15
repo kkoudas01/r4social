@@ -19,3 +19,331 @@ library(kableExtra)
 ```{r, echo=F}
 rm(list = ls())
 ```
+
+# Υποψία περιοδικότητας
+
+Σε [προηγούμενη ενότητα](motiba.html) αναφέρθηκε η έννοια της εποχικότητας. Εδώ θα εμβαθύνουμε λίγο παραπάνω. 
+
+Από το [Google Trends](https://trends.google.com/trends/) κατεβάσαμε το αρχείο massExt.csv, το οποίο περιέχει το πλήθος των «γκουγκλαρισμάτων» της φράσης «mass extinction» στις ΗΠΑ από 1/1/2004 έως και σήμερα 14/4/2024. Για την ακρίβεια, στο εν λόγω αρχείο δεν παρουσιάζεται ακριβώς το πλήθος, αλλά έχει αυτό κανονικοποηθεί ως προς τη μέγιστη τιμή του. Δηλαδή, αυτή ετέθη 100 και οτιδήποτε άλλο πάει συγκριτικά με αυτήν.
+
+```{r echo = F, results='asis', message=FALSE}
+massExtDF <- read.csv("massExt.csv")
+knitr::kable(massExtDF) %>%
+  kable_styling("striped", full_width = F) %>%
+  scroll_box(width = "max-content", height = "200px")
+```
+
+Επίσης από το [Statista](https://www.statista.com/) κατεβάσαμε δεδομένα που αφορούν τους γάμους που έγιναν στην Ελλάδα από το 1980 έως και το 2022. Τα δεδομένα καταχωρήθηκν στο αρχείο gamoi.xlsx, όπου η μία στήλη δίνει το έτος, η άλλη το πλήθος γάμων ανά 1000 άτομα και η τελευταία το πλήθος των γάμων γενικώς.
+
+```{r echo = F, results='asis', message=FALSE}
+if(!require(readxl)){
+    install.packages("readxl")
+    library(readxl)
+}
+gamoi <- readxl::read_excel("gamoi.xlsx")
+knitr::kable(gamoi) %>%
+  kable_styling("striped", full_width = F) %>%
+  scroll_box(width = "max-content", height = "200px")
+```
+
+
+Κατόπιν εξάγουμε τις λίστες με τα δεδομένα που μας απασχολούν: τα γκουγκλαρίσματα και τους γάμους.
+
+```{r}
+massExt <- massExtDF$mass.extinction...United.States.
+gamoiSynolo <- gamoi$GamoiSynolo
+x <- 1:100
+y <- x+6*sin( (2*pi/3) * x)-4*cos( (2*pi/6) * x)+rnorm(100)
+```
+
+## Χρονόγραμμα
+
+Κάνουμε μια πρώτη απόπειρα αναπαράστασής τους. Δεν θα παραστήσουμε καν την ένδειξη του χρόνου, για να είμαστε τελείως απερίσπαστοι.
+
+```{r}
+plot(massExt, type ="l")
+```
+
+Παρατηρούμε μια κυκλική συμπεριφορά των γκουγκλαρισμάτων. Ανά τακτά διαστήματα έχουμε κάποιες παρόμοιες αυξομοιώσεις. Ας δούμε τώρα και τους γάμους.
+
+
+```{r}
+plot(gamoiSynolo, type ="l")
+```
+
+Αν εξαιρέσουμε την εμφανή πτωτική τάση προς το τέλος, εν γένει κι αυτοί εμφανίζουν μια περιοδικότητα.
+
+```{r}
+plot(y, type ="l")
+```
+
+## Διάγραμμα υστέρησης
+
+Συνεχίζουμε με τα διαγράμματα υστέρησης, για να επιβεβαιώσουμε όσα υποψιαστήκαμε πριν.
+
+```{r, message=F}
+if(!require(forecast)){
+    install.packages("forecast")
+    library(forecast)
+}
+```
+
+```{r}
+gglagplot(massExt, continuous = TRUE, set.lags = 2*(1:10))
+```
+
+Παρατηρούμε ότι το lag = 12 κείτεται επί της ευθείας $y=x$, όπερ δείχνει ισχυρή συσχέτηση ανά 12 μονάδες του χρόνου, ήτοι μια περιοδική επανάληψη ανά 12 χρονικές μονάδες.
+
+Ας δούμε τι παίζει και με τους γάμους.
+
+```{r}
+gglagplot(gamoiSynolo, continuous = TRUE, set.lags = 2*(1:10))
+```
+
+Εδώ φαίνεται να υπάρχει περιοδικότητα ανά 4 χρονικές μονάδες, αλλά όχι τόσο εμφανής, όσο προηγουμένως. παρατηρούμε επίσης και μια μετατώπιση του γραφήματος σιγά-σιγά κάτω από την $y=x$, πράγμα που υποδηλώνει πτωτική τάση των γάμων.
+
+```{r}
+gglagplot(y, continuous = TRUE, set.lags = 2*(1:10))
+```
+
+##    ∆ιάγραµµα αυτοσυσχέτισης
+
+Τώρα θα σχεδιάσουμε το διάγραµµα αυτοσυσχέτισης από την κάθε περίπτωση. Αρχικά ερευνούμε τα γκουγκλαρίσματα.
+
+```{r}
+acf(massExt)
+```
+
+Κι εδώ παρατηρούμε ισχυρή αυτοσυσχέτιση ανά 12 χρονικές μονάδες.
+
+Ας δοκιμάσουμε την ισχύ της διαίσθησής μας και στην περίπτωση των γάμων.
+
+```{r}
+acf(gamoiSynolo)
+```
+
+Ανά 4 μονάδες του χρόνου παρατιρείται ισχυρή συσχέτιση, άρα επανάληψη, η οποία όμως εξασθενεί στην πορεία του χρόνου, πιθανότατα λόγω της προαναφερθείσας πτωτικής τάσης.
+
+
+## Περιοδόγραμμα Lomb-Scargle
+
+### Γράφημα
+
+Ένας επιπλέον τρόπος να δούμε αν υφίσταται περιοδικότητα και ποια είναι αυτή είναι το **περιοδόγραμμα Lomb-Scargle**. Το περιοδόγραμμα αυτό δίνει το βαθμό ταύτισης της χρονοσειράς μας με μια λίστα ημιτονοειδών χρονοσειρών διαφόρων συχνοτήτων. Οι συγκρίσεις γίνονται μέσω του τεστ $\chi^2$ (βλ. [Έλεγχος χ2 για διακριτές κατανομές](findDist.html#3_Έλεγχος_χ2_για_διακριτές_κατανομές)).
+
+```{r, message=F}
+if(!require(lomb)){
+    install.packages("lomb")
+    library(lomb)
+}
+```
+
+```{r}
+lsp(massExt)
+```
+
+Η προκαθορισμένη εκδοχή του περιοδογράμματος Lomb-Scargle εξάγει τη συχνότητα του φαινομένου. Εν προκειμένω η κυρίαρχη συχνότητα είναι περίπου 0.08 γκουγκλαρίσματα ανά χρονική μονάδα. Δηλαδή το τεστ $\chi^2$ υποδηλώνει ουκ ευκαταφρόνητη στατιστική εξαρτηση με ημιτονοειδή σερά συχνότητας περίπου 0.08. Επί τη ευκαιρία, η μπλε διακεκκομμένη γραμμή δίνει το επίεδο σημαντικότητας. Οι κορυφές των αντίστοιχων συχνοτήτων κάτω από αυτήν θεωρούνται αρκετά απίθανο να συνδέονται με κάποια αντίστοιχη ημιτονοειδή χρονοσειρά.
+
+Όμως, σε τι χρονικές μονάδες αυτό αντικατοπτρίζεται η συχνότητα 0.08; Σε $\frac{1}{0.08}\approx 12$, όπως είχαμε βρει κι εμείς από τις άλλες περιπτώσεις. Αλλά ας το δούμε και πιο «ετοιματζίδικα» χρησιμοποιώντας την παράμετρο `type`.
+
+```{r}
+lsp(massExt,type = "period")
+```
+
+Εμφανίζεται η περίοδος πλέον, αλλά όχι πολύ καθαρά. Δεν είναι καθόλου προφανές ποια είναι αυτή. Φαίνεται να είναι κάπου ανάμεσα στο 5 και στο 25, αλλά δεν είναι ευδιάκριτο. Θα περιορίσουμε, λοιπόν, το περιοδόγραμμα εκεί προσδιορίζοντας ανάλογα τις παραμέτρους `from` και `to`:
+
+```{r}
+lsp(massExt, from = 5, to = 25, type = "period")
+```
+
+Πλέον είναι φανερή η περιοδική συμπεριφορά ανά 12 περίπου χρονικές μονάδες.
+
+Ας δούμε τώρα κάποιες παραμέτρους ακόμα. Η μπλε διακεκκομένη γραμμή δίνει, όπως είπαμε, το επίπεδο σημαντικότητας. Η προκαθορισμένη τιμή είναι το 0.01, ήτοι ίσως αρκετά μικρή για έναν κοινωνικό επιστήμονα. Μπορούμε να δοκιμάσουμε κάποια μεγαλύτερη, όπως την 0.05 πειράζοντας την παράμετρο `alpha` ως ακολούθως.
+
+```{r}
+lsp(massExt, from = 5, to = 25, type = "period", alpha = 0.05)
+```
+
+Βλέπουμε πλέον ότι ίσως να μην είναι απίθανη η σύνδεση της χρονοσειράς μας με μια ημιτονοειδή χρονοσειρά περιόδου περίπου 6 χρονικών μονάδων.
+
+Ο αναγνώστης ίσως να έχει παρατηρήσει την έντονα πολυγωνική μορφή του περιοδοδιαγράμματος. Αυτό οφείλεται στο ότι έχουν γίνει συγκρίσεις της χρονοσειράς μας με λίγες ημιτονοειδείς χρονοσειρές. Μπορούμε ν' αυξήσουμε το πλήθος τους «παίζοντας» με την παράμετρο `ofac`. Εδώ θα κάνουμε τη σύγκριση με 100 ημιτονοειδείς χρονοσειρές και θα έχουμε έτσι ένα πιο λείο περιοδόγραμμα.
+
+```{r}
+lsp(massExt, from = 5, to = 25, type = "period",
+    ofac = 100, alpha = 0.05)
+```
+
+Ας κάνουμε μια παρόμοια μελέτη για τους γάμους.
+
+
+```{r}
+lsp(gamoiSynolo)
+```
+
+Εδώ το περιοδόγραμμα αρνείται κάθε ενδεχόμενο επαναληπτικότητας. Αυτό οφείλεται στο ότι το εν λόγω γράφημα εντοπίζει καθαρή επαναληπτικότητα, μη αναμεμειγμένη με πτωτικές ή ανωδικές τάσεις, όπως η χρονοσειρά των γάμων.
+
+
+
+
+### Προσδιορισμός περιόδου και συχνότητας
+
+```{r}
+prosdiorismosPerSyxn <- function(dedomena, apo = NULL, eos = NULL){
+  periodogramma <- lsp(dedomena, times = NULL, from = apo, to = eos, type = "period",
+      ofac = 130, alpha = 0.01, normalize="press", plot = FALSE)
+  per <- periodogramma$peak.at[1]
+  syxn <- periodogramma$peak.at[2]
+  Period <- c(per)
+  Frequency <- c(syxn)
+  data.frame(Period,Frequency)
+}
+```
+
+```{r}
+prosdiorismosPerSyxn(massExt, 4, 15)
+prosdiorismosPerSyxn(massExt, 4, 10)
+prosdiorismosPerSyxn(massExt, 10, 15)
+```
+
+```{r}
+prosdiorismosPerSyxn(gamoiSynolo, 3, 10)
+```
+
+```{r}
+massExtts <- ts(massExtDF$mass.extinction...United.States., start = c(2004, 1), freq=12)
+gamoiSynolots <- ts(gamoi$GamoiSynolo, start = 0, freq=4)
+yTs <- ts(y, start = 0, frequency = 6)
+```
+
+```{r}
+plot(massExtts)
+plot(gamoiSynolots)
+```
+
+# Έλεγχος εποχικότητας. 
+
+Παίζει ρόλο το freq που έχουμε δόσει στην ts.
+
+```{r}
+if(!require(seastests)){
+    install.packages("seastests")
+    library(seastests)
+}
+```
+
+```{r}
+isSeasonal(massExtts)
+isSeasonal(gamoiSynolots)
+isSeasonal(yTs)
+```
+
+# Έλεγχος περιοδικότητας. 
+
+Τεστ. Να αναλύσω περισσότερο. Ίσως όμως και οκ.
+
+```{r}
+if(!require(ptest)){
+    install.packages("ptest")
+    library(ptest)
+}
+```
+
+```{r}
+ptestg(massExt)
+ptestg(gamoiSynolots)
+ptestg(yTs)
+```
+
+
+
+```{r}
+ptestg(massExt, method = c("Fisher", "robust", "extended", "extendedRobust",
+                     "FisherRSR"), multiple = FALSE)
+ptestg(massExt,method="Fisher")
+ptestg(gamoiSynolots,method="Fisher")
+# ptestg(massExt,method="robust")
+# ptestg(massExt,method="extended")
+# ptestg(massExt,method="extendedRobust")
+# ptestg(massExt,method="FisherRSR")
+```
+
+# Ανάλυση χρονοσειράς στα εξ ων συνετέθη
+
+Αποσύνθεση. Θέλει ίσως αρκετή δουλειά ακόμη 
+
+Δεν ανιχνεύει την περίοδο. Πιθαώς στο ts(y, start = 0, frequency = 6) πρέπει η συχνότητα να τεθεί όσο ηπερίοδος επανάληψης
+
+
+
+```{r}
+massExttsComp <- stl(massExtts, s.window = "periodic")
+plot(massExttsComp)
+```
+
+```{r}
+yTsComp <- stl(yTs, s.window = "periodic")
+plot(yTsComp)
+```
+
+```{r}
+gamoiSynolotsComp <- stl(gamoiSynolots, s.window = "periodic")
+#gamoiSynolotsComp <- decompose(gamoiSynolots)
+plot(gamoiSynolotsComp)
+```
+
+
+
+# Συντελεστές Fourier
+
+
+
+
+
+```{r}
+seiraFourier <- function(t,dedomena, listPeriod){
+  n <- length(listPeriod)
+  T <- listPeriod[1]
+  seira <- paste(c("I(sin(2*pi*t/",T,"))+I(cos(2*pi*t/",T,"))"), collapse="")
+  if (n>1) {
+    for (i in 2:n) {
+    T <- listPeriod[i]
+    orosN <- paste(c("I(sin(2*pi*t/",T,"))+I(cos(2*pi*t/",T,"))"), collapse="")
+    seira <- paste(c(seira,orosN), collapse="+")
+  }
+  }
+  formula_string <- paste("dedomena ~", seira)
+  lm_model <- lm(as.formula(formula_string))
+  lm_model
+}
+```
+
+```{r}
+tt <- (1:1000)/10
+dd <- 75+ 6*sin( (2*pi/7) * tt)-4*cos( (2*pi/6) * tt)+100*sin( (2*pi/7) * tt)+rnorm(1000)
+```
+
+```{r}
+seiraFourier(tt,dd,c(6,7))
+```
+
+```{r}
+plot(tt,dd)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
