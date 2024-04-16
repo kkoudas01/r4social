@@ -319,11 +319,11 @@ seiraFourier <- function(t,dedomena, listPeriod){
 
 ```{r}
 tt <- (1:1000)/10
-dd <- 75+ 6*sin( (2*pi/7) * tt)-4*cos( (2*pi/6) * tt)+100*sin( (2*pi/7) * tt)+rnorm(1000)
+dd <- 75+ 6*sin( (2*pi/7) * tt)-4*cos( (2*pi/6) * tt)+100*sin( (2*pi/7) * tt)+2*cos( (2*pi/3) * tt)+rnorm(1000)
 ```
 
 ```{r}
-seiraFourier(tt,dd,c(6,7))
+seiraFourier(tt,dd,c(6,7,3))
 ```
 
 ```{r}

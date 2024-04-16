@@ -131,6 +131,8 @@ navbar:
         href: apoxi.html
       - text: "Εξέταση αποτελεσμάτων PISA"
         href: pisa.html
+      - text: "Κύματα Kondratiev"
+        href: kondratiev.html
     - text: "Εντός εκτός κι επί τα αυτά"
       icon: fa-solid fa-mug-saucer
       menu:
