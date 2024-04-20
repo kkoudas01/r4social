@@ -11,9 +11,9 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-16" />
+<meta name="date" content="2024-04-20" />
 
-<title>Μελέτη περιοδικότητας</title>
+<title>Μελέτη εποχικότητας</title>
 
 <script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -602,7 +602,7 @@ div.tocify {
           <a href="motiba.html">Μοτίβα</a>
         </li>
         <li>
-          <a href="periodikotita.html">Μελέτη περιοδικότητας</a>
+          <a href="periodikotita.html">Μελέτη εποχικότητας</a>
         </li>
         <li>
           <a href="arima.html">Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</a>
@@ -678,16 +678,16 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Μελέτη περιοδικότητας</h1>
+<h1 class="title toc-ignore">Μελέτη εποχικότητας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-16</h4>
+<h4 class="date">2024-04-20</h4>
 
 </div>
 
 
-<div id="υποψία-περιοδικότητας" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Υποψία
-περιοδικότητας</h1>
+<div id="εντοπισμός-εποχικότητας" class="section level1" number="1">
+<h1><span class="header-section-number">1</span> Εντοπισμός
+εποχικότητας</h1>
 <p>Σε <a href="motiba.html">προηγούμενη ενότητα</a> αναφέρθηκε η έννοια
 της εποχικότητας. Εδώ θα εμβαθύνουμε λίγο παραπάνω.</p>
 <p>Από το <a href="https://trends.google.com/trends/">Google Trends</a>
@@ -2668,9 +2668,9 @@ mass.extinction…United.States.
 </div>
 <p>Επίσης από το <a href="https://www.statista.com/">Statista</a>
 κατεβάσαμε δεδομένα που αφορούν τους γάμους που έγιναν στην Ελλάδα από
-το 1980 έως και το 2022. Τα δεδομένα καταχωρήθηκν στο αρχείο gamoi.xlsx,
-όπου η μία στήλη δίνει το έτος, η άλλη το πλήθος γάμων ανά 1000 άτομα
-και η τελευταία το πλήθος των γάμων γενικώς.</p>
+το 1980 έως και το 2022. Τα δεδομένα καταχωρήθηκαν στο αρχείο
+gamoi.xlsx, όπου η μία στήλη δίνει το έτος, η άλλη το πλήθος γάμων ανά
+1000 άτομα και η τελευταία το πλήθος των γάμων γενικώς.</p>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -3164,89 +3164,293 @@ NA
 </tbody>
 </table>
 </div>
-<p>Κατόπιν εξάγουμε τις λίστες με τα δεδομένα που μας απασχολούν: τα
-γκουγκλαρίσματα και τους γάμους.</p>
+<p>Κατόπιν εξάγουμε τις λίστες με τα δεδομένα που μας απασχολούν: <em>τα
+γκουγκλαρίσματα και τους γάμους</em>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>massExt <span class="ot">&lt;-</span> massExtDF<span class="sc">$</span>mass.extinction...United.States.</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>gamoiSynolo <span class="ot">&lt;-</span> gamoi<span class="sc">$</span>GamoiSynolo</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> x)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> x)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>gamoiSynolo <span class="ot">&lt;-</span> gamoi<span class="sc">$</span>GamoiSynolo</span></code></pre></div>
+<p>Παράλληλα με τα παραπάνω θα ασχοληθούμε και με μια κευασμένη από εμάς
+χρονοσειρά, την <code>y</code>:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> x)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> x)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span></code></pre></div>
+<p>Αυτή φτιάχτηκε να έχει ανωδική τάση (<code>y &lt;- x+...</code>) και
+εποχικότητα 6 μονάδων (<code>4*cos( (2*pi/6) * x)</code>), ελαφρώς
+αλλειωμένες από έναν θόρυβο (<code>rnorm(100)</code>). Παράλληλα εντός
+της εμφανίζεται και μια κινητικότητα ανά 3 χρονικές μονάδες
+(<code>6*sin( (2*pi/3) * x)</code>).</p>
 <div id="χρονόγραμμα" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Χρονόγραμμα</h2>
 <p>Κάνουμε μια πρώτη απόπειρα αναπαράστασής τους. Δεν θα παραστήσουμε
-καν την ένδειξη του χρόνου, για να είμαστε τελείως απερίσπαστοι.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">plot</span>(massExt, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Παρατηρούμε μια κυκλική συμπεριφορά των γκουγκλαρισμάτων. Ανά τακτά
-διαστήματα έχουμε κάποιες παρόμοιες αυξομοιώσεις. Ας δούμε τώρα και τους
-γάμους.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolo, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+καν την ένδειξη του χρόνου, για να είμαστε τελείως απερίσπαστοι και να
+μην προκαταβάλουμε κάποια συμπεράσματα.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">plot</span>(massExt, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <p><img src="periodikotita_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>Αν εξαιρέσουμε την εμφανή πτωτική τάση προς το τέλος, εν γένει κι
-αυτοί εμφανίζουν μια περιοδικότητα.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p>Παρατηρούμε μια κυκλική συμπεριφορά των γκουγκλαρισμάτων, δηλαδή ανά
+τακτά διαστήματα έχουμε κάποιες παρόμοιες αυξομοιώσεις. Ας δούμε τώρα
+και τους γάμους.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolo, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
 <p><img src="periodikotita_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Αν εξαιρέσουμε την εμφανή πτωτική τάση προς το τέλος, εν γένει κι
+αυτοί εμφανίζουν μια εποχικότητα.</p>
+<p>Τέλος, η δικιά μας η χρονοσειρά <code>y</code> έχει εμφανέστατη
+εποχικότητα, όπως φαίνεται παρακάτω:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="διάγραμμα-υστέρησης" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Διάγραμμα
 υστέρησης</h2>
 <p>Συνεχίζουμε με τα διαγράμματα υστέρησης, για να επιβεβαιώσουμε όσα
 υποψιαστήκαμε πριν.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">gglagplot</span>(massExt, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">gglagplot</span>(massExt, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>Παρατηρούμε ότι το lag = 12 κείτεται επί της ευθείας <span
 class="math inline">\(y=x\)</span>, όπερ δείχνει ισχυρή συσχέτηση ανά 12
-μονάδες του χρόνου, ήτοι μια περιοδική επανάληψη ανά 12 χρονικές
+μονάδες του χρόνου, ήτοι μια εποχική επανάληψη ανά 12 χρονικές
 μονάδες.</p>
 <p>Ας δούμε τι παίζει και με τους γάμους.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">gglagplot</span>(gamoiSynolo, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<p>Εδώ φαίνεται να υπάρχει περιοδικότητα ανά 4 χρονικές μονάδες, αλλά
-όχι τόσο εμφανής, όσο προηγουμένως. παρατηρούμε επίσης και μια
-μετατώπιση του γραφήματος σιγά-σιγά κάτω από την <span
-class="math inline">\(y=x\)</span>, πράγμα που υποδηλώνει πτωτική τάση
-των γάμων.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">gglagplot</span>(y, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">gglagplot</span>(gamoiSynolo, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
 <p><img src="periodikotita_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Εδώ φαίνεται να υπάρχει εποχικότητα ανά 4 χρονικές μονάδες, αλλά όχι
+τόσο εμφανής, όσο προηγουμένως. Παρατηρούμε επίσης και μια μετατώπιση
+του γραφήματος σιγά-σιγά κάτω από την <span
+class="math inline">\(y=x\)</span>, πράγμα που υποδηλώνει πτωτική τάση
+των γάμων. Άραγε, η κυκλική συμπεριφορά των γάμων ανά 4 έτη να
+αντικατοπτρίζει την προκατάλειψη του πληθυσμού για τα δίσεκτα έτη, ως
+προς το ότι αυτά είναι «γρουσούζικα» για το γάμο;</p>
+<p>Όσον αφορά την φτιαχτή από μας χρονοσειρά <code>y</code> τα πράγματα
+είναι ακόμα πιο καθαρά. Αν στις δύο προηγούμενες περιπτώσεις πασχίζαμε
+να εκλάβουμε ως ευθεία το γράφημα σε κάποιο lag, τώρα η ευθεία φαίνεται
+ολοκάθαρα μπροστά μας στο lag = 6. Δηλαδή, είναι προφανής η εποχική
+επανάληψη ανά 6 χρονικές μονάδες.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">gglagplot</span>(y, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 </div>
 <div id="ιάγραµµα-αυτοσυσχέτισης" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> ∆ιάγραµµα
 αυτοσυσχέτισης</h2>
-<p>Τώρα θα σχεδιάσουμε το διάγραµµα αυτοσυσχέτισης από την κάθε
+<p>Τέλος θα σχεδιάσουμε το διάγραµµα αυτοσυσχέτισης από την κάθε
 περίπτωση. Αρχικά ερευνούμε τα γκουγκλαρίσματα.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">acf</span>(massExt)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
-<p>Κι εδώ παρατηρούμε ισχυρή αυτοσυσχέτιση ανά 12 χρονικές μονάδες.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">acf</span>(massExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Και πάλι παρατηρούμε ισχυρή αυτοσυσχέτιση ανά 12 χρονικές
+μονάδες.</p>
 <p>Ας δοκιμάσουμε την ισχύ της διαίσθησής μας και στην περίπτωση των
 γάμων.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">acf</span>(gamoiSynolo)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">acf</span>(gamoiSynolo)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Ανά 4 μονάδες του χρόνου παρατιρείται ισχυρή συσχέτιση, άρα
 επανάληψη, η οποία όμως εξασθενεί στην πορεία του χρόνου, πιθανότατα
 λόγω της προαναφερθείσας πτωτικής τάσης.</p>
-</div>
-<div id="περιοδόγραμμα-lomb-scargle" class="section level2"
-number="1.4">
-<h2><span class="header-section-number">1.4</span> Περιοδόγραμμα
-Lomb-Scargle</h2>
-<div id="γράφημα" class="section level3" number="1.4.1">
-<h3><span class="header-section-number">1.4.1</span> Γράφημα</h3>
-<p>Ένας επιπλέον τρόπος να δούμε αν υφίσταται περιοδικότητα και ποια
-είναι αυτή είναι το <strong>περιοδόγραμμα Lomb-Scargle</strong>. Το
-περιοδόγραμμα αυτό δίνει το βαθμό ταύτισης της χρονοσειράς μας με μια
-λίστα ημιτονοειδών χρονοσειρών διαφόρων συχνοτήτων. Οι συγκρίσεις
-γίνονται μέσω του τεστ <span class="math inline">\(\chi^2\)</span> (βλ.
-<a href="findDist.html#3_Έλεγχος_χ2_για_διακριτές_κατανομές">Έλεγχος χ2
-για διακριτές κατανομές</a>).</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lomb)){</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;lomb&quot;</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>    <span class="fu">library</span>(lomb)</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt)</span></code></pre></div>
+<p>Τέλος ας δούμε τι γίνεται και με την <code>y</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">acf</span>(y)</span></code></pre></div>
 <p><img src="periodikotita_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Διακρύνουμε σίγουρα μια πτωτική τάση στην συσχέτιση της χρονοσειράς
+με τον… εαυτό της, πράγμα που αντανακλά την έντονη αυξητική τάση της. Η
+εποχικότητα εμφανίζεται ως στιγμιαίες ανυψώσεις ανά 6 lag.</p>
+</div>
+</div>
+<div id="κάταχώρηση-χρονοσειράς-βάσει-διαπιστώσεων-εποχικότητας"
+class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Κάταχώρηση χρονοσειράς
+βάσει διαπιστώσεων εποχικότητας</h1>
+<p>Στο σημείο αυτό είμαστε σε θέση να εισάγουμε τον χρόνο στις
+χρονοσειρές μας. Θα ακολουθήσουμε τη <a
+href="timeBasic.html#2_Καταχώρηση_χρονοσειράς">γνωστή πορεία</a>, με μία
+διαφορά στην τιμή της παραμέτρου <code>freq</code>. Στην ενότητα <a
+href="timeBasic.html#2_Καταχώρηση_χρονοσειράς">Καταχώρηση
+χρονοσειράς</a> αναφέραμε ότι η <code>freq</code> είναι κατά το μάλλον ή
+ήττον για να περιγράφουμε το χρόνο που εξελίσσεται η χρονοσειρά μας.
+Στην πραγματικότητα η <code>freq</code> περιγράφει τον χρόνο ενός κύκλου
+επανάληψης. Έτσι, αφού είδαμε ότι τα κουγκλαρίσματα επαναλαμβάνονται ανά
+12 μήνες, θα γράψουμε:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>massExtts <span class="ot">&lt;-</span> <span class="fu">ts</span>(massExtDF<span class="sc">$</span>mass.extinction...United.States., <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2004</span>, <span class="dv">1</span>), <span class="at">freq=</span><span class="dv">12</span>)</span></code></pre></div>
+<p>Και αφού οι γάμοι παρουσιάζουν μια εποχική συμπεριφορά ανά 4 χρόνια,
+θα γράψουμε:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>gamoiSynolots <span class="ot">&lt;-</span> <span class="fu">ts</span>(gamoi<span class="sc">$</span>GamoiSynolo, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">freq=</span><span class="dv">4</span>)</span></code></pre></div>
+<p>Τέλος, είναι εύλογο ότι η «χειροποίητη» χρονοσειρά <code>y</code> θα
+καταχωρηθεί ως έχουσα <code>freq=6</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>yTs <span class="ot">&lt;-</span> <span class="fu">ts</span>(y, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">frequency =</span> <span class="dv">6</span>)</span></code></pre></div>
+</div>
+<div id="στατιστικός-έλεγχος-εποχικότητας." class="section level1"
+number="3">
+<h1><span class="header-section-number">3</span> Στατιστικός έλεγχος
+εποχικότητας.</h1>
+<p>Είδαμε παραπάνω δύο γραφικούς τρόπους εντοπισμού της εποχικότητας.
+Τώρα θα δούμε έναν στατιστικό έλεγχο που θα μας επιβεβαιώνει τα όσα
+είδαμε με τα μάτια μας. Προς τούτο θα χρειαστούμε το πακέτο
+<code>seastests</code>, οπότε γράφουμε:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(seastests)){</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;seastests&quot;</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>    <span class="fu">library</span>(seastests)</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Έτσι, δεν έχουμε παρά να χρησιμοποιήσουμε τη συνάρτηση
+<code>isSeasonal()</code>, στην οποία θα εκχωρίσουμε ως όρισμα τη
+χρονοσειρά μας. Έτσι, αρχίζοντας με τα γκουγκλαρίσματα, θα γράψυμε:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExt, <span class="at">freq=</span><span class="dv">12</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>ώστε να δούμε αν υφίσταται 12-μηνη εποχικότητα
+(<code>freq=12</code>). Και τελικά όντως υφισταται, αφού εξήχθη απάντηση
+<code>TRUE</code>. Εναλλακτικά από την παραπάνω γραφή, θα μπορούσαμε να
+γράψουμε:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExtts)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>καθόσον μέσα στη χρονοσειρά <code>massExtts</code> ενυπάρχει και η
+πληροφορία για 12-μηνη συχνότητα.</p>
+<p>Πάμε τώρα στους γάμους. Γράφουμε τα δύο παρακάτω ισοδύναμα
+πράγματα:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolo, <span class="at">freq=</span><span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolots)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Και πάλι μας εξάγεται η απάντηση <code>TRUE</code>, άρα όντως και οι
+γάμοι έχουν τετραετή εποχικότητα.</p>
+<p>Τέλος, ας δούμε και την «προκάτ» χρονοσειρά <code>y</code>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(y, <span class="at">freq=</span><span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(yTs)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>Για άλλη μια φορά επιβεβαιώνεται η εποχική συμπεριφορά ανά 6 μονάδες
+του χρόνου.</p>
+<p>Πριν πάμε στην επόμενη ενότητα αξίζει ν’ αναφέρουμε ότι ο παραπάνω
+στατιστικός έλεγχος δεν ανιχνεύει την ύπαρξη γενικώς κάποιας
+εποχικότητας, αλλά ελέγχει αν υφίσταται η συγκεκριμένη εποχικότητα.
+Έτσι, αν επί παραδείγματι γράψουμε:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(y, <span class="at">freq=</span><span class="dv">7</span>)</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>η απάντηση είναι <code>FALSE</code>, δηλαδή ότι δεν υπάρχει καμία
+εποχική συμπεριφορά ανά 7 μονάδες του χρόνου.</p>
+</div>
+<div id="άντληση-περιοδικής-συνιστώσας-χρονοσειράς"
+class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Άντληση περιοδικής
+συνιστώσας χρονοσειράς</h1>
+<p>Στο σημείο αυτό έχουμε την δυνατότητα να πράξουμε κάτι πραγματικά
+σπουδαίο! Έχουμε τη δυνατότητα να αναλύσουμε τη χρονοσειρά μας στα εξ ων
+συνετέθη. Θα την διασπάσουμε σε τρεις χρονοσειρές:</p>
+<ul>
+<li>μία συνιστώσα που να δείχνει καθαρά την τάση της,</li>
+<li>μία περιοδική συνιστώσα που να αντικατοπτρίζει αποκλειστικά την
+εποχική συμπεριφορά της,</li>
+<li>μία συνιστώσα θορύβου.</li>
+</ul>
+<p>Αυτό θα γίνει με τη βοήθεια της συνάρτησης <code>stl()</code> ως
+ακολούθως.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>massExttsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(massExtts, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="fu">plot</span>(massExttsComp)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Σε αυτή την εικόνα:</p>
+<ul>
+<li>αρχικά παρουσιάζεται η αυθεντική χρονοσειρά μας
+(<code>data</code>),</li>
+<li>ακολούθως η περιοδική συνιστώσα (<code>seasonal</code>),</li>
+<li>μετά η συνιστώσα τάσης (<code>trend</code>) και</li>
+<li>τέλος ο θόρυβος.</li>
+</ul>
+<p>Αξίζει να παρατηρήσουμε την αύξουσα τάση των γκουγκλαρισμάτων. Να
+αντικατοπτρίζει άραγε αυτή μια απαισιόδοξη τάση της κοιωνίας;</p>
+<p>Τώρα, αν θέλουμε να έχουμε πρόσβαση σε κάθε μία από τις συνιστώσες
+μπορούμε να χρησιμοποιήσουμε τις συναρτήσεις:</p>
+<ul>
+<li><code>seasonal</code> για την εποχική συνιστώσα:</li>
+</ul>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>SeasonalMassExt <span class="ot">&lt;-</span> <span class="fu">seasonal</span>(massExttsComp)</span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="fu">plot</span>(SeasonalMassExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<ul>
+<li><code>trendcycle</code> για τη συνιστώσα τάσης:</li>
+</ul>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>TrendMassExt <span class="ot">&lt;-</span> <span class="fu">trendcycle</span>(massExttsComp)</span>
+<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a><span class="fu">plot</span>(TrendMassExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<ul>
+<li><code>remainder</code> για τη συνιστώσα θορύβου:</li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>RemainderMassExt <span class="ot">&lt;-</span> <span class="fu">remainder</span>(massExttsComp)</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">plot</span>(RemainderMassExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Αυτά, όσον αφορά τα γκουγκλαρίσματα. Πάμε τώρα να δούμε τυς
+γάμους:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>gamoiSynolotsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(gamoiSynolots, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolotsComp)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>Η συνιστώσα τάσης δείχνει ολοκάθαρα πλέον μια καθαρή πτωτική
+συμπεριφορά των γάμων.</p>
+<p>Τέλος, ας δούμε πως αποσυντίθεται και η χρονοσειρά που φτιάξαμε.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a>yTsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(yTs, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="fu">plot</span>(yTsComp)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+</div>
+<div id="ανάλυση-περιοδικής-χρονοσειράς" class="section level1"
+number="5">
+<h1><span class="header-section-number">5</span> Ανάλυση περιοδικής
+χρονοσειράς</h1>
+<div id="περιοδόγραμμα-lomb-scargle"
+class="section level2 tabset tabset-fade tabset-pills" number="5.1">
+<h2 class="tabset tabset-fade tabset-pills"><span
+class="header-section-number">5.1</span> Περιοδόγραμμα Lomb-Scargle</h2>
+<p>Πριν μπούμε στο ψητό αυτής της ενότητας, θα πρέπει να δούμε κάποια
+πράγματα. Ας φανταστούμε, λοιπόν, ένα μέγεθος (π.χ. έναν πληθυσμό) το
+οποίο εξελίσσεται στην πάροδο του χρόνου. Ας υποθέσουμε επίσης ότι
+υπάρχει μια τιμή του (η <strong>θέση ισορροπίας</strong>), από την οποία
+όσο απομακρύνεται, τόσο πιο ισχυρά μια αόρατη δύναμη το «σπρώχνει» να
+επιστρέψει πίσω. Όταν συμβαίνει αυτό, το μέγεθος αυτό αυξομοιώνεται
+πάνω-κάτω από τη θέση ισορροπίας του:</p>
+<ul>
+<li><p>Απομακρύνεται αρχικά από τη θέση ισορροπίας, άρα του ασκείται
+δύναμη επαναφοράς.</p></li>
+<li><p>Η δύναμη επαναφοράς το σπρώχνει πίσω στη θέση
+ισορροπίας.</p></li>
+<li><p>Λόγω κεκτημένης ταχύτητας προσπερνά τη θέση ισορροπίας και
+απομακρύνεται από αυτήν.</p></li>
+<li><p>Αφού έχει απόσταση από τη θέση ισορροπίας, η δύναμη επαναφοράς το
+σπρώχνει πίσω.</p></li>
+</ul>
+<p>κ.ο.κ.</p>
+<p>Όλη αυτή η διαδικασία είναι περιοδική, δηλαδή επαναλαμβάνεται ανά
+τακτά διαστήματα.</p>
+<p>Ας φανταστούμε τώρα ότι καθόλη τη διάρκεια της κίνησής του αυτό
+μπορεί να εκτραπεί από την προβλεπόμενη θέση του κι ας υποθέσουμε πάλι
+ότι υπάρχει και μια άλλη αόρατη δύναμη, που προσπαθεί να το επαναφέρει
+στην προβλεπόμενη θέση. Κι αυτή τη φορά η δύναμη μεγαλώνει, όσο πιο
+μακριά είναι το μέγεθος από την προβλεπόμενη θέση. Και στην προκειμένη
+περίπτωση η διαδικασία είναι περιοδική, δηλαδή επαναλαμβάνεται ανά τακτά
+διαστήματα. Σε αυτή τη διαδικασία θα λέγαμε ότι υπάρχουν δύο κύκλοι
+επανάληψης:</p>
+<ul>
+<li><p>ο αρχικός κύκλος πέριξ της θέσης ισορροπίας,</p></li>
+<li><p>ο νέος κύκλος γύρω από την προβλεπόμενη θέση που θα έπρεπε να
+είναι, αν υφίστατο μόνο ο πρώτος κύκλος.</p></li>
+</ul>
+<p>Ο εμπλουτισμός με τέτοιες ταλαντώσεις μπορεί να συνεχιστεί αυθαίρετα.
+Κι εδώ ανακύπτουν κάποια ερωτήματα. «Πώς μπορώ να βρω πόσο μεγάλοι είναι
+αυτοί οι κύκλοι;». «Ποιο πήγαινε-έλα έχει το πιο έντονα
+χαρακτηριστικά;»</p>
+<p>Αυτά τα ερωτήματα έρχεται ν’ απαντήσει το <strong>περιοδόγραμμα
+Lomb-Scargle</strong>.</p>
+<div id="γράφημα" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Γράφημα</h3>
+<p>Το περιοδόγραμμα Lomb-Scargle δείχνει πόσο ισχυρές είναι οι δυνάμεις
+του εκάστοτε κύκλου επαναφοράς. Συγκεκριμένα, αν και αυτό ίσως να μην
+απασχολεί τον μέσο αναγνώστη, δίνει το βαθμό ταύτισης της χρονοσειράς
+μας με μια λίστα ημιτονοειδών χρονοσειρών διαφόρων συχνοτήτων. Οι
+συγκρίσεις γίνονται μέσω του τεστ <span
+class="math inline">\(\chi^2\)</span> (βλ. <a
+href="findDist.html#3_Έλεγχος_χ2_για_διακριτές_κατανομές">Έλεγχος χ2 για
+διακριτές κατανομές</a>).</p>
+<p>Τέλος πάντων, ας το δούμε και πρακτικά. Για να το φτιάξουμε θα
+χρειαστούμε το πακέτο <code>lomb</code>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lomb)){</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;lomb&quot;</span>)</span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a>    <span class="fu">library</span>(lomb)</span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a>}</span></code></pre></div>
+<p>Οπότε πάμε να δούμε τι συμβαίνει μα τα γκουγκλαρίσματα των μαζικών
+καταστροφών:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>Η προκαθορισμένη εκδοχή του περιοδογράμματος Lomb-Scargle εξάγει τη
 συχνότητα του φαινομένου. Εν προκειμένω η κυρίαρχη συχνότητα είναι
 περίπου 0.08 γκουγκλαρίσματα ανά χρονική μονάδα. Δηλαδή το τεστ <span
@@ -3255,237 +3459,160 @@ class="math inline">\(\chi^2\)</span> υποδηλώνει ουκ ευκαταφ
 ευκαιρία, η μπλε διακεκκομμένη γραμμή δίνει το επίεδο σημαντικότητας. Οι
 κορυφές των αντίστοιχων συχνοτήτων κάτω από αυτήν θεωρούνται αρκετά
 απίθανο να συνδέονται με κάποια αντίστοιχη ημιτονοειδή χρονοσειρά.</p>
+<p>Κάποιος θα παρατηρούσε ότι υπάρχει και μια άλλη κορύφωση, κοντά στο
+0. Γιατί την αγνωούμε; Στην πραγματικότητα αυτή η κορύφωση είναι ένα
+σφάλμα που πρέπει να αγνωήσουμε και που οφείλεται στο ότι η χρονοσειρά
+μας δεν ήταν εντελώς περιοδική, αλλά περιείχε τάσεις. Αν αυτές
+απαλοιφθούν, δηλαδή αν χρησιμοποιήσουμε τη <code>SeasonalMassExt</code>,
+τότε θα δούμε ότι δεν υπάρχει πλέον τέτοια ένδειξη.</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>Όμως, σε τι χρονικές μονάδες αυτό αντικατοπτρίζεται η συχνότητα 0.08;
 Σε <span class="math inline">\(\frac{1}{0.08}\approx 12\)</span>, όπως
 είχαμε βρει κι εμείς από τις άλλες περιπτώσεις. Αλλά ας το δούμε και πιο
 «ετοιματζίδικα» χρησιμοποιώντας την παράμετρο <code>type</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt,<span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p>Εμφανίζεται η περίοδος πλέον, αλλά όχι πολύ καθαρά. Δεν είναι καθόλου
-προφανές ποια είναι αυτή. Φαίνεται να είναι κάπου ανάμεσα στο 5 και στο
-25, αλλά δεν είναι ευδιάκριτο. Θα περιορίσουμε, λοιπόν, το περιοδόγραμμα
-εκεί προσδιορίζοντας ανάλογα τις παραμέτρους <code>from</code> και
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p>Εμφανίζεται η περίοδος πλέον. Το κομμάτι που φαίνεται να
+«απογειώνεται» στο τέλος δεν υποδεικνύει κάποια άλλη περίοδο, αλλά είναι
+αποτέλεσμα του ότι η χρονοσειρά μας δεν είναι εντελώς περιοδική. Είναι
+ακριβώς το ίδιο παραπλανητικό σφάλμα που συναντήσαμε και στην περίπτωση
+της συχνότητας. Αν εξαφανίσουμε πάλι κάθε τάση της και κρατήσουμε μόνο
+την περιοδικότητα, θα πάψει να εμφανίζεται αυτή η παραδοξότητα.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt,<span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p>αλλά όχι πολύ καθαρά. Δεν είναι καθόλου προφανές ποια είναι αυτή.
+Φαίνεται να είναι κάπου ανάμεσα στο 5 και στο 25, αλλά δεν είναι
+ευδιάκριτο. Θα περιορίσουμε, λοιπόν, το περιοδόγραμμα εκεί
+προσδιορίζοντας ανάλογα τις παραμέτρους <code>from</code> και
 <code>to</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 <p>Πλέον είναι φανερή η περιοδική συμπεριφορά ανά 12 περίπου χρονικές
-μονάδες.</p>
+μονάδες. Επαναλαμβάνουμε ότι αυτό σημαίνει ότι μάλλον η χρονοσειρά μας
+διακατέχεται από μιαν επαναληπτικότητα της τάξης των 12 χρονικών
+μονάδων.</p>
 <p>Ας δούμε τώρα κάποιες παραμέτρους ακόμα. Η μπλε διακεκκομένη γραμμή
 δίνει, όπως είπαμε, το επίπεδο σημαντικότητας. Η προκαθορισμένη τιμή
 είναι το 0.01, ήτοι ίσως αρκετά μικρή για έναν κοινωνικό επιστήμονα.
 Μπορούμε να δοκιμάσουμε κάποια μεγαλύτερη, όπως την 0.05 πειράζοντας την
 παράμετρο <code>alpha</code> ως ακολούθως.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
 <p>Βλέπουμε πλέον ότι ίσως να μην είναι απίθανη η σύνδεση της
 χρονοσειράς μας με μια ημιτονοειδή χρονοσειρά περιόδου περίπου 6
-χρονικών μονάδων.</p>
+χρονικών μονάδων. Τι σημαίνει αυτό; Σημαίνει ότι υπάρχουν κάποιες
+έντονες τάσεις κύμανσης που κάνουν τα φαινόμενα να επα</p>
 <p>Ο αναγνώστης ίσως να έχει παρατηρήσει την έντονα πολυγωνική μορφή του
 περιοδοδιαγράμματος. Αυτό οφείλεται στο ότι έχουν γίνει συγκρίσεις της
 χρονοσειράς μας με λίγες ημιτονοειδείς χρονοσειρές. Μπορούμε ν’
 αυξήσουμε το πλήθος τους «παίζοντας» με την παράμετρο <code>ofac</code>.
 Εδώ θα κάνουμε τη σύγκριση με 100 ημιτονοειδείς χρονοσειρές και θα
 έχουμε έτσι ένα πιο λείο περιοδόγραμμα.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>    <span class="at">ofac =</span> <span class="dv">100</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
+<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a>    <span class="at">ofac =</span> <span class="dv">100</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <p>Ας κάνουμε μια παρόμοια μελέτη για τους γάμους.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolo)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolo)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Εδώ το περιοδόγραμμα αρνείται κάθε ενδεχόμενο επαναληπτικότητας. Αυτό
 οφείλεται στο ότι το εν λόγω γράφημα εντοπίζει καθαρή επαναληπτικότητα,
-μη αναμεμειγμένη με πτωτικές ή ανωδικές τάσεις, όπως η χρονοσειρά των
-γάμων.</p>
+μη αναμεμειγμένη με πτωτικές ή ανωδικές τάσεις, όπως και είναι η
+χρονοσειρά των γάμων.</p>
 </div>
 <div id="προσδιορισμός-περιόδου-και-συχνότητας" class="section level3"
-number="1.4.2">
-<h3><span class="header-section-number">1.4.2</span> Προσδιορισμός
+number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Προσδιορισμός
 περιόδου και συχνότητας</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>prosdiorismosPerSyxn <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">apo =</span> <span class="cn">NULL</span>, <span class="at">eos =</span> <span class="cn">NULL</span>){</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>  periodogramma <span class="ot">&lt;-</span> <span class="fu">lsp</span>(dedomena, <span class="at">times =</span> <span class="cn">NULL</span>, <span class="at">from =</span> apo, <span class="at">to =</span> eos, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>      <span class="at">ofac =</span> <span class="dv">130</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>, <span class="at">normalize=</span><span class="st">&quot;press&quot;</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>  per <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">1</span>]</span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>  syxn <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">2</span>]</span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>  Period <span class="ot">&lt;-</span> <span class="fu">c</span>(per)</span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>  Frequency <span class="ot">&lt;-</span> <span class="fu">c</span>(syxn)</span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>  <span class="fu">data.frame</span>(Period,Frequency)</span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">4</span>, <span class="dv">15</span>)</span></code></pre></div>
+<p>Στην υπονενότητα αυτή θα χρησιμοποιήσουμε το περιοδόγραμμα για να
+εντοπίζουμε την περίοδο</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" tabindex="-1"></a>prosdiorismosPerSyxn <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">apo =</span> <span class="cn">NULL</span>, <span class="at">eos =</span> <span class="cn">NULL</span>){</span>
+<span id="cb46-2"><a href="#cb46-2" tabindex="-1"></a>  periodogramma <span class="ot">&lt;-</span> <span class="fu">lsp</span>(dedomena, <span class="at">times =</span> <span class="cn">NULL</span>, <span class="at">from =</span> apo, <span class="at">to =</span> eos, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
+<span id="cb46-3"><a href="#cb46-3" tabindex="-1"></a>      <span class="at">ofac =</span> <span class="dv">130</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>, <span class="at">normalize=</span><span class="st">&quot;press&quot;</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" tabindex="-1"></a>  per <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">1</span>]</span>
+<span id="cb46-5"><a href="#cb46-5" tabindex="-1"></a>  syxn <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">2</span>]</span>
+<span id="cb46-6"><a href="#cb46-6" tabindex="-1"></a>  Period <span class="ot">&lt;-</span> <span class="fu">c</span>(per)</span>
+<span id="cb46-7"><a href="#cb46-7" tabindex="-1"></a>  Frequency <span class="ot">&lt;-</span> <span class="fu">c</span>(syxn)</span>
+<span id="cb46-8"><a href="#cb46-8" tabindex="-1"></a>  <span class="fu">data.frame</span>(Period,Frequency)</span>
+<span id="cb46-9"><a href="#cb46-9" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">4</span>, <span class="dv">15</span>)</span></code></pre></div>
 <pre><code>##     Period  Frequency
 ## 1 11.97952 0.08347578</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">4</span>, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">4</span>, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##     Period Frequency
 ## 1 5.987491 0.1670149</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">10</span>, <span class="dv">15</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(massExt, <span class="dv">10</span>, <span class="dv">15</span>)</span></code></pre></div>
 <pre><code>##     Period  Frequency
 ## 1 11.97952 0.08347578</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolo, <span class="dv">3</span>, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolo, <span class="dv">3</span>, <span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##    Period Frequency
 ## 1 4.08377 0.2448718</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a>massExtts <span class="ot">&lt;-</span> <span class="fu">ts</span>(massExtDF<span class="sc">$</span>mass.extinction...United.States., <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2004</span>, <span class="dv">1</span>), <span class="at">freq=</span><span class="dv">12</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>gamoiSynolots <span class="ot">&lt;-</span> <span class="fu">ts</span>(gamoi<span class="sc">$</span>GamoiSynolo, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">freq=</span><span class="dv">4</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>yTs <span class="ot">&lt;-</span> <span class="fu">ts</span>(y, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">frequency =</span> <span class="dv">6</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="fu">plot</span>(massExtts)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolots)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
 </div>
 </div>
-</div>
-<div id="έλεγχος-εποχικότητας." class="section level1" number="2">
-<h1><span class="header-section-number">2</span> Έλεγχος
-εποχικότητας.</h1>
-<p>Παίζει ρόλο το freq που έχουμε δόσει στην ts.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(seastests)){</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;seastests&quot;</span>)</span>
-<span id="cb30-3"><a href="#cb30-3" tabindex="-1"></a>    <span class="fu">library</span>(seastests)</span>
-<span id="cb30-4"><a href="#cb30-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Loading required package: seastests</code></pre>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExtts)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolots)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">isSeasonal</span>(yTs)</span></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
-</div>
-<div id="έλεγχος-περιοδικότητας." class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Έλεγχος
-περιοδικότητας.</h1>
-<p>Τεστ. Να αναλύσω περισσότερο. Ίσως όμως και οκ.</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ptest)){</span>
-<span id="cb38-2"><a href="#cb38-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;ptest&quot;</span>)</span>
-<span id="cb38-3"><a href="#cb38-3" tabindex="-1"></a>    <span class="fu">library</span>(ptest)</span>
-<span id="cb38-4"><a href="#cb38-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Loading required package: ptest</code></pre>
-<pre><code>## Periodicity tests in short time series</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">ptestg</span>(massExt)</span></code></pre></div>
-<pre><code>## $obsStat
-## [1] 0.3022865
-## 
-## $pvalue
-## [1] 2.108835e-17
-## 
-## $freq
-## [1] 0.004098361
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;Htest&quot;</code></pre>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">ptestg</span>(gamoiSynolots)</span></code></pre></div>
-<pre><code>## $obsStat
-## [1] 0.1907637
-## 
-## $pvalue
-## [1] 0.2905724
-## 
-## $freq
-## [1] 0.04651163
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;Htest&quot;</code></pre>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="fu">ptestg</span>(yTs)</span></code></pre></div>
-<pre><code>## $obsStat
-## [1] 0.5830667
-## 
-## $pvalue
-## [1] 2.840486e-17
-## 
-## $freq
-## [1] 0.01
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;Htest&quot;</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">ptestg</span>(massExt, <span class="at">method =</span> <span class="fu">c</span>(<span class="st">&quot;Fisher&quot;</span>, <span class="st">&quot;robust&quot;</span>, <span class="st">&quot;extended&quot;</span>, <span class="st">&quot;extendedRobust&quot;</span>,</span>
-<span id="cb47-2"><a href="#cb47-2" tabindex="-1"></a>                     <span class="st">&quot;FisherRSR&quot;</span>), <span class="at">multiple =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<pre><code>## $obsStat
-## [1] 0.3022865
-## 
-## $pvalue
-## [1] 2.108835e-17
-## 
-## $freq
-## [1] 0.004098361
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;Htest&quot;</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">ptestg</span>(massExt,<span class="at">method=</span><span class="st">&quot;Fisher&quot;</span>)</span></code></pre></div>
-<pre><code>## $obsStat
-## [1] 0.3022865
-## 
-## $pvalue
-## [1] 2.108835e-17
-## 
-## $freq
-## [1] 0.004098361
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;Htest&quot;</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="fu">ptestg</span>(gamoiSynolots,<span class="at">method=</span><span class="st">&quot;Fisher&quot;</span>)</span></code></pre></div>
-<pre><code>## $obsStat
-## [1] 0.1907637
-## 
-## $pvalue
-## [1] 0.2905724
-## 
-## $freq
-## [1] 0.04651163
-## 
-## attr(,&quot;class&quot;)
-## [1] &quot;Htest&quot;</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;robust&quot;)</span></span>
-<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;extended&quot;)</span></span>
-<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;extendedRobust&quot;)</span></span>
-<span id="cb53-4"><a href="#cb53-4" tabindex="-1"></a><span class="co"># ptestg(massExt,method=&quot;FisherRSR&quot;)</span></span></code></pre></div>
-</div>
-<div id="ανάλυση-χρονοσειράς-στα-εξ-ων-συνετέθη" class="section level1"
-number="4">
-<h1><span class="header-section-number">4</span> Ανάλυση χρονοσειράς στα
-εξ ων συνετέθη</h1>
-<p>Αποσύνθεση. Θέλει ίσως αρκετή δουλειά ακόμη</p>
-<p>Δεν ανιχνεύει την περίοδο. Πιθαώς στο ts(y, start = 0, frequency = 6)
-πρέπει η συχνότητα να τεθεί όσο ηπερίοδος επανάληψης</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" tabindex="-1"></a>massExttsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(massExtts, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" tabindex="-1"></a><span class="fu">plot</span>(massExttsComp)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>yTsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(yTs, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
-<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a><span class="fu">plot</span>(yTsComp)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>gamoiSynolotsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(gamoiSynolots, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
-<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a><span class="co">#gamoiSynolotsComp &lt;- decompose(gamoiSynolots)</span></span>
-<span id="cb56-3"><a href="#cb56-3" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolotsComp)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
-</div>
-<div id="συντελεστές-fourier" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Συντελεστές
-Fourier</h1>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a>seiraFourier <span class="ot">&lt;-</span> <span class="cf">function</span>(t,dedomena, listPeriod){</span>
-<span id="cb57-2"><a href="#cb57-2" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(listPeriod)</span>
-<span id="cb57-3"><a href="#cb57-3" tabindex="-1"></a>  T <span class="ot">&lt;-</span> listPeriod[<span class="dv">1</span>]</span>
-<span id="cb57-4"><a href="#cb57-4" tabindex="-1"></a>  seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb57-5"><a href="#cb57-5" tabindex="-1"></a>  <span class="cf">if</span> (n<span class="sc">&gt;</span><span class="dv">1</span>) {</span>
-<span id="cb57-6"><a href="#cb57-6" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) {</span>
-<span id="cb57-7"><a href="#cb57-7" tabindex="-1"></a>    T <span class="ot">&lt;-</span> listPeriod[i]</span>
-<span id="cb57-8"><a href="#cb57-8" tabindex="-1"></a>    orosN <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb57-9"><a href="#cb57-9" tabindex="-1"></a>    seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(seira,orosN), <span class="at">collapse=</span><span class="st">&quot;+&quot;</span>)</span>
-<span id="cb57-10"><a href="#cb57-10" tabindex="-1"></a>  }</span>
-<span id="cb57-11"><a href="#cb57-11" tabindex="-1"></a>  }</span>
-<span id="cb57-12"><a href="#cb57-12" tabindex="-1"></a>  formula_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;dedomena ~&quot;</span>, seira)</span>
-<span id="cb57-13"><a href="#cb57-13" tabindex="-1"></a>  lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(formula_string))</span>
-<span id="cb57-14"><a href="#cb57-14" tabindex="-1"></a>  lm_model</span>
-<span id="cb57-15"><a href="#cb57-15" tabindex="-1"></a>}</span></code></pre></div>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a>tt <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>)<span class="sc">/</span><span class="dv">10</span></span>
-<span id="cb58-2"><a href="#cb58-2" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="dv">75</span><span class="sc">+</span> <span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">7</span>) <span class="sc">*</span> tt)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> tt)<span class="sc">+</span><span class="dv">100</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">7</span>) <span class="sc">*</span> tt)<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> tt)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">1000</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(tt,dd,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">3</span>))</span></code></pre></div>
+<div id="προσέγγιση-περιοδικής-χρονοσειράς-με-σειρά-fourier"
+class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Προσέγγιση περιοδικής
+χρονοσειράς με σειρά Fourier</h2>
+<p>Γιατί σειρά Fourier;</p>
+<p><span class="math inline">\(\dfrac{\operatorname{d}^2
+y}{\operatorname{d} t}=-\alpha (y-y_0)\)</span></p>
+<p><span class="math inline">\(y=c_1 \cos \left(t\sqrt{a} \right)+c_2
+\sin \left(t\sqrt{a} \right)+y_0\)</span></p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a>seiraFourier <span class="ot">&lt;-</span> <span class="cf">function</span>(t,dedomena, listPeriod){</span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(listPeriod)</span>
+<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a>  T <span class="ot">&lt;-</span> listPeriod[<span class="dv">1</span>]</span>
+<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a>  seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb55-5"><a href="#cb55-5" tabindex="-1"></a>  <span class="cf">if</span> (n<span class="sc">&gt;</span><span class="dv">1</span>) {</span>
+<span id="cb55-6"><a href="#cb55-6" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) {</span>
+<span id="cb55-7"><a href="#cb55-7" tabindex="-1"></a>    T <span class="ot">&lt;-</span> listPeriod[i]</span>
+<span id="cb55-8"><a href="#cb55-8" tabindex="-1"></a>    orosN <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb55-9"><a href="#cb55-9" tabindex="-1"></a>    seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(seira,orosN), <span class="at">collapse=</span><span class="st">&quot;+&quot;</span>)</span>
+<span id="cb55-10"><a href="#cb55-10" tabindex="-1"></a>  }</span>
+<span id="cb55-11"><a href="#cb55-11" tabindex="-1"></a>  }</span>
+<span id="cb55-12"><a href="#cb55-12" tabindex="-1"></a>  formula_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;dedomena ~&quot;</span>, seira)</span>
+<span id="cb55-13"><a href="#cb55-13" tabindex="-1"></a>  lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(formula_string))</span>
+<span id="cb55-14"><a href="#cb55-14" tabindex="-1"></a>  lm_model</span>
+<span id="cb55-15"><a href="#cb55-15" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(SeasonalMassExt)</span>
+<span id="cb56-2"><a href="#cb56-2" tabindex="-1"></a><span class="fu">seiraFourier</span>(<span class="dv">1</span><span class="sc">:</span>n,SeasonalMassExt,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">12</span>))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = as.formula(formula_string))
 ## 
 ## Coefficients:
-##          (Intercept)  I(sin(2 * pi * t/6))  I(cos(2 * pi * t/6))  I(sin(2 * pi * t/7))  
-##             74.98918              -0.01111              -3.99248             105.98005  
-## I(cos(2 * pi * t/7))  I(sin(2 * pi * t/3))  I(cos(2 * pi * t/3))  
-##             -0.01420              -0.05820               2.02685</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a><span class="fu">plot</span>(tt,dd)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+##           (Intercept)   I(sin(2 * pi * t/6))   I(cos(2 * pi * t/6))  
+##            -0.0002849             -8.3567745             -4.5117178  
+## I(sin(2 * pi * t/12))  I(cos(2 * pi * t/12))  
+##            12.8772886              6.6012389</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" tabindex="-1"></a><span class="fu">plot</span>(SeasonalMassExt)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a>tt <span class="ot">&lt;-</span> (<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>)</span>
+<span id="cb59-2"><a href="#cb59-2" tabindex="-1"></a>Fs <span class="ot">&lt;-</span> <span class="cf">function</span>(tt){</span>
+<span id="cb59-3"><a href="#cb59-3" tabindex="-1"></a>  <span class="dv">10</span><span class="sc">+</span> <span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> tt)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> tt)<span class="sc">+</span><span class="dv">100</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">7</span>) <span class="sc">*</span> tt)<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> tt)</span>
+<span id="cb59-4"><a href="#cb59-4" tabindex="-1"></a>}</span>
+<span id="cb59-5"><a href="#cb59-5" tabindex="-1"></a></span>
+<span id="cb59-6"><a href="#cb59-6" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">Fs</span>(tt)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(tt,dd,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">3</span>))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.formula(formula_string))
+## 
+## Coefficients:
+##          (Intercept)  I(sin(2 * pi * t/6))  I(cos(2 * pi * t/6))  
+##            1.000e+01             6.000e+00            -4.000e+00  
+## I(sin(2 * pi * t/7))  I(cos(2 * pi * t/7))  I(sin(2 * pi * t/3))  
+##            1.000e+02             2.895e-14             3.602e-14  
+## I(cos(2 * pi * t/3))  
+##            2.000e+00</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" tabindex="-1"></a><span class="fu">plot</span>(tt,dd)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="fu">curve</span>(Fs, <span class="at">from=</span><span class="dv">0</span>,<span class="at">to=</span><span class="dv">50</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-47-2.png" width="672" /></p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" tabindex="-1"></a><span class="fu">acf</span>(dd)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-47-3.png" width="672" /></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="fu">lsp</span>(dd, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">10</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+</div>
 </div>
 
 

@@ -20,4 +20,34 @@ library(kableExtra)
 rm(list = ls())
 ```
 
+
 Συντελεστής τζίνι. ΑΕΠ
+
+# Στατιστικός έλεγχος περιοδικότητας 
+
+Τεστ. Να αναλύσω περισσότερο. Ίσως όμως και οκ.
+
+`
+if(!require(ptest)){
+    install.packages("ptest")
+    library(ptest)
+}
+`
+
+```{r}
+#ptestg(massExt)
+#ptestg(gamoiSynolots)
+#ptestg(yTs)
+```
+
+
+
+```{r}
+#ptestg(massExt, method = c("Fisher", "robust", "extended", "extendedRobust",                     "FisherRSR"), multiple = FALSE)
+#ptestg(massExt,method="Fisher")
+#ptestg(gamoiSynolots,method="Fisher")
+# ptestg(massExt,method="robust")
+# ptestg(massExt,method="extended")
+# ptestg(massExt,method="extendedRobust")
+# ptestg(massExt,method="FisherRSR")
+```

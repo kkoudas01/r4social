@@ -110,7 +110,7 @@ navbar:
           href: timeBasic.html
         - text: "Μοτίβα"
           href: motiba.html
-        - text: "Μελέτη περιοδικότητας"
+        - text: "Μελέτη εποχικότητας"
           href: periodikotita.html
         - text: "Πρόβλεψη χρονοσειρών με μοντέλα ARIMA"
           href: arima.html
