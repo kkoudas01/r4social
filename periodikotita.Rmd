@@ -536,7 +536,7 @@ $$-0.0002849-8.3567745\sin\left(\frac{2\pi}{6}t\right)-4.5117178\cos\left(\frac{
 όπου $t$ είναι οι χρονικές μονάδες από την έναρξη της παρατήρησης. Ας δούμε γραφικά πόσο καλή προσέγγιση επιτυγχάνει το μοντέλο μας.
 
 ```{r}
-plot(1:length(SeasonalMassExt),SeasonalMassExt)
+plot(1:length(SeasonalMassExt),SeasonalMassExt, type = "l")
 curve(-0.0002849-8.3567745*sin(2 * pi * x/6)-4.5117178*cos(2 * pi * x/6)+12.8772886*sin(2 * pi * x/12)+6.6012389*cos(2 * pi * x/12), add = TRUE, col = "red", n=10000)
 ```
 
@@ -546,7 +546,24 @@ curve(-0.0002849-8.3567745*sin(2 * pi * x/6)-4.5117178*cos(2 * pi * x/6)+12.8772
 seiraFourier(gamoiSynolotsCompSeasonal,c(4/3,2,4))
 ```
 
-Τα `NA` δηλώνουν ότι οι όροι $\sin\left(\frac{2\pi}{4}t\right)$ και $\cos\left(\frac{2\pi}{4}t\right)$ είναι γραμμικός συνδυασμός των υπολοίπων, άρα μπορούν να παραλειφθούν. Γράφουμε:
+Τα `NA` δηλώνουν ότι οι όροι $\sin\left(\frac{2\pi}{4}t\right)$ και $\cos\left(\frac{2\pi}{4}t\right)$ είναι γραμμικός συνδυασμός των υπολοίπων, άρα πρέπει να επανεξεταστούν. Γράφουμε:
+
+```{r}
+seiraFourier(gamoiSynolotsCompSeasonal,c(2,4))
+```
+
+Οπότε έχουμε το μοντέλο:
+
+$$-692.7\sin\left(\frac{2\pi}{2}t\right)+3414\cos\left(\frac{2\pi}{2}t\right)-3854\sin\left(\frac{2\pi}{4}t\right)+1209\cos\left(\frac{2\pi}{4}t\right)$$
+
+Πάμε να εξετάσουμε την πιστότητα του μοντέλου μας γραφικά και βλέπουμε ότι αυτή είναι πολύ καλή.
+
+```{r}
+plot(1:length(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal, type= "l")
+curve(-3854*sin(2 * pi * x/4)+1209*cos(2 * pi * x/4)-692.7*sin(2 * pi * x/2)+3414*cos(2 * pi * x/2), add = TRUE, col = "red", n=10000)
+```
+
+Ας δοκιμάσουμε την τύχη μας με άλλους συνδυασμούς περιόδων.
 
 ```{r}
 seiraFourier(gamoiSynolotsCompSeasonal,c(4/3,2))
@@ -559,9 +576,11 @@ $$3854\sin\left(\frac{2\pi}{4/3}t\right)+1209\cos\left(\frac{2\pi}{4/3}t\right)+
 Ας δούμε και τώρα την οπτική επαλήθευση της πιστότητας του μοντέλου μας.
 
 ```{r}
-plot(1:length(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal)
+plot(1:length(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal, type= "l")
 curve(3854*sin(2 * pi * x/(4/3))+1209*cos(2 * pi * x/(4/3))+5708*sin(2 * pi * x/2)+3414*cos(2 * pi * x/2), add = TRUE, col = "red", n=10000)
 ```
+
+Καμία σχέση με όσα βλέπουμε. Άρα κρατάμε την πρώτη μοντελοποίηση.
 
 Για την εμπέδωση των παραπάνω, αλλά και για να δούμε τα όρια των δυνατοτήτων των μεθόδων που ασχοληθήκαμε, θα εξάγουμε και τη σειρά Fourier της περιοδικής συνιστώσας της σειράς `y` που φτιάξαμε.
 

@@ -2178,25 +2178,9 @@ AUS
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
 <span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>}</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>ergasiaGr_arima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(ergasiaGr_ts, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## 
-##  ARIMA(2,1,2) with drift         : 541.1963
-##  ARIMA(0,1,0) with drift         : 537.0109
-##  ARIMA(1,1,0) with drift         : 539.1705
-##  ARIMA(0,1,1) with drift         : 539.1577
-##  ARIMA(0,1,0)                    : 541.5847
-##  ARIMA(1,1,1) with drift         : 541.2287
-## 
-##  Best model: ARIMA(0,1,0) with drift</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>)</span></code></pre></div>
-<pre><code>##      Point Forecast    Lo 80    Hi 80    Lo 95    Hi 95
-## 2018       2012.416 1994.717 2030.115 1985.348 2039.484
-## 2019       2007.936 1982.906 2032.966 1969.656 2046.216
-## 2020       2003.456 1972.801 2034.112 1956.573 2050.340
-## 2021       1998.977 1963.579 2034.375 1944.841 2053.113
-## 2022       1994.497 1954.921 2034.073 1933.971 2055.023</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>))</span></code></pre></div>
-<p><img src="arima_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>ergasiaGr_arima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(ergasiaGr_ts, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>))</span></code></pre></div>
 
 
 

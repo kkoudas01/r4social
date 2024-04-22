@@ -1,0 +1,37 @@
+---
+title: "Σιλούρια υπόθεση"
+author: "Κώστας Κούδας"
+cache: TRUE
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+```
+
+```{r, echo=F}
+rm(list = ls())
+```
+
+
+Βασική ιδέα αυτή:
+https://ourworldindata.org/wild-mammals-birds-biomass
+
+Σε κάθε πληθυσμό υπό κατάρευση, θα υπάρχουν 2 ομάδες όντων:
+
+- Μια πολύ μεγάλη με την τροφή του κυρίαρχου.
+
+- Μια μεγάλη, ο κυρίαρχος.
+
+- Κάποια μικρά υπολείματα των άγριων μορφών ζωής.
+
+Τα παραπάνω μεγάθη μετριώνται σε ποσότητες άνθρακα.
+
+Ίσως να είναι χρήσιμη και η ποικιλότητα Shannon

@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-04-21" />
+<meta name="date" content="2024-04-22" />
 
 <title>Μελέτη εποχικότητας</title>
 
@@ -680,7 +680,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μελέτη εποχικότητας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-04-21</h4>
+<h4 class="date">2024-04-22</h4>
 
 </div>
 
@@ -3668,7 +3668,7 @@ class="math display">\[-0.0002849-8.3567745\sin\left(\frac{2\pi}{6}t\right)-4.51
 <p>όπου <span class="math inline">\(t\)</span> είναι οι χρονικές μονάδες
 από την έναρξη της παρατήρησης. Ας δούμε γραφικά πόσο καλή προσέγγιση
 επιτυγχάνει το μοντέλο μας.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(SeasonalMassExt),SeasonalMassExt)</span>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(SeasonalMassExt),SeasonalMassExt, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>)</span>
 <span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="sc">-</span><span class="fl">0.0002849-8.3567745</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">6</span>)<span class="sc">-</span><span class="fl">4.5117178</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">6</span>)<span class="sc">+</span><span class="fl">12.8772886</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">12</span>)<span class="sc">+</span><span class="fl">6.6012389</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">12</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span></code></pre></div>
 <p><img src="periodikotita_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>Ας δούμε τώρα και την περίπτωση των γάμων.</p>
@@ -3689,9 +3689,28 @@ class="math display">\[-0.0002849-8.3567745\sin\left(\frac{2\pi}{6}t\right)-4.51
 <p>Τα <code>NA</code> δηλώνουν ότι οι όροι <span
 class="math inline">\(\sin\left(\frac{2\pi}{4}t\right)\)</span> και
 <span class="math inline">\(\cos\left(\frac{2\pi}{4}t\right)\)</span>
-είναι γραμμικός συνδυασμός των υπολοίπων, άρα μπορούν να παραλειφθούν.
+είναι γραμμικός συνδυασμός των υπολοίπων, άρα πρέπει να επανεξεταστούν.
 Γράφουμε:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(gamoiSynolotsCompSeasonal,<span class="fu">c</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(gamoiSynolotsCompSeasonal,<span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">4</span>))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.formula(formula_string))
+## 
+## Coefficients:
+##          (Intercept)  I(sin(2 * pi * t/2))  I(cos(2 * pi * t/2))  
+##           -4.972e-04            -6.927e+02             3.414e+03  
+## I(sin(2 * pi * t/4))  I(cos(2 * pi * t/4))  
+##           -3.854e+03             1.209e+03</code></pre>
+<p>Οπότε έχουμε το μοντέλο:</p>
+<p><span
+class="math display">\[-692.7\sin\left(\frac{2\pi}{2}t\right)+3414\cos\left(\frac{2\pi}{2}t\right)-3854\sin\left(\frac{2\pi}{4}t\right)+1209\cos\left(\frac{2\pi}{4}t\right)\]</span></p>
+<p>Πάμε να εξετάσουμε την πιστότητα του μοντέλου μας γραφικά και
+βλέπουμε ότι αυτή είναι πολύ καλή.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal, <span class="at">type=</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="sc">-</span><span class="dv">3854</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">4</span>)<span class="sc">+</span><span class="dv">1209</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">4</span>)<span class="sc">-</span><span class="fl">692.7</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">3414</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p>Ας δοκιμάσουμε την τύχη μας με άλλους συνδυασμούς περιόδων.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(gamoiSynolotsCompSeasonal,<span class="fu">c</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span>))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = as.formula(formula_string))
@@ -3708,23 +3727,24 @@ class="math inline">\(\sin\left(\frac{2\pi}{4}t\right)\)</span> και
 class="math display">\[3854\sin\left(\frac{2\pi}{4/3}t\right)+1209\cos\left(\frac{2\pi}{4/3}t\right)+5708\sin\left(\frac{2\pi}{2}t\right)+3414\cos\left(\frac{2\pi}{2}t\right)\]</span></p>
 <p>Ας δούμε και τώρα την οπτική επαλήθευση της πιστότητας του μοντέλου
 μας.</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal)</span>
-<span id="cb70-2"><a href="#cb70-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="dv">3854</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">1209</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">5708</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">3414</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span></code></pre></div>
-<p><img src="periodikotita_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal, <span class="at">type=</span> <span class="st">&quot;l&quot;</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="dv">3854</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">1209</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">5708</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">3414</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span></code></pre></div>
+<p><img src="periodikotita_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p>Καμία σχέση με όσα βλέπουμε. Άρα κρατάμε την πρώτη μοντελοποίηση.</p>
 <p>Για την εμπέδωση των παραπάνω, αλλά και για να δούμε τα όρια των
 δυνατοτήτων των μεθόδων που ασχοληθήκαμε, θα εξάγουμε και τη σειρά
 Fourier της περιοδικής συνιστώσας της σειράς <code>y</code> που
 φτιάξαμε.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(<span class="fu">seasonal</span>(yTsComp),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" tabindex="-1"></a><span class="fu">seiraFourier</span>(<span class="fu">seasonal</span>(yTsComp),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = as.formula(formula_string))
 ## 
 ## Coefficients:
 ##          (Intercept)  I(sin(2 * pi * t/3))  I(cos(2 * pi * t/3))  
-##            9.802e-08             5.936e+00            -7.972e-02  
+##           -6.732e-08             6.022e+00             3.530e-02  
 ## I(sin(2 * pi * t/6))  I(cos(2 * pi * t/6))  
-##           -6.221e-02            -3.758e+00</code></pre>
+##            8.904e-02            -3.953e+00</code></pre>
 <p>Οπότε έχουμε το μοντέλο:</p>
 <p><span
 class="math display">\[6.008\sin\left(\frac{2\pi}{3}t\right)-0.094\cos\left(\frac{2\pi}{3}t\right)+0.214\sin\left(\frac{2\pi}{6}t\right)-3.950\cos\left(\frac{2\pi}{6}t\right)\]</span></p>
@@ -3733,107 +3753,107 @@ class="math display">\[6.008\sin\left(\frac{2\pi}{3}t\right)-0.094\cos\left(\fra
 <p><span
 class="math display">\[6\sin\left(\frac{2\pi}{3}t\right)-4\cos\left(\frac{2\pi}{6}t\right).\]</span></p>
 <p>Ο κώδικας που γράψαμε συνολικά ήταν:</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a>massExt <span class="ot">&lt;-</span> massExtDF<span class="sc">$</span>mass.extinction...United.States.</span>
-<span id="cb73-2"><a href="#cb73-2" tabindex="-1"></a>gamoiSynolo <span class="ot">&lt;-</span> gamoi<span class="sc">$</span>GamoiSynolo</span>
-<span id="cb73-3"><a href="#cb73-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
-<span id="cb73-4"><a href="#cb73-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> x)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> x)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
-<span id="cb73-5"><a href="#cb73-5" tabindex="-1"></a><span class="fu">plot</span>(massExt, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb73-6"><a href="#cb73-6" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolo, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb73-7"><a href="#cb73-7" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span>
-<span id="cb73-8"><a href="#cb73-8" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
-<span id="cb73-9"><a href="#cb73-9" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
-<span id="cb73-10"><a href="#cb73-10" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
-<span id="cb73-11"><a href="#cb73-11" tabindex="-1"></a>}</span>
-<span id="cb73-12"><a href="#cb73-12" tabindex="-1"></a><span class="fu">gglagplot</span>(massExt, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
-<span id="cb73-13"><a href="#cb73-13" tabindex="-1"></a><span class="fu">gglagplot</span>(gamoiSynolo, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
-<span id="cb73-14"><a href="#cb73-14" tabindex="-1"></a><span class="fu">gglagplot</span>(y, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
-<span id="cb73-15"><a href="#cb73-15" tabindex="-1"></a><span class="fu">acf</span>(massExt)</span>
-<span id="cb73-16"><a href="#cb73-16" tabindex="-1"></a><span class="fu">acf</span>(gamoiSynolo)</span>
-<span id="cb73-17"><a href="#cb73-17" tabindex="-1"></a><span class="fu">acf</span>(y)</span>
-<span id="cb73-18"><a href="#cb73-18" tabindex="-1"></a>massExtts <span class="ot">&lt;-</span> <span class="fu">ts</span>(massExtDF<span class="sc">$</span>mass.extinction...United.States., <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2004</span>, <span class="dv">1</span>), <span class="at">freq=</span><span class="dv">12</span>)</span>
-<span id="cb73-19"><a href="#cb73-19" tabindex="-1"></a>gamoiSynolots <span class="ot">&lt;-</span> <span class="fu">ts</span>(gamoi<span class="sc">$</span>GamoiSynolo, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">freq=</span><span class="dv">4</span>)</span>
-<span id="cb73-20"><a href="#cb73-20" tabindex="-1"></a>yTs <span class="ot">&lt;-</span> <span class="fu">ts</span>(y, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">frequency =</span> <span class="dv">6</span>)</span>
-<span id="cb73-21"><a href="#cb73-21" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(seastests)){</span>
-<span id="cb73-22"><a href="#cb73-22" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;seastests&quot;</span>)</span>
-<span id="cb73-23"><a href="#cb73-23" tabindex="-1"></a>    <span class="fu">library</span>(seastests)</span>
-<span id="cb73-24"><a href="#cb73-24" tabindex="-1"></a>}</span>
-<span id="cb73-25"><a href="#cb73-25" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExt, <span class="at">freq=</span><span class="dv">12</span>)</span>
-<span id="cb73-26"><a href="#cb73-26" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExtts)</span>
-<span id="cb73-27"><a href="#cb73-27" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolo, <span class="at">freq=</span><span class="dv">4</span>)</span>
-<span id="cb73-28"><a href="#cb73-28" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolots)</span>
-<span id="cb73-29"><a href="#cb73-29" tabindex="-1"></a><span class="fu">isSeasonal</span>(y, <span class="at">freq=</span><span class="dv">6</span>)</span>
-<span id="cb73-30"><a href="#cb73-30" tabindex="-1"></a><span class="fu">isSeasonal</span>(yTs)</span>
-<span id="cb73-31"><a href="#cb73-31" tabindex="-1"></a><span class="fu">isSeasonal</span>(y, <span class="at">freq=</span><span class="dv">7</span>)</span>
-<span id="cb73-32"><a href="#cb73-32" tabindex="-1"></a>massExttsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(massExtts, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
-<span id="cb73-33"><a href="#cb73-33" tabindex="-1"></a><span class="fu">plot</span>(massExttsComp)</span>
-<span id="cb73-34"><a href="#cb73-34" tabindex="-1"></a>SeasonalMassExt <span class="ot">&lt;-</span> <span class="fu">seasonal</span>(massExttsComp)</span>
-<span id="cb73-35"><a href="#cb73-35" tabindex="-1"></a><span class="fu">plot</span>(SeasonalMassExt)</span>
-<span id="cb73-36"><a href="#cb73-36" tabindex="-1"></a>TrendMassExt <span class="ot">&lt;-</span> <span class="fu">trendcycle</span>(massExttsComp)</span>
-<span id="cb73-37"><a href="#cb73-37" tabindex="-1"></a><span class="fu">plot</span>(TrendMassExt)</span>
-<span id="cb73-38"><a href="#cb73-38" tabindex="-1"></a>RemainderMassExt <span class="ot">&lt;-</span> <span class="fu">remainder</span>(massExttsComp)</span>
-<span id="cb73-39"><a href="#cb73-39" tabindex="-1"></a><span class="fu">plot</span>(RemainderMassExt)</span>
-<span id="cb73-40"><a href="#cb73-40" tabindex="-1"></a>gamoiSynolotsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(gamoiSynolots, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
-<span id="cb73-41"><a href="#cb73-41" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolotsComp)</span>
-<span id="cb73-42"><a href="#cb73-42" tabindex="-1"></a>yTsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(yTs, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
-<span id="cb73-43"><a href="#cb73-43" tabindex="-1"></a><span class="fu">plot</span>(yTsComp)</span>
-<span id="cb73-44"><a href="#cb73-44" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lomb)){</span>
-<span id="cb73-45"><a href="#cb73-45" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;lomb&quot;</span>)</span>
-<span id="cb73-46"><a href="#cb73-46" tabindex="-1"></a>    <span class="fu">library</span>(lomb)</span>
-<span id="cb73-47"><a href="#cb73-47" tabindex="-1"></a>}</span>
-<span id="cb73-48"><a href="#cb73-48" tabindex="-1"></a><span class="fu">lsp</span>(massExt)</span>
-<span id="cb73-49"><a href="#cb73-49" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt)</span>
-<span id="cb73-50"><a href="#cb73-50" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
-<span id="cb73-51"><a href="#cb73-51" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt,<span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
-<span id="cb73-52"><a href="#cb73-52" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
-<span id="cb73-53"><a href="#cb73-53" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span>
-<span id="cb73-54"><a href="#cb73-54" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
-<span id="cb73-55"><a href="#cb73-55" tabindex="-1"></a><span class="at">ofac =</span> <span class="dv">100</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span>
-<span id="cb73-56"><a href="#cb73-56" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolo)</span>
-<span id="cb73-57"><a href="#cb73-57" tabindex="-1"></a>gamoiSynolotsCompSeasonal <span class="ot">&lt;-</span> <span class="fu">seasonal</span>(gamoiSynolotsComp)</span>
-<span id="cb73-58"><a href="#cb73-58" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolotsCompSeasonal)</span>
-<span id="cb73-59"><a href="#cb73-59" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolotsCompSeasonal)</span>
-<span id="cb73-60"><a href="#cb73-60" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolotsCompSeasonal, <span class="at">ofac=</span><span class="dv">100</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
-<span id="cb73-61"><a href="#cb73-61" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolotsCompSeasonal, <span class="at">ofac=</span><span class="dv">100</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">from=</span><span class="dv">1</span>, <span class="at">to=</span><span class="dv">5</span>)</span>
-<span id="cb73-62"><a href="#cb73-62" tabindex="-1"></a>yTsCompSeasonal <span class="ot">&lt;-</span> <span class="fu">seasonal</span>(yTsComp)</span>
-<span id="cb73-63"><a href="#cb73-63" tabindex="-1"></a><span class="fu">lsp</span>(yTsCompSeasonal, <span class="at">ofac=</span><span class="dv">100</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">from=</span><span class="dv">1</span>, <span class="at">to=</span><span class="dv">8</span>)</span>
-<span id="cb73-64"><a href="#cb73-64" tabindex="-1"></a>prosdiorismosPerSyxn <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">apo =</span> <span class="cn">NULL</span>, <span class="at">eos =</span> <span class="cn">NULL</span>){</span>
-<span id="cb73-65"><a href="#cb73-65" tabindex="-1"></a>    periodogramma <span class="ot">&lt;-</span> <span class="fu">lsp</span>(dedomena, <span class="at">times =</span> <span class="cn">NULL</span>, <span class="at">from =</span> apo, <span class="at">to =</span> eos, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
-<span id="cb73-66"><a href="#cb73-66" tabindex="-1"></a>    <span class="at">ofac =</span> <span class="dv">130</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>, <span class="at">normalize=</span><span class="st">&quot;press&quot;</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb73-67"><a href="#cb73-67" tabindex="-1"></a>    per <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">1</span>]</span>
-<span id="cb73-68"><a href="#cb73-68" tabindex="-1"></a>    syxn <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">2</span>]</span>
-<span id="cb73-69"><a href="#cb73-69" tabindex="-1"></a>    Period <span class="ot">&lt;-</span> <span class="fu">c</span>(per)</span>
-<span id="cb73-70"><a href="#cb73-70" tabindex="-1"></a>    Frequency <span class="ot">&lt;-</span> <span class="fu">c</span>(syxn)</span>
-<span id="cb73-71"><a href="#cb73-71" tabindex="-1"></a>    <span class="fu">data.frame</span>(Period,Frequency)</span>
-<span id="cb73-72"><a href="#cb73-72" tabindex="-1"></a>}</span>
-<span id="cb73-73"><a href="#cb73-73" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(SeasonalMassExt)</span>
-<span id="cb73-74"><a href="#cb73-74" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(SeasonalMassExt, <span class="at">apo=</span><span class="dv">4</span>, <span class="at">eos=</span><span class="dv">10</span>)</span>
-<span id="cb73-75"><a href="#cb73-75" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolotsCompSeasonal)</span>
-<span id="cb73-76"><a href="#cb73-76" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolotsCompSeasonal, <span class="at">apo=</span><span class="dv">1</span>, <span class="at">eos=</span><span class="fl">1.5</span>)</span>
-<span id="cb73-77"><a href="#cb73-77" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolotsCompSeasonal, <span class="dv">3</span>, <span class="dv">5</span>)</span>
-<span id="cb73-78"><a href="#cb73-78" tabindex="-1"></a>seiraFourier <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, listPeriod){</span>
-<span id="cb73-79"><a href="#cb73-79" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dedomena)</span>
-<span id="cb73-80"><a href="#cb73-80" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(listPeriod)</span>
-<span id="cb73-81"><a href="#cb73-81" tabindex="-1"></a>    T <span class="ot">&lt;-</span> listPeriod[<span class="dv">1</span>]</span>
-<span id="cb73-82"><a href="#cb73-82" tabindex="-1"></a>    seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb73-83"><a href="#cb73-83" tabindex="-1"></a>    <span class="cf">if</span> (n<span class="sc">&gt;</span><span class="dv">1</span>) {</span>
-<span id="cb73-84"><a href="#cb73-84" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) {</span>
-<span id="cb73-85"><a href="#cb73-85" tabindex="-1"></a>            T <span class="ot">&lt;-</span> listPeriod[i]</span>
-<span id="cb73-86"><a href="#cb73-86" tabindex="-1"></a>            orosN <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb73-87"><a href="#cb73-87" tabindex="-1"></a>            seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(seira,orosN), <span class="at">collapse=</span><span class="st">&quot;+&quot;</span>)</span>
-<span id="cb73-88"><a href="#cb73-88" tabindex="-1"></a>        }</span>
-<span id="cb73-89"><a href="#cb73-89" tabindex="-1"></a>    }</span>
-<span id="cb73-90"><a href="#cb73-90" tabindex="-1"></a>    formula_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;dedomena ~&quot;</span>, seira)</span>
-<span id="cb73-91"><a href="#cb73-91" tabindex="-1"></a>    lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(formula_string))</span>
-<span id="cb73-92"><a href="#cb73-92" tabindex="-1"></a>    lm_model</span>
-<span id="cb73-93"><a href="#cb73-93" tabindex="-1"></a>}</span>
-<span id="cb73-94"><a href="#cb73-94" tabindex="-1"></a><span class="fu">seiraFourier</span>(SeasonalMassExt,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">12</span>))</span>
-<span id="cb73-95"><a href="#cb73-95" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(SeasonalMassExt),SeasonalMassExt)</span>
-<span id="cb73-96"><a href="#cb73-96" tabindex="-1"></a><span class="fu">curve</span>(<span class="sc">-</span><span class="fl">0.0002849-8.3567745</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">6</span>)<span class="sc">-</span><span class="fl">4.5117178</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">6</span>)<span class="sc">+</span><span class="fl">12.8772886</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">12</span>)<span class="sc">+</span><span class="fl">6.6012389</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">12</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span>
-<span id="cb73-97"><a href="#cb73-97" tabindex="-1"></a><span class="fu">seiraFourier</span>(gamoiSynolotsCompSeasonal,<span class="fu">c</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
-<span id="cb73-98"><a href="#cb73-98" tabindex="-1"></a><span class="fu">seiraFourier</span>(gamoiSynolotsCompSeasonal,<span class="fu">c</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb73-99"><a href="#cb73-99" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal)</span>
-<span id="cb73-100"><a href="#cb73-100" tabindex="-1"></a><span class="fu">curve</span>(<span class="dv">3854</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">1209</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">5708</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">3414</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span>
-<span id="cb73-101"><a href="#cb73-101" tabindex="-1"></a><span class="fu">seiraFourier</span>(<span class="fu">seasonal</span>(yTsComp),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" tabindex="-1"></a>massExt <span class="ot">&lt;-</span> massExtDF<span class="sc">$</span>mass.extinction...United.States.</span>
+<span id="cb76-2"><a href="#cb76-2" tabindex="-1"></a>gamoiSynolo <span class="ot">&lt;-</span> gamoi<span class="sc">$</span>GamoiSynolo</span>
+<span id="cb76-3"><a href="#cb76-3" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span></span>
+<span id="cb76-4"><a href="#cb76-4" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">+</span><span class="dv">6</span><span class="sc">*</span><span class="fu">sin</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">3</span>) <span class="sc">*</span> x)<span class="sc">-</span><span class="dv">4</span><span class="sc">*</span><span class="fu">cos</span>( (<span class="dv">2</span><span class="sc">*</span>pi<span class="sc">/</span><span class="dv">6</span>) <span class="sc">*</span> x)<span class="sc">+</span><span class="fu">rnorm</span>(<span class="dv">100</span>)</span>
+<span id="cb76-5"><a href="#cb76-5" tabindex="-1"></a><span class="fu">plot</span>(massExt, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb76-6"><a href="#cb76-6" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolo, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb76-7"><a href="#cb76-7" tabindex="-1"></a><span class="fu">plot</span>(y, <span class="at">type =</span><span class="st">&quot;l&quot;</span>)</span>
+<span id="cb76-8"><a href="#cb76-8" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
+<span id="cb76-9"><a href="#cb76-9" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
+<span id="cb76-10"><a href="#cb76-10" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
+<span id="cb76-11"><a href="#cb76-11" tabindex="-1"></a>}</span>
+<span id="cb76-12"><a href="#cb76-12" tabindex="-1"></a><span class="fu">gglagplot</span>(massExt, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb76-13"><a href="#cb76-13" tabindex="-1"></a><span class="fu">gglagplot</span>(gamoiSynolo, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb76-14"><a href="#cb76-14" tabindex="-1"></a><span class="fu">gglagplot</span>(y, <span class="at">continuous =</span> <span class="cn">TRUE</span>, <span class="at">set.lags =</span> <span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb76-15"><a href="#cb76-15" tabindex="-1"></a><span class="fu">acf</span>(massExt)</span>
+<span id="cb76-16"><a href="#cb76-16" tabindex="-1"></a><span class="fu">acf</span>(gamoiSynolo)</span>
+<span id="cb76-17"><a href="#cb76-17" tabindex="-1"></a><span class="fu">acf</span>(y)</span>
+<span id="cb76-18"><a href="#cb76-18" tabindex="-1"></a>massExtts <span class="ot">&lt;-</span> <span class="fu">ts</span>(massExtDF<span class="sc">$</span>mass.extinction...United.States., <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2004</span>, <span class="dv">1</span>), <span class="at">freq=</span><span class="dv">12</span>)</span>
+<span id="cb76-19"><a href="#cb76-19" tabindex="-1"></a>gamoiSynolots <span class="ot">&lt;-</span> <span class="fu">ts</span>(gamoi<span class="sc">$</span>GamoiSynolo, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">freq=</span><span class="dv">4</span>)</span>
+<span id="cb76-20"><a href="#cb76-20" tabindex="-1"></a>yTs <span class="ot">&lt;-</span> <span class="fu">ts</span>(y, <span class="at">start =</span> <span class="dv">0</span>, <span class="at">frequency =</span> <span class="dv">6</span>)</span>
+<span id="cb76-21"><a href="#cb76-21" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(seastests)){</span>
+<span id="cb76-22"><a href="#cb76-22" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;seastests&quot;</span>)</span>
+<span id="cb76-23"><a href="#cb76-23" tabindex="-1"></a>    <span class="fu">library</span>(seastests)</span>
+<span id="cb76-24"><a href="#cb76-24" tabindex="-1"></a>}</span>
+<span id="cb76-25"><a href="#cb76-25" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExt, <span class="at">freq=</span><span class="dv">12</span>)</span>
+<span id="cb76-26"><a href="#cb76-26" tabindex="-1"></a><span class="fu">isSeasonal</span>(massExtts)</span>
+<span id="cb76-27"><a href="#cb76-27" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolo, <span class="at">freq=</span><span class="dv">4</span>)</span>
+<span id="cb76-28"><a href="#cb76-28" tabindex="-1"></a><span class="fu">isSeasonal</span>(gamoiSynolots)</span>
+<span id="cb76-29"><a href="#cb76-29" tabindex="-1"></a><span class="fu">isSeasonal</span>(y, <span class="at">freq=</span><span class="dv">6</span>)</span>
+<span id="cb76-30"><a href="#cb76-30" tabindex="-1"></a><span class="fu">isSeasonal</span>(yTs)</span>
+<span id="cb76-31"><a href="#cb76-31" tabindex="-1"></a><span class="fu">isSeasonal</span>(y, <span class="at">freq=</span><span class="dv">7</span>)</span>
+<span id="cb76-32"><a href="#cb76-32" tabindex="-1"></a>massExttsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(massExtts, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb76-33"><a href="#cb76-33" tabindex="-1"></a><span class="fu">plot</span>(massExttsComp)</span>
+<span id="cb76-34"><a href="#cb76-34" tabindex="-1"></a>SeasonalMassExt <span class="ot">&lt;-</span> <span class="fu">seasonal</span>(massExttsComp)</span>
+<span id="cb76-35"><a href="#cb76-35" tabindex="-1"></a><span class="fu">plot</span>(SeasonalMassExt)</span>
+<span id="cb76-36"><a href="#cb76-36" tabindex="-1"></a>TrendMassExt <span class="ot">&lt;-</span> <span class="fu">trendcycle</span>(massExttsComp)</span>
+<span id="cb76-37"><a href="#cb76-37" tabindex="-1"></a><span class="fu">plot</span>(TrendMassExt)</span>
+<span id="cb76-38"><a href="#cb76-38" tabindex="-1"></a>RemainderMassExt <span class="ot">&lt;-</span> <span class="fu">remainder</span>(massExttsComp)</span>
+<span id="cb76-39"><a href="#cb76-39" tabindex="-1"></a><span class="fu">plot</span>(RemainderMassExt)</span>
+<span id="cb76-40"><a href="#cb76-40" tabindex="-1"></a>gamoiSynolotsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(gamoiSynolots, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb76-41"><a href="#cb76-41" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolotsComp)</span>
+<span id="cb76-42"><a href="#cb76-42" tabindex="-1"></a>yTsComp <span class="ot">&lt;-</span> <span class="fu">stl</span>(yTs, <span class="at">s.window =</span> <span class="st">&quot;periodic&quot;</span>)</span>
+<span id="cb76-43"><a href="#cb76-43" tabindex="-1"></a><span class="fu">plot</span>(yTsComp)</span>
+<span id="cb76-44"><a href="#cb76-44" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lomb)){</span>
+<span id="cb76-45"><a href="#cb76-45" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;lomb&quot;</span>)</span>
+<span id="cb76-46"><a href="#cb76-46" tabindex="-1"></a>    <span class="fu">library</span>(lomb)</span>
+<span id="cb76-47"><a href="#cb76-47" tabindex="-1"></a>}</span>
+<span id="cb76-48"><a href="#cb76-48" tabindex="-1"></a><span class="fu">lsp</span>(massExt)</span>
+<span id="cb76-49"><a href="#cb76-49" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt)</span>
+<span id="cb76-50"><a href="#cb76-50" tabindex="-1"></a><span class="fu">lsp</span>(massExt, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
+<span id="cb76-51"><a href="#cb76-51" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt,<span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
+<span id="cb76-52"><a href="#cb76-52" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
+<span id="cb76-53"><a href="#cb76-53" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span>
+<span id="cb76-54"><a href="#cb76-54" tabindex="-1"></a><span class="fu">lsp</span>(SeasonalMassExt, <span class="at">from =</span> <span class="dv">5</span>, <span class="at">to =</span> <span class="dv">25</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
+<span id="cb76-55"><a href="#cb76-55" tabindex="-1"></a><span class="at">ofac =</span> <span class="dv">100</span>, <span class="at">alpha =</span> <span class="fl">0.05</span>)</span>
+<span id="cb76-56"><a href="#cb76-56" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolo)</span>
+<span id="cb76-57"><a href="#cb76-57" tabindex="-1"></a>gamoiSynolotsCompSeasonal <span class="ot">&lt;-</span> <span class="fu">seasonal</span>(gamoiSynolotsComp)</span>
+<span id="cb76-58"><a href="#cb76-58" tabindex="-1"></a><span class="fu">plot</span>(gamoiSynolotsCompSeasonal)</span>
+<span id="cb76-59"><a href="#cb76-59" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolotsCompSeasonal)</span>
+<span id="cb76-60"><a href="#cb76-60" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolotsCompSeasonal, <span class="at">ofac=</span><span class="dv">100</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>)</span>
+<span id="cb76-61"><a href="#cb76-61" tabindex="-1"></a><span class="fu">lsp</span>(gamoiSynolotsCompSeasonal, <span class="at">ofac=</span><span class="dv">100</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">from=</span><span class="dv">1</span>, <span class="at">to=</span><span class="dv">5</span>)</span>
+<span id="cb76-62"><a href="#cb76-62" tabindex="-1"></a>yTsCompSeasonal <span class="ot">&lt;-</span> <span class="fu">seasonal</span>(yTsComp)</span>
+<span id="cb76-63"><a href="#cb76-63" tabindex="-1"></a><span class="fu">lsp</span>(yTsCompSeasonal, <span class="at">ofac=</span><span class="dv">100</span>, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>, <span class="at">from=</span><span class="dv">1</span>, <span class="at">to=</span><span class="dv">8</span>)</span>
+<span id="cb76-64"><a href="#cb76-64" tabindex="-1"></a>prosdiorismosPerSyxn <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">apo =</span> <span class="cn">NULL</span>, <span class="at">eos =</span> <span class="cn">NULL</span>){</span>
+<span id="cb76-65"><a href="#cb76-65" tabindex="-1"></a>    periodogramma <span class="ot">&lt;-</span> <span class="fu">lsp</span>(dedomena, <span class="at">times =</span> <span class="cn">NULL</span>, <span class="at">from =</span> apo, <span class="at">to =</span> eos, <span class="at">type =</span> <span class="st">&quot;period&quot;</span>,</span>
+<span id="cb76-66"><a href="#cb76-66" tabindex="-1"></a>    <span class="at">ofac =</span> <span class="dv">130</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>, <span class="at">normalize=</span><span class="st">&quot;press&quot;</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb76-67"><a href="#cb76-67" tabindex="-1"></a>    per <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">1</span>]</span>
+<span id="cb76-68"><a href="#cb76-68" tabindex="-1"></a>    syxn <span class="ot">&lt;-</span> periodogramma<span class="sc">$</span>peak.at[<span class="dv">2</span>]</span>
+<span id="cb76-69"><a href="#cb76-69" tabindex="-1"></a>    Period <span class="ot">&lt;-</span> <span class="fu">c</span>(per)</span>
+<span id="cb76-70"><a href="#cb76-70" tabindex="-1"></a>    Frequency <span class="ot">&lt;-</span> <span class="fu">c</span>(syxn)</span>
+<span id="cb76-71"><a href="#cb76-71" tabindex="-1"></a>    <span class="fu">data.frame</span>(Period,Frequency)</span>
+<span id="cb76-72"><a href="#cb76-72" tabindex="-1"></a>}</span>
+<span id="cb76-73"><a href="#cb76-73" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(SeasonalMassExt)</span>
+<span id="cb76-74"><a href="#cb76-74" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(SeasonalMassExt, <span class="at">apo=</span><span class="dv">4</span>, <span class="at">eos=</span><span class="dv">10</span>)</span>
+<span id="cb76-75"><a href="#cb76-75" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolotsCompSeasonal)</span>
+<span id="cb76-76"><a href="#cb76-76" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolotsCompSeasonal, <span class="at">apo=</span><span class="dv">1</span>, <span class="at">eos=</span><span class="fl">1.5</span>)</span>
+<span id="cb76-77"><a href="#cb76-77" tabindex="-1"></a><span class="fu">prosdiorismosPerSyxn</span>(gamoiSynolotsCompSeasonal, <span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb76-78"><a href="#cb76-78" tabindex="-1"></a>seiraFourier <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, listPeriod){</span>
+<span id="cb76-79"><a href="#cb76-79" tabindex="-1"></a>    t <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(dedomena)</span>
+<span id="cb76-80"><a href="#cb76-80" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">length</span>(listPeriod)</span>
+<span id="cb76-81"><a href="#cb76-81" tabindex="-1"></a>    T <span class="ot">&lt;-</span> listPeriod[<span class="dv">1</span>]</span>
+<span id="cb76-82"><a href="#cb76-82" tabindex="-1"></a>    seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb76-83"><a href="#cb76-83" tabindex="-1"></a>    <span class="cf">if</span> (n<span class="sc">&gt;</span><span class="dv">1</span>) {</span>
+<span id="cb76-84"><a href="#cb76-84" tabindex="-1"></a>        <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>n) {</span>
+<span id="cb76-85"><a href="#cb76-85" tabindex="-1"></a>            T <span class="ot">&lt;-</span> listPeriod[i]</span>
+<span id="cb76-86"><a href="#cb76-86" tabindex="-1"></a>            orosN <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;I(sin(2*pi*t/&quot;</span>,T,<span class="st">&quot;))+I(cos(2*pi*t/&quot;</span>,T,<span class="st">&quot;))&quot;</span>), <span class="at">collapse=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb76-87"><a href="#cb76-87" tabindex="-1"></a>            seira <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">c</span>(seira,orosN), <span class="at">collapse=</span><span class="st">&quot;+&quot;</span>)</span>
+<span id="cb76-88"><a href="#cb76-88" tabindex="-1"></a>        }</span>
+<span id="cb76-89"><a href="#cb76-89" tabindex="-1"></a>    }</span>
+<span id="cb76-90"><a href="#cb76-90" tabindex="-1"></a>    formula_string <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;dedomena ~&quot;</span>, seira)</span>
+<span id="cb76-91"><a href="#cb76-91" tabindex="-1"></a>    lm_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">as.formula</span>(formula_string))</span>
+<span id="cb76-92"><a href="#cb76-92" tabindex="-1"></a>    lm_model</span>
+<span id="cb76-93"><a href="#cb76-93" tabindex="-1"></a>}</span>
+<span id="cb76-94"><a href="#cb76-94" tabindex="-1"></a><span class="fu">seiraFourier</span>(SeasonalMassExt,<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">12</span>))</span>
+<span id="cb76-95"><a href="#cb76-95" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(SeasonalMassExt),SeasonalMassExt)</span>
+<span id="cb76-96"><a href="#cb76-96" tabindex="-1"></a><span class="fu">curve</span>(<span class="sc">-</span><span class="fl">0.0002849-8.3567745</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">6</span>)<span class="sc">-</span><span class="fl">4.5117178</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">6</span>)<span class="sc">+</span><span class="fl">12.8772886</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">12</span>)<span class="sc">+</span><span class="fl">6.6012389</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">12</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span>
+<span id="cb76-97"><a href="#cb76-97" tabindex="-1"></a><span class="fu">seiraFourier</span>(gamoiSynolotsCompSeasonal,<span class="fu">c</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>))</span>
+<span id="cb76-98"><a href="#cb76-98" tabindex="-1"></a><span class="fu">seiraFourier</span>(gamoiSynolotsCompSeasonal,<span class="fu">c</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb76-99"><a href="#cb76-99" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(gamoiSynolotsCompSeasonal),gamoiSynolotsCompSeasonal)</span>
+<span id="cb76-100"><a href="#cb76-100" tabindex="-1"></a><span class="fu">curve</span>(<span class="dv">3854</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">1209</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span>(<span class="dv">4</span><span class="sc">/</span><span class="dv">3</span>))<span class="sc">+</span><span class="dv">5708</span><span class="sc">*</span><span class="fu">sin</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>)<span class="sc">+</span><span class="dv">3414</span><span class="sc">*</span><span class="fu">cos</span>(<span class="dv">2</span> <span class="sc">*</span> pi <span class="sc">*</span> x<span class="sc">/</span><span class="dv">2</span>), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">n=</span><span class="dv">10000</span>)</span>
+<span id="cb76-101"><a href="#cb76-101" tabindex="-1"></a><span class="fu">seiraFourier</span>(<span class="fu">seasonal</span>(yTsComp),<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">6</span>))</span></code></pre></div>
 </div>
 </div>
 

@@ -80,7 +80,7 @@ autoplot(forecast(ergasiaGr_arima, 5))
 
 Όλος ο κώδικας που γράψαμε είναι ο κάτωθι:
 
-```{r}
+```{r, eval=F}
 ergasiaGr <- workingHours[workingHours$Code == "GRC", 4]
 ergasiaGr_ts <- ts(ergasiaGr, start = 1951, frequency =1)
 if(!require(forecast)){

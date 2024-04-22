@@ -19,3 +19,41 @@ library(kableExtra)
 ```{r, echo=F}
 rm(list = ls())
 ```
+
+Στην ενότητα αυτή θα μελετήσουμε το εισόδημα των νοικοκυριών διαφόρων χωρών και θα προσπαθήσουμε να δούμε ποιες έχουν ομοιότητες μεταξύ τους.
+
+Κυκλικό δεντροδιάγραμμα
+
+```{r, eval=F}
+if(!require(dendextend)){
+  install.packages("dendextend")
+  library(dendextend)
+}
+if(!require(circlize)){
+  install.packages("circlize")
+  library(circlize)
+}
+
+# Distance matrix
+d <- dist(USArrests)
+
+# Hierarchical clustering dendrogram
+hc <- as.dendrogram(hclust(d))
+
+# Circular dendrogram
+circlize_dendrogram(hc,
+                    labels_track_height = NA,
+                    dend_track_height = 0.4)
+
+# Με χρώματα
+
+# Colors
+hc <- hc %>%
+  color_branches(k = 3) %>%
+  color_labels(k = 3)
+
+# Fan tree plot with colored labels
+circlize_dendrogram(hc,
+                    labels_track_height = NA,
+                    dend_track_height = 0.4)  
+```
