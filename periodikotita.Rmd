@@ -546,7 +546,7 @@ curve(-0.0002849-8.3567745*sin(2 * pi * x/6)-4.5117178*cos(2 * pi * x/6)+12.8772
 seiraFourier(gamoiSynolotsCompSeasonal,c(4/3,2,4))
 ```
 
-Τα `NA` δηλώνουν ότι οι όροι $\sin\left(\frac{2\pi}{4}t\right)$ και $\cos\left(\frac{2\pi}{4}t\right)$ είναι γραμμικός συνδυασμός των υπολοίπων, άρα πρέπει να επανεξεταστούν. Γράφουμε:
+Τα `NA` δηλώνουν ότι δεν έχουμε επαρκή δεδομένα για να συμπεριλάβουμε τους όρους $\sin\left(\frac{2\pi}{4}t\right)$ και $\cos\left(\frac{2\pi}{4}t\right)$ μαζί με τους άλλους. Γράφουμε:
 
 ```{r}
 seiraFourier(gamoiSynolotsCompSeasonal,c(2,4))
