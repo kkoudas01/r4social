@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-07-07" />
+<meta name="date" content="2024-07-12" />
 
 <title>Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</title>
 
@@ -680,7 +680,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-07-07</h4>
+<h4 class="date">2024-07-12</h4>
 
 </div>
 
@@ -2129,25 +2129,8 @@ AUS
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, :
-## there is no package called &#39;forecast&#39;</code></pre>
-<pre><code>## package &#39;xts&#39; successfully unpacked and MD5 sums checked
-## package &#39;TTR&#39; successfully unpacked and MD5 sums checked
-## package &#39;curl&#39; successfully unpacked and MD5 sums checked
-## package &#39;quadprog&#39; successfully unpacked and MD5 sums checked
-## package &#39;quantmod&#39; successfully unpacked and MD5 sums checked
-## package &#39;fracdiff&#39; successfully unpacked and MD5 sums checked
-## package &#39;lmtest&#39; successfully unpacked and MD5 sums checked
-## package &#39;timeDate&#39; successfully unpacked and MD5 sums checked
-## package &#39;tseries&#39; successfully unpacked and MD5 sums checked
-## package &#39;urca&#39; successfully unpacked and MD5 sums checked
-## package &#39;RcppArmadillo&#39; successfully unpacked and MD5 sums checked
-## package &#39;forecast&#39; successfully unpacked and MD5 sums checked
-## 
-## The downloaded binary packages are in
-##  C:\Users\kkoud\AppData\Local\Temp\RtmpUhQSFY\downloaded_packages</code></pre>
 <p>Ακολούθως γράφουμε:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>ergasiaGr_arima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(ergasiaGr_ts, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>ergasiaGr_arima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(ergasiaGr_ts, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  ARIMA(2,1,2) with drift         : 541.1963
 ##  ARIMA(0,1,0) with drift         : 537.0109
@@ -2158,7 +2141,7 @@ AUS
 ## 
 ##  Best model: ARIMA(0,1,0) with drift</code></pre>
 <p>Και πλέον μπορούμε να κάνουμε τις προβλέψεις μας. Γράφουμε:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##      Point Forecast    Lo 80    Hi 80    Lo 95    Hi 95
 ## 2018       2012.416 1994.717 2030.115 1985.348 2039.484
 ## 2019       2007.936 1982.906 2032.966 1969.656 2046.216
@@ -2176,7 +2159,7 @@ AUS
 και 2030.115 (<code>Hi 80</code>). Αντίστοιχα πράγματα μπορούμε να πούμε
 και για τα έτη 2019-2022.</p>
 <p>Αυτά μπορούμε να τα δούμε και γραφικά εκτελώντας τις εντολές:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>))</span></code></pre></div>
 <p><img src="arima_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>Η κεντρική μπλε γραμμή δείχνει την πρόβλεψη που κάνουμε. Όπως όμως
 είπαμε αυτή απέχει παρασάγγας από το να είναι βεβαιότητα. Γι’ αυτό
@@ -2189,15 +2172,15 @@ AUS
 μπορούμε να είμαστε 95% σίγουροι ότι οι ετήσιες ώρες εργασίας δεν θα
 πέφτουν εκτός της αχνής μπλε περιοχής.</p>
 <p>Όλος ο κώδικας που γράψαμε είναι ο κάτωθι:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>ergasiaGr <span class="ot">&lt;-</span> workingHours[workingHours<span class="sc">$</span>Code <span class="sc">==</span> <span class="st">&quot;GRC&quot;</span>, <span class="dv">4</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>ergasiaGr_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(ergasiaGr, <span class="at">start =</span> <span class="dv">1951</span>, <span class="at">frequency =</span><span class="dv">1</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>}</span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>ergasiaGr_arima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(ergasiaGr_ts, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>ergasiaGr <span class="ot">&lt;-</span> workingHours[workingHours<span class="sc">$</span>Code <span class="sc">==</span> <span class="st">&quot;GRC&quot;</span>, <span class="dv">4</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>ergasiaGr_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(ergasiaGr, <span class="at">start =</span> <span class="dv">1951</span>, <span class="at">frequency =</span><span class="dv">1</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>}</span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a>ergasiaGr_arima <span class="ot">&lt;-</span> <span class="fu">auto.arima</span>(ergasiaGr_ts, <span class="at">trace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="fu">autoplot</span>(<span class="fu">forecast</span>(ergasiaGr_arima, <span class="dv">5</span>))</span></code></pre></div>
 
 
 

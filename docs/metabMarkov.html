@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-07-07" />
+<meta name="date" content="2024-07-12" />
 
 <title>Περιγραφή μεταβάσεων</title>
 
@@ -678,7 +678,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Περιγραφή μεταβάσεων</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-07-07</h4>
+<h4 class="date">2024-07-12</h4>
 
 </div>
 
@@ -817,34 +817,21 @@ Mobility in Britain</a> εκτιμάται η πιθανότητα να έχει
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(igraph)){</span>
 <span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;igraph&quot;</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>    <span class="fu">library</span>(igraph)</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, :
-## there is no package called &#39;igraph&#39;</code></pre>
-<pre><code>## package &#39;igraph&#39; successfully unpacked and MD5 sums checked
-## 
-## The downloaded binary packages are in
-##  C:\Users\kkoud\AppData\Local\Temp\RtmpUhQSFY\downloaded_packages</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(markovchain)){</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;markovchain&quot;</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="fu">library</span>(markovchain)</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE, :
-## there is no package called &#39;markovchain&#39;</code></pre>
-<pre><code>## package &#39;expm&#39; successfully unpacked and MD5 sums checked
-## package &#39;RcppParallel&#39; successfully unpacked and MD5 sums checked
-## package &#39;markovchain&#39; successfully unpacked and MD5 sums checked
-## 
-## The downloaded binary packages are in
-##  C:\Users\kkoud\AppData\Local\Temp\RtmpUhQSFY\downloaded_packages</code></pre>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>}</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(markovchain)){</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;markovchain&quot;</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a>    <span class="fu">library</span>(markovchain)</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a>}</span></code></pre></div>
 <p>Χρησιμοποιώντας δεδομένα από <a
 href="https://journals.sagepub.com/doi/10.1177/000271625429400178">εδώ</a>
 φτιάχνουμε έναν πιολακωνικό πίνακα μετάβασης.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>MX <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.594</span>, <span class="fl">0.211</span>, <span class="fl">0.252</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>XR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.396</span>, <span class="fl">0.782</span>, <span class="fl">0.641</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>KT <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.009</span>, <span class="fl">0.007</span>, <span class="fl">0.108</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>pin_met2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(MX, XR, KT)</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="fu">rownames</span>(pin_met2) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met2)</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>pin_met2</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>MX <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.594</span>, <span class="fl">0.211</span>, <span class="fl">0.252</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>XR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.396</span>, <span class="fl">0.782</span>, <span class="fl">0.641</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>KT <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.009</span>, <span class="fl">0.007</span>, <span class="fl">0.108</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>pin_met2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(MX, XR, KT)</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="fu">rownames</span>(pin_met2) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met2)</span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a>pin_met2</span></code></pre></div>
 <pre><code>##       MX    XR    KT
 ## MX 0.594 0.396 0.009
 ## XR 0.211 0.782 0.007
@@ -874,17 +861,17 @@ href="https://journals.sagepub.com/doi/10.1177/000271625429400178">εδώ</a>
 </table>
 <p>Για το διάγραμμα μετάβασης θα χρησιμοποιήσουμε τη συνάρτηση
 <code>diagramma_metabasis</code>, την οποία ορίζουμε παρακάτω.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>diagramma_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>  dedomena2 <span class="ot">&lt;-</span> dedomena<span class="sc">/</span><span class="fu">rowSums</span>(dedomena)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>  graph <span class="ot">&lt;-</span> <span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(dedomena2), <span class="at">mode =</span> <span class="st">&quot;directed&quot;</span>, <span class="at">weighted =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="co"># Σχεδίαση του γράφου με καμπυλόγραμμα βέλη και ετικέτες</span></span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>plot_result <span class="ot">&lt;-</span> <span class="fu">plot</span>(graph, <span class="at">layout =</span> <span class="fu">layout.circle</span>(graph), <span class="at">edge.curved =</span> <span class="fl">0.3</span>, <span class="at">arrow.size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>                    <span class="at">edge.label =</span> <span class="fu">round</span>(<span class="fu">edge_attr</span>(graph, <span class="st">&quot;weight&quot;</span>), <span class="dv">3</span>),</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>                    <span class="at">edge.label.pos =</span> <span class="fl">0.5</span>, <span class="at">edge.label.dist =</span> <span class="fl">0.2</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>diagramma_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  dedomena2 <span class="ot">&lt;-</span> dedomena<span class="sc">/</span><span class="fu">rowSums</span>(dedomena)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  graph <span class="ot">&lt;-</span> <span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(dedomena2), <span class="at">mode =</span> <span class="st">&quot;directed&quot;</span>, <span class="at">weighted =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="co"># Σχεδίαση του γράφου με καμπυλόγραμμα βέλη και ετικέτες</span></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a>plot_result <span class="ot">&lt;-</span> <span class="fu">plot</span>(graph, <span class="at">layout =</span> <span class="fu">layout.circle</span>(graph), <span class="at">edge.curved =</span> <span class="fl">0.3</span>, <span class="at">arrow.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>                    <span class="at">edge.label =</span> <span class="fu">round</span>(<span class="fu">edge_attr</span>(graph, <span class="st">&quot;weight&quot;</span>), <span class="dv">3</span>),</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>                    <span class="at">edge.label.pos =</span> <span class="fl">0.5</span>, <span class="at">edge.label.dist =</span> <span class="fl">0.2</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>Εισάγουμε σε αυτήν ως όρισμα τον πίνακα μετάβασής μας κι έχουμε το
 διάγραμμα μετάβασης.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met2)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met2)</span></code></pre></div>
 <p><img src="metabMarkov_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Η δυνατότητα μετάβασης από μια κατάσταση σε μία άλλη απεικονίζεται με
 ένα βέλος που ξεκινάει από τη μία και καταλήγει στην άλλη. Η πιθανότητα
@@ -897,54 +884,54 @@ href="https://journals.sagepub.com/doi/10.1177/000271625429400178">εδώ</a>
 διαγράμματος μετάβασης. Βλέπουμε τελικά ότι ορισμένες φορές ένας πίνακας
 μετάβασης μπορεί και να είναι ευκρινέστερος ενός διαγράμματος
 μετάβασης.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met)</span></code></pre></div>
 <p><img src="metabMarkov_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Συνολικά ο κώδικάς μας είχε ως εξής:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>EA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.388</span>, <span class="fl">0.107</span>, <span class="fl">0.035</span>, <span class="fl">0.021</span>, <span class="fl">0.009</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>MA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.146</span>, <span class="fl">0.267</span>, <span class="fl">0.101</span>, <span class="fl">0.039</span>, <span class="fl">0.024</span>, <span class="fl">0.013</span>, <span class="fl">0.008</span>)</span>
-<span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>PA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.202</span>, <span class="fl">0.227</span>, <span class="fl">0.188</span>, <span class="fl">0.112</span>, <span class="fl">0.075</span>, <span class="fl">0.041</span>, <span class="fl">0.036</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" tabindex="-1"></a>PH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.062</span>, <span class="fl">0.120</span>, <span class="fl">0.191</span>, <span class="fl">0.212</span>, <span class="fl">0.123</span>, <span class="fl">0.088</span>, <span class="fl">0.083</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" tabindex="-1"></a>EH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.140</span>, <span class="fl">0.206</span>, <span class="fl">0.357</span>, <span class="fl">0.430</span>, <span class="fl">0.473</span>, <span class="fl">0.391</span>, <span class="fl">0.364</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" tabindex="-1"></a>IH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.047</span>, <span class="fl">0.053</span>, <span class="fl">0.067</span>, <span class="fl">0.124</span>, <span class="fl">0.171</span>, <span class="fl">0.312</span>, <span class="fl">0.235</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" tabindex="-1"></a>AH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.015</span>, <span class="fl">0.020</span>, <span class="fl">0.061</span>, <span class="fl">0.062</span>, <span class="fl">0.125</span>, <span class="fl">0.155</span>, <span class="fl">0.274</span>)</span>
-<span id="cb18-8"><a href="#cb18-8" tabindex="-1"></a>pin_met <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(EA, MA, PA, PH, EH, IH, AH)</span>
-<span id="cb18-9"><a href="#cb18-9" tabindex="-1"></a><span class="fu">rownames</span>(pin_met) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met)</span>
-<span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(corrplot)){</span>
-<span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a>}</span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a>pinakas_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">arxi =</span> <span class="cn">NULL</span>, <span class="at">telos =</span> <span class="cn">NULL</span>) {</span>
-<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a>  dedomenaM <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomena)</span>
-<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a>  eyros <span class="ot">&lt;-</span> <span class="fu">c</span>(arxi, telos)</span>
-<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaM, <span class="at">is.corr =</span> <span class="cn">FALSE</span>, <span class="at">method=</span><span class="st">&quot;color&quot;</span>, <span class="at">col.lim =</span> eyros, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
-<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a>}</span>
-<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="fu">pinakas_metabasis</span>(pin_met)</span>
-<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="fu">pinakas_metabasis</span>(pin_met, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
-<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(igraph)){</span>
-<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;igraph&quot;</span>)</span>
-<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a>    <span class="fu">library</span>(igraph)</span>
-<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a>}</span>
-<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a></span>
-<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(markovchain)){</span>
-<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;markovchain&quot;</span>)</span>
-<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a>    <span class="fu">library</span>(markovchain)</span>
-<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a>}</span>
-<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a>MX <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.594</span>, <span class="fl">0.211</span>, <span class="fl">0.252</span>)</span>
-<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a>XR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.396</span>, <span class="fl">0.782</span>, <span class="fl">0.641</span>)</span>
-<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a>KT <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.009</span>, <span class="fl">0.007</span>, <span class="fl">0.108</span>)</span>
-<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a>pin_met2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(MX, XR, KT)</span>
-<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a><span class="fu">rownames</span>(pin_met2) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met2)</span>
-<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a>pin_met2</span>
-<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a>diagramma_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
-<span id="cb18-37"><a href="#cb18-37" tabindex="-1"></a>  dedomena2 <span class="ot">&lt;-</span> dedomena<span class="sc">/</span><span class="fu">rowSums</span>(dedomena)</span>
-<span id="cb18-38"><a href="#cb18-38" tabindex="-1"></a>  graph <span class="ot">&lt;-</span> <span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(dedomena2), <span class="at">mode =</span> <span class="st">&quot;directed&quot;</span>, <span class="at">weighted =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb18-39"><a href="#cb18-39" tabindex="-1"></a><span class="co"># Σχεδίαση του γράφου με καμπυλόγραμμα βέλη και ετικέτες</span></span>
-<span id="cb18-40"><a href="#cb18-40" tabindex="-1"></a>plot_result <span class="ot">&lt;-</span> <span class="fu">plot</span>(graph, <span class="at">layout =</span> <span class="fu">layout.circle</span>(graph), <span class="at">edge.curved =</span> <span class="fl">0.3</span>, <span class="at">arrow.size =</span> <span class="fl">0.5</span>,</span>
-<span id="cb18-41"><a href="#cb18-41" tabindex="-1"></a>                    <span class="at">edge.label =</span> <span class="fu">round</span>(<span class="fu">edge_attr</span>(graph, <span class="st">&quot;weight&quot;</span>), <span class="dv">3</span>),</span>
-<span id="cb18-42"><a href="#cb18-42" tabindex="-1"></a>                    <span class="at">edge.label.pos =</span> <span class="fl">0.5</span>, <span class="at">edge.label.dist =</span> <span class="fl">0.2</span>)</span>
-<span id="cb18-43"><a href="#cb18-43" tabindex="-1"></a>}</span>
-<span id="cb18-44"><a href="#cb18-44" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met2)</span>
-<span id="cb18-45"><a href="#cb18-45" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>EA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.388</span>, <span class="fl">0.107</span>, <span class="fl">0.035</span>, <span class="fl">0.021</span>, <span class="fl">0.009</span>, <span class="fl">0.000</span>, <span class="fl">0.000</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>MA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.146</span>, <span class="fl">0.267</span>, <span class="fl">0.101</span>, <span class="fl">0.039</span>, <span class="fl">0.024</span>, <span class="fl">0.013</span>, <span class="fl">0.008</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>PA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.202</span>, <span class="fl">0.227</span>, <span class="fl">0.188</span>, <span class="fl">0.112</span>, <span class="fl">0.075</span>, <span class="fl">0.041</span>, <span class="fl">0.036</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>PH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.062</span>, <span class="fl">0.120</span>, <span class="fl">0.191</span>, <span class="fl">0.212</span>, <span class="fl">0.123</span>, <span class="fl">0.088</span>, <span class="fl">0.083</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>EH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.140</span>, <span class="fl">0.206</span>, <span class="fl">0.357</span>, <span class="fl">0.430</span>, <span class="fl">0.473</span>, <span class="fl">0.391</span>, <span class="fl">0.364</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>IH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.047</span>, <span class="fl">0.053</span>, <span class="fl">0.067</span>, <span class="fl">0.124</span>, <span class="fl">0.171</span>, <span class="fl">0.312</span>, <span class="fl">0.235</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>AH <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.015</span>, <span class="fl">0.020</span>, <span class="fl">0.061</span>, <span class="fl">0.062</span>, <span class="fl">0.125</span>, <span class="fl">0.155</span>, <span class="fl">0.274</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a>pin_met <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(EA, MA, PA, PH, EH, IH, AH)</span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="fu">rownames</span>(pin_met) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met)</span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(corrplot)){</span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;corrplot&quot;</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>    <span class="fu">library</span>(corrplot)</span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a>}</span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a>pinakas_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena, <span class="at">arxi =</span> <span class="cn">NULL</span>, <span class="at">telos =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a>  dedomenaM <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(dedomena)</span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a>  eyros <span class="ot">&lt;-</span> <span class="fu">c</span>(arxi, telos)</span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a>  <span class="fu">corrplot</span>(dedomenaM, <span class="at">is.corr =</span> <span class="cn">FALSE</span>, <span class="at">method=</span><span class="st">&quot;color&quot;</span>, <span class="at">col.lim =</span> eyros, <span class="at">addCoef.col =</span> <span class="st">&#39;black&#39;</span>)</span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a>}</span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="fu">pinakas_metabasis</span>(pin_met)</span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="fu">pinakas_metabasis</span>(pin_met, <span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(igraph)){</span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;igraph&quot;</span>)</span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a>    <span class="fu">library</span>(igraph)</span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a>}</span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(markovchain)){</span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;markovchain&quot;</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a>    <span class="fu">library</span>(markovchain)</span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a>}</span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a>MX <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.594</span>, <span class="fl">0.211</span>, <span class="fl">0.252</span>)</span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a>XR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.396</span>, <span class="fl">0.782</span>, <span class="fl">0.641</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a>KT <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.009</span>, <span class="fl">0.007</span>, <span class="fl">0.108</span>)</span>
+<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a>pin_met2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(MX, XR, KT)</span>
+<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="fu">rownames</span>(pin_met2) <span class="ot">&lt;-</span> <span class="fu">colnames</span>(pin_met2)</span>
+<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a>pin_met2</span>
+<span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a>diagramma_metabasis <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
+<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a>  dedomena2 <span class="ot">&lt;-</span> dedomena<span class="sc">/</span><span class="fu">rowSums</span>(dedomena)</span>
+<span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a>  graph <span class="ot">&lt;-</span> <span class="fu">graph_from_adjacency_matrix</span>(<span class="fu">as.matrix</span>(dedomena2), <span class="at">mode =</span> <span class="st">&quot;directed&quot;</span>, <span class="at">weighted =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="co"># Σχεδίαση του γράφου με καμπυλόγραμμα βέλη και ετικέτες</span></span>
+<span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a>plot_result <span class="ot">&lt;-</span> <span class="fu">plot</span>(graph, <span class="at">layout =</span> <span class="fu">layout.circle</span>(graph), <span class="at">edge.curved =</span> <span class="fl">0.3</span>, <span class="at">arrow.size =</span> <span class="fl">0.5</span>,</span>
+<span id="cb13-41"><a href="#cb13-41" tabindex="-1"></a>                    <span class="at">edge.label =</span> <span class="fu">round</span>(<span class="fu">edge_attr</span>(graph, <span class="st">&quot;weight&quot;</span>), <span class="dv">3</span>),</span>
+<span id="cb13-42"><a href="#cb13-42" tabindex="-1"></a>                    <span class="at">edge.label.pos =</span> <span class="fl">0.5</span>, <span class="at">edge.label.dist =</span> <span class="fl">0.2</span>)</span>
+<span id="cb13-43"><a href="#cb13-43" tabindex="-1"></a>}</span>
+<span id="cb13-44"><a href="#cb13-44" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met2)</span>
+<span id="cb13-45"><a href="#cb13-45" tabindex="-1"></a><span class="fu">diagramma_metabasis</span>(pin_met)</span></code></pre></div>
 </div>
 
 

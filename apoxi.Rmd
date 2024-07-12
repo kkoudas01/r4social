@@ -169,7 +169,7 @@ plot(simetoxiN_EU$ETOS, lefka_p, type = "l")
 
 Έτσι, μελετώντας την περίπτωση των άκυρων και των λευκών μαζί έχουμε συντελεστή Spearman `r cor(simetoxiN_EU$ETOS, akiro_lefko_p, method = "spearman", use = "complete.obs")`, κάτι που υποδηλώνει ισχυρή αυξητική τάση. Αυτό με λίγη προσοχή φαίνεται να επιβεβαιώνεται και από το χρονοδιάγραμμα.
 
-```{r, eval=FALSE}
+```{r, echo=FALSE}
 plot(simetoxiN_EU$ETOS, akiro_lefko_p, type = "l")
 ```
 
@@ -180,8 +180,184 @@ plot(simetoxiN_EU$ETOS, akiro_lefko_p, type = "l")
 
 ## Μεταξύ αποχής-άκυρου-λευκού
 
+Είδαμε προηγουμένως ότι τόσο η αποχή, όσο και τα άκυρα/λευκά ακολουθούν μιαν αυξητική τάση. Μήπως αυτό σημαίνει ότι σχετίζονται μεταξύ τους; Δεν μιλάμε για συσχέτιση αιτίου-αιτιατού, αλλά για κοινή αντανάκλαση μιας κοινωνικής τάσης. Μήπως, δηλαδή, οι κοινές αυξητικές στάσεις υποδηλώνουν την ύπαρξη μιας κατάστασης απαξίωσης των πολιτικών κομμάτων στην Ελλάδα; Αυτό θα εξετάσουμε τώρα.
+
+Κάνοντας το διάγραμμα διασποράς ακύρων-αποχής μαζί με την ευθεία γραμμικής παλινδρόμησης παρατηρούμε ότι όσο μεγαλώνει η αποχή, τόσο λιγοστεύουν τα άκυρα.
+
+```{r, echo=FALSE, warning =FALSE, message=FALSE}
+if(!require(ggplot2)){
+    install.packages("ggplot2")
+    library(ggplot2)
+}
+AkiraApoxiEyth <- ggplot(simetoxiN_EU, aes(x = APOXI_p, y = AKIRA_p))
+AkiraApoxiEyth + geom_smooth(method='lm') + geom_point()
+```
+
+Η δε ευθεία γραμμικής παλινδρόμησης φαίνεται να περιγράφει σχετικά καλά τα δεδομένα μας, αφού το τυπικό σφάλμα εκτίμησης προέκυψε 0.006401.
+
+```{r, echo=FALSE}
+summary(lm(akira_p ~ apoxi_p))
+```
+
+Αυτό σημαίνει ότι σχεδόν όλα τα πραγματικά ποσοστά των άκυρων διαφέρουν από τα προβλεπόμενα της ευθείας γραμμικής παλινδρόμησης κατά ±3·0.6401=±1.9203 ποσοστιαίες μονάδες.
+
+Από την άλλη ο συντελεστής Pearson υποδηλώνει ασθενή γραμμική συσχέτιση, αφού είναι `r cor(akira_p, apoxi_p, method = "pearson", use = "complete.obs")`. Και πάλι όμως δείχνει μια πτωτική τάση, κάτι που επιβεβαιώνει και ο συντελεστής μονοτονικής συσχέτισης Spearman (`r cor(akira_p, apoxi_p, method = "spearman", use = "complete.obs")`). Μήπως αυτό σημαίνει ότι οι απογοητευμένοι από τα πολιτικά κόμματα αποτελούν μια σταθερή λίγο-πολύ «δεξαμενή», όπου ένα μέρος της επιλέγει το άκυρο κι ένα άλλο μέρος της επιλέγει την αποχή; Αυτό θα σήμαινε ότι αν μεγαλώσει το ένα μέρος, τότε θα μικρύνει το άλλο, κι έτσι θα ερμηνευόταν αυτό που παρατηρούμε.
+
+Συσχετίζοντας τα λευκά με την αποχή παρατηρούμε μια σχεδόν ανεπαίσθητη αυξητική τάση. Η ευθεία γραμμικής παλινδρόμησης δείχνει ότι όσο η αποχή αυξάνεται, τόσο αυξάνεται και το ποσοστό των λευκών (τυπικό σφάλμα εκτίμησης 0.00543).
+
+```{r, echo=FALSE,  warning =FALSE, message=FALSE}
+LefkaApoxiEyth <- ggplot(simetoxiN_EU, aes(x = APOXI_p, y = LEFKA_p))
+LefkaApoxiEyth + geom_smooth(method='lm') + geom_point()
+summary(lm(lefka_p ~ apoxi_p))
+```
+
+Η αλήθεια είναι όμως πως ο συντελεστής Pearson (`r cor(lefka_p, apoxi_p, method = "pearson", use = "complete.obs")`) δείχνει ακόμα ασθενέστερη γραμμική συσχέτιση σε σύγκριση με αυτή που είδαμε στην περίπτωση ακύρου-αποχής. Όμως, τόσο αυτός, όσο και ο συντελεστής Speaman (`r cor(lefka_p, apoxi_p, method = "spearman", use = "complete.obs")`) επιβεβαιώνουν την ύπαρξη ασθενούς έστω αυξητικής τάσης.
+
+Έτσι, όσον αφορά τα λευκά-αποχή η θεωρία της «δεξαμενής» δεν φαίνεται να ισχύει. Εδώ φαίνεται να ισχύει η θεωρία που τα θέλει να αντικατοπτρίζουν μια κοινή απογοήτευση της κοινωνίας. Ίσως μια αύξηση/μείωση της κοινωνικής απογοήτευσης με τα πολιτικά κόμματα να επιφέρει και μιαν αύξηση/μείωση της απαξίωσης της εκλογικής διαδικασίας. Όπου αυτή η αύξηση/μείωση της απαξίωσης της εκλογικής διαδικασίας αντανακλάται:
+
+- στην αύξηση/μείωση της απαξίωσης της εκλογικής διαδικασίας με τον «συστιμικό» τρόπο (λευκό),
+
+- στην αύξηση/μείωση της απαξίωσης της εκλογικής διαδικασίας με τον «αντισυστιμικό» τρόπο (αποχή).
+
+Θεωρώντας τα άκυρα και τα λευκά ως μία επιλογή (αν και ίσως να μην είναι) βλέπουμε και πάλι μιαν αυξητική τάση τους, όσο μεγαλώνει και η αποχή.
+
+```{r, echo=FALSE,  warning =FALSE, message=FALSE}
+Akiro_LefkoApoxiEyth <- ggplot(simetoxiN_EU, aes(x = APOXI_p, y = AKIRO_LEFKO_p))
+Akiro_LefkoApoxiEyth + geom_smooth(method='lm') + geom_point()
+summary(lm(akiro_lefko_p ~ apoxi_p))
+```
+
+Στην περίπτωση αυτή ο συντελεστής Pearson (`r cor(akiro_lefko_p, apoxi_p, method = "pearson", use = "complete.obs")`) δίνει μεγαλύτερη γραμμική συσχέτιση από αυτή που βλέπαμε προηγουμένως. Πλέον αυτή είναι μέτρια προς ισχυρή. Ο δε Spearman (`r cor(akiro_lefko_p, apoxi_p, method = "spearman", use = "complete.obs")`) αναφέρει την ύπαρξη ισχυρής αυξητικής τάσης.
+
+Τέλος, μας μένει η συσχέτιση ακύρων και λευκών.
+
+```{r, echo=FALSE,  warning =FALSE, message=FALSE}
+AkiroLefkoEyth <- ggplot(simetoxiN_EU, aes(x = LEFKA_p, y = AKIRA_p))
+AkiroLefkoEyth + geom_smooth(method='lm') + geom_point()
+summary(lm(lefka_p ~ akira_p))
+```
+
+Ο συντελεστής Pearson (`r cor(lefka_p, akira_p, method = "pearson", use = "complete.obs")`) υποδηλώνει μιαν ισχυρή γραμμική συσχέτιση μεταξύ των ακύρων και των λευκών. Ο Spearman (`r cor(lefka_p, akira_p, method = "spearman", use = "complete.obs")`) αναφέρει κι αυτός την ισχυρή αυξητική τάση που βλέπουμε και από το διάγραμμα διασποράς.
+
+Τελικά η αρνητική συσχέτιση ακύρων αποχής φαντάζει μια παραφωνία μετά απ’ όλη αυτή τη συζήτηση. Θα μπορούσε κάποιος να την αγνοήσει και να την ανάγει στα σφάλματα λόγω του περιορισμένου αριθμού δεδομένων. Αυτό είναι μια δουλειά που μπορεί να συνεχίσει ο αναγνώστης. Εμείς την παρούσα ενότητα την τερματίζουμε εδώ.
+
 ## Με μεταβολή πληθυσμού
 
+Στην ενότητα αυτή θα εξετάσουμε το ποσοστό της αποχής-ακύρων-λευκών σε σχέση με τη μεταβολή του πληθυσμού.
+
+Αντλήσαμε δεδομένα από τη σελίδα [The World Bank](https://data.worldbank.org/indicator/SP.POP.TOTL?end=2022&locations=GR&start=1960&view=chart) για τον πληθυσμό της Ελλάδας στα έτη των εκλογών. Προφανώς τις ημέρες των εκλογών ο πληθυσμός δεν θα ήταν ακριβώς αυτός που μας δίνεται, αλλά ας χαρίσουμε στον εαυτό μας λίγη μικρή ανακρίβεια ελλείψει καλύτερων στοιχείων.
+
+Στο παρακάτω διάγραμμα διασποράς ο οριζόντιος άξονας απεικονίζει τη μεταβολή του ελληνικού πληθυσμού από τη μία εκλογική περίοδο στην άλλη. Είναι ιδιαίτερα ενδιαφέρον το ότι είναι τόσο εμφανής η πτωτική τάση της αποχής. Όσο μεγαλύτερη αύξηση πληθυσμού έχουμε, τόσο μικραίνει η αποχή.
+
+```{r, echo=FALSE, message=FALSE}
+plithismosGR <- c(9308479, 9729350, 9729350, 9895801, 9934300, 10089498, 10089498, 10089498, 10196792, 10460415, 10512922, 10608800, 10761698, 10805808, 10955141, 10955141, 11048473, 11107017, 11107017, 11045011, 11045011, 10892413, 10820883, 10820883, 10721582, 10721582, 10432481, 10432481)
+simetoxiN_EU$PLITHISMOS <- plithismosGR
+plithismosGR1976 <- c(9188150, 9308479, 9729350, 9729350, 9895801, 9934300, 10089498, 10089498, 10089498, 10196792, 10460415, 10512922, 10608800, 10761698, 10805808, 10955141, 10955141, 11048473, 11107017, 11107017, 11045011, 11045011, 10892413, 10820883, 10820883, 10721582, 10721582, 10432481, 10432481)
+plithismosGRd <- diff(plithismosGR1976)
+simetoxiN_EU$PLITHISMOSd <- plithismosGRd
+ApoxiMetaboliKampili <- ggplot(simetoxiN_EU, aes(x = PLITHISMOSd, y = APOXI_p))
+ApoxiMetaboliKampili + geom_point() + geom_smooth()
+```
+
+
+O συντελεστής Spearman (`r cor(apoxi_p, plithismosGRd, method = "spearman", use = "complete.obs")`) επιβεβαιώνει την ύπαρξη ισχυρής πτωτικής τάσης.
+
+Έχει ακόμα περισσότερο ενδιαφέρον να παρατηρήσουμε ότι όταν έχουμε αρνητική μεταβολή του πληθυσμού η αποχή είναι μεγαλύτερη από όταν έχουμε θετική μεταβολή του πληθυσμού. Δηλαδή όταν αυτός μειώνεται, η αποχή είναι μεγαλύτερη από όταν αυτός αυξάνεται. Την οπτική αυτή διαπίστωση την επιβεβαιώνει κι ο έλεγχος Kruskal-Wallis, ο οποίος εξάγει p-τιμή 0.04448.
+
+```{r, echo=FALSE}
+thetiki_metaboli <- rep("Y", length(apoxi_p))
+for (i in 1:length(apoxi_p)) {
+  if (plithismosGRd[i] < 0) {
+    thetiki_metaboli[i] <- "N"
+  }
+}
+simetoxiN_EU$THETIKI_METABOLI <- thetiki_metaboli
+kruskal.test(APOXI_p ~ THETIKI_METABOLI, data = simetoxiN_EU)
+```
+
+Αυτό σημαίνει ότι αν ο παράγοντας «αύξηση ή μείωση πληθυσμού» δεν επιδρούσε στο μέγεθος της αποχής, τότε το να τύχουμε αυτά τα αποτελέσματα που βλέπουμε θα ήταν κάτι εντελώς απίθανο (0.45% πιθανό).
+
+Έτσι όπως φαίνεται, η αποχή πρέπει να είναι η εκδήλωση ενός παράγοντα που συνεπιφέρει και τη μείωση του πληθυσμού. Θα μπορούσαμε να πούμε ότι π.χ. η απογοήτευση για την κοινωνία και τις προοπτικές της, η οποία εκδηλώνεται και μέσω της αποχής από τις εκλογικές επιλογές, οδηγεί σε μείωση/αναβολή «ανοιγμάτων» όπως το να κάνουμε παιδιά; Πολύ πιθανόν.
+
+Ίσως και αυτή η παραπάνω εξήγηση να ερμηνεύει το γιατί τα άκυρα έχουν μια μικρότερη πτωτική πορεία (συντελεστής Spearman `r cor(akira_p, plithismosGRd, method = "spearman", use = "complete.obs")`), ενώ τα λευκά μια ανοδική (συντελεστής Spearman `r cor(lefka_p, plithismosGRd, method = "spearman", use = "complete.obs")`), όσο μεγαλώνει η μεταβολή του πληθυσμού. Το λευκό σαν επιλογή δεν απορρίπτει τη διαδικασία, απλά εκφράζει την προσωρινή έλλειψη επιλογής. Είναι αυτό που λέμε «η συστημική εναντίωση στα πράγματα». Οπότε είναι λογικό, όσο τα πράγματα φαίνεται να μην έχουν λύση, τότε να απορρίπτεται όλο το οικοδόμημα και μαζί του και η συστημική αντίδραση του λευκού. Το άκυρο εκφράζει μιαν αγανάκτηση παραπάνω από το λευκό, αλλά όχι την έντονη απαξίωση της αποχής, ίσως και γι’ αυτό να έχει λιγότερο έντονη πτωτική τάση.
+
+```{r, message=FALSE, echo=FALSE,warning=FALSE}
+AkiroMetaboliKampili <- ggplot(simetoxiN_EU, aes(x = PLITHISMOSd, y = AKIRA_p))
+LefkoMetaboliKampili <- ggplot(simetoxiN_EU, aes(x = PLITHISMOSd, y = LEFKA_p))
+AkiroMetaboliKampili + geom_point() + geom_smooth()
+LefkoMetaboliKampili + geom_point() + geom_smooth()
+```
+
+Προς επίρρωση των παραπάνω εκτελούμε επίσης ελέγχους Kruskal-Wallis, για να δούμε κατά πόσον ο παράγοντας «άυξηση-μείωση πληθυσμού» έχει αντίκτυπο στο ποσοστό των ακύρων και των λευκών.
+
+```{r, echo=FALSE}
+kruskal.test(AKIRA_p ~ THETIKI_METABOLI, data = simetoxiN_EU)
+kruskal.test(LEFKA_p ~ THETIKI_METABOLI, data = simetoxiN_EU)
+```
+
+Η μικρή p-τιμή του πρώτου ελέγχου (0.04742) δείχνει ότι είναι απίθανο να μην επιδρά ο παράγοντας στο ποσοστο των ακύρων. Από την άλλη δεν φαίνεται να έχουμε ενδείξεις ότι κάτι τέτοιο συμβαίνει και με τα λευκά (p-τιμή 0.8651).
+
+Συνυπολογίζοντας τα άκυρα και τα λευκά, ώστε να έχουμε διαθέσιμα περισσότερα δεδομένα, βλέπουμε και πάλι μια πτωτική τάση. Όχι τόσο έντονη όσο της αποχής (συντελεστής Spearman `r cor(akiro_lefko_p, plithismosGRd, method = "spearman", use = "complete.obs")` -0.2977599), ασθενής θα λέγαμε ότι είναι, αλλά πάντως υπαρκτή.
+
+```{r, echo=FALSE,message=FALSE}
+Akiro_LefkoMetaboliKampili <- ggplot(simetoxiN_EU, aes(x = PLITHISMOSd, y = AKIRO_LEFKO_p))
+Akiro_LefkoMetaboliKampili + geom_point() + geom_smooth()
+```
+
+Από την άλλη έλεγχος Kruskal-Wallis (p-τιμή 0.05882) δεν επιβεβαιώνει περίτρανα ότι η μείωση πληθυσμού συνδέεται με το μέγεθος της αποχής. Αλλά αυτό κρίνεται και από το αν ο αναγνώστης θεωρεί πως το 5.882% έχει ουσιαστική διαφορά από το 5%.
+
+```{r, echo=FALSE}
+kruskal.test(AKIRO_LEFKO_p ~ THETIKI_METABOLI, data = simetoxiN_EU)
+```
+
 # Προβλέψεις
+
+Πού οδηγείται η κατάσταση; Ποια θα είναι η αποχή στις επόμενες εκλογικές αναμετρήσεις; Θα κάνουμε μιαν απόπειρα να προβλέψουμε τι μέλλει γενέσθαι χρησιμοποιώντας μοντέλα ARIMA.
+
+Στον κάτωθι πίνακα βλέπουμε το πού περιμένουμε να κυμαίνονται τα ποσοστά της αποχής, των ακύρων και των λευκών στις πέντε επόμενες εκλογικές αναμετρήσεις.
+
+```{r, include=FALSE}
+eggegrammeni_ts <- ts(simetoxiN_EU$EGGEGRAMMENOI, start = 1, frequency =1)
+psifisan_ts <- ts(simetoxiN_EU$PSIFISAN, start = 1, frequency =1)
+apoxi_ts <- eggegrammeni_ts-psifisan_ts
+akira_ts <- ts(simetoxiN_EU$AKIRA, start = 1, frequency =1)
+lefka_ts <- ts(simetoxiN_EU$LEFKA, start = 1, frequency =1)
+if(!require(forecast)){
+    install.packages("forecast")
+    library(forecast)
+}
+eggegrammeni_arima <- auto.arima(eggegrammeni_ts, trace = TRUE)
+psifisan_arima <- auto.arima(psifisan_ts, trace = TRUE)
+apoxi_arima <- auto.arima(apoxi_ts, trace = TRUE)
+akira_arima <- auto.arima(akira_ts, trace = TRUE)
+lefka_arima <- auto.arima(lefka_ts, trace = TRUE)
+eggegrammeni_l <- forecast(eggegrammeni_arima, 5)$lower
+eggegrammeni_u <- forecast(eggegrammeni_arima, 5)$upper
+psifisan_l <- forecast(psifisan_arima, 5)$lower
+psifisan_u <- forecast(psifisan_arima, 5)$upper
+apoxi_l <- forecast(apoxi_arima, 5)$lower
+apoxi_u <- forecast(apoxi_arima, 5)$upper
+akira_l <- forecast(akira_arima, 5)$lower
+akira_u <- forecast(akira_arima, 5)$upper
+lefka_l <- forecast(lefka_arima, 5)$lower
+lefka_u <- forecast(lefka_arima, 5)$upper
+apoxiP_l <- 100*round(apoxi_l[,1]/eggegrammeni_u[,1], digits = 3)
+apoxiP_u <- 100*round(apoxi_u[,1]/eggegrammeni_l[,1], digits = 3)
+akiraP_l <- 100*round(akira_l[,1]/psifisan_u[,1], digits = 3)
+akiraP_u <- 100*round(akira_u[,1]/psifisan_l[,1], digits = 3)
+lefkaP_l <- 100*round(lefka_l[,1]/psifisan_u[,1], digits = 3)
+lefkaP_u <- 100*round(lefka_u[,1]/psifisan_l[,1], digits = 3)
+problepsisdf <- data.frame(
+  ΑΠΟΧΗ = paste("[", apoxiP_l, "%, ", apoxiP_u, "%]", sep = ""),
+  ΑΚΥΡΟ = paste("[", akiraP_l, "%, ",  akiraP_u, "%]", sep = ""),
+  ΛΕΥΚΟ = paste("[", lefkaP_l, "%, ",  lefkaP_u, "%]", sep = "")
+)
+```
+
+```{r, echo=FALSE}
+problepsisdf
+```
+
+Τα διαστήματα σχηματίστηκαν με τρόπο που να μπορούμε να είμαστε κατά 80% βέβαιοι ότι θα πέσουμε μέσα. Αν ο βαθμός αυτός βεβαιότητας δεν μας αρκεί, θα πρέπει να διευρύνουμε κι άλλο τα διαστήματα, ώστε να γίνει πιθανότερο να πέσουν μέσα οι προβλέψεις μας. Ο ενδιαφερόμενος αναγνώστης μπορεί να επεξεργαστεί τον κώδικα, ώστε να αυξήσει τη βεβαιότητά του και να την φτάσει στο 95%.
 
 # Προτάσεις για περεταίρω μελέτη
