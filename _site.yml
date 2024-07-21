@@ -131,6 +131,8 @@ navbar:
         href: apoxi.html
       - text: "Εξέταση αποτελεσμάτων PISA"
         href: pisa.html
+      - text: "Εξέταση τιμών ακινήτων"
+        href: spiti.html
       - text: "Κύματα Kondratiev"
         href: kondratiev.html
     - text: "Εντός εκτός κι επί τα αυτά"
