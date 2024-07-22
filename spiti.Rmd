@@ -22,3 +22,27 @@ library(kableExtra)
 ```{r, echo=F}
 rm(list = ls())
 ```
+
+```{r, echo=FALSE}
+if(!require(tidyverse)){
+    install.packages("tidyverse")
+    library(tidyverse)
+}
+if(!require(Rcrawler)){
+    install.packages("Rcrawler")
+    library(Rcrawler)
+}
+# install_browser()
+```
+
+
+
+```{r, eval=FALSE}
+Rcrawler(Website = "http://www.spitogatos.gr",
+         crawlUrlfilter = "/aggelia/",
+         no_cores = 4,
+         no_conn = 4,
+         MaxDepth = 1,
+         saveOnDisk = FALSE
+         )
+```

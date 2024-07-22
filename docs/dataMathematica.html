@@ -11,9 +11,9 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-07-21" />
+<meta name="date" content="2024-07-22" />
 
-<title>Περιγραφική Στατιστική</title>
+<title>Μετατροπή δεδομένων για ανάγνωση από το Mathematica</title>
 
 <script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -679,14 +679,45 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Περιγραφική Στατιστική</h1>
+<h1 class="title toc-ignore">Μετατροπή δεδομένων για ανάγνωση από το
+Mathematica</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-07-21</h4>
+<h4 class="date">2024-07-22</h4>
 
 </div>
 
 
-<p>Συνάρτηση για πίνακα</p>
+<p>Το Mathematica είναι ένα πολύ χρήσιμο πρόγραμμα εκτέλεσης μαθηματικών
+υπολογισμών. Θα μπορούσε να πει κανείς πως είναι ένα μαθηματικό μαγικό
+ραβδί: δεν έχεις παρά να φανταστείς ένα μαθηματικό πρόβλημα κι αυτό στο
+λύνει.</p>
+<p>Έχει όμως ένα βασικό μειονέκτημα, ότι το πληρώνεις. Για την ακρίβεια
+το πληρώνεις καλά! Πρέπει να βάλεις βαθιά το χέρι μέσα στην τσέπη.
+Υπάρχουν πειρατικές λύσεις όπως το <a href="https://igetintopc.com/">Get
+Into PC</a>, αλλά για κάποιον που τις φοβάται η επόμενη λύση είναι η
+δωρεάν διαδικτυακή έκδοση του <a
+href="https://www.wolframcloud.com/">Wolfram Cloud</a>.</p>
+<p>Η δωρεάν έκδοση έχει διάφορους σημαντικούς περιορισμούς.</p>
+<ul>
+<li><p>Ένας είναι η υπολογιστική δυνατότητα που σου επιτρέπει.
+Υπολογισμοί που, για να εκτελεστούν, απαιτούν πάνω από κάποιο
+συγκεκριμένο διάστημα, κόβονται. Εν ολίγοις είσαι αναγκασμένος να κάνεις
+μόνο περιορισμένης περιπλοκότητας υπολογισμούς.</p></li>
+<li><p>Ένας άλλος περιορισμός είναι ότι δεν σου επιτρέπει να διαβάσεις
+αρχεία. Έτσι, αν έχεις ένα αρχείο δεδομένων π.χ. του Excel, απλά δεν
+μπορείς να το αξιοποιήσεις. Ή θα πρέπει να βάλεις με το χέρι μία-μία τις
+τιμές του πίνακα, όπερ καθόλου βολικό.</p></li>
+</ul>
+<p>Η παρούσα ενότητα έρχεται να λύσει το τελευταίο πρόβλημα. Μέσω της R
+θα διαβάζουμε μια λίστα ή έναν πίνακα δεδομένων και θα τα μετατρέπουμε
+σε μορφή λίστας-πίνακα αναγνωρίσιμη από το Mathematica, η οποία θα είναι
+αποθηκευμένη σ’ ένα αρχείο <code>txt</code>. Από κει και πέρα, μπορούμε
+να κάνουμε αντιγραφή και επικόλληση στο κελί του Wolfram Cloud που
+επιθυμούμε.</p>
+<p>Παρουσιάζουμε αρχικά τη συνάρτηση που μετατρέπει έναν πίνακα
+δεδομένων σε αναγνώσιμη μορφή από το Mathematica. Αυτή είναι η
+<code>DftoMATHEMATICA()</code>, η οποία δέχεται σαν όρισμα τον πίνακα
+δεδομένων που επιθυμούμε να μετατρέψουμε.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>DFtoMATHEMATICA <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>  dedomenaDF <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(dedomena)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(dedomenaDF[,<span class="dv">1</span>])</span>
@@ -707,34 +738,52 @@ div.tocify {
 <span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a>  <span class="co"># Κλείστε το αρχείο</span></span>
 <span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a>  <span class="fu">close</span>(arxeio)</span>
 <span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>}</span></code></pre></div>
-<p>Συνάρτηση για διάνυσμα</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>VtoMATHEMATICA <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  dedomenaV <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(dedomena)</span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(dedomenaV)</span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>  dataMathematica <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>    dataMathematica <span class="ot">&lt;-</span> <span class="fu">append</span>(dataMathematica,<span class="fu">paste</span>(dedomenaV[j],<span class="at">collapse=</span><span class="st">&quot;,&quot;</span>))</span>
-<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  }</span>
-<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>  dataMathematica <span class="ot">&lt;-</span> <span class="fu">paste</span>(dataMathematica,<span class="at">collapse=</span><span class="st">&quot;,&quot;</span>)</span>
-<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>  dataMathematica <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;{&quot;</span>,dataMathematica,<span class="st">&quot;}&quot;</span>)</span>
-<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  arxeio_exodou <span class="ot">&lt;-</span> <span class="st">&quot;Vmathematica.txt&quot;</span></span>
-<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  </span>
-<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>  <span class="co"># Ανοίξτε το αρχείο για εγγραφή</span></span>
-<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  arxeio <span class="ot">&lt;-</span> <span class="fu">file</span>(arxeio_exodou, <span class="st">&quot;w&quot;</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>  </span>
-<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  <span class="co"># Εγγραφή του πίνακα σε αρχείο σε μορφή Mathematica</span></span>
-<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>  <span class="fu">writeLines</span>(dataMathematica, arxeio)</span>
-<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a>  </span>
-<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a>  <span class="co"># Κλείστε το αρχείο</span></span>
-<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a>  <span class="fu">close</span>(arxeio)</span>
-<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>}</span></code></pre></div>
-<p>Παραδείγματα</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>dataTest <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(c1,c2)</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="fu">DFtoMATHEMATICA</span>(dataTest)</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">VtoMATHEMATICA</span>(c1)</span></code></pre></div>
+<p>Ας δούμε τι αποτέλεσμα παράγει, αν της εισάγουμε τον κάτωθι πίνακα
+δεδομένων.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>c1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>c2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>dataTest <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(c1,c2)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>dataTest</span></code></pre></div>
+<pre><code>##   c1 c2
+## 1  1  5
+## 2  2  1
+## 3  3  7
+## 4  4  8</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">DFtoMATHEMATICA</span>(dataTest)</span></code></pre></div>
+<p>Το προγραμματάκι αυτό δημιουργεί ένα αρχείο ονόματι
+DFmathematica.txt, στο οποίο είναι γραμμένο:</p>
+<pre><code>{ { 1,5 },{ 2,1 },{ 3,7 },{ 4,8 } }</code></pre>
+<p>Πάμε τώρα να δούμε τη συνάρτηση που επεξεργάζεται μια λίστα τιμών.
+Αυτή είναι η <code>VtoMATHEMATICA()</code>, η οποία δέχεται ως όρισμα
+την λίστα που επιθυμούμε να μετασχηματίσουμε.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>VtoMATHEMATICA <span class="ot">&lt;-</span> <span class="cf">function</span>(dedomena) {</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>  dedomenaV <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(dedomena)</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(dedomenaV)</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  dataMathematica <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>    dataMathematica <span class="ot">&lt;-</span> <span class="fu">append</span>(dataMathematica,<span class="fu">paste</span>(dedomenaV[j],<span class="at">collapse=</span><span class="st">&quot;,&quot;</span>))</span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  }</span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>  dataMathematica <span class="ot">&lt;-</span> <span class="fu">paste</span>(dataMathematica,<span class="at">collapse=</span><span class="st">&quot;,&quot;</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a>  dataMathematica <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="st">&quot;{&quot;</span>,dataMathematica,<span class="st">&quot;}&quot;</span>)</span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a>  arxeio_exodou <span class="ot">&lt;-</span> <span class="st">&quot;Vmathematica.txt&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a>  </span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a>  <span class="co"># Ανοίξτε το αρχείο για εγγραφή</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a>  arxeio <span class="ot">&lt;-</span> <span class="fu">file</span>(arxeio_exodou, <span class="st">&quot;w&quot;</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a>  </span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a>  <span class="co"># Εγγραφή του πίνακα σε αρχείο σε μορφή Mathematica</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a>  <span class="fu">writeLines</span>(dataMathematica, arxeio)</span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a>  </span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a>  <span class="co"># Κλείστε το αρχείο</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a>  <span class="fu">close</span>(arxeio)</span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a>}</span></code></pre></div>
+<p>Ας κάνουμε ένα πείραμα με την κάτωθι λίστα.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>v1 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">12</span>,<span class="dv">24</span>,<span class="dv">52</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>v1</span></code></pre></div>
+<pre><code>## [1] 10 12 24 52</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">VtoMATHEMATICA</span>(v1)</span></code></pre></div>
+<p>Με αυτή τη διαδικασία παρήχθη το αρχείο Vmathematica.txt, στο οποίο
+είναι γραμμένο:</p>
+<pre><code>{ 10,12,24,52 }</code></pre>
 
 
 
