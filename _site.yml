@@ -135,6 +135,11 @@ navbar:
         href: spiti.html
       - text: "Κύματα Kondratiev"
         href: kondratiev.html
+    - text: "Ταχυφαγειο"
+      icon: fa-solid fa-utensils
+      menu:
+      - text: "Τα έσοδα του μήνα"
+        href: esodaMina.html
     - text: "Εντός εκτός κι επί τα αυτά"
       icon: fa-solid fa-mug-saucer
       menu:
