@@ -20,3 +20,56 @@ library(kableExtra)
 rm(list = ls())
 ```
 
+```{r, echo=FALSE}
+t <- 1:360
+values <- 2*t+30*sin(2*pi*t/7)+40*sin(2*pi*t/30)+rnorm(1, mean=10, sd=3)+100
+plot(values)
+```
+
+```{r, echo=FALSE}
+if(!require(shiny)){
+  install.packages("shiny")
+  library(shiny)
+}
+```
+
+```{r, echo=FALSE}
+ui <- fluidPage(
+  "Hello, world!"
+)
+server <- function(input, output, session) {
+}
+shinyApp(ui, server)
+```
+
+```{r, echo=FALSE}
+shinyApp(
+
+  ui = fluidPage(
+    selectInput("region", "Region:",
+                choices = colnames(WorldPhones)),
+    plotOutput("phonePlot")
+  ),
+
+  server = function(input, output) {
+    output$phonePlot = renderPlot({
+      barplot(WorldPhones[,input$region]*1000,
+              ylab = "Number of Telephones", xlab = "Year")
+    })
+  },
+
+  options = list(height = 500)
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
