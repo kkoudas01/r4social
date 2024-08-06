@@ -147,6 +147,7 @@ navbar:
         href: dataMathematica.html
 output:
   html_document:
+    runtime: shiny
     theme: default
     highlight: tango
     css: styles.css
