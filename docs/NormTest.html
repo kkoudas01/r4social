@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-08-06" />
+<meta name="date" content="2024-08-07" />
 
 <title>Έλεγχος κανονικότητας</title>
 
@@ -667,6 +667,9 @@ div.tocify {
     <li>
       <a href="esodaMina.html">Τα έσοδα του μήνα</a>
     </li>
+    <li>
+      <a href="app.json">Τεστ</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -697,7 +700,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Έλεγχος κανονικότητας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-08-06</h4>
+<h4 class="date">2024-08-07</h4>
 
 </div>
 
@@ -5786,11 +5789,12 @@ NA
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>    <span class="fu">library</span>(nortest)</span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## Loading required package: nortest</code></pre>
 <p>Ακολούθως θα χρησιμοποιήσουμε τη συνάρτηση <code>ad.test()</code>,
 όπου σαν όρισμα θα βάλουμε τη λίστα με τους αριθμούς των οποίων θέλουμε
 να ελέγξουμε την κανονικότητά τους (δηλαδή την
 <code>students$weight</code>). Οπότε γράφουμε:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">ad.test</span>(students<span class="sc">$</span>weight)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">ad.test</span>(students<span class="sc">$</span>weight)</span></code></pre></div>
 <pre><code>## 
 ##  Anderson-Darling normality test
 ## 
@@ -5823,11 +5827,11 @@ class="section level2" number="2.1">
 <li><p>γράφουμε <code>add=TRUE</code> για να μπει επιπλέον η καμπύλη στο
 ιστόγραμμα.</p></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>weight, <span class="at">freq =</span> F)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>weight), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>weight)), <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>weight, <span class="at">freq =</span> F)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>weight), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>weight)), <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="NormTest_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>height, <span class="at">freq =</span> F)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>height), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>height)), <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>height, <span class="at">freq =</span> F)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>height), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>height)), <span class="at">add=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="NormTest_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 <p>Βλέπουμε λοιπόν ότι η κατανομή των υψών είναι λίγο πιο ομοιομορφη από
 την κανονική, οι τιμές τους είναι αρκετά απλωμένες γύρω από τη μέση
@@ -5860,28 +5864,28 @@ class="section level2" number="2.1">
 περιοχές. Σε αυτή την περίπτωση το γράφημα Q-Q θα παρουσιάζει χάσματα κι
 αυτό είναι μια ουσιαστική διαφορά σε σχέση με το [γράφημα
 ασυμμετρίας](asymmetria.html#22_Γράφημα_ασυμμετρίας.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>nn <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">rbeta</span>(nn,<span class="dv">2</span>,<span class="dv">2</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>Bimodal <span class="ot">&lt;-</span> <span class="fu">c</span>(betas[<span class="dv">1</span><span class="sc">:</span>(nn<span class="sc">/</span><span class="dv">2</span>)]<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>          betas[(nn<span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>nn]<span class="sc">*</span><span class="dv">2</span><span class="fl">+3.3</span>)</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">hist</span>(Bimodal, <span class="at">freq=</span>F, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>))</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="fu">mean</span>(Bimodal), <span class="fu">sd</span>(Bimodal)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="fu">qqnorm</span>(Bimodal)</span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="fu">qqline</span>(Bimodal)</span>
-<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Δίκορφο ιστόγραμμα&quot;</span>, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="sc">-</span> <span class="fl">1.3</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>nn <span class="ot">&lt;-</span> <span class="fl">1e3</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">rbeta</span>(nn,<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>Bimodal <span class="ot">&lt;-</span> <span class="fu">c</span>(betas[<span class="dv">1</span><span class="sc">:</span>(nn<span class="sc">/</span><span class="dv">2</span>)]<span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>          betas[(nn<span class="sc">/</span><span class="dv">2</span><span class="sc">+</span><span class="dv">1</span>)<span class="sc">:</span>nn]<span class="sc">*</span><span class="dv">2</span><span class="fl">+3.3</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">hist</span>(Bimodal, <span class="at">freq=</span>F, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.4</span>))</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="fu">mean</span>(Bimodal), <span class="fu">sd</span>(Bimodal)), <span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="fu">qqnorm</span>(Bimodal)</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="fu">qqline</span>(Bimodal)</span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="fu">mtext</span>(<span class="st">&quot;Δίκορφο ιστόγραμμα&quot;</span>, <span class="at">side =</span> <span class="dv">3</span>, <span class="at">line =</span> <span class="sc">-</span> <span class="fl">1.3</span>, <span class="at">outer =</span> <span class="cn">TRUE</span>, <span class="at">cex =</span> <span class="fl">1.5</span>)</span></code></pre></div>
 <p><img src="NormTest_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>Πώς όμως σχηματίζουμε το εν λόγω γράφημα; Θα χρειαστούμε τις
 συναρτήσεις qqnorm() και <code>qqline()</code>, όπου σαν όρισμα θα
 βάλουμε τη λίστα με τους αριθμούς των οποίων θέλουμε να ελέγξουμε την
 κανονικότητά τους (δηλαδή την <code>students$weight</code>). Οπότε
 γράφουμε:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>weight)</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>weight)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>weight)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>weight)</span></code></pre></div>
 <p><img src="NormTest_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>height)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>height)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>height)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>height)</span></code></pre></div>
 <p><img src="NormTest_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
 <p>Έτσι προκύπτουν τα γραφήματα Q-Q των βαρών και των υψών των φοιτητών
 αντίστοιχα, όπως και οι ευθείες που θα έπρεπε να σχηματίζουν αν ήταν
@@ -5889,20 +5893,20 @@ class="section level2" number="2.1">
 <p>Έτσι βλέπουμε και πάλι ότι ούτε τα βάρη, αλλά ούτε και τα ύψη είναι
 κανονικά κατανεμημένα,</p>
 <p>Όλος ο σημερινός κώδικας παρατίθεται αμέσως μετά:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(nortest)){</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>    <span class="fu">library</span>(nortest)</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>}</span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="fu">ad.test</span>(students<span class="sc">$</span>weight)</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="fu">ad.test</span>(students<span class="sc">$</span>height)</span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>weight, <span class="at">freq =</span> F)</span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>weight), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>weight)), <span class="at">add=</span>T)</span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>height, <span class="at">freq =</span> F)</span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>height), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>height)), <span class="at">add=</span><span class="cn">TRUE</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>weight)</span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>weight)</span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>height)</span>
-<span id="cb9-14"><a href="#cb9-14" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>height)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(nortest)){</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="fu">library</span>(nortest)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>}</span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">ad.test</span>(students<span class="sc">$</span>weight)</span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="fu">ad.test</span>(students<span class="sc">$</span>height)</span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>weight, <span class="at">freq =</span> F)</span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>weight), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>weight)), <span class="at">add=</span>T)</span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="fu">hist</span>(students<span class="sc">$</span>height, <span class="at">freq =</span> F)</span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dnorm</span>(x, <span class="at">mean=</span><span class="fu">mean</span>(students<span class="sc">$</span>height), <span class="at">sd=</span><span class="fu">sd</span>(students<span class="sc">$</span>height)), <span class="at">add=</span><span class="cn">TRUE</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>weight)</span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>weight)</span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="fu">qqnorm</span>(students<span class="sc">$</span>height)</span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="fu">qqline</span>(students<span class="sc">$</span>height)</span></code></pre></div>
 </div>
 </div>
 <div id="shapiro-wilk-έλεγχος-κανονικότητας" class="section level1"
@@ -13286,11 +13290,11 @@ S020599703
 </ol></li>
 </ol>
 <p>Γράφουμε λοιπόν:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(nortest)){</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="fu">library</span>(nortest)</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>}</span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(nortest)){</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>    <span class="fu">library</span>(nortest)</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>}</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -13302,18 +13306,18 @@ S020599703
 ότι η μηδενική υπόθεση πρέπει να απορριφθεί ως απίθανη. Συνεπώς τα έξοδα
 του Ιουνίου του 2023 δεν είναι κανονικά κατανεμημένα.</p>
 <p>Τα παραπάνω μπορούν να διαπιστωθούν και από το γράφημα Q-Q:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">qqnorm</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">qqline</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">qqnorm</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="fu">qqline</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span></code></pre></div>
 <p><img src="NormTest_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Βρίσκουμε, λοιπόν, κάτι που απέχει παρασάγγας από ευθεία γραμμή.</p>
 <p>Συνολικά ο κώδικάς μας ήταν ο:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(nortest)){</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>    <span class="fu">library</span>(nortest)</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>}</span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="fu">qqnorm</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="fu">qqline</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(nortest)){</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;nortest&quot;</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>    <span class="fu">library</span>(nortest)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>}</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
+<span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="fu">qqnorm</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
+<span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="fu">qqline</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span></code></pre></div>
 </div>
 
 
