@@ -7,6 +7,11 @@
 #    https://shiny.posit.co/
 #
 
+if(!require(shinylive)){
+  install.packages("shinylive")
+  library(shinylive)
+}
+
 library(shiny)
 
 # Define UI for application that draws a histogram
