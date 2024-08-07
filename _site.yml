@@ -140,8 +140,6 @@ navbar:
       menu:
       - text: "Τα έσοδα του μήνα"
         href: esodaMina.html
-      - text: "Τεστ"
-        href: app.json
     - text: "Εντός εκτός κι επί τα αυτά"
       icon: fa-solid fa-mug-saucer
       menu:
