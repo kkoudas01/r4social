@@ -152,3 +152,4 @@ output:
     theme: default
     highlight: tango
     css: styles.css
+runtime: shiny
