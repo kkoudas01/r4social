@@ -49,6 +49,107 @@
 
 
 
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
 
 
 
@@ -603,7 +704,10 @@ Mathematica</h1>
 <p><img src="esodaMina_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre><code>## Loading required package: shiny</code></pre>
 <div style="width: 100% ; height: 400px ; text-align: center; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;" class="muted well">Shiny applications not supported in static R Markdown documents</div>
-<iframe src="https://derek-corcoran.shinyapps.io/WhereShouldYouLive/" style="border:none;width:1000px;height:500px;">
+<iframe src="https://shinylive.io/r/app/#code=NobwRAdghgtgpmAXGKAHVA6ASmANGAYwHsIAXOMpMAGwEsAjAJykYE8AKAZwAtaJWAlAB0IdJiw71OY4aIbM27ACZRSUTnFKdZIgMQACACKqo+1IzgBac0QJxOnPgHN9lt5b36AKgHc4UAGt9Um44fSEUGAj9ADcWWih6ajDSIn1uKBiwiFo7Rn0AMygCVPzqRLhqTldLfUcIO2DeTk8lInsIAHJSfQtqVn0SfSh+fQBXDXy+VDGtXH0-fQIR-Tam2mqSRtU6tUZSMdRPEaUminGNM9ioajGU7kYiMaduJ56QsLoCzVp4QYKrmgjhAYKgnMY1PoADy1GCkZaMFogsEQqAAElg0NqRRKREY7FB4JMGJg83K9Eq1QAvEt2BEAIKzIgwVS5CLzCIAWRGYxuEQEOggnkMcAKfDCAFUAJKFPH6GC0ZLVVBwfJOG7UIZAmpuERjWhYsxQJxwAD6jiUcHoLDpQog+n0Bnp6GCtFIyR1HntrvdYRpXMV9n0AAVVfoAOIakjskQiB0GADKtEt1vyqBGlVlUwgMy0nrjdWTVpY+hpFuL+Nj3vj+ilOdmiH0CcqcFx+QKcrijASSRSaVQmp6xqgfE4PUJ+erdRbJTrudtDsX4TAXZ7yRjU4dEQAavFEslEBulw6CAvj1uwABhVh0CCWxHRf2EG9H8-LrzMCCcBUOWjRsClsusCvueEThv4D4AU+JosBEBZLrICG4FWS4GHODb6JeoQEAE9BEAAHlmCyhB8+RvHQqrVDwTzUKcFL6HwBC3JapzuF6S4ENhuEEehpB0mA5G0JR7LLgmrw+IMswUZB8xeFgEoAKKIfoAjIXaNYAPKzLmjYAGJ4iypDkKc5D4T0Hb5MsqCkH+9psQW3AAMzsKZpBaaQ84RFZNn-gKakFgY7k6SGg7-FcFgAI53GOcCnKu+5hMOo7jmCk4OgORBudpsz8YSwaDvyIiCgYIpihAYSTFkZREE4uTBP2oWrk81Txb21RJV+KUuPZX6qlVhoFGMDQ+RA7DTLM8xvLmAj6CAKGOphzK5vcYQWTAYzlMEcBmWlC1eM0DHVHwwy9P4JS0Fk+jbeY9iOEM9SNG6h11BkFh0QMHwBZJHmzGi3m2cMd7fbmaJ5aFg3DbZSIOmtG1QF4209DCp3FDZWTsHNU7pjFuWpQAfiJ42kGirXJMpAC+go1lgmhjIw9ofFm62ba5RHmHwNkQC46gnf9Qw9Q6U2-Xz9rIxYd6qgjZkY-BTNw1LfEU1TC3geVzDkCdGU9EQAKM5F0XGdc3YJcM6rJfKqUCwtJyDKIAzbUxYyWt90lHQC+v2MZBZC8TYOZYa4v3vlmUy1OeH4VrZ5LuoGCw+U7Bx-DiPsH5ssOiokI0oSqJqeegnlYBRNooJlG58exDUIBES6AA7AArPS9KGAAQiBi6oJxgEAIwAJyy0rIjk1WBiXhYqhhGJfADNqPU8FPzqoOw+rzJVqqyGA5MALpAA" style="border:none;width:1000px;height:500px;">
+</iframe>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_app</span>(<span class="at">url =</span> <span class="st">&quot;https://shinylive.io/r/app/#code=NobwRAdghgtgpmAXGKAHVA6ASmANGAYwHsIAXOMpMAGwEsAjAJykYE8AKAZwAtaJWAlAB0IdJiw71OY4aIbM27ACZRSUTnFKdZIgMQACACKqo+1IzgBac0QJxOnPgHN9lt5b36AKgHc4UAGt9Um44fSEUGAj9ADcWWih6ajDSIn1uKBiwiFo7Rn0AMygCVPzqRLhqTldLfUcIO2DeTk8lInsIAHJSfQtqVn0SfSh+fQBXDXy+VDGtXH0-fQIR-Tam2mqSRtU6tUZSMdRPEaUminGNM9ioajGU7kYiMaduJ56QsLoCzVp4QYKrmgjhAYKgnMY1PoADy1GCkZaMFogsEQqAAElg0NqRRKREY7FB4JMGJg83K9Eq1QAvEt2BEAIKzIgwVS5CLzCIAWRGYxuEQEOggnkMcAKfDCAFUAJKFPH6GC0ZLVVBwfJOG7UIZAmpuERjWhYsxQJxwAD6jiUcHoLDpQog+n0Bnp6GCtFIyR1HntrvdYRpXMV9n0AAVVfoAOIakjskQiB0GADKtEt1vyqBGlVlUwgMy0nrjdWTVpY+hpFuL+Nj3vj+ilOdmiH0CcqcFx+QKcrijASSRSaVQmp6xqgfE4PUJ+erdRbJTrudtDsX4TAXZ7yRjU4dEQAavFEslEBulw6CAvj1uwABhVh0CCWxHRf2EG9H8-LrzMCCcBUOWjRsClsusCvueEThv4D4AU+JosBEBZLrICG4FWS4GHODb6JeoQEAE9BEAAHlmCyhB8+RvHQqrVDwTzUKcFL6HwBC3JapzuF6S4ENhuEEehpB0mA5G0JR7LLgmrw+IMswUZB8xeFgEoAKKIfoAjIXaNYAPKzLmjYAGJ4iypDkKc5D4T0Hb5MsqCkH+9psQW3AAMzsKZpBaaQ84RFZNn-gKakFgY7k6SGg7-FcFgAI53GOcCnKu+5hMOo7jmCk4OgORBudpsz8YSwaDvyIiCgYIpihAYSTFkZREE4uTBP2oWrk81Txb21RJV+KUuPZX6qlVhoFGMDQ+RA7DTLM8xvLmAj6CAKGOphzK5vcYQWTAYzlMEcBmWlC1eM0DHVHwwy9P4JS0Fk+jbeY9iOEM9SNG6h11BkFh0QMHwBZJHmzGi3m2cMd7fbmaJ5aFg3DbZSIOmtG1QF4209DCp3FDZWTsHNU7pjFuWpQAfiJ42kGirXJMpAC+go1lgmhjIw9ofFm62ba5RHmHwNkQC46gnf9Qw9Q6U2-Xz9rIxYd6qgjZkY-BTNw1LfEU1TC3geVzDkCdGU9EQAKM5F0XGdc3YJcM6rJfKqUCwtJyDKIAzbUxYyWt90lHQC+v2MZBZC8TYOZYa4v3vlmUy1OeH4VrZ5LuoGCw+U7Bx-DiPsH5ssOiokI0oSqJqeegnlYBRNooJlG58exDUIBES6AA7AArPS9KGAAQiBi6oJxgEAIwAJyy0rIjk1WBiXhYqhhGJfADNqPU8FPzqoOw+rzJVqqyGA5MALpAA&quot;</span>, <span class="at">height =</span> <span class="st">&quot;150px&quot;</span>)</span></code></pre></div>
+<iframe src="https://shinylive.io/r/app/#code=NobwRAdghgtgpmAXGKAHVA6ASmANGAYwHsIAXOMpMAGwEsAjAJykYE8AKAZwAtaJWAlAB0IdJiw71OY4aIbM27ACZRSUTnFKdZIgMQACACKqo+1IzgBac0QJxOnPgHN9lt5b36AKgHc4UAGt9Um44fSEUGAj9ADcWWih6ajDSIn1uKBiwiFo7Rn0AMygCVPzqRLhqTldLfUcIO2DeTk8lInsIAHJSfQtqVn0SfSh+fQBXDXy+VDGtXH0-fQIR-Tam2mqSRtU6tUZSMdRPEaUminGNM9ioajGU7kYiMaduJ56QsLoCzVp4QYKrmgjhAYKgnMY1PoADy1GCkZaMFogsEQqAAElg0NqRRKREY7FB4JMGJg83K9Eq1QAvEt2BEAIKzIgwVS5CLzCIAWRGYxuEQEOggnkMcAKfDCAFUAJKFPH6GC0ZLVVBwfJOG7UIZAmpuERjWhYsxQJxwAD6jiUcHoLDpQog+n0Bnp6GCtFIyR1HntrvdYRpXMV9n0AAVVfoAOIakjskQiB0GADKtEt1vyqBGlVlUwgMy0nrjdWTVpY+hpFuL+Nj3vj+ilOdmiH0CcqcFx+QKcrijASSRSaVQmp6xqgfE4PUJ+erdRbJTrudtDsX4TAXZ7yRjU4dEQAavFEslEBulw6CAvj1uwABhVh0CCWxHRf2EG9H8-LrzMCCcBUOWjRsClsusCvueEThv4D4AU+JosBEBZLrICG4FWS4GHODb6JeoQEAE9BEAAHlmCyhB8+RvHQqrVDwTzUKcFL6HwBC3JapzuF6S4ENhuEEehpB0mA5G0JR7LLgmrw+IMswUZB8xeFgEoAKKIfoAjIXaNYAPKzLmjYAGJ4iypDkKc5D4T0Hb5MsqCkH+9psQW3AAMzsKZpBaaQ84RFZNn-gKakFgY7k6SGg7-FcFgAI53GOcCnKu+5hMOo7jmCk4OgORBudpsz8YSwaDvyIiCgYIpihAYSTFkZREE4uTBP2oWrk81Txb21RJV+KUuPZX6qlVhoFGMDQ+RA7DTLM8xvLmAj6CAKGOphzK5vcYQWTAYzlMEcBmWlC1eM0DHVHwwy9P4JS0Fk+jbeY9iOEM9SNG6h11BkFh0QMHwBZJHmzGi3m2cMd7fbmaJ5aFg3DbZSIOmtG1QF4209DCp3FDZWTsHNU7pjFuWpQAfiJ42kGirXJMpAC+go1lgmhjIw9ofFm62ba5RHmHwNkQC46gnf9Qw9Q6U2-Xz9rIxYd6qgjZkY-BTNw1LfEU1TC3geVzDkCdGU9EQAKM5F0XGdc3YJcM6rJfKqUCwtJyDKIAzbUxYyWt90lHQC+v2MZBZC8TYOZYa4v3vlmUy1OeH4VrZ5LuoGCw+U7Bx-DiPsH5ssOiokI0oSqJqeegnlYBRNooJlG58exDUIBES6AA7AArPS9KGAAQiBi6oJxgEAIwAJyy0rIjk1WBiXhYqhhGJfADNqPU8FPzqoOw+rzJVqqyGA5MALpAA?showcase=0" width="672" height="150px" data-external="1">
 </iframe>
 
 
