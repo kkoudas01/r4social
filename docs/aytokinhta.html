@@ -13,7 +13,7 @@
 
 <meta name="date" content="2024-08-26" />
 
-<title>Διωνυμική κατανομή</title>
+<title>Αξιολόγηση μεταχειρισμένων αυτοκινήτων</title>
 
 <script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -704,82 +704,110 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Διωνυμική κατανομή</h1>
+<h1 class="title toc-ignore">Αξιολόγηση μεταχειρισμένων αυτοκινήτων</h1>
 <h4 class="author">Κώστας Κούδας</h4>
 <h4 class="date">2024-08-26</h4>
 
 </div>
 
 
-<p><mark>Ας υποθέσουμε ότι σε ένα συγκεκριμένο πείραμα κάποιο γεγονός
-μπορεί να εμφανιστεί ή να; μην εμφανιστεί με κάποια πιθανότητα.
-Εκτελούμε το πείραμα κάποιες φορές και μετράμε πόσες συνέβη το γεγονός.
-Οι αριθμοί αυτοί που μπορεί να συνέβη το γεγονός αυτό ακολουθούν τη
-<strong>διωνυμική κατανομή</strong>.</mark></p>
-<p>Ας το δούμε και πιο συγκεκριμένα. Ρίχνουμε ένα ζάρι 10 φορές κι
-ενδιαφερόμαστε να δούμε πόσες φορές έχει τύχει ⚅. Ως γνωστόν τα πιθανά
-ενδεχόμενα είναι τα ⚀, ⚁, ⚂, ⚃, ⚄, ⚅, και αν υποθέσουμε ότι το ζάρι
-είναι φυσιολογικό, το κάθε ένα τους έχει πιθανότητα <span
-class="math inline">\(\frac{1}{6}\)</span>. Αναζητούμε, λοιπόν, πόσες
-φορές θα έχει έρθει ⚅ στις 10 ρίψεις του ζαριού, θεωρώντας ότι ⚅ έρχεται
-με πιθανότητα <span class="math inline">\(\frac{1}{6}\)</span>. Αυτοί οι
-αριθμοί, οι φορές που μπορεί να έρθει ⚅ (δηλαδή 1, 2, 3, … , 10 φορές),
-ακολουθούν τη δυωνυμική κατανομή.</p>
-<p>Όπως κάναμε και σε άλλη ενότητα, έτσι κι εδώ θα δούμε τι σημαίνει
-αυτό με μια προσομοίωση του πειράματος. Αυτή τη φορά θα παίξουμε το
-παιχνίδια αυτό 1000 φορές και θα δούμε σε πόσα παιχνίδια έτυχε 1 φορά το
-⚅ ή 5 φορές ή καμία κτλ. Γράφουμε λοιπόν:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>fores <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) )</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>  xilia_paixnidia <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>  pin_syxn <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">factor</span>(xilia_paixnidia, <span class="at">levels=</span>fores))</span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>  <span class="fu">barplot</span>(pin_syxn, <span class="at">names.arg =</span> fores)</span>
-<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>}</span></code></pre></div>
-<p><img src="binom_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>όπου η συμπλήρωση
-<code>table(factor(xilia_paixnidia, levels=fores))</code>, αντί της
-<code>table(xilia_paixnidia)</code> έγινε διότι κάποιες τιμές δεν
-συνέβησαν σε κανένα παιχνίδι (πχ δεν έτυχε σε κανένα παιχνίδι να βγαίνει
-⚅ 10 φορές, άρα το 10 δεν εμφανίστηκε ποτέ στη λίστα
-<code>xilia_paixnidia</code>), αλλά εμείς θέλαμε να υπάρχει αυτή η
-ένδειξη στον οριζόντιο άξονα. Επίσης αυτή τη 1000άδα παιχνιδιών την
-παίξαμε 4 φορές, ώστε να αποκτηθεί μια καλύτερη εικόνα της τυχαιότητας
-μέσω των ομοιοτήτων και των διαφορών των ραβδογραμμάτων.</p>
-<p>Τι μπορούμε να συμπεράνουμε από αυτά τα ραβδογράμματα; Μπορούμε πχ να
-συμπεράνουμε ότι σε περίπου 150 παιχνίδια δεν ήρθε ούτε μία φορά ⚅.
-Επίσης συμπεραίνουμε ότι τις περισσότερες φορές τύχαινε ⚅ μόνο 1 φορά,
-ενώ είναι εξαιρετικά σπάνιο να τύχει πάνω από 5 φορές ⚅ σε ένα παιχνίδι
-10 ρίψεων.</p>
-<p>Είδαμε λοιπόν τι σημαίνει η φράση «Οι αριθμοί 0, 1, 2,…, 10
-ακολουθούν τη διωνυμική κατανομή <span
-class="math inline">\(\mathcal{B}(10,\frac{1}{6})\)</span>». Είδαμε ότι
-σε αυτή την περίπτωση το να τύχει 3 φορές ⚅ είναι πολύ πιθανότερο απ’ το
-να τύχει 4. Τι γίνεται όμως αν ενδιαφερόμαστε συγκεκριμένα για την
-πιθανότητα του ενός και του άλλου ενδεχομένου; Σε αυτό θα μας δώσει
-απάντηση η συνάρτηση <code>dbinom()</code>. Γράφουμε συνεπώς:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code></pre></div>
-<pre><code>## [1] 0.1550454</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">4</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>) </span></code></pre></div>
-<pre><code>## [1] 0.05426588</code></pre>
-<p>και μας εξάγονται τα αποτελέσματα 0.1550454 και 0.05426588,
-αντίστοιχα. Αυτό σημαίνει ότι μπορούμε να είμαστε κατά 15.5% σίγουροι
-ότι θα τύχει 3 φορές ⚅ σε ένα παιχνίδι 10 ρίψεων, ενώ είμαστε μόνο 5.4%
-σίγουροι ότι θα τύχει 4 φορές. Αυτήν ακριβώς την διαφορά στις
-πιθανότητες την περιμέναμε και από τη συζήτηση που κάναμε πάνω στα
-ραβδογράμματα.</p>
-<p>Συνολικά ο κώδικας που γράψαμε είναι ο:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>fores <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="fu">par</span>( <span class="at">mfrow=</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>) )</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">100</span><span class="sc">*</span>i)</span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>  xilia_paixnidia <span class="ot">&lt;-</span> <span class="fu">rbinom</span>(<span class="dv">1000</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">6</span>)</span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>  pin_syxn <span class="ot">&lt;-</span> <span class="fu">table</span>(<span class="fu">factor</span>(xilia_paixnidia, <span class="at">levels=</span>fores))</span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a>  <span class="fu">barplot</span>(pin_syxn, <span class="at">names.arg =</span> fores)</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>}</span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">4</span>, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">6</span>)</span></code></pre></div>
+<p>Ποιες μάρκες έχουν μεταπωλητική αξία όταν έχουν πολλά χιλιόμετρα στην
+πλάτη τους; Ποια αυτοκίνητα είναι αξιόπιστα όταν γεράσουν; Ας δούμε με
+πόσα χιλιόμετρα πωλείται κάθε βενζινοκίνητο όχημα στο car.gr.</p>
+<p>Από εδώ: <a
+href="https://www.car.gr/classifieds/cars/view/337799572-renault-captur?from-promotion=1"
+class="uri">https://www.car.gr/classifieds/cars/view/337799572-renault-captur?from-promotion=1</a>
+10η αναζήτηση για renault, 14η, 17η</p>
+<pre><code>{&quot;@type&quot;:&quot;ListItem&quot;,&quot;position&quot;:3,&quot;name&quot;:&quot;Citroen&quot;,&quot;item&quot;:&quot;https://car.gr/used-cars/citroen.html?make=13214&quot;}
+
+mileageFromOdometer:{&quot;@type&quot;:&quot;QuantitativeValue&quot;,value:109000,unitText:&quot;km&quot;}
+
+&quot;mileageFromOdometer&quot;:{&quot;@type&quot;:&quot;QuantitativeValue&quot;,&quot;value&quot;:109000,&quot;unitText&quot;:&quot;km&quot;},&quot;model&quot;:&quot;C3&quot;,&quot;fuelType&quot;:&quot;Πετρέλαιο&quot;,&quot;@type&quot;:&quot;Car&quot;,&quot;manufacturer&quot;:&quot;Citroen&quot;</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(rvest)){</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;rvest&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">library</span>(rvest)</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>}</span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(dplyr)){</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>  <span class="fu">library</span>(dplyr)</span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>}</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(readr)){</span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">&quot;readr&quot;</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a>  <span class="fu">library</span>(readr)</span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Αρχικοποίηση κενής λίστας για την αποθήκευση όλων των URLs</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>all_urls <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># Ο αριθμός των σελίδων που θέλεις να ελέγξεις</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>num_pages <span class="ot">&lt;-</span> <span class="dv">4507</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co"># Επαναληπτική διαδικασία για να περάσεις από όλες τις σελίδες</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>num_pages) {</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a>  <span class="co"># Δημιουργία του URL της τρέχουσας σελίδας</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a>  page_url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;https://www.car.gr/classifieds/cars/?category=15001&amp;offer_type=sale&amp;pg=&quot;</span>, i)</span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a>  </span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a>  <span class="co"># Λήψη της σελίδας</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a>  main_page <span class="ot">&lt;-</span> <span class="fu">read_html</span>(page_url)</span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a>  </span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a>  <span class="co"># Απόσπαση όλων των συνδέσμων που οδηγούν σε αγγελίες αυτοκινήτων</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a>  urls <span class="ot">&lt;-</span> main_page <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a>    <span class="fu">html_nodes</span>(<span class="st">&quot;a[href^=&#39;/classifieds/cars/view/&#39;]&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a>    <span class="fu">html_attr</span>(<span class="st">&quot;href&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a>    <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a>    <span class="fu">paste0</span>(<span class="st">&quot;https://www.car.gr&quot;</span>, .)  <span class="co"># Δημιουργία πλήρους URL</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a>  </span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a>  <span class="co"># Προσθήκη των URLs στη λίστα</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a>  all_urls <span class="ot">&lt;-</span> <span class="fu">c</span>(all_urls, urls)</span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a>}</span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="co"># Δημιουργία ενός κενού dataframe για την αποθήκευση των δεδομένων</span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(χιλιόμετρα <span class="ot">=</span> <span class="fu">integer</span>(),</span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a>                   καύσιμο <span class="ot">=</span> <span class="fu">character</span>(),</span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a>                   μάρκα <span class="ot">=</span> <span class="fu">character</span>(),</span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a>                   <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a></span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a><span class="co"># Αναζήτηση δεδομένων σε κάθε URL</span></span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="cf">for</span> (url <span class="cf">in</span> all_urls) {</span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Processing:&quot;</span>, url))</span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a>  </span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a>  <span class="co"># Χειρισμός εξαιρέσεων με tryCatch</span></span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a>  page <span class="ot">&lt;-</span> <span class="fu">tryCatch</span>({</span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a>    <span class="fu">read_html</span>(url)</span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a>  }, <span class="at">error =</span> <span class="cf">function</span>(e) {</span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a>    <span class="fu">message</span>(<span class="fu">paste</span>(<span class="st">&quot;Error accessing:&quot;</span>, url))</span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a>    <span class="fu">return</span>(<span class="cn">NULL</span>)</span>
+<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a>  })</span>
+<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a>  </span>
+<span id="cb3-44"><a href="#cb3-44" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(page)) {</span>
+<span id="cb3-45"><a href="#cb3-45" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb3-46"><a href="#cb3-46" tabindex="-1"></a>  }</span>
+<span id="cb3-47"><a href="#cb3-47" tabindex="-1"></a>  </span>
+<span id="cb3-48"><a href="#cb3-48" tabindex="-1"></a>  <span class="co"># Απόσπαση των τιμών χιλιομέτρων, καυσίμου και μάρκας</span></span>
+<span id="cb3-49"><a href="#cb3-49" tabindex="-1"></a>  mileage <span class="ot">&lt;-</span> page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">xpath =</span> <span class="st">&quot;//script[contains(., &#39;mileageFromOdometer&#39;)]&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-50"><a href="#cb3-50" tabindex="-1"></a>    <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-51"><a href="#cb3-51" tabindex="-1"></a>    <span class="fu">gsub</span>(<span class="st">&quot;.*</span><span class="sc">\&quot;</span><span class="st">mileageFromOdometer</span><span class="sc">\&quot;</span><span class="st">:</span><span class="sc">\\</span><span class="st">{</span><span class="sc">\&quot;</span><span class="st">@type</span><span class="sc">\&quot;</span><span class="st">:</span><span class="sc">\&quot;</span><span class="st">QuantitativeValue</span><span class="sc">\&quot;</span><span class="st">,</span><span class="sc">\&quot;</span><span class="st">value</span><span class="sc">\&quot;</span><span class="st">:(</span><span class="sc">\\</span><span class="st">d+),</span><span class="sc">\&quot;</span><span class="st">unitText</span><span class="sc">\&quot;</span><span class="st">:</span><span class="sc">\&quot;</span><span class="st">km</span><span class="sc">\&quot;\\</span><span class="st">}.*&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb3-52"><a href="#cb3-52" tabindex="-1"></a>    .[<span class="dv">1</span>]  <span class="co"># Επιλογή της πρώτης ένδειξης</span></span>
+<span id="cb3-53"><a href="#cb3-53" tabindex="-1"></a>  </span>
+<span id="cb3-54"><a href="#cb3-54" tabindex="-1"></a>  fuel <span class="ot">&lt;-</span> page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">xpath =</span> <span class="st">&quot;//script[contains(., &#39;fuelType&#39;)]&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-55"><a href="#cb3-55" tabindex="-1"></a>    <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-56"><a href="#cb3-56" tabindex="-1"></a>    <span class="fu">gsub</span>(<span class="st">&quot;.*</span><span class="sc">\&quot;</span><span class="st">fuelType</span><span class="sc">\&quot;</span><span class="st">:</span><span class="sc">\&quot;</span><span class="st">([^</span><span class="sc">\&quot;</span><span class="st">]+)</span><span class="sc">\&quot;</span><span class="st">.*&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb3-57"><a href="#cb3-57" tabindex="-1"></a>    .[<span class="dv">1</span>]  <span class="co"># Επιλογή της πρώτης ένδειξης</span></span>
+<span id="cb3-58"><a href="#cb3-58" tabindex="-1"></a>  </span>
+<span id="cb3-59"><a href="#cb3-59" tabindex="-1"></a>  manufacturer <span class="ot">&lt;-</span> page <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">xpath =</span> <span class="st">&quot;//script[contains(., &#39;manufacturer&#39;)]&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-60"><a href="#cb3-60" tabindex="-1"></a>    <span class="fu">html_text</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-61"><a href="#cb3-61" tabindex="-1"></a>    <span class="fu">gsub</span>(<span class="st">&quot;.*</span><span class="sc">\&quot;</span><span class="st">manufacturer</span><span class="sc">\&quot;</span><span class="st">:</span><span class="sc">\&quot;</span><span class="st">([^</span><span class="sc">\&quot;</span><span class="st">]+)</span><span class="sc">\&quot;</span><span class="st">.*&quot;</span>, <span class="st">&quot;</span><span class="sc">\\</span><span class="st">1&quot;</span>, .) <span class="sc">%&gt;%</span></span>
+<span id="cb3-62"><a href="#cb3-62" tabindex="-1"></a>    .[<span class="dv">1</span>]  <span class="co"># Επιλογή της πρώτης ένδειξης</span></span>
+<span id="cb3-63"><a href="#cb3-63" tabindex="-1"></a>  </span>
+<span id="cb3-64"><a href="#cb3-64" tabindex="-1"></a>  <span class="co"># Προσθήκη των δεδομένων στο dataframe</span></span>
+<span id="cb3-65"><a href="#cb3-65" tabindex="-1"></a>  data <span class="ot">&lt;-</span> <span class="fu">rbind</span>(data, <span class="fu">data.frame</span>(χιλιόμετρα <span class="ot">=</span> <span class="fu">as.integer</span>(mileage),</span>
+<span id="cb3-66"><a href="#cb3-66" tabindex="-1"></a>                                 καύσιμο <span class="ot">=</span> fuel,</span>
+<span id="cb3-67"><a href="#cb3-67" tabindex="-1"></a>                                 μάρκα <span class="ot">=</span> manufacturer,</span>
+<span id="cb3-68"><a href="#cb3-68" tabindex="-1"></a>                                 <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb3-69"><a href="#cb3-69" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>Error in open.connection(x, &quot;rb&quot;) : 
+  Timeout was reached: [www.car.gr] SSL/TLS connection timeout</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># Αποθήκευση του dataframe σε CSV αρχείο</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">write_csv</span>(data, <span class="st">&quot;cars_data.csv&quot;</span>)</span></code></pre></div>
 
 
 

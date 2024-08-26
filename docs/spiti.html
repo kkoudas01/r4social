@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-08-07" />
+<meta name="date" content="2024-08-26" />
 
 <title>Εξέταση τιμών ακινήτων</title>
 
@@ -626,6 +626,14 @@ div.tocify {
             </li>
           </ul>
         </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πολυδιάστατη προσαρμογή κλίμακας</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="mds.html">Διατακτική πολυδιάστατη προσαρμογή κλίμακας</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -647,6 +655,9 @@ div.tocify {
     </li>
     <li>
       <a href="spiti.html">Εξέταση τιμών ακινήτων</a>
+    </li>
+    <li>
+      <a href="aytokinhta.html">Αξιολόγηση μεταχειρισμένων αυτοκινήτων</a>
     </li>
     <li>
       <a href="kondratiev.html">Κύματα Kondratiev</a>
@@ -695,7 +706,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Εξέταση τιμών ακινήτων</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-08-07</h4>
+<h4 class="date">2024-08-26</h4>
 
 </div>
 
@@ -704,30 +715,32 @@ div.tocify {
 <h1><span class="header-section-number">1</span> Εισαγωγή</h1>
 <pre><code>## Loading required package: tidyverse</code></pre>
 <pre><code>## ── Attaching core tidyverse packages ─────────────────────────────────────── tidyverse 2.0.0 ──
-## ✔ forcats   1.0.0     ✔ readr     2.1.5
-## ✔ lubridate 1.9.3     ✔ stringr   1.5.1
-## ✔ purrr     1.0.2     ✔ tibble    3.2.1
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ lubridate 1.9.3     ✔ tibble    3.2.1
+## ✔ purrr     1.0.2     
 ## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ lubridate::%--%()       masks igraph::%--%()
+## ✖ ggplot2::%+%()          masks psych::%+%()
+## ✖ ggplot2::alpha()        masks psych::alpha()
 ## ✖ tibble::as_data_frame() masks igraph::as_data_frame(), dplyr::as_data_frame()
 ## ✖ purrr::compose()        masks igraph::compose()
 ## ✖ igraph::crossing()      masks tidyr::crossing()
-## ✖ dplyr::desc()           masks packHV::desc(), rstatix::desc()
+## ✖ packHV::desc()          masks rstatix::desc(), dplyr::desc()
 ## ✖ Matrix::expand()        masks tidyr::expand(), reshape::expand()
-## ✖ dplyr::filter()         masks rstatix::filter(), stats::filter()
+## ✖ rstatix::filter()       masks dplyr::filter(), stats::filter()
 ## ✖ purrr::flatten()        masks jsonlite::flatten()
 ## ✖ dplyr::group_rows()     masks kableExtra::group_rows()
+## ✖ readr::guess_encoding() masks rvest::guess_encoding()
 ## ✖ dplyr::lag()            masks stats::lag()
 ## ✖ Matrix::pack()          masks tidyr::pack()
 ## ✖ lubridate::period()     masks markovchain::period()
 ## ✖ car::recode()           masks dplyr::recode()
-## ✖ dplyr::rename()         masks reshape::rename()
-## ✖ MASS::select()          masks dplyr::select(), rstatix::select()
+## ✖ reshape::rename()       masks dplyr::rename()
+## ✖ rstatix::select()       masks MASS::select(), dplyr::select()
 ## ✖ purrr::simplify()       masks igraph::simplify()
 ## ✖ purrr::some()           masks car::some()
 ## ✖ lubridate::stamp()      masks reshape::stamp()
 ## ✖ Matrix::unpack()        masks tidyr::unpack()
-## ✖ jsonlite::validate()    masks shiny::validate()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
 ## Loading required package: Rcrawler</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">Rcrawler</span>(<span class="at">Website =</span> <span class="st">&quot;http://www.spitogatos.gr&quot;</span>,</span>
