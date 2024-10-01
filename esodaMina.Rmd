@@ -20,6 +20,15 @@ library(kableExtra)
 rm(list = ls())
 ```
 
+```{r}
+#install.packages("GWalkR")
+library(GWalkR)
+data(iris)
+gwalkr(iris)
+```
+
+
+
 ```{r, echo=FALSE}
 t <- 1:360
 values <- 2*t+30*sin(2*pi*t/7)+40*sin(2*pi*t/30)+rnorm(1, mean=10, sd=3)+100
