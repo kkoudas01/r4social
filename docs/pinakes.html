@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2024-08-30" />
+<meta name="date" content="2024-12-26" />
 
 <title>Πίνακες δεδομένων</title>
 
@@ -71,7 +71,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -706,7 +706,7 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Πίνακες δεδομένων</h1>
-<h4 class="date">2024-08-30</h4>
+<h4 class="date">2024-12-26</h4>
 
 </div>
 
@@ -13384,16 +13384,16 @@ href="https://ws-ext.it.auth.gr/swagger/">εδώ</a>, αλλά πάμε να δ�
 <span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>    <span class="fu">library</span>(httr)</span>
 <span id="cb25-5"><a href="#cb25-5" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## Loading required package: httr</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(jsonlite)){</span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;jsonlite&quot;</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>    <span class="fu">library</span>(jsonlite)</span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Loading required package: jsonlite</code></pre>
 <pre><code>## 
-## Attaching package: &#39;jsonlite&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:purrr&#39;:
+## Attaching package: &#39;httr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:plotly&#39;:
 ## 
-##     flatten</code></pre>
+##     config</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(jsonlite)){</span>
+<span id="cb29-2"><a href="#cb29-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;jsonlite&quot;</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" tabindex="-1"></a>    <span class="fu">library</span>(jsonlite)</span>
+<span id="cb29-4"><a href="#cb29-4" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## Loading required package: jsonlite</code></pre>
 <p>Το αρχείο json θα το κατεβάσουμε μέσω ενός συνδέσμου που παραπέμπει
 σε αυτό. Ενδιαφερθήκαμε εν προκειμένω για αριθμό εισαχθέντων φοιτητών
 ανά τμήμα για κάθε χρονιά τα τελευταία δέκα χρόνια, οπότε και επιλέξαμε

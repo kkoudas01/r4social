@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-08-30" />
+<meta name="date" content="2024-12-26" />
 
 <title>Ευθείες παλινδρόμησης</title>
 
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -708,7 +708,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Ευθείες παλινδρόμησης</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-08-30</h4>
+<h4 class="date">2024-12-26</h4>
 
 </div>
 
@@ -10562,7 +10562,8 @@ href="diagramSysxet.html#1_Διάγραμμα_διασποράς">Διάγραμ
 href="https://datahub.io/JohnSnowLabs/country-and-continent-codes-list#resource-country-and-continent-codes-list-csv">datahub</a>
 στοιχεία για τις χώρες και τις ηπείρους που ανήκουν. Τα δεδομένα
 αποθηκεύτηκαν σ’ ένα αρχείο ονόματι XoresHpiroi2.txt.</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -23741,7 +23742,6 @@ class="math inline">\([giatroi]=1.9248+0.1308\cdot[nosok]\)</span> κάνει
 απόσταση <span class="math inline">\(\pm 3\cdot 0.815\)</span> από αυτήν
 που προβλέπει η ευθεία γραμμικής παλινδρόμησης.</p>
 </div>
-</div>
 <div id="ποσοστημοριακή-παλινδρόμηση" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Ποσοστημοριακή
 παλινδρόμηση</h1>
@@ -23853,6 +23853,8 @@ class="math display">\[[giatroi]=1.6962080+0.1466408\cdot[nosok]\]</span></p>
 <span id="cb26-29"><a href="#cb26-29" tabindex="-1"></a><span class="fu">plot</span>(giatroi <span class="sc">~</span> nosok) </span>
 <span id="cb26-30"><a href="#cb26-30" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">rq</span>(giatroi <span class="sc">~</span> nosok), <span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span>
 <span id="cb26-31"><a href="#cb26-31" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">rq</span>(giatroi <span class="sc">~</span> nosok, <span class="at">tau =</span> <span class="fl">0.15</span>), <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+</div>
+</div>
 </div>
 
 

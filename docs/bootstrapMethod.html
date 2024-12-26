@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-08-30" />
+<meta name="date" content="2024-12-26" />
 
 <title>Μέθοδος Bootstrap</title>
 
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -708,7 +708,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μέθοδος Bootstrap</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-08-30</h4>
+<h4 class="date">2024-12-26</h4>
 
 </div>
 
@@ -732,7 +732,8 @@ div.tocify {
 αρχείο ονόματι foi-expenditure-over-25000-june-2023.xlsx, φούπρώτα
 δραγράψαμε τα προηγούμενα.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -8196,6 +8197,7 @@ href="asymmetria.html#1_Συντελεστής_ασυμμετρίας_του_Pea
 <span id="cb9-16"><a href="#cb9-16" tabindex="-1"></a>  <span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(v)<span class="sc">-</span><span class="fu">median</span>(v))<span class="sc">/</span><span class="fu">sd</span>(v)</span>
 <span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a>}</span>
 <span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a><span class="fu">bootstrap_meth</span>(exoda,<span class="dv">1000</span>, asimetriaP)</span></code></pre></div>
+</div>
 
 
 

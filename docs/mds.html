@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-08-30" />
+<meta name="date" content="2024-12-26" />
 
 <title>Διατακτική πολυδιάστατη προσαρμογή κλίμακας</title>
 
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -709,7 +709,7 @@ div.tocify {
 <h1 class="title toc-ignore">Διατακτική πολυδιάστατη προσαρμογή
 κλίμακας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-08-30</h4>
+<h4 class="date">2024-12-26</h4>
 
 </div>
 
@@ -1382,7 +1382,7 @@ id="fnref1"><sup>1</sup></a>. Μελετώντας τις αποστάσεις �
 <p>Έτσι, εκτελώντας την παρακάτω εντολή έχουμε τον απαιτούμενο αριθμό
 διαστάσεων για να έχουμε εξαιρετική ακρίβεια προσαρμογής.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">eyresiDiastasis</span>(deimografikoiDeiktes)</span></code></pre></div>
-<pre><code>## [1] &quot;Η διάσταση είναι 2 και η ένταση είναι  0.0248713188554887 .&quot;</code></pre>
+<pre><code>## [1] &quot;Η διάσταση είναι 2 και η ένταση είναι  0.0248713194718483 .&quot;</code></pre>
 <p><img src="mds_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Το γράφημα που προκύπτει είναι το γράφημα των αποστάσεων. Πρακτικά
 είναι ένα διάγραμμα διασποράς, όπου συσχετίζει τις πραγματικές
@@ -1393,7 +1393,7 @@ id="fnref1"><sup>1</sup></a>. Μελετώντας τις αποστάσεις �
 θέλαμε να έχουμε ένταση π.χ. 0.02. Αυτό έρχεται να μας απαντήσει η
 κάτωθι εντολή.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">eyresiDiastasis</span>(deimografikoiDeiktes, <span class="at">entasi=</span><span class="fl">0.02</span>)</span></code></pre></div>
-<pre><code>## [1] &quot;Η διάσταση είναι 3 και η ένταση είναι  0.012498550231726 .&quot;</code></pre>
+<pre><code>## [1] &quot;Η διάσταση είναι 3 και η ένταση είναι  0.0124986409620639 .&quot;</code></pre>
 <p><img src="mds_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Παρατηρούμε ότι υπάρχει μεγαλύτερη ταύτιση θεωρητικών και
 παρατηρούμενων αποστάσεων, όπερ αναμενόμενο, αφού επιλέξαμε ένταση πιο
@@ -1448,7 +1448,7 @@ id="fnref1"><sup>1</sup></a>. Μελετώντας τις αποστάσεις �
 αν διαλέξουμε δύο μόνο παραμέτρους για να περιγράφουν την κατανομή των
 χωρών μας.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">eyresiEntasis</span>(deimografikoiDeiktes)</span></code></pre></div>
-<pre><code>## [1] &quot;Η διάσταση είναι 2 και η ένταση είναι  0.0248713247685993 .&quot;</code></pre>
+<pre><code>## [1] &quot;Η διάσταση είναι 2 και η ένταση είναι  0.0248713193671372 .&quot;</code></pre>
 <p><img src="mds_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Τι γίνεται, όμως, αν επιδιώξουμε να κατατάξουμε τις χώρες σε μια
 ευθεία αριθμογραμμή; Φτάνει μια παράμετρος για να κατατάξει τις χώρες

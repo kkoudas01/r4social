@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Κώστας Κούδας" />
+
+<meta name="date" content="2024-12-26" />
+
+<title>Έξοδος από τη φτώχεια.</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R🧸Koudas</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-screwdriver-wrench"></span>
+     
+    Εργαλεία
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pinakes.html">Πίνακες δεδομένων</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Περιγραφική στατιστική</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συχνότητες</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="syxnotites.html">Συχνότητες</a>
+            </li>
+            <li>
+              <a href="pikilomorfia.html">Μέτρηση ποικιλομορφίας</a>
+            </li>
+            <li>
+              <a href="piechart.html">Κυκλικό διάγραμμα</a>
+            </li>
+            <li>
+              <a href="barplot.html">Ραβδόγραμμα</a>
+            </li>
+            <li>
+              <a href="histogram.html">Ιστόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="metrathesis.html">Μέτρα θέσης</a>
+        </li>
+        <li>
+          <a href="metradiasporas.html">Μέτρα διασποράς</a>
+        </li>
+        <li>
+          <a href="asymmetria.html">Μέτρα ασυμμετρίας</a>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συσχέτιση</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="metrasysxetisis.html">Μέτρα συσχέτισης</a>
+            </li>
+            <li class="dropdown-submenu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Προσδιορισμός συσχέτισης</a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="diagramSysxet.html">Διαγράμματα</a>
+                </li>
+                <li>
+                  <a href="eytheiesPalindr.html">Ευθείες παλινδρόμησης</a>
+                </li>
+                <li>
+                  <a href="kampylesPalindr.html">Καμπύλες παλινδρόμησης</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πιθανότητες</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="ennoiaPith.html">Η έννοια της πιθανότητας</a>
+        </li>
+        <li>
+          <a href="ergaliaPith.html">Βασικά εργαλεία</a>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
+            </li>
+            <li>
+              <a href="binom.html">Διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="geom.html">Γεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="poisson.html">Κατανομή Poisson</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
+            </li>
+            <li>
+              <a href="expDist.html">Εκθετική κατανομή</a>
+            </li>
+            <li>
+              <a href="gammaDist.html">Κατανομή Γάμμα</a>
+            </li>
+            <li>
+              <a href="normalDist.html">Κανονική κατανομή</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Εκτιμητική</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="ektimMean.html">Για μέση τιμή</a>
+        </li>
+        <li>
+          <a href="ektimPososto.html">Για το ποσοστό</a>
+        </li>
+        <li>
+          <a href="bootstrapMethod.html">Μέθοδος Bootstrap</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Έλεγχος υποθέσεων</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="tTest.html">t-έλεγχος για το ποσοστό</a>
+        </li>
+        <li>
+          <a href="tTestMean.html">t-έλεγχος για τη μέση τιμή</a>
+        </li>
+        <li>
+          <a href="zTest.html">z-έλεγχος για διαφορά ποσοστών</a>
+        </li>
+        <li>
+          <a href="x2Test.html">χ2 έλεγχος για την ανεξαρτησία</a>
+        </li>
+        <li>
+          <a href="anova.html">Επίδραση ενός παράγοντα</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Προσδιορισμός κατανομής</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="findDist.html">Προσδιορισμός κατανομής</a>
+        </li>
+        <li>
+          <a href="NormTest.html">Έλεγχος κανονικότητας</a>
+        </li>
+        <li>
+          <a href="GraphFindDist.html">Γραφικός προσδιορισμός κατανομής</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μαρκοβιανές αλυσίδες</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="metabMarkov.html">Περιγραφή μεταβάσεων</a>
+        </li>
+        <li>
+          <a href="metabMarkovPol.html">Μεταβάσεις σε περισσότερα βήματα</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Χρονικές σειρές</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="timeBasic.html">Βασικά εργαλεία</a>
+        </li>
+        <li>
+          <a href="motiba.html">Μοτίβα</a>
+        </li>
+        <li>
+          <a href="periodikotita.html">Μελέτη εποχικότητας</a>
+        </li>
+        <li>
+          <a href="arima.html">Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πολυμεταβλητή ανάλυση</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Περιγραφική στατιστική</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="astrogramma.html">Αστρόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ανάλυση συστοιχιών</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="distTree.html">Μήτρα απόστασης – δεντρόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πολυδιάστατη προσαρμογή κλίμακας</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="mds.html">Διατακτική πολυδιάστατη προσαρμογή κλίμακας</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-flask-vial"></span>
+     
+    Έρευνες
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apoxi.html">Αποχή στις εκλογές</a>
+    </li>
+    <li>
+      <a href="pisa.html">Εξέταση αποτελεσμάτων PISA</a>
+    </li>
+    <li>
+      <a href="spiti.html">Εξέταση τιμών ακινήτων</a>
+    </li>
+    <li>
+      <a href="aytokinhta.html">Αξιολόγηση μεταχειρισμένων αυτοκινήτων</a>
+    </li>
+    <li>
+      <a href="kondratiev.html">Κύματα Kondratiev</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-utensils"></span>
+     
+    Ταχυφαγείο
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="esodaMina.html">Τα έσοδα του μήνα</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-mug-saucer"></span>
+     
+    Εντός εκτός κι επί τα αυτά
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dataMathematica.html">Μετατροπή πίνακα για Mathematica</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Έξοδος από τη φτώχεια.</h1>
+<h4 class="author">Κώστας Κούδας</h4>
+<h4 class="date">2024-12-26</h4>
+
+</div>
+
+
+<div id="παρουσίαση-δεδομένων"
+class="section level1 tabset tabset-fade tabset-pills" number="1">
+<h1 class="tabset tabset-fade tabset-pills"><span
+class="header-section-number">1</span> Παρουσίαση δεδομένων</h1>
+<p>Στον παρακάτω πίνακα παρουσιάζονται οι εβδομαδιαίες ώρες που
+χρειάζεται να εργαστεί μια οικογένεια που λαμβάνει το ελάχιστο εγγυημένο
+εισόδημα, ώστε να εξέλθει από τη φτώχεια (δείκτης
+<code>WORKEXPOV</code>), όπως αυτός αντλήθηκε από την αντίστοιχη σελίδα
+του <a
+href="https://data-explorer.oecd.org/vis?lc=en&amp;df%5Bds%5D=DisseminateArchiveDMZ&amp;df%5Bid%5D=DF_DP_LIVE&amp;df%5Bag%5D=OECD&amp;df%5Bvs%5D=&amp;av=true&amp;pd=%2C&amp;dq=.WORKEXPOV...A&amp;to%5BTIME_PERIOD%5D=false&amp;vw=tb&amp;ly%5Bcl%5D=TIME_PERIOD&amp;ly%5Brs%5D=SUBJECT%2CMEASURE&amp;ly%5Brw%5D=LOCATION">OECD</a>.
+Το όριο της φτώχειας στην προκειμένη περίπτωση υπολογίζεται ως το 50%
+του διάμεσου διαθέσιμου εισοδήματος στη χώρα.</p>
+<p>Τα δεδομένα αφορούν (<code>SUBJECT</code>):</p>
+<ul>
+<li><p>ζευγάρια χωρίς εργασία με 2 παιδιά
+(<code>UNEMP_COUPL2CHLD</code>),</p></li>
+<li><p>ζευγάρια χωρίς εργασία, που δεν έχουν 2 παιδιά
+(<code>UNEMP_COUPLNOCHLD</code>),</p></li>
+<li><p>ένα άτομο με δύο παιδιά (<code>SNGL2CHLD</code>),</p></li>
+<li><p>ένα άτομο χωρίς παιδιά (<code>SNGLNOCHLD</code>).</p></li>
+</ul>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+STRUCTURE
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+STRUCTURE_ID
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+STRUCTURE_NAME
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+ACTION
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+LOCATION
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Country
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+INDICATOR
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Indicator
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+SUBJECT
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Subject
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+MEASURE
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Measure
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+FREQUENCY
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Frequency
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+TIME_PERIOD
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Time
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+OBS_VALUE
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Observation.Value
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+OBS_STATUS
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Observation.Status
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+UNIT_MEASURE
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Unit.of.Measures
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+UNIT_MULT
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Multiplier
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+BASE_PER
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Base.reference.period
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+DATAFLOW
+</td>
+<td style="text-align:left;">
+OECD:DF_DP_LIVE(1.0)
+</td>
+<td style="text-align:left;">
+OECD Data Archive
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+Australia
+</td>
+<td style="text-align:left;">
+WORKEXPOV
+</td>
+<td style="text-align:left;">
+Working hours needed to exit poverty
+</td>
+<td style="text-align:left;">
+UNEMP_COUPL2CHLD
+</td>
+<td style="text-align:left;">
+Jobless couple, 2 children
+</td>
+<td style="text-align:left;">
+HR_AVEWAGE
+</td>
+<td style="text-align:left;">
+Hours at average wage
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Annual
+</td>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DATAFLOW
+</td>
+<td style="text-align:left;">
+OECD:DF_DP_LIVE(1.0)
+</td>
+<td style="text-align:left;">
+OECD Data Archive
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+POL
+</td>
+<td style="text-align:left;">
+Poland
+</td>
+<td style="text-align:left;">
+WORKEXPOV
+</td>
+<td style="text-align:left;">
+Working hours needed to exit poverty
+</td>
+<td style="text-align:left;">
+UNEMP_COUPLNOCHLD
+</td>
+<td style="text-align:left;">
+Jobless couple, no child
+</td>
+<td style="text-align:left;">
+HR_MINWAGE
+</td>
+<td style="text-align:left;">
+Hours at minimum wage
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Annual
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DATAFLOW
+</td>
+<td style="text-align:left;">
+OECD:DF_DP_LIVE(1.0)
+</td>
+<td style="text-align:left;">
+OECD Data Archive
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+SVK
+</td>
+<td style="text-align:left;">
+Slovak Republic
+</td>
+<td style="text-align:left;">
+WORKEXPOV
+</td>
+<td style="text-align:left;">
+Working hours needed to exit poverty
+</td>
+<td style="text-align:left;">
+UNEMP_COUPLNOCHLD
+</td>
+<td style="text-align:left;">
+Jobless couple, no child
+</td>
+<td style="text-align:left;">
+HR_67PC_AVEWAGE
+</td>
+<td style="text-align:left;">
+Hours at 67% average wage
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Annual
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DATAFLOW
+</td>
+<td style="text-align:left;">
+OECD:DF_DP_LIVE(1.0)
+</td>
+<td style="text-align:left;">
+OECD Data Archive
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+POL
+</td>
+<td style="text-align:left;">
+Poland
+</td>
+<td style="text-align:left;">
+WORKEXPOV
+</td>
+<td style="text-align:left;">
+Working hours needed to exit poverty
+</td>
+<td style="text-align:left;">
+UNEMP_COUPL2CHLD
+</td>
+<td style="text-align:left;">
+Jobless couple, 2 children
+</td>
+<td style="text-align:left;">
+HR_AVEWAGE
+</td>
+<td style="text-align:left;">
+Hours at average wage
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Annual
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DATAFLOW
+</td>
+<td style="text-align:left;">
+OECD:DF_DP_LIVE(1.0)
+</td>
+<td style="text-align:left;">
+OECD Data Archive
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+DNK
+</td>
+<td style="text-align:left;">
+Denmark
+</td>
+<td style="text-align:left;">
+WORKEXPOV
+</td>
+<td style="text-align:left;">
+Working hours needed to exit poverty
+</td>
+<td style="text-align:left;">
+UNEMP_COUPLNOCHLD
+</td>
+<td style="text-align:left;">
+Jobless couple, no child
+</td>
+<td style="text-align:left;">
+HR_AVEWAGE
+</td>
+<td style="text-align:left;">
+Hours at average wage
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Annual
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+DATAFLOW
+</td>
+<td style="text-align:left;">
+OECD:DF_DP_LIVE(1.0)
+</td>
+<td style="text-align:left;">
+OECD Data Archive
+</td>
+<td style="text-align:left;">
+I
+</td>
+<td style="text-align:left;">
+DNK
+</td>
+<td style="text-align:left;">
+Denmark
+</td>
+<td style="text-align:left;">
+WORKEXPOV
+</td>
+<td style="text-align:left;">
+Working hours needed to exit poverty
+</td>
+<td style="text-align:left;">
+UNEMP_COUPLNOCHLD
+</td>
+<td style="text-align:left;">
+Jobless couple, no child
+</td>
+<td style="text-align:left;">
+HR_67PC_AVEWAGE
+</td>
+<td style="text-align:left;">
+Hours at 67% average wage
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+Annual
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ακολουθεί μια συνοπτική παρουσίαση της κατάστασης στα χρόνια
+2001-2023 που αφορά την κάθε χώρα ξεχωριστά, συμπεριλαμβανομένης και της
+Ελλάδας.</p>
+<div id="ζευγάρι-με-2-παιδιά" class="section level2" number="1.1">
+<h2><span class="header-section-number">1.1</span> Ζευγάρι με 2
+παιδιά</h2>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="ζευγάρι-χωρίς-παιδιά" class="section level2" number="1.2">
+<h2><span class="header-section-number">1.2</span> Ζευγάρι χωρίς
+παιδιά</h2>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<div id="μόνος-με-2-παιδιά" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Μόνος με 2
+παιδιά</h2>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="μόνος-χωρίς-παιδιά" class="section level2" number="1.4">
+<h2><span class="header-section-number">1.4</span> Μόνος χωρίς
+παιδιά</h2>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+</div>
+<div id="πορεία-στο-χρόνο"
+class="section level1 tabset tabset-fade tabset-pills" number="2">
+<h1 class="tabset tabset-fade tabset-pills"><span
+class="header-section-number">2</span> Πορεία στο χρόνο</h1>
+<p>Σε πρώτη φάση θα ερευνήσουμε την εξέλιξη της κατάστασης στην πορεία
+του χρόνου. Πώς αλλάζει ο κόπος που καταβάλει κάποιος για να βγει από τη
+φτώχεια; Συγκεκριμένα, συμβαίνει κάτι διαφορετικό παγκοσμίως στο
+2023;</p>
+<div id="ζευγάρι-με-2-παιδιά-1" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Ζευγάρι με 2
+παιδιά</h2>
+<p>Ας δούμε πρώτα την περίπτωση που ένα ζευγάρι έχει 2 παιδιά. Όσον
+αφορά την περίπτωση της Ελλάδας και της Ε.Ε., φαίνεται ν’ ακολουθούν μια
+σταθερή μετά από μια πτωτική πορεία οι ώρες εργασίας που απαιτούνται για
+την έξοδο από την κατάσταση της φτώχειας. Είναι αυτό σημάδι επικείμενης
+ανόδου, καθόσον πλησίον ενός ελαχίστου οι μεταβολές είναι ανεπαίσθητες;
+Θέλουμε μελλοντικά δοδομένα γι’ αυτό. Είναι μήπως η πτωτική πορεία τμήμα
+ενός ευρύτερου σκαμπανεβάσματος; Θέλουμε παλαιότερα δεδομένα γι’
+αυτό.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Σε παγκόσμιο επίπεδο, από την άλλη, δεν φαίνεται να υπάρχει κάποια
+αλλαγή, τόσο καθόλο το διάστημα 2001-23 που μελετάμε, όσο και ίσως
+ανάμεσα στο 2023 και στις παλαιότερες εποχές.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Φαίνεται το ‘23 να είναι ελαφρώς χειρότερο από τα προγηγούμενα έτη;
+Είναι όμως έτσι; Τι λέει γι’ αυτό ένας έλεγχος Wilcoxon;</p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by is23
+## W = 7291, p-value = 0.8887
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Ο παραπάνω έλεγχος δεν φαίνεται να έδωσε καταφατική απάντηση στο
+παραπάνω ερώτημα. Τουλάχιστον όχι σε όσους δεν λογίζουν ως σπάνιο ένα
+ενδεχόμενο που συμβαίνει με πιθανότητα 88.8745642%, όσο δηλαδή η
+p-τιμή.</p>
+</div>
+<div id="ζευγάρι-χωρίς-παιδί" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Ζευγάρι χωρίς
+παιδί</h2>
+<p>Πάμε τώρα να δούμε τι συμβαίνει όταν το ζευγάρι δεν έχει παιδιά. Και
+πάλι βλέπουμε μια σταθεροποίηση ύστερα από μια πτώση προς τα κάτω. Τα
+ίδια ερωτήματα που είχαμε θέσει στην ενότητα που μελετάγαμε τα ζευγάρια
+με δύο παιδιά, τα ίδια μπορούμε να θέσουμε και τώρα, χωρίς φυσικά να
+μπορούμε και πάλι να δώσουμε απάντηση.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Και σε αυτή την περίπτωση το 2023 φαίνεται να είναι λίγο διαφορετικό
+αν εστιάσουμε πάνω του, αλλά μέσα στο ευρύτερο κάδρο δεν φαίνεται τελικά
+να διαφέρει.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Ο έλεγχος Wilcoxon για άλλη μια φορά δεν μας δίνει δικαίωμα να
+επικαλεστούμε ότι κάτι διαφορετικό συμβαίνει το ’23.</p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by is23
+## W = 7242, p-value = 0.8456
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<div id="μόνος-με-2-παιδιά-1" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Μόνος με 2
+παιδιά</h2>
+<p>Η περίπτωση αυτή δεν έχει να πει κάτι διαφορετικό από τις δύο άλλες
+που σχολιάσαμε, οπότε αρκούμαστε μονάχα στην παρουσίαση των γραφημάτων
+και του ελέγχου Wilcoxon.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by is23
+## W = 6942, p-value = 0.5952
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<div id="μόνος-χωρίς-παιδιά-1" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Μόνος χωρίς
+παιδιά</h2>
+<p>Η περίπτωση αυτή δεν έχει να πει κάτι διαφορετικό από τις δύο πρώτες
+που σχολιάσαμε, οπότε αρκούμαστε μονάχα στην παρουσίαση των γραφημάτων
+και του ελέγχου Wilcoxon.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-37-1.png" width="672" /></p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by is23
+## W = 6809, p-value = 0.496
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+</div>
+<div id="παίζει-ρόλο-το-να-έχεις-παιδί"
+class="section level1 tabset tabset-fade tabset-pills" number="3">
+<h1 class="tabset tabset-fade tabset-pills"><span
+class="header-section-number">3</span> Παίζει ρόλο το να έχεις
+παιδί;</h1>
+<div id="ζευγάρι" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Ζευγάρι</h2>
+<p>Θα εξετάσουμε το ερώτημα «Παίζει ρόλο το να έχεις παιδί;» πρώτα για
+τα ζευγάρια.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-40-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p>Φαίνεται το ότι να έχει ένα ζευγάρι παιδιά κάνει πιο δύσκολο αυτό να
+εξέλθει από τη φτώχεια. Ας το ελέγξουμε και με έναν έλεγχο Wilcoxon.</p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by SUBJECT
+## W = 255756, p-value = 7.371e-14
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Η p-τιμή είναι αρκετά μικρή, ήτοι δείχνει ότι είναι απίθανο η ύπαρξη
+παιδιών να μην επηρεάζει τον κόπο για να βγει από τη φτώχεια ένα
+ζευγάρι. Ας εξετάσουμε και το μέγεθος της επίδρασης του παράγοντα
+«ύπραξη παιδιού».</p>
+<pre><code>## # A tibble: 1 × 7
+##   .y.       group1           group2            effsize    n1    n2 magnitude
+## * &lt;chr&gt;     &lt;chr&gt;            &lt;chr&gt;               &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 OBS_VALUE UNEMP_COUPL2CHLD UNEMP_COUPLNOCHLD   0.209   642   642 small</code></pre>
+<p>Το r του Wilcoxon είναι 0.2087791, το οποίο υποδηλώνει μικρό προς
+μεσαίο μέγεθος επίδρασης.</p>
+<p>Τέλος, παρουσιάζουμε την εξέλιξη της διαφοροποίησης μεταξύ του έχειν
+ή όχι 2 παιδιά στην πορεία του χρόνου.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+</div>
+<div id="μόνος" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Μόνος</h2>
+<p>Ας μελετήσουμε τώρα το ερώτημα «Παίζει ρόλο το να έχεις παιδί;» όσον
+αφορά την περίπτωση του ενος ενήλικα.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Και σε αυτή την περίπτωση φαίνεται η ύπαρξη παιδιών να κάνει πιο
+δύσκολη την έξοδο από τη φτώχεια. Είναι όντως έτσι όπως βλέπουν τα μάτια
+μας;</p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by SUBJECT
+## W = 262154, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Ο έλεγχος Wilcoxon επιβεβαιώνει με τη μικροσκοπική p-τιμή που εξάγει
+ότι είναι απίθανο το αντίθετο σενάριο. Ας δούμε και το μέγεθος της
+επίδρασης των παιδιών.</p>
+<pre><code>## # A tibble: 1 × 7
+##   .y.       group1    group2     effsize    n1    n2 magnitude
+## * &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 OBS_VALUE SNGL2CHLD SNGLNOCHLD   0.236   642   642 small</code></pre>
+<p>Το r του Wilcoxon (0.2356119) πάλι διλώνει μικρό προς μεσαίο μέγεθος
+επίδρασης της ύπαρξης παιδιών στη δυσκολία εξόδου από τη φτώχεια.
+Βέβαια, είναι σαφώς μεγαλύτερο από την περίπτωση που μελετούσαμε
+ζευγάρια, κάτι που αντικατοπτρίζει και τις δυσκολίες που αντιμετωπίζει
+μια μονογονεϊκή οικογένεια.</p>
+<p>Και πάλι κάνουμε μια οπτική παρουσίαση της εξέλιξης της επίδρασης του
+παράγοντα «έχω δύο παιδιά ή καθόλου» στη δυσκολία εξόδου από τη
+φτώχεια.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+</div>
+</div>
+<div id="παίζει-ρόλο-το-να-είσαι-ζευγάρι-ή-μόνος"
+class="section level1 tabset tabset-fade tabset-pills" number="4">
+<h1 class="tabset tabset-fade tabset-pills"><span
+class="header-section-number">4</span> Παίζει ρόλο το να είσαι ζευγάρι ή
+μόνος;</h1>
+<div id="με-2-παιδιά" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Με 2 παιδιά</h2>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by SUBJECT
+## W = 130350, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<pre><code>## # A tibble: 1 × 7
+##   .y.       group1    group2           effsize    n1    n2 magnitude
+## * &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 OBS_VALUE SNGL2CHLD UNEMP_COUPL2CHLD   0.318   642   642 moderate</code></pre>
+<p>Ακολουθεί για άλλη μια φορά η οπτική αναπαράσταση της εξέλιξης στο
+χρόνο του ζητήματος που μελετάμε.</p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+</div>
+<div id="χωρίς-παιδί" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Χωρίς παιδί</h2>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  OBS_VALUE by SUBJECT
+## W = 98129, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<pre><code>## # A tibble: 1 × 7
+##   .y.       group1     group2            effsize    n1    n2 magnitude
+## * &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;               &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
+## 1 OBS_VALUE SNGLNOCHLD UNEMP_COUPLNOCHLD   0.454   642   642 moderate</code></pre>
+<p><img src="workHexitPov_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

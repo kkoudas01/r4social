@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2024-08-30" />
+<meta name="date" content="2024-12-26" />
 
 <title>Έλεγχος κανονικότητας</title>
 
@@ -72,7 +72,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -708,7 +708,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Έλεγχος κανονικότητας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2024-08-30</h4>
+<h4 class="date">2024-12-26</h4>
 
 </div>
 
@@ -5929,7 +5929,8 @@ number="3">
 στοιχεία για τα έξοδα του Εθνικού Μουσείου Φυσικής Ιστορίας κατά τον
 Ιούνιο του 2023, τα οποία τα αποθηκεύσαμε σε ένα αρχείο ονόματι
 foi-expenditure-over-25000-june-2023.xlsx.</p>
-<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -13326,6 +13327,7 @@ S020599703
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="fu">shapiro.test</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
 <span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="fu">qqnorm</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span>
 <span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a><span class="fu">qqline</span>(foi_expenditure_over_25000_june_2023<span class="sc">$</span>Amount)</span></code></pre></div>
+</div>
 </div>
 
 
