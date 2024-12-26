@@ -135,6 +135,8 @@ navbar:
         href: apoxi.html
       - text: "Εξέταση αποτελεσμάτων PISA"
         href: pisa.html
+      - text: "Έξοδος από τη φτώχεια"
+        href: workHexitPov.html
       - text: "Εξέταση τιμών ακινήτων"
         href: spiti.html
       - text: "Αξιολόγηση μεταχειρισμένων αυτοκινήτων"
