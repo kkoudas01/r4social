@@ -45,20 +45,7 @@ knitr::kable(head(WORKEXPOV)) %>%
   scroll_box(width = "100%", height = "200px")
 ```
 
-```{r, echo=FALSE}
-WORKEXPOV <- WORKEXPOV[WORKEXPOV$Measure == "Hours at minimum wage",]
-WORKEXPOV$ISgr <- ifelse(WORKEXPOV$Country=="Greece", "GR", "notGr")
-```
 
-
-```{r, echo=FALSE}
-WORKEXPOV$is23 <- ifelse(WORKEXPOV$TIME_PERIOD==2023, "'23", "παλαιότερα")
-```
-
-```{r, echo=F}
-WORKEXPOVeuGR <- WORKEXPOV[WORKEXPOV$LOCATION=="GRC" | WORKEXPOV$LOCATION=="EU28", ]
-WORKEXPOV <- WORKEXPOV[WORKEXPOV$LOCATION != "EU28",]
-```
 
 ```{r, echo=FALSE, message=FALSE}
 if(!require(ggplot2)){
@@ -77,6 +64,10 @@ if(!require(viridis)){
     install.packages("viridis")
     library(viridis)
 }
+```
+
+```{r, echo=FALSE}
+WORKEXPOV <- WORKEXPOV[WORKEXPOV$Measure == "Hours at minimum wage",]
 ```
 
 Ακολουθεί μια συνοπτική παρουσίαση της κατάστασης στα χρόνια 2001-2023 που αφορά την κάθε χώρα ξεχωριστά, συμπεριλαμβανομένης και της Ελλάδας.
@@ -148,6 +139,37 @@ ggplot(singleNOchild23global, aes(x = OBS_VALUE, y = as.factor(LOCATION), fill =
        x = "εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια",
        y = "χώρα")
 ```
+
+```{r, echo=FALSE}
+WORKEXPOV$ISgr <- ifelse(WORKEXPOV$Country=="Greece", "GR", "notGr")
+```
+
+
+```{r, echo=FALSE}
+WORKEXPOV$is23 <- ifelse(WORKEXPOV$TIME_PERIOD==2023, "'23", "παλαιότερα")
+```
+
+```{r, echo=F}
+WORKEXPOVeuGR <- WORKEXPOV[WORKEXPOV$LOCATION=="GRC" | WORKEXPOV$LOCATION=="EU28", ]
+WORKEXPOV <- WORKEXPOV[WORKEXPOV$LOCATION != "EU28"&WORKEXPOV$LOCATION != "OECD",]
+```
+
+```{r, echo=FALSE}
+couple2child23global <- WORKEXPOV[WORKEXPOV$SUBJECT=="UNEMP_COUPL2CHLD",]
+```
+
+```{r, echo=FALSE}
+coupleNOchild23global <- WORKEXPOV[WORKEXPOV$SUBJECT=="UNEMP_COUPLNOCHLD",]
+```
+
+```{r, echo=FALSE}
+single2child23global <- WORKEXPOV[WORKEXPOV$SUBJECT=="SNGL2CHLD",]
+```
+
+```{r, echo=FALSE}
+singleNOchild23global <- WORKEXPOV[WORKEXPOV$SUBJECT=="SNGLNOCHLD",]
+```
+
 
 # Πορεία στο χρόνο {.tabset .tabset-fade .tabset-pills}
 
