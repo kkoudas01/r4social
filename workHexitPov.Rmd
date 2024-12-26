@@ -493,7 +493,11 @@ ggplot(single, aes(x = OBS_VALUE, y = as.factor(TIME_PERIOD), fill = SUBJECT)) +
 
 # Παίζει ρόλο το να είσαι ζευγάρι ή μόνος; {.tabset .tabset-fade .tabset-pills}
 
+Σε τούτη την ενότητα θα εξετάσουμε αν επιδρά στη δυσκολία εξόδου από τη φτώχεια το να είσαι ζευγάρι ή μόνος.
+
 ## Με 2 παιδιά
+
+Πάμε πρώτα να δούμε τι συμβαίνει, αν υπάρχουν δυο παιδιά στην οικογένεια.
 
 ```{r, echo=FALSE}
 child2 <- WORKEXPOV[(WORKEXPOV$SUBJECT=="UNEMP_COUPL2CHLD" | WORKEXPOV$SUBJECT=="SNGL2CHLD"),]
@@ -517,17 +521,22 @@ child2Plot2 + geom_boxplot(outlier.shape = NA) + geom_jitter(shape=16, size=1,po
        x = "Ζευγάρι ή μόνος;")
 ```
 
+Φαίνεται πως ένα ζευγάρι χρειάζεται περισσότερες ώρες εργασίας για να βγει από την κατάσταση της φτώχειας. Να δούμε τι έχει να πει γι' αυτό κι ένας έλεγχος Wilcoxon.
+
+
 ```{r, echo=FALSE}
 wilcox.test(data = child2, OBS_VALUE~SUBJECT)
 ```
 
-
+Η εξαιρετικά μικρή p-τιμή κάνει απίθανο κάθε αντίθετο σενάριο, ενώ παράλληλα το μέγεθος επίδρασης, όπως φαίνεται παρακάτω, δηλώνει μεσαίο μέγεθος επίδρασης.
 
 ```{r, echo=FALSE}
 wilcox_effsize(data = child2, OBS_VALUE~SUBJECT)
 ```
 
 Ακολουθεί για άλλη μια φορά η οπτική αναπαράσταση της εξέλιξης στο χρόνο του ζητήματος που μελετάμε.
+
+Τέλος, παρουσιάζουμε την εξέλιξη στην πάροδο του χρόνου της διαφοροποίησης μεταξύ του να είναι κανείς μόνος ή ζευγάρι.
 
 ```{r, echo=FALSE, message=FALSE}
 ggplot(child2, aes(x = OBS_VALUE, y = as.factor(TIME_PERIOD), fill = SUBJECT)) +
@@ -540,6 +549,8 @@ ggplot(child2, aes(x = OBS_VALUE, y = as.factor(TIME_PERIOD), fill = SUBJECT)) +
 
 
 ## Χωρίς παιδί
+
+Τι γίνεται στην περίπτωση που δεν υπάρχουν γονεϊκές ευθύνες; Αυτό θα το δούμε τώρα.
 
 ```{r, echo=FALSE}
 childNO <- WORKEXPOV[(WORKEXPOV$SUBJECT=="UNEMP_COUPLNOCHLD" | WORKEXPOV$SUBJECT=="SNGLNOCHLD"),]
@@ -563,13 +574,21 @@ childNOPlot2 + geom_boxplot(outlier.shape = NA) + geom_jitter(shape=16, size=1,p
        x = "Ζευγάρι ή μόνος;")
 ```
 
+Για άλλη μια φορά ένα ζευγάρι απαιτεί περισσότερες ώρες εργασίας για την έξοδο από τη φτώχεια, πόρισμα που επιβεβαιώνει και ο κάτωθι έλεγχος Wilcoxon.
+
+
 ```{r, echo=FALSE}
 wilcox.test(data = childNO, OBS_VALUE~SUBJECT)
 ```
 
+Το μέγεθος επίδρασης αυτή τη φορά είναι μεσαίο προς μεγάλο, όπως δείχνει το r του Wilcoxon.
+
 ```{r, echo=FALSE}
 wilcox_effsize(data = childNO, OBS_VALUE~SUBJECT)
 ```
+
+Εν τέλει, την πορεία στο χρόνο της διαφοροποίησης μεταξύ του να είναι κανείς μόνος ή ζευγάρι.
+
 
 ```{r, echo=FALSE, message=FALSE}
 ggplot(childNO, aes(x = OBS_VALUE, y = as.factor(TIME_PERIOD), fill = SUBJECT)) +

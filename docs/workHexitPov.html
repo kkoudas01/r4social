@@ -1398,38 +1398,59 @@ class="section level1 tabset tabset-fade tabset-pills" number="4">
 <h1 class="tabset tabset-fade tabset-pills"><span
 class="header-section-number">4</span> Παίζει ρόλο το να είσαι ζευγάρι ή
 μόνος;</h1>
+<p>Σε τούτη την ενότητα θα εξετάσουμε αν επιδρά στη δυσκολία εξόδου από
+τη φτώχεια το να είσαι ζευγάρι ή μόνος.</p>
 <div id="με-2-παιδιά" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Με 2 παιδιά</h2>
+<p>Πάμε πρώτα να δούμε τι συμβαίνει, αν υπάρχουν δυο παιδιά στην
+οικογένεια.</p>
 <p><img src="workHexitPov_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 <p><img src="workHexitPov_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>Φαίνεται πως ένα ζευγάρι χρειάζεται περισσότερες ώρες εργασίας για να
+βγει από την κατάσταση της φτώχειας. Να δούμε τι έχει να πει γι’ αυτό κι
+ένας έλεγχος Wilcoxon.</p>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  OBS_VALUE by SUBJECT
 ## W = 130350, p-value &lt; 2.2e-16
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Η εξαιρετικά μικρή p-τιμή κάνει απίθανο κάθε αντίθετο σενάριο, ενώ
+παράλληλα το μέγεθος επίδρασης, όπως φαίνεται παρακάτω, δηλώνει μεσαίο
+μέγεθος επίδρασης.</p>
 <pre><code>## # A tibble: 1 × 7
 ##   .y.       group1    group2           effsize    n1    n2 magnitude
 ## * &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;              &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
 ## 1 OBS_VALUE SNGL2CHLD UNEMP_COUPL2CHLD   0.318   642   642 moderate</code></pre>
 <p>Ακολουθεί για άλλη μια φορά η οπτική αναπαράσταση της εξέλιξης στο
 χρόνο του ζητήματος που μελετάμε.</p>
+<p>Τέλος, παρουσιάζουμε την εξέλιξη στην πάροδο του χρόνου της
+διαφοροποίησης μεταξύ του να είναι κανείς μόνος ή ζευγάρι.</p>
 <p><img src="workHexitPov_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
 </div>
 <div id="χωρίς-παιδί" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Χωρίς παιδί</h2>
+<p>Τι γίνεται στην περίπτωση που δεν υπάρχουν γονεϊκές ευθύνες; Αυτό θα
+το δούμε τώρα.</p>
 <p><img src="workHexitPov_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p><img src="workHexitPov_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>Για άλλη μια φορά ένα ζευγάρι απαιτεί περισσότερες ώρες εργασίας για
+την έξοδο από τη φτώχεια, πόρισμα που επιβεβαιώνει και ο κάτωθι έλεγχος
+Wilcoxon.</p>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  OBS_VALUE by SUBJECT
 ## W = 98129, p-value &lt; 2.2e-16
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>Το μέγεθος επίδρασης αυτή τη φορά είναι μεσαίο προς μεγάλο, όπως
+δείχνει το r του Wilcoxon.</p>
 <pre><code>## # A tibble: 1 × 7
 ##   .y.       group1     group2            effsize    n1    n2 magnitude
 ## * &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;               &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;ord&gt;    
 ## 1 OBS_VALUE SNGLNOCHLD UNEMP_COUPLNOCHLD   0.454   642   642 moderate</code></pre>
+<p>Εν τέλει, την πορεία στο χρόνο της διαφοροποίησης μεταξύ του να είναι
+κανείς μόνος ή ζευγάρι.</p>
 <p><img src="workHexitPov_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
 </div>
 </div>
