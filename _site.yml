@@ -137,6 +137,8 @@ navbar:
         href: pisa.html
       - text: "Έξοδος από τη φτώχεια"
         href: workHexitPov.html
+      - text: "Συντελεστής Gini"
+        href: gini.html
       - text: "Εξέταση τιμών ακινήτων"
         href: spiti.html
       - text: "Αξιολόγηση μεταχειρισμένων αυτοκινήτων"

@@ -1,0 +1,124 @@
+---
+title: "Συντελεστής Gini."
+author: "Κώστας Κούδας"
+cache: TRUE
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+```
+
+
+
+```{r, echo=F}
+rm(list = ls())
+```
+
+# Παρουσίαση δεδομένων  {.tabset .tabset-fade .tabset-pills}
+
+```{r, echo=FALSE, message=FALSE}
+if(!require(ggplot2)){
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+if(!require(ggridges)){
+  install.packages("ggridges")
+  library(ggridges)
+}
+if(!require(rstatix)){
+    install.packages("rstatix")
+    library(rstatix)
+}
+if(!require(viridis)){
+    install.packages("viridis")
+    library(viridis)
+}
+if(!require(dplyr)){
+    install.packages("dplyr")
+    library(dplyr)
+}
+if(!require(reshape)){
+    install.packages("reshape")
+    library(reshape)
+}
+```
+
+```{r echo = F, results='asis', message=FALSE}
+giniA <- read.csv("gini.csv", na.string = "")
+knitr::kable(head(giniA)) %>%
+  kable_styling("striped", full_width = F) %>%
+  scroll_box(width = "100%", height = "200px")
+```
+
+```{r, eval=FALSE}
+giniA$AT <- paste(giniA$REF_AREA,giniA$TIME_PERIOD,giniA$AGE)
+gini <- giniA %>%
+  group_by(AT) %>%
+  filter(
+    !(
+      n_distinct(METHODOLOGY) == "METH2012" && 
+      !any(is.na(OBS_VALUE)) && 
+      METHODOLOGY == "METH2011"
+    ) &
+    !(
+      n_distinct(METHODOLOGY) == "METH2012" &&
+      is.na(OBS_VALUE[METHODOLOGY == "METH2012"]) &&
+      METHODOLOGY == "METH2012"
+    )
+  ) %>%
+  ungroup()
+
+result <- giniA %>%
+  group_by(AT) %>%
+  filter(!(METHODOLOGY == "METH2011" & time %in% time[METHODOLOGY == "METH2012" & !is.na(OBS_VALUE)])) %>%
+  ungroup()
+```
+
+
+```{r, echo=FALSE}
+gini <- giniA[giniA$METHODOLOGY== "METH2012",]
+giniTotal <- gini[gini$AGE=="_T",]
+```
+
+```{r, echo=FALSE, message=FALSE}
+giniTotalPlot <- ggplot(giniTotal, aes(x=TIME_PERIOD, y=OBS_VALUE, colour = REF_AREA))
+giniTotalPlot + geom_line()
+giniTotalPlot2 <- ggplot(giniTotal, aes(x = OBS_VALUE, y = as.factor(REF_AREA), fill = after_stat(x)))
+
+giniTotalPlot2 +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_y_discrete(expand = c(0.01, 0)) +
+  scale_fill_viridis(name = "ώρες", option = "C")
+```
+
+```{r, echo=FALSE}
+giniGr <- gini[gini$REF_AREA=="GRC",]
+```
+
+```{r, echo=FALSE, message=FALSE}
+giniTotalgrPlot <- ggplot(giniGr, aes(x=TIME_PERIOD, y=OBS_VALUE, colour = Age))
+giniTotalgrPlot + geom_line()
+```
+
+```{r, echo=FALSE}
+giniPlot <- ggplot(gini, aes(x=OBS_VALUE, y=as.factor(REF_AREA), fill = Age))
+giniPlot + geom_density_ridges(alpha=0.3)
+```
+
+
+```{r, echo=FALSE}
+giniWide <- unstack(gini, OBS_VALUE ~ Age)
+plot(giniWide$Over.65.years ~ giniWide$Total)
+```
+
+
+
