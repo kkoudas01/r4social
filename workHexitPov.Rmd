@@ -48,6 +48,10 @@ knitr::kable(head(WORKEXPOV)) %>%
 
 
 ```{r, echo=FALSE, message=FALSE}
+if(!require(plotly)){
+    install.packages("plotly")
+    library(plotly)
+}
 if(!require(ggplot2)){
   install.packages("ggplot2")
   library(ggplot2)
@@ -222,10 +226,10 @@ couple2child23globalPlot + geom_density(aes(y = after_stat(density) * 100),alpha
 
 ```{r, echo=FALSE}
 couple2child23globalPlot <- ggplot(couple2child23global, aes(x=is23, y=OBS_VALUE))
-couple2child23globalPlot + geom_boxplot()+
+ggplotly(couple2child23globalPlot + geom_boxplot()+
   labs(title = "Κατανομή ωρών εργασίας για έξοδο από φτώχεια \n('01-'23)",
        y = "εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια",
-       x = "Έτος")
+       x = "Έτος"))
 ```
 
 Φαίνεται το '23 να είναι ελαφρώς χειρότερο από τα προγηγούμενα έτη; Είναι όμως έτσι; Τι λέει γι' αυτό ένας έλεγχος Wilcoxon;
@@ -285,10 +289,10 @@ coupleNOchild23globalPlot + geom_density(aes(y = after_stat(density) * 100),alph
 
 ```{r, echo=FALSE}
 coupleNOchild23globalPlot2 <- ggplot(coupleNOchild23global, aes(x=is23, y=OBS_VALUE))
-coupleNOchild23globalPlot2 + geom_boxplot()+
+ggplotly(coupleNOchild23globalPlot2 + geom_boxplot()+
   labs(title = "Κατανομή ωρών εργασίας για έξοδο από φτώχεια",
        y = "εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια",
-       x = "Έτος")
+       x = "Έτος"))
 ```
 
 Ο έλεγχος Wilcoxon για άλλη μια φορά δεν μας δίνει δικαίωμα να επικαλεστούμε ότι κάτι διαφορετικό συμβαίνει το '23.
@@ -341,10 +345,10 @@ single2child23globalPlot + geom_density(aes(y = after_stat(density) * 100),alpha
 
 ```{r, echo=FALSE}
 single2child23globalPlot2 <- ggplot(single2child23global, aes(x=is23, y=OBS_VALUE))
-single2child23globalPlot2 + geom_boxplot()+
+ggplotly(single2child23globalPlot2 + geom_boxplot()+
   labs(title = "Κατανομή ωρών εργασίας για έξοδο από φτώχεια",
        y = "εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια",
-       x = "Έτος")
+       x = "Έτος"))
 ```
 
 
@@ -395,10 +399,10 @@ singleNOchild23globalPlot + geom_density(aes(y = after_stat(density) * 100),alph
 
 ```{r, echo=FALSE}
 singleNOchild23globalPlot2 <- ggplot(singleNOchild23global, aes(x=is23, y=OBS_VALUE))
-singleNOchild23globalPlot2 + geom_boxplot(outlier.shape = NA)+
+ggplotly(singleNOchild23globalPlot2 + geom_boxplot(outlier.shape = NA)+
   labs(title = "Κατανομή ωρών εργασίας για έξοδο από φτώχεια",
        y = "εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια",
-       x = "Έτος")
+       x = "Έτος"))
 ```
 
 ```{r, echo=FALSE}
