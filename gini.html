@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Κώστας Κούδας" />
+
+<meta name="date" content="2025-01-10" />
+
+<title>Μετρώντας την ανισότητα.</title>
+
+<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.13.2/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+
+
+
+
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">R🧸Koudas</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-screwdriver-wrench"></span>
+     
+    Εργαλεία
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="pinakes.html">Πίνακες δεδομένων</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Περιγραφική στατιστική</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συχνότητες</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="syxnotites.html">Συχνότητες</a>
+            </li>
+            <li>
+              <a href="pikilomorfia.html">Μέτρηση ποικιλομορφίας</a>
+            </li>
+            <li>
+              <a href="piechart.html">Κυκλικό διάγραμμα</a>
+            </li>
+            <li>
+              <a href="barplot.html">Ραβδόγραμμα</a>
+            </li>
+            <li>
+              <a href="histogram.html">Ιστόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="metrathesis.html">Μέτρα θέσης</a>
+        </li>
+        <li>
+          <a href="metradiasporas.html">Μέτρα διασποράς</a>
+        </li>
+        <li>
+          <a href="asymmetria.html">Μέτρα ασυμμετρίας</a>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συσχέτιση</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="metrasysxetisis.html">Μέτρα συσχέτισης</a>
+            </li>
+            <li class="dropdown-submenu">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Προσδιορισμός συσχέτισης</a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="diagramSysxet.html">Διαγράμματα</a>
+                </li>
+                <li>
+                  <a href="eytheiesPalindr.html">Ευθείες παλινδρόμησης</a>
+                </li>
+                <li>
+                  <a href="kampylesPalindr.html">Καμπύλες παλινδρόμησης</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πιθανότητες</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="ennoiaPith.html">Η έννοια της πιθανότητας</a>
+        </li>
+        <li>
+          <a href="ergaliaPith.html">Βασικά εργαλεία</a>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
+            </li>
+            <li>
+              <a href="binom.html">Διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="geom.html">Γεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="poisson.html">Κατανομή Poisson</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
+            </li>
+            <li>
+              <a href="expDist.html">Εκθετική κατανομή</a>
+            </li>
+            <li>
+              <a href="gammaDist.html">Κατανομή Γάμμα</a>
+            </li>
+            <li>
+              <a href="normalDist.html">Κανονική κατανομή</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Εκτιμητική</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="ektimMean.html">Για μέση τιμή</a>
+        </li>
+        <li>
+          <a href="ektimPososto.html">Για το ποσοστό</a>
+        </li>
+        <li>
+          <a href="bootstrapMethod.html">Μέθοδος Bootstrap</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Έλεγχος υποθέσεων</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="tTest.html">t-έλεγχος για το ποσοστό</a>
+        </li>
+        <li>
+          <a href="tTestMean.html">t-έλεγχος για τη μέση τιμή</a>
+        </li>
+        <li>
+          <a href="zTest.html">z-έλεγχος για διαφορά ποσοστών</a>
+        </li>
+        <li>
+          <a href="x2Test.html">χ2 έλεγχος για την ανεξαρτησία</a>
+        </li>
+        <li>
+          <a href="anova.html">Επίδραση ενός παράγοντα</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Προσδιορισμός κατανομής</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="findDist.html">Προσδιορισμός κατανομής</a>
+        </li>
+        <li>
+          <a href="NormTest.html">Έλεγχος κανονικότητας</a>
+        </li>
+        <li>
+          <a href="GraphFindDist.html">Γραφικός προσδιορισμός κατανομής</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μαρκοβιανές αλυσίδες</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="metabMarkov.html">Περιγραφή μεταβάσεων</a>
+        </li>
+        <li>
+          <a href="metabMarkovPol.html">Μεταβάσεις σε περισσότερα βήματα</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Χρονικές σειρές</a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <a href="timeBasic.html">Βασικά εργαλεία</a>
+        </li>
+        <li>
+          <a href="motiba.html">Μοτίβα</a>
+        </li>
+        <li>
+          <a href="periodikotita.html">Μελέτη εποχικότητας</a>
+        </li>
+        <li>
+          <a href="arima.html">Πρόβλεψη χρονοσειρών με μοντέλα ARIMA</a>
+        </li>
+      </ul>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πολυμεταβλητή ανάλυση</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Περιγραφική στατιστική</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="astrogramma.html">Αστρόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ανάλυση συστοιχιών</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="distTree.html">Μήτρα απόστασης – δεντρόγραμμα</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Πολυδιάστατη προσαρμογή κλίμακας</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="mds.html">Διατακτική πολυδιάστατη προσαρμογή κλίμακας</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-flask-vial"></span>
+     
+    Έρευνες
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="apoxi.html">Αποχή στις εκλογές</a>
+    </li>
+    <li>
+      <a href="pisa.html">Εξέταση αποτελεσμάτων PISA</a>
+    </li>
+    <li>
+      <a href="workHexitPov.html">Έξοδος από τη φτώχεια</a>
+    </li>
+    <li>
+      <a href="gini.html">Μετρώντας την ανισότητα</a>
+    </li>
+    <li>
+      <a href="spiti.html">Εξέταση τιμών ακινήτων</a>
+    </li>
+    <li>
+      <a href="aytokinhta.html">Αξιολόγηση μεταχειρισμένων αυτοκινήτων</a>
+    </li>
+    <li>
+      <a href="kondratiev.html">Κύματα Kondratiev</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-utensils"></span>
+     
+    Ταχυφαγείο
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="esodaMina.html">Τα έσοδα του μήνα</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <span class="fa fa-solid fa-mug-saucer"></span>
+     
+    Εντός εκτός κι επί τα αυτά
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="dataMathematica.html">Μετατροπή πίνακα για Mathematica</a>
+    </li>
+    <li>
+      <a href="Exoplismoi.pdf">Μοντελοποιήσεις με το Mathematica</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Μετρώντας την ανισότητα.</h1>
+<h4 class="author">Κώστας Κούδας</h4>
+<h4 class="date">2025-01-10</h4>
+
+</div>
+
+
+<div id="παρουσίαση-δεδομένων"
+class="section level1 tabset tabset-fade tabset-pills" number="1">
+<h1 class="tabset tabset-fade tabset-pills"><span
+class="header-section-number">1</span> Παρουσίαση δεδομένων</h1>
+<p>Στην παρούσα ενότητα θα προσπαθήσουμε να αξιολογήσουμε το επίπεδο
+ανισότητας που υπάρχει σε διάφορες χώρες. Ένας τρόπος είναι να κάνουμε
+το ακόλουθο νοητικό πείραμα.</p>
+<blockquote>
+<p>Το μέσο ετήσιο εισόδημα π.χ. <a
+href="https://www.eea.gr/arthra-eea/koinonia-dyo-tachytiton-oi-misoi-ellines-dilonoyn-eisodimata-kato-ton-10-000-eyro/">στην
+Ελλάδα το 2022 ήταν 13973€</a>. Αυτό στο περίπου σημαίνει ότι αν
+διαλέγαμε τότε έναν Έλληνα στην τύχη, αναμέναμε να τύχουμε κάποιον με
+εισόδημα <span class="math inline">\(13\ 973\)</span>€.</p>
+<p>Ας φανταστούμε τώρα ότι διαλέγαμε δύο Έλληνες. Τί διαφορά θα
+αναμέναμε να είχαν τα εισοδήματά τους;</p>
+<ul>
+<li>Αν όλοι οι Έλληνες είχαν ίδιο εισόδημα (<span
+class="math inline">\(13\ 973\)</span>€ έκαστος), θα αναμέναμε μια
+διαφορά ίση με το <span class="math inline">\(0\)</span>.</li>
+<li>Αν από την άλλη είχαμε μια ακραία ανισότητα όπου όλος ο πλούτος ήταν
+στα χέρια ενός Έλληνα, τότε η διαφορά που θα συναντούσαμε θα ήταν είτε
+<span class="math inline">\(0\)</span> (αν τυχαίναμε δύο φτωχούς) είτε
+<span class="math inline">\(10\ 413\ 982 \cdot 13\ 973=145\ 514\ 570\
+486\)</span>€ (αν τυχαίναμε τον πλούσιο με έναν φτωχό). Κατά μέσο όρο,
+αυτό που περιμένουμε να συντήσουμε αποδεικνύεται ότι ισούται με το
+διπλάσιο του μέσου εισοδήματος (εν προκειμένω <span
+class="math inline">\(2 \cdot 13\ 973=27\ 946\)</span>€). Σε αυτή την
+περίπτωση της ακραίας ανισότητας η αναμενόμενη διαφορά θα ήταν η μέγιστη
+δυνατή.</li>
+<li>Για τις ενδιάμεσες καταστάσεις ανισότητας θα αναμέναμε να τύχουμε
+και ενδιάμεσες διαφορές. Κάτι μεταξύ των <span
+class="math inline">\(0\)</span>€ και των <span
+class="math inline">\(27\ 946\)</span>€.</li>
+</ul>
+<p>Τί όμως συνέβαινε πραγματικά; Ποια ήταν η αναμενόμενη διαφορά
+εισοδήματος που θα συναντούσαμε σε δύο τυχαίους Έλληνες; Ή καλύτερα, τι
+ποσοστό της μέγιστης διαφοράς (εν προκειμένω των <span
+class="math inline">\(27\ 946\)</span>€) θα αναμέναμε να ήταν αυτή η
+διαφορά; Στην Ελλάδα του 2022 αυτό το ποσοστό ήταν <span
+class="math inline">\(0.316\)</span>, ήτοι <span
+class="math inline">\(31.6\%\)</span>. Με άλλα λόγια, πρόχειρα μιλώντας,
+στην Ελλάδα του 2022 η τρέχουσα κατάσταση ανισότητας ήταν το <span
+class="math inline">\(31.6\%\)</span> της μέγιστης δυνατής. Σαν να λέμε,
+δηλαδή, ότι είχαμε <span class="math inline">\(31.6%\)</span> επίπεδο
+ανισότητας.</p>
+<p>Το ποσοστό αυτό είναι ο λεγόμενος συντελεστής Gini της Ελλάδας για το
+έτος 2022.</p>
+</blockquote>
+<p>Εν γένει, λοιπόν, ο συντελεστής Gini μιας χώρας είναι το ποσοστό της
+αναμενόμενης διαφοράς εισοδήματος προς τη μέγιστη δυνατή. Και με πιο
+πρόχειρα λόγια, είναι το ποσοστό της τρέχουσας κατάστασης ανισότητας σε
+σχέση με τη μέγιστη δυνατή ανισότητα. Συνεπώς μετράει πόσο μεγάλη
+ανισότητα υπάρχει στον πληθυσμό.</p>
+<ul>
+<li><p>Όταν ο συντελεστής Gini παίρνει τιμή 0 (0%), σημαίνει ότι έχουμε
+μια κατάσταση πλήρους ισότητας.</p></li>
+<li><p>Αν παίρνει την τιμή 1 (100%), σημαίνει ότι έχουμε μια κατάσταση
+ακραίας ανισότητας.</p></li>
+<li><p>Αν παίρνει τιμή μεταξύ 0 και 0.3 (0%-30%), τότε υποδεικνύει
+σχετική ισότητα, ήτοι ο πλούτος κατανέμεται αρκετά ισότιμα.</p></li>
+<li><p>Αν είναι μεταξύ 0.3 και 0.4 (30%-40%) υποδηλώνει ότι υπάρχει
+επαρκής ισότητα. Αυτό σημαίνει ότι το εισόδημα κατανέμεται με
+ικανοποιητικό τρόπο, αλλά υπάρχει περιθώριο για μεγαλύτερη
+ισότητα.</p></li>
+<li><p>Ένας συντελεστής μεγαλύτερος από 0.4 (40%-100%) δείχνει ότι
+υπάρχει μεγάλο χάσμα εισοδήματος. Ανισότητα πάνω από αυτό το επίπεδο
+συχνά συνδέεται με κοινωνική και πολιτική αστάθεια ή ένταση.</p></li>
+<li><p>Ακόμα χειρότερα, ένας συντελεστής μεταξύ 0.5 και 1 (50%-100%)
+σημαίνει ότι υπάρχει σοβαρή ανισότητα μέσα σε μια οικονομία.</p></li>
+</ul>
+<p>Αυτόν θα εξετάσουμε εδώ.</p>
+<p>Από τη σελίδα του <a
+href="https://data-explorer.oecd.org/vis?tm=gini&amp;pg=0&amp;fc=Topic&amp;snb=86&amp;df%5Bds%5D=dsDisseminateFinalDMZ&amp;df%5Bid%5D=DSD_WISE_IDD%40DF_IDD&amp;df%5Bag%5D=OECD.WISE.INE&amp;df%5Bvs%5D=1.0&amp;dq=.A.INC_DISP_GINI.....D_CUR.&amp;pd=%2C&amp;to%5BTIME_PERIOD%5D=false&amp;vw=tb">OECD</a></p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+REF_AREA
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Age
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+AGE
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+TIME_PERIOD
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Income definition since 2012
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Income definition until 2011
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+1995
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.301
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.305
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.324
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:right;">
+0.315
+</td>
+<td style="text-align:right;">
+0.313
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Επειδή ο συντελεστής Gini υπολογίστηκε σε κάποιες περιόδους βάσει
+παλαιότερων κριτηρίων και σε κάποιες άλλες βάσει των σύγχρονων
+κριτηρίων, θα κρατήσουμε όπου είναι δυνατό τα τρέχοντα κριτήρια
+υπολογισμού του και, όπου αυτά δεν είναι διαθέσιμα, θα αρκεστούμε στα
+παλιά.</p>
+<div
+style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+REF_AREA
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+Age
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+AGE
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+TIME_PERIOD
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Income definition since 2012
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Income definition until 2011
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+Gini_coefficient
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+1995
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.301
+</td>
+<td style="text-align:right;">
+0.301
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2000
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+<td style="text-align:right;">
+0.292
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2004
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.305
+</td>
+<td style="text-align:right;">
+0.305
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2008
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.324
+</td>
+<td style="text-align:right;">
+0.324
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2010
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+<td style="text-align:right;">
+0.318
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+AUS
+</td>
+<td style="text-align:left;">
+From 18 to 65 years
+</td>
+<td style="text-align:left;">
+Y18T65
+</td>
+<td style="text-align:right;">
+2012
+</td>
+<td style="text-align:right;">
+0.315
+</td>
+<td style="text-align:right;">
+0.313
+</td>
+<td style="text-align:right;">
+0.315
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="gini_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="gini_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="gini_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="gini_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre><code>## [1] 0.8717362</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = giniWide$`From 18 to 65 years` ~ giniWide$`Over 65 years`)
+## 
+## Coefficients:
+##              (Intercept)  giniWide$`Over 65 years`  
+##                    0.102                     0.709</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

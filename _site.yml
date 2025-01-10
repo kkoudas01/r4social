@@ -155,6 +155,9 @@ navbar:
       menu:
       - text: "Μετατροπή πίνακα για Mathematica"
         href: dataMathematica.html
+        menu:
+      - text: "Μοντελοποιήσεις με το Mathematica"
+        href: Exoplismoi.pdf
 output:
   html_document:
     theme: default
