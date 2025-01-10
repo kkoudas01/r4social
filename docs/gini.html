@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-01-10" />
+<meta name="date" content="2025-01-11" />
 
 <title>Μετρώντας την ανισότητα.</title>
 
@@ -594,13 +594,8 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μετατροπή πίνακα για Mathematica</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="Exoplismoi.pdf">Μοντελοποιήσεις με το Mathematica</a>
-        </li>
-      </ul>
+    <li>
+      <a href="dataMathematica.html">Οπλισμένοι με Mathematica</a>
     </li>
   </ul>
 </li>
@@ -618,7 +613,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μετρώντας την ανισότητα.</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-01-10</h4>
+<h4 class="date">2025-01-11</h4>
 
 </div>
 
@@ -695,7 +690,13 @@ class="math inline">\(31.6\%\)</span> της μέγιστης δυνατής. Σ
 </ul>
 <p>Αυτόν θα εξετάσουμε εδώ.</p>
 <p>Από τη σελίδα του <a
-href="https://data-explorer.oecd.org/vis?tm=gini&amp;pg=0&amp;fc=Topic&amp;snb=86&amp;df%5Bds%5D=dsDisseminateFinalDMZ&amp;df%5Bid%5D=DSD_WISE_IDD%40DF_IDD&amp;df%5Bag%5D=OECD.WISE.INE&amp;df%5Bvs%5D=1.0&amp;dq=.A.INC_DISP_GINI.....D_CUR.&amp;pd=%2C&amp;to%5BTIME_PERIOD%5D=false&amp;vw=tb">OECD</a></p>
+href="https://data-explorer.oecd.org/vis?tm=gini&amp;pg=0&amp;fc=Topic&amp;snb=86&amp;df%5Bds%5D=dsDisseminateFinalDMZ&amp;df%5Bid%5D=DSD_WISE_IDD%40DF_IDD&amp;df%5Bag%5D=OECD.WISE.INE&amp;df%5Bvs%5D=1.0&amp;dq=.A.INC_DISP_GINI.....D_CUR.&amp;pd=%2C&amp;to%5BTIME_PERIOD%5D=false&amp;vw=tb">OECD</a>
+αντλήσαμε τους συντελεστές Gini για διάφορες χώρες και σε διάφορα έτη.
+Αν προσέξει ο αναγνώστης, θα δει ότι υπάρχουν καταχωρίσεις
+(<code>Age</code>) για την ανισότητα σε μεγάλες ηλικίες
+(<code>Over 65 years</code>), για μικρότερες
+(<code>From 18 to 65 years</code>), αλλά και για την ανισότητα στο
+σύνολο του πληθυσμού (<code>Total</code>).</p>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -846,10 +847,13 @@ Y18T65
 </table>
 </div>
 <p>Επειδή ο συντελεστής Gini υπολογίστηκε σε κάποιες περιόδους βάσει
-παλαιότερων κριτηρίων και σε κάποιες άλλες βάσει των σύγχρονων
-κριτηρίων, θα κρατήσουμε όπου είναι δυνατό τα τρέχοντα κριτήρια
-υπολογισμού του και, όπου αυτά δεν είναι διαθέσιμα, θα αρκεστούμε στα
-παλιά.</p>
+παλαιότερων κριτηρίων και σε κάποιες άλλες βάσει των σύγχρονων κριτηρίων
+(βλ. <code>Income definition until 2011</code> και
+<code>Income definition since 2012</code>), θα κρατήσουμε όπου είναι
+δυνατό τα τρέχοντα κριτήρια υπολογισμού του
+(<code>Income definition since 2012</code>) και, όπου αυτά δεν είναι
+διαθέσιμα, θα αρκεστούμε στα παλιά
+(<code>Income definition until 2011</code>).</p>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
@@ -1020,10 +1024,22 @@ Y18T65
 </tbody>
 </table>
 </div>
+</div>
+<div id="τρέχουσα-κατάσταση" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Τρέχουσα κατάσταση</h1>
+</div>
+<div id="πορεία-στο-χρόνο" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Πορεία στο χρόνο</h1>
 <p><img src="gini_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p><img src="gini_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="gini_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p><img src="gini_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+</div>
+<div id="συσχέτιση-ανισοτήτων-σε-μικρές-και-μεγάλες-ηλικίες"
+class="section level1" number="4">
+<h1><span class="header-section-number">4</span> Συσχέτιση ανισοτήτων σε
+μικρές και μεγάλες ηλικίες</h1>
 <p><img src="gini_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="gini_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <pre><code>## [1] 0.8717362</code></pre>
 <pre><code>## 
 ## Call:

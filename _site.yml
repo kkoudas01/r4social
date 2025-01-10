@@ -153,11 +153,8 @@ navbar:
     - text: "Εντός εκτός κι επί τα αυτά"
       icon: fa-solid fa-mug-saucer
       menu:
-      - text: "Μετατροπή πίνακα για Mathematica"
+      - text: "Οπλισμένοι με Mathematica"
         href: dataMathematica.html
-        menu:
-        - text: "Μοντελοποιήσεις με το Mathematica"
-          href: Exoplismoi.pdf
 output:
   html_document:
     theme: default

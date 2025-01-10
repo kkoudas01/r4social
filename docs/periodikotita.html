@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-01-10" />
+<meta name="date" content="2025-01-11" />
 
 <title>Μελέτη εποχικότητας</title>
 
@@ -695,13 +695,8 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μετατροπή πίνακα για Mathematica</a>
-      <ul class="dropdown-menu" role="menu">
-        <li>
-          <a href="Exoplismoi.pdf">Μοντελοποιήσεις με το Mathematica</a>
-        </li>
-      </ul>
+    <li>
+      <a href="dataMathematica.html">Οπλισμένοι με Mathematica</a>
     </li>
   </ul>
 </li>
@@ -719,7 +714,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μελέτη εποχικότητας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-01-10</h4>
+<h4 class="date">2025-01-11</h4>
 
 </div>
 
@@ -3696,10 +3691,10 @@ class="math inline">\(\cos()\)</span>), δηλαδή ως σειρά Fourier.</p
 ## lm(formula = as.formula(formula_string))
 ## 
 ## Coefficients:
-##           (Intercept)   I(sin(2 * pi * t/6))   I(cos(2 * pi * t/6))  I(sin(2 * pi * t/12))  
-##            -0.0002849             -8.3567745             -4.5117178             12.8772886  
-## I(cos(2 * pi * t/12))  
-##             6.6012389</code></pre>
+##           (Intercept)   I(sin(2 * pi * t/6))   I(cos(2 * pi * t/6))  
+##            -0.0002849             -8.3567745             -4.5117178  
+## I(sin(2 * pi * t/12))  I(cos(2 * pi * t/12))  
+##            12.8772886              6.6012389</code></pre>
 <p>Επομένως, η περιοδική συνστώσα των γκουγκλαρισμάτων μοντελοποιείται
 με την κάτωθι συνάρτηση:</p>
 <p><span
@@ -3736,10 +3731,10 @@ class="math inline">\(\sin\left(\frac{2\pi}{4}t\right)\)</span> και
 ## lm(formula = as.formula(formula_string))
 ## 
 ## Coefficients:
-##          (Intercept)  I(sin(2 * pi * t/2))  I(cos(2 * pi * t/2))  I(sin(2 * pi * t/4))  
-##           -4.972e-04            -6.927e+02             3.414e+03            -3.854e+03  
-## I(cos(2 * pi * t/4))  
-##            1.209e+03</code></pre>
+##          (Intercept)  I(sin(2 * pi * t/2))  I(cos(2 * pi * t/2))  
+##           -4.972e-04            -6.927e+02             3.414e+03  
+## I(sin(2 * pi * t/4))  I(cos(2 * pi * t/4))  
+##           -3.854e+03             1.209e+03</code></pre>
 <p>Οπότε έχουμε το μοντέλο:</p>
 <p><span
 class="math display">\[-692.7\sin\left(\frac{2\pi}{2}t\right)+3414\cos\left(\frac{2\pi}{2}t\right)-3854\sin\left(\frac{2\pi}{4}t\right)+1209\cos\left(\frac{2\pi}{4}t\right)\]</span></p>
@@ -3780,10 +3775,10 @@ Fourier της περιοδικής συνιστώσας της σειράς <co
 ## lm(formula = as.formula(formula_string))
 ## 
 ## Coefficients:
-##          (Intercept)  I(sin(2 * pi * t/3))  I(cos(2 * pi * t/3))  I(sin(2 * pi * t/6))  
-##            1.212e-08             6.156e+00             1.712e-01             3.390e-02  
-## I(cos(2 * pi * t/6))  
-##           -4.038e+00</code></pre>
+##          (Intercept)  I(sin(2 * pi * t/3))  I(cos(2 * pi * t/3))  
+##            1.212e-08             6.156e+00             1.712e-01  
+## I(sin(2 * pi * t/6))  I(cos(2 * pi * t/6))  
+##            3.390e-02            -4.038e+00</code></pre>
 <p>Οπότε έχουμε το μοντέλο:</p>
 <p><span
 class="math display">\[6.008\sin\left(\frac{2\pi}{3}t\right)-0.094\cos\left(\frac{2\pi}{3}t\right)+0.214\sin\left(\frac{2\pi}{6}t\right)-3.950\cos\left(\frac{2\pi}{6}t\right)\]</span></p>

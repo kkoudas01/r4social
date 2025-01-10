@@ -86,7 +86,7 @@ if(!require(reshape2)){
 }
 ```
 
-Από τη σελίδα του [OECD](https://data-explorer.oecd.org/vis?tm=gini&pg=0&fc=Topic&snb=86&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_WISE_IDD%40DF_IDD&df[ag]=OECD.WISE.INE&df[vs]=1.0&dq=.A.INC_DISP_GINI.....D_CUR.&pd=%2C&to[TIME_PERIOD]=false&vw=tb)
+Από τη σελίδα του [OECD](https://data-explorer.oecd.org/vis?tm=gini&pg=0&fc=Topic&snb=86&df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_WISE_IDD%40DF_IDD&df[ag]=OECD.WISE.INE&df[vs]=1.0&dq=.A.INC_DISP_GINI.....D_CUR.&pd=%2C&to[TIME_PERIOD]=false&vw=tb) αντλήσαμε τους συντελεστές Gini για διάφορες χώρες και σε διάφορα έτη. Αν προσέξει ο αναγνώστης, θα δει ότι υπάρχουν καταχωρίσεις (`Age`) για την ανισότητα σε μεγάλες ηλικίες (`Over 65 years`), για μικρότερες (`From 18 to 65 years`), αλλά και για την ανισότητα στο σύνολο του πληθυσμού (`Total`).
 
 
 ```{r echo = F, results='asis', message=FALSE}
@@ -99,7 +99,7 @@ knitr::kable(head(gini)) %>%
   scroll_box(width = "100%", height = "200px")
 ```
 
-Επειδή ο συντελεστής Gini υπολογίστηκε σε κάποιες περιόδους βάσει παλαιότερων κριτηρίων και σε κάποιες άλλες βάσει των σύγχρονων κριτηρίων, θα κρατήσουμε όπου είναι δυνατό τα τρέχοντα κριτήρια υπολογισμού του και, όπου αυτά δεν είναι διαθέσιμα, θα αρκεστούμε στα παλιά.
+Επειδή ο συντελεστής Gini υπολογίστηκε σε κάποιες περιόδους βάσει παλαιότερων κριτηρίων και σε κάποιες άλλες βάσει των σύγχρονων κριτηρίων (βλ. `Income definition until 2011` και `Income definition since 2012`), θα κρατήσουμε όπου είναι δυνατό τα τρέχοντα κριτήρια υπολογισμού του (`Income definition since 2012`) και, όπου αυτά δεν είναι διαθέσιμα, θα αρκεστούμε στα παλιά (`Income definition until 2011`).
 
 
 ```{r, echo=FALSE}
@@ -114,16 +114,27 @@ knitr::kable(head(gini)) %>%
 ```
 
 
+# Τρέχουσα κατάσταση
 
+# Πορεία στο χρόνο
 
 
 ```{r, echo=FALSE}
-giniTotal <- gini[gini$AGE=="_T",]
+giniTotal0 <- gini[gini$AGE=="_T" & ((gini$TIME_PERIOD==2023 & gini$Gini_coefficient<=0.3) | gini$TIME_PERIOD<2023),]
+```
+
+```{r, echo=FALSE, message=FALSE}
+giniTotal0Plot <- ggplot(giniTotal0, aes(x=TIME_PERIOD, y=Gini_coefficient, colour = REF_AREA))
+giniTotal0Plot + geom_line()+scale_color_viridis_d()
+```
+
+```{r, echo=FALSE}
+giniTotal <- gini[gini$AGE=="_T" ,]
 ```
 
 ```{r, echo=FALSE, message=FALSE}
 giniTotalPlot <- ggplot(giniTotal, aes(x=TIME_PERIOD, y=Gini_coefficient, colour = REF_AREA))
-giniTotalPlot + geom_line()
+giniTotalPlot + geom_line()+scale_color_viridis_d()
 ```
 
 
@@ -136,6 +147,7 @@ giniTotalPlot2 +
   scale_fill_viridis(name = "ώρες", option = "C")
 ```
 
+# Συσχέτιση ανισοτήτων σε μικρές και μεγάλες ηλικίες
 
 ```{r, echo=FALSE}
 giniGr <- gini[gini$REF_AREA=="GRC",]
