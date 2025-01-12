@@ -166,8 +166,8 @@ giniWide <- dcast(gini, REF_AREA+TIME_PERIOD~ Age, value.var = "Gini_coefficient
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 giniAge <- ggplot(giniWide, aes(x=`From 18 to 65 years`, y=`Over 65 years`))
-ggplotly(giniAge+geom_point(aes(colour = REF_AREA))+
-  geom_smooth())
+giniAge+geom_point(aes(colour = REF_AREA))+
+  geom_smooth()
 ```
 
 ```{r, echo=FALSE}
