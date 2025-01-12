@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-01-11" />
+<meta name="date" content="2025-01-12" />
 
 <title>Προσδιορισμός κατανομής</title>
 
@@ -491,46 +491,6 @@ div.tocify {
         <li>
           <a href="ergaliaPith.html">Βασικά εργαλεία</a>
         </li>
-        <li class="dropdown-submenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
-            </li>
-            <li>
-              <a href="binom.html">Διωνυμική κατανομή</a>
-            </li>
-            <li>
-              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
-            </li>
-            <li>
-              <a href="geom.html">Γεωμετρική κατανομή</a>
-            </li>
-            <li>
-              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
-            </li>
-            <li>
-              <a href="poisson.html">Κατανομή Poisson</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown-submenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
-            </li>
-            <li>
-              <a href="expDist.html">Εκθετική κατανομή</a>
-            </li>
-            <li>
-              <a href="gammaDist.html">Κατανομή Γάμμα</a>
-            </li>
-            <li>
-              <a href="normalDist.html">Κανονική κατανομή</a>
-            </li>
-          </ul>
-        </li>
       </ul>
     </li>
     <li class="dropdown-submenu">
@@ -695,6 +655,51 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Κατανομές</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
+            </li>
+            <li>
+              <a href="binom.html">Διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="geom.html">Γεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="poisson.html">Κατανομή Poisson</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
+            </li>
+            <li>
+              <a href="expDist.html">Εκθετική κατανομή</a>
+            </li>
+            <li>
+              <a href="gammaDist.html">Κατανομή Γάμμα</a>
+            </li>
+            <li>
+              <a href="normalDist.html">Κανονική κατανομή</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li>
       <a href="dataMathematica.html">Οπλισμένοι με Mathematica</a>
     </li>
@@ -714,7 +719,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Προσδιορισμός κατανομής</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-01-11</h4>
+<h4 class="date">2025-01-12</h4>
 
 </div>
 
@@ -11494,8 +11499,8 @@ class="math inline">\(\boldsymbol{\mathcal{H}_0}\)</span> δεν
 <p>Αρχικά θα ελέγξουμε αν οι διάμετροι ακολουθούν την ομοιόμορφη
 κατανομή με το ίδιο εύρος με αυτό του δείγματος. Έτσι γράφουμε:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">ks.test</span>(diametrosNA, <span class="st">&quot;punif&quot;</span>, <span class="at">min =</span> <span class="fu">min</span>(diametrosNA), <span class="at">max =</span> <span class="fu">max</span>(diametrosNA))</span></code></pre></div>
-<pre><code>## Warning in ks.test.default(diametrosNA, &quot;punif&quot;, min = min(diametrosNA), : ties
-## should not be present for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## Warning in ks.test.default(diametrosNA, &quot;punif&quot;, min = min(diametrosNA), : ties should not be
+## present for the one-sample Kolmogorov-Smirnov test</code></pre>
 <pre><code>## 
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
@@ -11518,8 +11523,8 @@ href="expDist.html">εκθετικών κατανομών</a>. Οπότε θα �
 <p>Αν ακολουθούν την εκθετική κατανομή, αυτή θα έχει παράμετρο τον
 αντίστροφο της μέσης τιμής του δείγματος. Οπότε γράφουμε:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">ks.test</span>(diametrosNA, <span class="st">&quot;pexp&quot;</span>, <span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(diametrosNA))</span></code></pre></div>
-<pre><code>## Warning in ks.test.default(diametrosNA, &quot;pexp&quot;, rate = 1/mean(diametrosNA)):
-## ties should not be present for the one-sample Kolmogorov-Smirnov test</code></pre>
+<pre><code>## Warning in ks.test.default(diametrosNA, &quot;pexp&quot;, rate = 1/mean(diametrosNA)): ties should not
+## be present for the one-sample Kolmogorov-Smirnov test</code></pre>
 <pre><code>## 
 ##  Asymptotic one-sample Kolmogorov-Smirnov test
 ## 
@@ -20700,8 +20705,8 @@ class="math inline">\(\mathcal{B}(35,\frac{3}{22})\)</span>. Αυτό το
 εκτελώντας τις εντολές:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>pithDion1 <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(times_d, <span class="at">size=</span><span class="dv">10</span>, <span class="at">prob=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a><span class="fu">chisq.test</span>(pinakas, <span class="at">p =</span> pithDion1, <span class="at">rescale.p =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in chisq.test(pinakas, p = pithDion1, rescale.p = TRUE): Chi-squared
-## approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(pinakas, p = pithDion1, rescale.p = TRUE): Chi-squared approximation may
+## be incorrect</code></pre>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -20709,8 +20714,8 @@ class="math inline">\(\mathcal{B}(35,\frac{3}{22})\)</span>. Αυτό το
 ## X-squared = Inf, df = 47, p-value &lt; 2.2e-16</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a>pithDion2 <span class="ot">&lt;-</span> <span class="fu">dbinom</span>(times_d, <span class="at">size=</span><span class="dv">35</span>, <span class="at">prob=</span><span class="dv">3</span><span class="sc">/</span><span class="dv">22</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" tabindex="-1"></a><span class="fu">chisq.test</span>(pinakas, <span class="at">p =</span> pithDion2, <span class="at">rescale.p =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in chisq.test(pinakas, p = pithDion2, rescale.p = TRUE): Chi-squared
-## approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(pinakas, p = pithDion2, rescale.p = TRUE): Chi-squared approximation may
+## be incorrect</code></pre>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -20726,8 +20731,8 @@ href="hyperGeom.html">υπεργεωμετρική κατανομή</a> (αυτ�
 παρουσιάστηκε) γράφοντας:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>pithYpGeom <span class="ot">&lt;-</span> <span class="fu">dhyper</span>(times_d, <span class="dv">12</span>, <span class="dv">40</span>, <span class="dv">5</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">chisq.test</span>(pinakas, <span class="at">p =</span> pithYpGeom, <span class="at">rescale.p =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in chisq.test(pinakas, p = pithYpGeom, rescale.p = TRUE): Chi-squared
-## approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(pinakas, p = pithYpGeom, rescale.p = TRUE): Chi-squared approximation
+## may be incorrect</code></pre>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -20747,8 +20752,8 @@ href="geom.html">γεωμετρικής κατανομής</a>. Οπότε θα 
 γράφουμε:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>pithGeom <span class="ot">&lt;-</span> <span class="fu">dgeom</span>(times_d, <span class="at">p =</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(thesisNA))</span>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="fu">chisq.test</span>(pinakas, <span class="at">p =</span> pithGeom, <span class="at">rescale.p =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in chisq.test(pinakas, p = pithGeom, rescale.p = TRUE): Chi-squared
-## approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(pinakas, p = pithGeom, rescale.p = TRUE): Chi-squared approximation may
+## be incorrect</code></pre>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -20764,8 +20769,8 @@ href="geom.html">γεωμετρικής κατανομής</a>. Οπότε θα 
 κι ας είναι αναμενόμενη η απόρριψη των κατανομών αυτών.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>pithArnDion <span class="ot">&lt;-</span> <span class="fu">dnbinom</span>(times_d, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">prob =</span> <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="fu">chisq.test</span>(pinakas, <span class="at">p =</span> pithArnDion, <span class="at">rescale.p =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in chisq.test(pinakas, p = pithArnDion, rescale.p = TRUE): Chi-squared
-## approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(pinakas, p = pithArnDion, rescale.p = TRUE): Chi-squared approximation
+## may be incorrect</code></pre>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 
@@ -20773,8 +20778,8 @@ href="geom.html">γεωμετρικής κατανομής</a>. Οπότε θα 
 ## X-squared = 1.4588e+17, df = 47, p-value &lt; 2.2e-16</code></pre>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>pithPois <span class="ot">&lt;-</span> <span class="fu">dpois</span>(times_d, <span class="fu">mean</span>(thesisNA))</span>
 <span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="fu">chisq.test</span>(pinakas, <span class="at">p =</span> pithPois, <span class="at">rescale.p =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
-<pre><code>## Warning in chisq.test(pinakas, p = pithPois, rescale.p = TRUE): Chi-squared
-## approximation may be incorrect</code></pre>
+<pre><code>## Warning in chisq.test(pinakas, p = pithPois, rescale.p = TRUE): Chi-squared approximation may
+## be incorrect</code></pre>
 <pre><code>## 
 ##  Chi-squared test for given probabilities
 ## 

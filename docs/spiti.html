@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-01-11" />
+<meta name="date" content="2025-01-12" />
 
 <title>Εξέταση τιμών ακινήτων</title>
 
@@ -489,46 +489,6 @@ div.tocify {
         <li>
           <a href="ergaliaPith.html">Βασικά εργαλεία</a>
         </li>
-        <li class="dropdown-submenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
-            </li>
-            <li>
-              <a href="binom.html">Διωνυμική κατανομή</a>
-            </li>
-            <li>
-              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
-            </li>
-            <li>
-              <a href="geom.html">Γεωμετρική κατανομή</a>
-            </li>
-            <li>
-              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
-            </li>
-            <li>
-              <a href="poisson.html">Κατανομή Poisson</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown-submenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
-            </li>
-            <li>
-              <a href="expDist.html">Εκθετική κατανομή</a>
-            </li>
-            <li>
-              <a href="gammaDist.html">Κατανομή Γάμμα</a>
-            </li>
-            <li>
-              <a href="normalDist.html">Κανονική κατανομή</a>
-            </li>
-          </ul>
-        </li>
       </ul>
     </li>
     <li class="dropdown-submenu">
@@ -693,6 +653,51 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Κατανομές</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
+            </li>
+            <li>
+              <a href="binom.html">Διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="geom.html">Γεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="poisson.html">Κατανομή Poisson</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
+            </li>
+            <li>
+              <a href="expDist.html">Εκθετική κατανομή</a>
+            </li>
+            <li>
+              <a href="gammaDist.html">Κατανομή Γάμμα</a>
+            </li>
+            <li>
+              <a href="normalDist.html">Κανονική κατανομή</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li>
       <a href="dataMathematica.html">Οπλισμένοι με Mathematica</a>
     </li>
@@ -712,7 +717,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Εξέταση τιμών ακινήτων</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-01-11</h4>
+<h4 class="date">2025-01-12</h4>
 
 </div>
 
@@ -720,17 +725,17 @@ div.tocify {
 <div id="εισαγωγή" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Εισαγωγή</h1>
 <pre><code>## Loading required package: tidyverse</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+<pre><code>## ── Attaching core tidyverse packages ─────────────────────────────────────── tidyverse 2.0.0 ──
 ## ✔ forcats   1.0.0     ✔ readr     2.1.5
 ## ✔ lubridate 1.9.3     ✔ stringr   1.5.1
 ## ✔ purrr     1.0.2     ✔ tibble    3.2.1
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ lubridate::%--%()       masks igraph::%--%()
 ## ✖ tibble::as_data_frame() masks igraph::as_data_frame(), dplyr::as_data_frame()
 ## ✖ purrr::compose()        masks igraph::compose()
 ## ✖ httr::config()          masks plotly::config()
 ## ✖ igraph::crossing()      masks tidyr::crossing()
-## ✖ dplyr::desc()           masks packHV::desc(), rstatix::desc()
+## ✖ packHV::desc()          masks dplyr::desc(), rstatix::desc()
 ## ✖ Matrix::expand()        masks tidyr::expand(), reshape::expand()
 ## ✖ plotly::filter()        masks dplyr::filter(), rstatix::filter(), stats::filter()
 ## ✖ purrr::flatten()        masks jsonlite::flatten()
@@ -740,7 +745,7 @@ div.tocify {
 ## ✖ Matrix::pack()          masks tidyr::pack()
 ## ✖ lubridate::period()     masks markovchain::period()
 ## ✖ car::recode()           masks dplyr::recode()
-## ✖ plotly::rename()        masks dplyr::rename(), reshape::rename()
+## ✖ plotly::rename()        masks reshape::rename(), dplyr::rename()
 ## ✖ MASS::select()          masks plotly::select(), dplyr::select(), rstatix::select()
 ## ✖ purrr::simplify()       masks igraph::simplify()
 ## ✖ purrr::some()           masks car::some()

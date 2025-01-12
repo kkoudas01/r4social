@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-01-11" />
+<meta name="date" content="2025-01-12" />
 
 <title>Συχνότητες</title>
 
@@ -491,46 +491,6 @@ div.tocify {
         <li>
           <a href="ergaliaPith.html">Βασικά εργαλεία</a>
         </li>
-        <li class="dropdown-submenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
-            </li>
-            <li>
-              <a href="binom.html">Διωνυμική κατανομή</a>
-            </li>
-            <li>
-              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
-            </li>
-            <li>
-              <a href="geom.html">Γεωμετρική κατανομή</a>
-            </li>
-            <li>
-              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
-            </li>
-            <li>
-              <a href="poisson.html">Κατανομή Poisson</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown-submenu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
-          <ul class="dropdown-menu" role="menu">
-            <li>
-              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
-            </li>
-            <li>
-              <a href="expDist.html">Εκθετική κατανομή</a>
-            </li>
-            <li>
-              <a href="gammaDist.html">Κατανομή Γάμμα</a>
-            </li>
-            <li>
-              <a href="normalDist.html">Κανονική κατανομή</a>
-            </li>
-          </ul>
-        </li>
       </ul>
     </li>
     <li class="dropdown-submenu">
@@ -695,6 +655,51 @@ div.tocify {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Κατανομές</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Διακριτές κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformDiscr.html">Ομοιόμορφη διακριτή κατανομή</a>
+            </li>
+            <li>
+              <a href="binom.html">Διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="hyperGeom.html">Υπεργεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="geom.html">Γεωμετρική κατανομή</a>
+            </li>
+            <li>
+              <a href="nBinom.html">Αρνητική διωνυμική κατανομή</a>
+            </li>
+            <li>
+              <a href="poisson.html">Κατανομή Poisson</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Συνεχείς κατανομές</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="uniformCont.html">Ομοιόμορφη συνεχής κατανομή</a>
+            </li>
+            <li>
+              <a href="expDist.html">Εκθετική κατανομή</a>
+            </li>
+            <li>
+              <a href="gammaDist.html">Κατανομή Γάμμα</a>
+            </li>
+            <li>
+              <a href="normalDist.html">Κανονική κατανομή</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
     <li>
       <a href="dataMathematica.html">Οπλισμένοι με Mathematica</a>
     </li>
@@ -714,7 +719,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Συχνότητες</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-01-11</h4>
+<h4 class="date">2025-01-12</h4>
 
 </div>
 
@@ -3281,10 +3286,10 @@ NA
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>SxetSyxnBathm <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(ApolSyxnBathm)</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>SxetSyxnBathm</span></code></pre></div>
 <pre><code>## bathmoi_synolo
-##          1          2          3          4          5          6          7 
-## 0.16358839 0.10290237 0.11345646 0.11345646 0.20316623 0.14775726 0.06332454 
-##          8          9         10 
-## 0.05540897 0.02638522 0.01055409</code></pre>
+##          1          2          3          4          5          6          7          8 
+## 0.16358839 0.10290237 0.11345646 0.11345646 0.20316623 0.14775726 0.06332454 0.05540897 
+##          9         10 
+## 0.02638522 0.01055409</code></pre>
 <p>Παρατηρούμε ότι τα ποσοστά δίνονται με τη μορφή δεκαδικού αριθμού (η
 υποδιαστολή γράφεται ως τελεία). Έτσι διαπιστώνουμε ότι η σχετική
 συχνότητα του βαθμού 1 είναι περίπου 0.1636, άρα το 16,36% των φοιτητών
