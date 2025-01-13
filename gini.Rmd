@@ -138,7 +138,7 @@ ggplotly(gini22plot+geom_bar(stat="identity", position=position_dodge(), colour=
 
 Η Ελλάδα (`GRC`) θα λέγαμε ότι είναι κάπου στη μέση.
 
-Στο σημείο αυτό αξίζει να παρατηρήσουμε ότι σε κάποιες χώρες ο συντελεστής Gini του συνόλου του πληθυσμού είναι μεγαλύερος τόσο του συντελεστή Gini της ηλικιακής ομάδας 18-65, όσο κι αυτής των πάνω των 65 ετών. Συνήθως βλέπουμε να είναι κάπου ενδιάμεσα από αυτές τις δύο τιμές (κάτω κι από τις δύο αποκλείεται να είναι, βλ. [Zagier κάτω φράγματα](https://www.johndcook.com/blog/2022/10/20/gini-coefficient-inequalities/)), αλλά σε χώρες όπως π.χ. η Βραζιλία (`ΒΡΑ`) τις υπερβαίνει. Ένας τρόπος να συμβεί αυτό είναι οι δύο αυτές ηλικιακές ομάδες να έχουν μεταξύ τους μεγάλο οικονομικό χάσμα και η μία να είναι σημαντικά πολυπληθέστερη της άλλης. Σαν ένα απλουστευτικό παράδειγμα σκεφτείτε μία χώρα να αποτελούταν από 10 δισεκατομυριούχους ηλικιωμένους με ίδιο εισόδημα και 1000000 άστεγους νέους. Ο συντελεστής Gini που αφορά τους ηλικιωμένους θα ήταν 1, αφού μεταξύ τους έχουν το ίδιο εισόδημα. Το ίδιο συμβαίνει και με τους νέους. Όμως η χώρα αυτή θα μαστίζεται από έντονη ανισότητα. 
+Στο σημείο αυτό αξίζει να παρατηρήσουμε ότι σε κάποιες χώρες ο συντελεστής Gini του συνόλου του πληθυσμού είναι μεγαλύερος τόσο του συντελεστή Gini της ηλικιακής ομάδας 18-65, όσο κι αυτής των πάνω των 65 ετών. Συνήθως βλέπουμε να είναι κάπου ενδιάμεσα από αυτές τις δύο τιμές (κάτω κι από τις δύο αποκλείεται να είναι, βλ. [Zagier κάτω φράγματα](https://www.johndcook.com/blog/2022/10/20/gini-coefficient-inequalities/)), αλλά σε χώρες όπως π.χ. η Βραζιλία (`ΒΡΑ`) τις υπερβαίνει. Ένας τρόπος να συμβεί αυτό είναι οι δύο αυτές ηλικιακές ομάδες να έχουν μεταξύ τους μεγάλο οικονομικό χάσμα και η μία να είναι σημαντικά πολυπληθέστερη της άλλης. Σαν ένα απλουστευτικό παράδειγμα σκεφτείτε μία χώρα να αποτελούταν από 10 δισεκατομυριούχους ηλικιωμένους με ίδιο εισόδημα και 1000000 άστεγους νέους. Ο συντελεστής Gini που αφορά τους ηλικιωμένους θα ήταν 0, αφού μεταξύ τους έχουν το ίδιο εισόδημα (0% ανισότητα). Το ίδιο συμβαίνει και με τους νέους. Όμως η χώρα αυτή θα μαστίζεται από έντονη ανισότητα. 
 
 ## Αυστρία έως Γαλλία
 
@@ -196,6 +196,72 @@ giniTotalPlot2 +
   scale_fill_viridis(name = "ώρες", option = "C")
 ```
 
+# Συσχέτιση με κατά κεφαλήν ΑΕΠ   {.tabset .tabset-fade .tabset-pills}
+
+## Παγκοσμίως
+
+
+```{r echo = F, results='asis', message=FALSE}
+AEP2023 <- read.csv("AEP2023.csv", na.string = "")
+giniAEP <- merge(giniTotal, AEP2023, by = c("TIME_PERIOD", "REF_AREA"))
+giniAEP$GDP.per.capita <- giniAEP$OBS_VALUE
+```
+
+```{r, echo=FALSE, message=FALSE}
+giniAEPPlot <- ggplot(giniAEP, aes(x=GDP.per.capita, y=Gini_coefficient))
+giniAEPPlot + geom_point(aes(colour = REF_AREA))+  geom_smooth()
+```
+
+## Ελλάδα
+
+```{r echo = F, results='asis', message=FALSE}
+giniAEPgr <- giniAEP[giniAEP$REF_AREA=="GRC",]
+```
+
+```{r, echo=FALSE, message=FALSE}
+giniAEPgrPlot <- ggplot(giniAEPgr, aes(x=GDP.per.capita, y=Gini_coefficient))
+giniAEPgrPlot + geom_point()+  geom_smooth()
+```
+
+
+## Διαδραστικοί πειραματισμοί
+
+
+```{r, echo=FALSE}
+if(!require(GWalkR)){
+  install.packages("GWalkR")
+  library(GWalkR)
+}
+interactiveAEPpc <- data.frame(TIME_PERIOD=giniAEP$TIME_PERIOD, REF_AREA=giniAEP$REF_AREA, Gini_coefficient=giniAEP$Gini_coefficient, GDP.per.capita=giniAEP$GDP.per.capita)
+gwalkr(interactiveAEPpc)
+```
+
+# Συσχέτιση με ΑΕΠ   {.tabset .tabset-fade .tabset-pills}
+
+## Παγκοσμίως
+
+
+```{r echo = F, results='asis', message=FALSE}
+pop2022 <- read.csv("pop2022.csv", na.string = "")
+giniAEPpop <- merge(giniAEP, pop2022, by = c("TIME_PERIOD", "REF_AREA"))
+giniAEPpop$GDP <- giniAEPpop$OBS_VALUE.x*giniAEPpop$OBS_VALUE.y
+```
+
+```{r, echo=FALSE, message=FALSE}
+giniAEPpopPlot <- ggplot(giniAEPpop, aes(x=GDP, y=Gini_coefficient))
+giniAEPpopPlot + geom_point(aes(colour = REF_AREA))+  geom_smooth()
+```
+
+
+## Ελλάδα
+
+## Διαδραστικοί πειραματισμοί
+
+```{r, echo=FALSE}
+interactiveAEP <- data.frame(TIME_PERIOD=giniAEPpop$TIME_PERIOD, REF_AREA=giniAEPpop$REF_AREA, Gini_coefficient=giniAEPpop$Gini_coefficient, GDP=giniAEPpop$GDP)
+gwalkr(interactiveAEP)
+```
+
 # Συσχέτιση ανισοτήτων σε μικρές και μεγάλες ηλικίες
 
 ```{r, echo=FALSE}
@@ -206,6 +272,7 @@ giniGr <- gini[gini$REF_AREA=="GRC",]
 giniGrPlot <- ggplot(giniGr, aes(x=TIME_PERIOD, y=Gini_coefficient, colour = Age))
 giniGrPlot + geom_line()
 ```
+
 ```{r, echo=FALSE}
 giniWide <- dcast(gini, REF_AREA+TIME_PERIOD~ Age, value.var = "Gini_coefficient")
 ```
@@ -215,6 +282,8 @@ giniAge <- ggplot(giniWide, aes(x=`From 18 to 65 years`, y=`Over 65 years`))
 ggplotly(giniAge+geom_point(aes(colour = REF_AREA))+
   geom_smooth())
 ```
+
+
 
 ```{r, echo=FALSE}
 cor(giniWide$`From 18 to 65 years`, giniWide$`Over 65 years`, use="complete.obs")
