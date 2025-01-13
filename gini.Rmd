@@ -23,6 +23,7 @@ rm(list = ls())
 ```
 
 
+<div class="alert-danger">⚠️️ΥΠΟ ΚΑΤΑΣΚΕΥΗ⚠️</div>
 
 
 # Παρουσίαση δεδομένων  {.tabset .tabset-fade .tabset-pills}
@@ -121,7 +122,52 @@ knitr::kable(head(gini)) %>%
 ```
 
 
-# Τρέχουσα κατάσταση
+# Τρέχουσα κατάσταση  {.tabset .tabset-fade .tabset-pills}
+
+Ας αρχίσουμε τη μελέτη εξετάζοντας τι συμβαίνει σήμερα. Η εγγύτερη στη σημερινή ημερομηνία ήταν το 2022, επομένως θα αρκεστούμε σε αυτό.
+
+```{r, echo=FALSE}
+gini22 <- gini[gini$TIME_PERIOD==2022,]
+gini22plot <- ggplot(gini22, aes(x=Age, y=Gini_coefficient, fill=REF_AREA))
+ggplotly(gini22plot+geom_bar(stat="identity", position=position_dodge(), colour="black"))
+```
+
+Η χώρα με την υψηλότερη ανισότητα παρατηρούμε πως είναι η Κόστα Ρίκα (`CRI`). Σε κάθε ηλικιακή ομάδα υπάρχει μεγάλο χάσμα εισοδήματος, καθόσον ο συντελεστής Gini είναι πάνω από το 0.4. Εστιάζοντας στην ομάδα των ηλικιωμένων πάνω από 65 ετών το εισοδηματικό χάσμα απογειώνεται με τον συντελεστή Gini να είναι πάνω από 0.5.
+
+Από την άλλη, η χώρα με τη χαμηλότερη ανισότητα είναι η Σλοβακία (`SVK`). Σε κάθε ηλικιακή ομάδα ο συντελεστής Gini είναι κάτω από 0.3, όπερ υποδηλώνει κατάσταση σχετικής ισότητας.
+
+Η Ελλάδα (`GRC`) θα λέγαμε ότι είναι κάπου στη μέση.
+
+Στο σημείο αυτό αξίζει να παρατηρήσουμε ότι σε κάποιες χώρες ο συντελεστής Gini του συνόλου του πληθυσμού είναι μεγαλύερος τόσο του συντελεστή Gini της ηλικιακής ομάδας 18-65, όσο κι αυτής των πάνω των 65 ετών. Συνήθως βλέπουμε να είναι κάπου ενδιάμεσα από αυτές τις δύο τιμές (κάτω κι από τις δύο αποκλείεται να είναι, βλ. [Zagier κάτω φράγματα](https://www.johndcook.com/blog/2022/10/20/gini-coefficient-inequalities/)), αλλά σε χώρες όπως π.χ. η Βραζιλία (`ΒΡΑ`) τις υπερβαίνει. Ένας τρόπος να συμβεί αυτό είναι οι δύο αυτές ηλικιακές ομάδες να έχουν μεταξύ τους μεγάλο οικονομικό χάσμα και η μία να είναι σημαντικά πολυπληθέστερη της άλλης. Σαν ένα απλουστευτικό παράδειγμα σκεφτείτε μία χώρα να αποτελούταν από 10 δισεκατομυριούχους ηλικιωμένους με ίδιο εισόδημα και 1000000 άστεγους νέους. Ο συντελεστής Gini που αφορά τους ηλικιωμένους θα ήταν 1, αφού μεταξύ τους έχουν το ίδιο εισόδημα. Το ίδιο συμβαίνει και με τους νέους. Όμως η χώρα αυτή θα μαστίζεται από έντονη ανισότητα. 
+
+## Αυστρία έως Γαλλία
+
+
+```{r, echo=FALSE}
+gini22a <- gini[gini$TIME_PERIOD==2022 & gini$REF_AREA<="FRA",]
+gini22aplot <- ggplot(gini22a, aes(x=REF_AREA, y=Gini_coefficient, fill=Age))
+ggplotly(gini22aplot+geom_bar(stat="identity", position=position_dodge(), colour="black"))
+```
+
+## Μεγάλη Βρετανία έως Ολλανδία
+
+
+```{r, echo=FALSE}
+gini22b <- gini[gini$TIME_PERIOD==2022 & gini$REF_AREA>="GBR" & gini$REF_AREA<="NLD",]
+gini22bplot <- ggplot(gini22b, aes(x=REF_AREA, y=Gini_coefficient, fill=Age))
+ggplotly(gini22bplot+geom_bar(stat="identity", position=position_dodge(), colour="black"))
+```
+
+
+## Νορβιγία έως ΗΠΑ
+
+```{r, echo=FALSE}
+gini22c <- gini[gini$TIME_PERIOD==2022 & gini$REF_AREA>="NOR",]
+gini22cplot <- ggplot(gini22c, aes(x=REF_AREA, y=Gini_coefficient, fill=Age))
+ggplotly(gini22cplot+geom_bar(stat="identity", position=position_dodge(), colour="black"))
+```
+
+
 
 # Πορεία στο χρόνο
 

@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-01-12" />
+<meta name="date" content="2025-01-13" />
 
 <title>Εξέταση τιμών ακινήτων</title>
 
@@ -620,6 +620,9 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
+    </li>
+    <li>
       <a href="spiti.html">Εξέταση τιμών ακινήτων</a>
     </li>
     <li>
@@ -717,40 +720,27 @@ div.tocify {
 
 <h1 class="title toc-ignore">Εξέταση τιμών ακινήτων</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-01-12</h4>
+<h4 class="date">2025-01-13</h4>
 
 </div>
 
 
+<div class="alert-danger">
+⚠️️ΥΠΟ ΚΑΤΑΣΚΕΥΗ⚠️
+</div>
 <div id="εισαγωγή" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Εισαγωγή</h1>
 <pre><code>## Loading required package: tidyverse</code></pre>
-<pre><code>## ── Attaching core tidyverse packages ─────────────────────────────────────── tidyverse 2.0.0 ──
-## ✔ forcats   1.0.0     ✔ readr     2.1.5
-## ✔ lubridate 1.9.3     ✔ stringr   1.5.1
-## ✔ purrr     1.0.2     ✔ tibble    3.2.1
-## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ lubridate::%--%()       masks igraph::%--%()
-## ✖ tibble::as_data_frame() masks igraph::as_data_frame(), dplyr::as_data_frame()
-## ✖ purrr::compose()        masks igraph::compose()
-## ✖ httr::config()          masks plotly::config()
-## ✖ igraph::crossing()      masks tidyr::crossing()
-## ✖ packHV::desc()          masks dplyr::desc(), rstatix::desc()
-## ✖ Matrix::expand()        masks tidyr::expand(), reshape::expand()
-## ✖ plotly::filter()        masks dplyr::filter(), rstatix::filter(), stats::filter()
-## ✖ purrr::flatten()        masks jsonlite::flatten()
-## ✖ dplyr::group_rows()     masks kableExtra::group_rows()
-## ✖ dplyr::lag()            masks stats::lag()
-## ✖ latticeExtra::layer()   masks ggplot2::layer()
-## ✖ Matrix::pack()          masks tidyr::pack()
-## ✖ lubridate::period()     masks markovchain::period()
-## ✖ car::recode()           masks dplyr::recode()
-## ✖ plotly::rename()        masks reshape::rename(), dplyr::rename()
-## ✖ MASS::select()          masks plotly::select(), dplyr::select(), rstatix::select()
-## ✖ purrr::simplify()       masks igraph::simplify()
-## ✖ purrr::some()           masks car::some()
-## ✖ lubridate::stamp()      masks reshape::stamp()
-## ✖ Matrix::unpack()        masks tidyr::unpack()
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter()     masks stats::filter()
+## ✖ dplyr::group_rows() masks kableExtra::group_rows()
+## ✖ dplyr::lag()        masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
 ## Loading required package: Rcrawler</code></pre>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">Rcrawler</span>(<span class="at">Website =</span> <span class="st">&quot;http://www.spitogatos.gr&quot;</span>,</span>

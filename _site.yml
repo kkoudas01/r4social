@@ -115,6 +115,8 @@ navbar:
         href: workHexitPov.html
       - text: "Μετρώντας την ανισότητα"
         href: gini.html
+      - text: "Απεργιακές κινητοποιήσεις"
+        href: strikes.html
       - text: "Εξέταση τιμών ακινήτων"
         href: spiti.html
       - text: "Αξιολόγηση μεταχειρισμένων αυτοκινήτων"

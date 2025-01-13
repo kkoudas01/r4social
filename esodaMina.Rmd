@@ -1,5 +1,5 @@
 ---
-title: "Μετατροπή δεδομένων για ανάγνωση από το Mathematica"
+title: "Αυτοματοποιημένη μελέτη εσόδων του μήνα"
 author: "Κώστας Κούδας"
 cache: TRUE
 date: "`r Sys.Date()`"
@@ -19,6 +19,9 @@ library(kableExtra)
 ```{r, echo=F}
 rm(list = ls())
 ```
+
+<div class="alert-danger">⚠️️ΥΠΟ ΚΑΤΑΣΚΕΥΗ⚠️</div>
+
 
 ```{r}
 #install.packages("GWalkR")
