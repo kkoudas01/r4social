@@ -60,6 +60,10 @@ rm(list = ls())
 Αυτόν θα εξετάσουμε εδώ.
 
 ```{r, echo=FALSE, message=FALSE}
+if(!require(gridExtra)){
+  install.packages("gridExtra")
+  library(gridExtra)
+}
 if(!require(ggplot2)){
   install.packages("ggplot2")
   library(ggplot2)
@@ -169,9 +173,15 @@ ggplotly(gini22cplot+geom_bar(stat="identity", position=position_dodge(), colour
 
 
 
-# Πορεία στο χρόνο
+# Πορεία στο χρόνο   {.tabset .tabset-fade .tabset-pills}
+
+Στην ενότητα αυτή θα εξετάσουμε την πορεία του συντελεστή Gini στον χρόνο. Τι συμβαίνει με την ανισότητα; Εντείνεται ή οι κοινωνίες τίνουν να γίνουν πιο εξισωτικές;
 
 
+
+## Όλες οι χώρες μαζί
+
+Στην πρώτη υποενότητα παρουσιάζονται όλες οι χώρες μαζί. Η αλήθεια είναι πως παγκοσμίως δεν φαίνεται να συμβαίνει κάτι. Τα πράγματα βαίνουν όπως ανέκαθεν. Για να δούμε λίγο καλύτερα τι συμβαίνει πάμε στην διπλανή υποενότητα να δούμε την κάθε χώρα ξεχωριστά.
 
 
 ```{r, echo=FALSE}
@@ -182,23 +192,40 @@ giniTotal <- gini[gini$AGE=="_T" ,]
 giniTotalPlot <- ggplot(giniTotal, aes(x=TIME_PERIOD, y=Gini_coefficient, colour = REF_AREA))
 #giniTotalPlot + geom_line()+scale_color_viridis_d()
 
-ggplotly(giniTotalPlot + geom_line()+scale_color_viridis_d())
+ggplotly(giniTotalPlot + geom_line())
 ```
 
+## Κάθε χώρα ξεχωριστά
+
+Στα κάτωθι γραφήματα παρατηρούμε κάποιες χώρες να έχουν μια πτωτική πορεία στο επίπεδο ανισότητας, όπως η Ελλάδα (`GRC` - θα είχε ενδιαφέρον να δούμε τι ίσχυε πριν τη Μεταπολίτευση), ενώ σε άλλες όπως η Σουιδία (`SWE`) υπάρχει αυξητική τάση.
 
 
-```{r, echo=FALSE, message=FALSE}
-giniTotalPlot2 <- ggplot(giniTotal, aes(x = Gini_coefficient, y = as.factor(REF_AREA), fill = after_stat(x)))
-giniTotalPlot2 +
-  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +
-  scale_x_continuous(expand = c(0.01, 0)) +
-  scale_y_discrete(expand = c(0.01, 0)) +
-  scale_fill_viridis(name = "ώρες", option = "C")
+```{r, echo=FALSE}
+plots <- list()  # Χρήση λίστας αντί για vector
+counties <- sort(unique(giniTotal$REF_AREA))
+
+
+for (i in 1:length(counties)) {
+  giniAEPgr <- giniTotal[giniTotal$REF_AREA == counties[i], ]
+  giniAEPgrPlot <- ggplot(giniAEPgr, aes(x = TIME_PERIOD, y = Gini_coefficient)) + geom_line()+
+    ggtitle(paste("Country:", counties[i])) +
+    theme_minimal()
+  
+  plots[[i]] <- giniAEPgrPlot  # Αποθήκευση στο i-οστό στοιχείο της λίστας
+}
 ```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+for (i in 1:22){
+  grid.arrange(plots[[2*i-1]], plots[[2*i]], ncol = 2)
+}
+grid.arrange(plots[[45]], ncol = 2)
+```
+
 
 # Συσχέτιση με κατά κεφαλήν ΑΕΠ   {.tabset .tabset-fade .tabset-pills}
 
-## Παγκοσμίως
+## Όλες οι χώρες μαζί
 
 
 ```{r echo = F, results='asis', message=FALSE}
@@ -212,16 +239,39 @@ giniAEPPlot <- ggplot(giniAEP, aes(x=GDP.per.capita, y=Gini_coefficient))
 giniAEPPlot + geom_point(aes(colour = REF_AREA))+  geom_smooth()
 ```
 
-## Ελλάδα
+## Κάθε χώρα ξεχωριστά
 
-```{r echo = F, results='asis', message=FALSE}
-giniAEPgr <- giniAEP[giniAEP$REF_AREA=="GRC",]
+```{r, echo=FALSE}
+plots <- list()  # Χρήση λίστας αντί για vector
+counties <- sort(unique(giniAEP$REF_AREA))
+
+for (i in 1:length(counties)) {
+  giniAEPgr <- giniAEP[giniAEP$REF_AREA == counties[i], ]
+  giniAEPgrPlot <- ggplot(giniAEPgr, aes(x = GDP.per.capita, y = Gini_coefficient)) +
+    geom_point() +
+    geom_smooth() +
+    ggtitle(paste("Country:", counties[i])) +
+    theme_minimal()
+  
+  plots[[i]] <- giniAEPgrPlot  # Αποθήκευση στο i-οστό στοιχείο της λίστας
+}
 ```
 
-```{r, echo=FALSE, message=FALSE}
-giniAEPgrPlot <- ggplot(giniAEPgr, aes(x=GDP.per.capita, y=Gini_coefficient))
-giniAEPgrPlot + geom_point()+  geom_smooth()
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+for (i in 1:22){
+  grid.arrange(plots[[2*i-1]], plots[[2*i]], ncol = 2)
+}
+grid.arrange(plots[[45]], ncol = 2)
 ```
+
+
+
+
+
+
+
+
+
 
 
 ## Διαδραστικοί πειραματισμοί
@@ -238,7 +288,7 @@ gwalkr(interactiveAEPpc)
 
 # Συσχέτιση με ΑΕΠ   {.tabset .tabset-fade .tabset-pills}
 
-## Παγκοσμίως
+## Όλες οι χώρες μαζί
 
 
 ```{r echo = F, results='asis', message=FALSE}
@@ -252,8 +302,31 @@ giniAEPpopPlot <- ggplot(giniAEPpop, aes(x=GDP, y=Gini_coefficient))
 giniAEPpopPlot + geom_point(aes(colour = REF_AREA))+  geom_smooth()
 ```
 
+## Κάθε χώρα ξεχωριστά
 
-## Ελλάδα
+```{r, echo=FALSE}
+plots <- list()  # Χρήση λίστας αντί για vector
+counties <- sort(unique(giniAEPpop$REF_AREA))
+
+for (i in 1:length(counties)) {
+  giniAEPgr <- giniAEPpop[giniAEPpop$REF_AREA == counties[i], ]
+  giniAEPgrPlot <- ggplot(giniAEPpop, aes(x = GDP, y = Gini_coefficient)) +
+    geom_point() +
+    geom_smooth() +
+    ggtitle(paste("Country:", counties[i])) +
+    theme_minimal()
+  
+  plots[[i]] <- giniAEPgrPlot  # Αποθήκευση στο i-οστό στοιχείο της λίστας
+}
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+for (i in 1:22){
+  grid.arrange(plots[[2*i-1]], plots[[2*i]], ncol = 2)
+}
+grid.arrange(plots[[45]], ncol = 2)
+```
+
 
 ## Διαδραστικοί πειραματισμοί
 
