@@ -25,6 +25,7 @@ rm(list = ls())
 
 <div class="alert-danger">⚠️️ΥΠΟ ΚΑΤΑΣΚΕΥΗ⚠️</div>
 
+# Περιγραφή δεδομένων
 
 Από [εδώ](https://www.bls.gov/web/wkstp/annual-listing.htm) κατεβάσαμε τον ετήσιο αριθμό διαδηλώσεων και από [εδώ](https://www.bls.gov/web/wkstp/monthly-listing.htm) τον μηνιαίο.
 
@@ -45,3 +46,35 @@ knitr::kable(head(strikesMonth)) %>%
   kable_styling("striped", full_width = F) %>%
   scroll_box(width = "100%", height = "200px")
 ```
+
+
+
+# Συσχέτιση με ΑΕΠ    {.tabset .tabset-fade .tabset-pills}
+
+## Σύγκριση τιμών
+
+## Σύγκριση μεταβολών
+
+# Συσχέτιση με κατά κεφαλήν ΑΕΠ    {.tabset .tabset-fade .tabset-pills}
+
+## Σύγκριση τιμών
+
+## Σύγκριση μεταβολών
+
+# Συσχέτιση με διάμεσο εισόδημα    {.tabset .tabset-fade .tabset-pills}
+
+## Σύγκριση τιμών
+
+## Σύγκριση μεταβολών
+
+# Συσχέτιση με συντελεστή Gini    {.tabset .tabset-fade .tabset-pills}
+
+## Σύγκριση τιμών
+
+## Σύγκριση μεταβολών
+
+
+
+
+
+

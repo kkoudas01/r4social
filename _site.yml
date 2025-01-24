@@ -159,6 +159,10 @@ navbar:
             href: normalDist.html
       - text: "Οπλισμένοι με Mathematica"
         href: dataMathematica.html
+      - text: "Διδακτική των Στοχαστικών Μαθηματικών"
+        menu:
+        - text: "Επιπτώσεις των γραμμικών μετασχηματισμών στα μέτρα θέσης και διασποράς"
+          href: linearSX.html
 output:
   html_document:
     theme: default
