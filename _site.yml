@@ -158,7 +158,11 @@ navbar:
           - text: "Κανονική κατανομή"
             href: normalDist.html
       - text: "Οπλισμένοι με Mathematica"
-        href: dataMathematica.html
+        menu:
+        - text: "Μετατροπή λίστας ή πίνακα για το Mathematica"
+          href: dataMathematica.html
+        - text: "Κούρσα εξοπλισμών"
+          href: exoplismoiW4SCI.html
       - text: "Διδακτική των Στοχαστικών Μαθηματικών"
         menu:
         - text: "Επιπτώσεις των γραμμικών μετασχηματισμών στα μέτρα θέσης και διασποράς"
