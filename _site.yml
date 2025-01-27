@@ -163,6 +163,8 @@ navbar:
           href: dataMathematica.html
         - text: "Κούρσα εξοπλισμών"
           href: exoplismoiW4SCI.html
+        - text: "Εξέλιξη κατανομής πολιτικού φάσματος"
+          href: politicsDistW4SCI.html
       - text: "Διδακτική των Στοχαστικών Μαθηματικών"
         menu:
         - text: "Επιπτώσεις των γραμμικών μετασχηματισμών στα μέτρα θέσης και διασποράς"
