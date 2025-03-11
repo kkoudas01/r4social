@@ -1,7 +1,7 @@
 name: "r-koudas"
 output_dir: "docs"
 navbar:
-  title: "R🧸Koudas"
+  title: "🐈 Αρχική"
   left:
     - text: "Εργαλεία"
       icon: fa-solid fa-screwdriver-wrench
@@ -123,11 +123,6 @@ navbar:
         href: aytokinhta.html
       - text: "Κύματα Kondratiev"
         href: kondratiev.html
-    - text: "Ταχυφαγείο"
-      icon: fa-solid fa-utensils
-      menu:
-      - text: "Τα έσοδα του μήνα"
-        href: esodaMina.html
     - text: "Εντός εκτός κι επί τα αυτά"
       icon: fa-solid fa-mug-saucer
       menu:

@@ -330,3 +330,54 @@ hist(samples, probability = TRUE, breaks = 50,
      xlab = "Τιμές", ylab = "Πυκνότητα")
 curve(1 / (pi * sqrt(x * (1 - x))), from = 0, to = 1, col = "red", lwd = 2, add = TRUE)
 ```
+
+# Έλεγχος 0-1 για το χάος
+
+```{r, eval=FALSE}
+if(!require(Chaos01)){
+  install.packages("Chaos01")
+  library(Chaos01)
+}
+```
+
+```{r, eval=FALSE}
+elegxos01 <- function(values){
+  res2 <- testChaos01(values, out = TRUE)
+  K <- median(getVal(res2, vars = "Kc"))
+  K
+}
+```
+
+```{r, eval=FALSE}
+vec.x <- gen.logistic(mu = 3.55, iter = 2000)
+elegxos01(vec.x)
+```
+
+```{r, eval=FALSE}
+generate_logistic_lists <- function(start_mu = 3.55, end_mu = 4, step = 0.001, iter = 2000) {
+  # Δημιουργία της ακολουθίας των τιμών του mu
+  mu_values <- seq(start_mu, end_mu, by = step)
+  
+  # Δημιουργία της λίστας που θα περιέχει τις λίστες από τη gen.logistic
+  logistic_lists <- lapply(mu_values, function(mu) {
+    gen.logistic(mu = mu, iter = iter)
+  })
+  
+  return(logistic_lists)
+}
+
+# Παράδειγμα κλήσης της συνάρτησης
+result_lists <- generate_logistic_lists(start_mu = 3.5, end_mu = 4, step = 0.001, iter = 2000)
+```
+
+```{r, eval=FALSE}
+# Εφαρμογή της MyFunc() σε κάθε λίστα της result_lists
+new_list <- as.numeric(lapply(result_lists, elegxos01))
+```
+
+```{r, eval=FALSE}
+vList <- seq(3.5, 4, by = 0.001)
+plot(vList,new_list,type = "l", xlab = "λ", 
+        ylab = "K")
+```
+
