@@ -160,6 +160,8 @@ navbar:
           href: exoplismoiW4SCI.html
         - text: "Εξέλιξη κατανομής πολιτικού φάσματος"
           href: politicsDistW4SCI.html
+        - text: "Ντετερμινιστικό μοντέλο από τυχαιοκρατικό"
+          href: FrobeniusPerron.html
       - text: "Διδακτική των Στοχαστικών Μαθηματικών"
         menu:
         - text: "Επιπτώσεις των γραμμικών μετασχηματισμών στα μέτρα θέσης και διασποράς"

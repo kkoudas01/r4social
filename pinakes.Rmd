@@ -374,7 +374,7 @@ tail(egklimatikotita0)
 
 Πρώτα απ’ όλα χρειαζόμαστε τα πακέτα `httr` και `jsonlite`, οπότε τα εγκαθιστούμε (αν δεν τα έχουμε εγκαταστήσει ήδη) και τα εισάγουμε, αφού, εννοείται, διαγράψουμε τα προηγούμενα δεδομένα μας:
 
-```{r}
+```{r, eval=FALSE}
 rm(list = ls())
 if(!require(httr)){
     install.packages("httr")
@@ -392,26 +392,26 @@ if(!require(jsonlite)){
 
 Στον RStudio φορτώνουμε τα δεδομένα μας με τη συνάρτηση `GET()` και γράφουμε:
 
-```{r}
+```{r, eval=FALSE}
 syndesmos <- GET("https://ws-ext.it.auth.gr/open/getUgradHistStatus")
 ```
 
 Πριν κάνουμε τον κόπο να προχωρήσουμε, θα ελέγξουμε αν όλα πάνε καλά μέσω του `$status_code`:
 
-```{r}
+```{r, eval=FALSE}
 elegxos <- syndesmos$status_code
 elegxos
 ```
 
 Αν όλα είναι εντάξει, θα πρέπει να βγει αποτέλεσμα 200, όπερ συμβαίνει και τώρα. Ακολούθως αρχίζουμε και αντλούμε τα δεδομένα μας μέσω του `$content`:
 
-```{r}
+```{r, eval=FALSE}
 periexomeno <- syndesmos$content
 ```
 
 Τέλος, τα μετατρέπουμε σε ευανάγνωστη μορφή μέσω της συνάρτησης `fromJSON(rawToChar())`:
 
-```{r}
+```{r, eval=FALSE}
 anagnosimo <- fromJSON(rawToChar(periexomeno))
 ```
 
@@ -429,7 +429,7 @@ View(anagnosimo$ugradhiststatus$pharm)
 
 έχουμε τον πίνακα με τους εισαχθέντες φοιτητές της Φαρμακευτικής (pharm) τα έτη 2006-2015.
 
-```{r echo = F, results='asis', message=FALSE}
+```{r echo = F, results='asis', message=FALSE, eval=FALSE}
 knitr::kable(as.data.frame(do.call(cbind, anagnosimo$ugradhiststatus$pharm))) %>%
   kable_styling("striped", full_width = F) %>%
   scroll_box(width = "max-content", height = "max-content")
@@ -462,7 +462,7 @@ View(anagnosimo$ugradhiststatus$pharm)
 
 Για εμπέδωση στη διαδικασία θα δουλέψουμε και μ’ ένα ακόμα τέτοιο αρχείο από [εδώ](https://anaptyxi.gov.gr/el-gr/ODHelp#woatStats).
 
-```{r}
+```{r, eval=FALSE}
 rm(list = ls())
 if(!require(httr)){
     install.packages("httr")
@@ -480,26 +480,26 @@ if(!require(jsonlite)){
 
 γράφοντας:
 
-```{r}
+```{r, eval=FALSE}
 syndesmos2 <- GET("http://anaptyxi.gov.gr/GetData.ashx?queryType=projects_v2")
 ```
 
 Ακολούθως ελέγξαμε ότι όλα είναι εντάξει:
 
-```{r}
+```{r, eval=FALSE}
 elegxos2 <- syndesmos2$status_code
 elegxos2
 ```
 
 Κατεβάσαμε το περιεχόμενο των δεδομένων μας:
 
-```{r}
+```{r, eval=FALSE}
 periexomeno2 <- syndesmos2$content
 ```
 
 Τέλος, μετατρέψαμε το περιεχόμενο σε αναγνώσιμη μορφή:
 
-```{r}
+```{r, eval=FALSE}
 anagnosimo2 <- fromJSON(rawToChar(periexomeno2))
 ```
 
