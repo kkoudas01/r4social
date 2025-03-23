@@ -5,7 +5,7 @@ on:
         types: [published]
     workflow_dispatch: {}
    
-name: demo-r-shinylive-app
+# name: demo-r-shinylive-app
 
 jobs:
     demo-website:
