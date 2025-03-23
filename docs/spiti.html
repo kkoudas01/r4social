@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-03-20" />
+<meta name="date" content="2025-03-23" />
 
 <title>Εξέταση τιμών ακινήτων</title>
 
@@ -731,7 +731,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Εξέταση τιμών ακινήτων</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-03-20</h4>
+<h4 class="date">2025-03-23</h4>
 
 </div>
 
@@ -741,13 +741,41 @@ div.tocify {
 </div>
 <div id="εισαγωγή" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Εισαγωγή</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">Rcrawler</span>(<span class="at">Website =</span> <span class="st">&quot;http://www.spitogatos.gr&quot;</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>         <span class="at">crawlUrlfilter =</span> <span class="st">&quot;/aggelia/&quot;</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>         <span class="at">no_cores =</span> <span class="dv">4</span>,</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a>         <span class="at">no_conn =</span> <span class="dv">4</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>         <span class="at">MaxDepth =</span> <span class="dv">1</span>,</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a>         <span class="at">saveOnDisk =</span> <span class="cn">FALSE</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a>         )</span></code></pre></div>
+<pre><code>## Loading required package: tidyverse</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ─────────────────────────────────────── tidyverse 2.0.0 ──
+## ✔ forcats   1.0.0     ✔ readr     2.1.5
+## ✔ lubridate 1.9.3     ✔ stringr   1.5.1
+## ✔ purrr     1.0.2     ✔ tibble    3.2.1
+## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ lubridate::%--%()       masks igraph::%--%()
+## ✖ tibble::as_data_frame() masks igraph::as_data_frame(), dplyr::as_data_frame()
+## ✖ gridExtra::combine()    masks dplyr::combine()
+## ✖ purrr::compose()        masks igraph::compose()
+## ✖ igraph::crossing()      masks tidyr::crossing()
+## ✖ dplyr::desc()           masks packHV::desc(), rstatix::desc()
+## ✖ Matrix::expand()        masks tidyr::expand(), reshape::expand()
+## ✖ plotly::filter()        masks dplyr::filter(), rstatix::filter(), stats::filter()
+## ✖ dplyr::group_rows()     masks kableExtra::group_rows()
+## ✖ dplyr::lag()            masks stats::lag()
+## ✖ latticeExtra::layer()   masks ggplot2::layer()
+## ✖ Matrix::pack()          masks tidyr::pack()
+## ✖ lubridate::period()     masks markovchain::period()
+## ✖ car::recode()           masks dplyr::recode()
+## ✖ plotly::rename()        masks dplyr::rename(), reshape::rename()
+## ✖ MASS::select()          masks plotly::select(), dplyr::select(), rstatix::select()
+## ✖ purrr::simplify()       masks igraph::simplify()
+## ✖ purrr::some()           masks car::some()
+## ✖ lubridate::stamp()      masks reshape::stamp()
+## ✖ Matrix::unpack()        masks tidyr::unpack()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+## Loading required package: Rcrawler</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">Rcrawler</span>(<span class="at">Website =</span> <span class="st">&quot;http://www.spitogatos.gr&quot;</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>         <span class="at">crawlUrlfilter =</span> <span class="st">&quot;/aggelia/&quot;</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>         <span class="at">no_cores =</span> <span class="dv">4</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>         <span class="at">no_conn =</span> <span class="dv">4</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>         <span class="at">MaxDepth =</span> <span class="dv">1</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>         <span class="at">saveOnDisk =</span> <span class="cn">FALSE</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a>         )</span></code></pre></div>
 </div>
 
 
