@@ -164,6 +164,12 @@ navbar:
           href: FrobeniusPerron.html
         - text: "Μοντελοποιώντας την κοινωνική διαστρωμάτωση"
           href: fuzzySocSci.html
+        - text: "Εξέλιξη πολιτικών σχηματισμών"
+          href: aristeradaxia.html
+        - text: "Μοντέλο Black-Scoles"
+          href: BlackScoles.html
+        - text: "Ταξική συνείδηση"
+          href: TaxikiSyneidisi.html
       - text: "Διδακτική των Στοχαστικών Μαθηματικών"
         menu:
         - text: "Επιπτώσεις των γραμμικών μετασχηματισμών στα μέτρα θέσης και διασποράς"
