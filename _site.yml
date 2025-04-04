@@ -170,6 +170,8 @@ navbar:
           href: BlackScoles.html
         - text: "Ταξική συνείδηση"
           href: TaxikiSyneidisi.html
+        - text: "Εξέλιξη ενός πολιτικού σχηματισμού"
+          href: PosoiParamenoyn.html
       - text: "Διδακτική των Στοχαστικών Μαθηματικών"
         menu:
         - text: "Επιπτώσεις των γραμμικών μετασχηματισμών στα μέτρα θέσης και διασποράς"
