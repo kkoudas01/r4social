@@ -123,6 +123,8 @@ navbar:
         href: aytokinhta.html
       - text: "Κύματα Kondratiev"
         href: kondratiev.html
+      - text: "Σιλούρια υπόθεση"
+        href: SilurianHypothesis.html
     - text: "Εντός εκτός κι επί τα αυτά"
       icon: fa-solid fa-mug-saucer
       menu:
@@ -156,22 +158,6 @@ navbar:
         menu:
         - text: "Μετατροπή λίστας ή πίνακα για το Mathematica"
           href: dataMathematica.html
-        - text: "Κούρσα εξοπλισμών"
-          href: exoplismoiW4SCI.html
-        - text: "Εξέλιξη κατανομής πολιτικού φάσματος"
-          href: politicsDistW4SCI.html
-        - text: "Ντετερμινιστικό μοντέλο από τυχαιοκρατικό"
-          href: FrobeniusPerron.html
-        - text: "Μοντελοποιώντας την κοινωνική διαστρωμάτωση"
-          href: fuzzySocSci.html
-        - text: "Εξέλιξη πολιτικών σχηματισμών"
-          href: aristeradaxia.html
-        - text: "Μοντέλο Black-Scoles"
-          href: BlackScoles.html
-        - text: "Ταξική συνείδηση"
-          href: TaxikiSyneidisi.html
-        - text: "Εξέλιξη ενός πολιτικού σχηματισμού"
-          href: PosoiParamenoyn.html
       - text: "Διδακτική των Στοχαστικών Μαθηματικών"
         menu:
         - text: "Επιπτώσεις των γραμμικών μετασχηματισμών στα μέτρα θέσης και διασποράς"
