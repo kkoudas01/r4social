@@ -863,7 +863,7 @@ ggplotly(katatheseisElitPlot1 +
   labs(title = "Οικογενειακές καταθέσεις βουλευτών ΝΔ ανά έτος") )
 ```
 
-## Λογαριθμική κλίμακα  {.unnumbered }
+### Λογαριθμική κλίμακα  {.unnumbered }
 
 ```{r, echo=FALSE, message=FALSE}
 ggplotly(katatheseisElitPlot1 +
@@ -873,7 +873,7 @@ ggplotly(katatheseisElitPlot1 +
 ```
 
 
-### {.unnumbered .toc-ignore}
+## {.unnumbered .toc-ignore}
 
 Κλείνοντας, ίσως να έχει ενδιαφέρον να δούμε τους βουλευτές που με τον έναν ή τον άλλο τρόπο (οικογενειακό εισόδημα, ατομικό, συζύγου) οφελήθηκαν από την άνοδο της ΝΔ στην εξουσία. 
 
