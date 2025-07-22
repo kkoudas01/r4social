@@ -863,7 +863,7 @@ ggplotly(katatheseisElitPlot1 +
   labs(title = "Οικογενειακές καταθέσεις βουλευτών ΝΔ ανά έτος") )
 ```
 
-### Λογαριθμική κλίμακα  {.unnumbered }
+## Λογαριθμική κλίμακα  {.unnumbered }
 
 ```{r, echo=FALSE, message=FALSE}
 ggplotly(katatheseisElitPlot1 +
@@ -871,6 +871,7 @@ ggplotly(katatheseisElitPlot1 +
   labs(title = "Οικογενειακές καταθέσεις βουλευτών ΝΔ ανά έτος") +
   scale_y_log10())
 ```
+
 
 ### {.unnumbered .toc-ignore}
 
