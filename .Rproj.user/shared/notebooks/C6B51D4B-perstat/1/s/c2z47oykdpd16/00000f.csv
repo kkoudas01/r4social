@@ -1,7 +1,0 @@
-"0","barplot(posa,"
-"0","        names.arg = etiketes,"
-"0","        main = ""Apasxolisi stoys antres"","
-"0","        xlab = ""xiliades andron"","
-"0","        ylab = ""ergasiaki katastasi"","
-"0","        col = ""blue"","
-"0","        horiz = TRUE)"

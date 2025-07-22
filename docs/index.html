@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>Στοχαστικά Μαθηματικά χωρίς… μαθηματικά για κοινωνικούς επιστήμονες με τη συνδρομή της R</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -35,8 +35,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -519,6 +519,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -622,7 +628,7 @@ div.tocify {
 <h1 class="title toc-ignore">Στοχαστικά Μαθηματικά χωρίς… μαθηματικά για
 κοινωνικούς επιστήμονες με τη συνδρομή της R</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -660,13 +666,14 @@ div.tocify {
 Μαθηματικά είναι τα εξής:</p>
 <ul>
 <li>«Πόσο πολύ σχετίζονται αυτά τα δύο μεγέθη;» (βλ. π.χ. <a
-href="perstat.html#2_Μέτρα_συσχέτισης">Μέτρα συσχέτισης</a>)</li>
+href="perstat.html#2_%CE%9C%CE%AD%CF%84%CF%81%CE%B1_%CF%83%CF%85%CF%83%CF%87%CE%AD%CF%84%CE%B9%CF%83%CE%B7%CF%82">Μέτρα
+συσχέτισης</a>)</li>
 <li>«Πόσο πιθανόν είναι να τύχαμε ένα τόσο ακραίο ποσοστό σε μια
 έρευνα;» (βλ. π.χ. [t-έλεγχος για το ποσοστό])</li>
 <li>«Ποιες είναι οι πιθανές πορείες ενός φαινομένου, αν θέλουμε να
 είμαστε 95% σίγουροι γι’ αυτό που θα προβλέψουμε;» (βλ. π.χ. <a
-href="#πρόβλεψη-χρονοσειρών-με-μοντέλα-arima">Πρόβλεψη χρονοσειρών με
-μοντέλα ARIMA</a>) κ.τ.λ.</li>
+href="#%CF%80%CF%81%CF%8C%CE%B2%CE%BB%CE%B5%CF%88%CE%B7-%CF%87%CF%81%CE%BF%CE%BD%CE%BF%CF%83%CE%B5%CE%B9%CF%81%CF%8E%CE%BD-%CE%BC%CE%B5-%CE%BC%CE%BF%CE%BD%CF%84%CE%AD%CE%BB%CE%B1-arima">Πρόβλεψη
+χρονοσειρών με μοντέλα ARIMA</a>) κ.τ.λ.</li>
 </ul>
 <p>Παρατηρούμε την απουσία απόλυτων προσδιορισμών: Ρωτήσαμε πόσο πολύ
 σχετίζονται, όχι αν σχετίζονται και περιμένοντας μιαν απάντηση
@@ -905,6 +912,8 @@ University Press, 2003.</li>
 τη συνεισφορά της Python</a>,</li>
 <li><a href="https://episthmonikesapanthseis.wordpress.com/">Καθημερινές
 ερωτήσεις, επιστημονικές απαντήσεις,</a></li>
+<li><a href="https://epipsayseis.pages.dev/">Επιψαύσεις</a>,</li>
+<li><a href="https://arkoudakafe.pages.dev/">Αρκούδα Καφέ</a>,</li>
 <li><a href="https://www.youtube.com/channel/UCEUIw1C3gFrwi1j-0b6Te7A">Η
 σελίδα μου στο YouTube</a>.</li>
 </ul>

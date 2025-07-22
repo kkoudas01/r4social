@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>t-έλεγχος για τη μέση τιμή</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -35,8 +35,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -620,6 +620,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -722,7 +728,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">t-έλεγχος για τη μέση τιμή</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -890,7 +896,8 @@ number="2">
 με τυπική απόκλιση 0.3733317€. Πάμε να κάνουμε τώρα μια εκτίμηση της
 μέσης τιμής του πληθυσμού. Προς τούτο θα χρησιμοποιήσουμε τη συνάρτηση
 <code>DiastEmpist()</code> που είχαμε δημιουργήσει παλαιότερα (βλ.
-ενότητα <a href="ektimMean.html#2_Διάστημα_εμπιστοσύνης">Διάστημα
+ενότητα <a
+href="ektimMean.html#2_%CE%94%CE%B9%CE%AC%CF%83%CF%84%CE%B7%CE%BC%CE%B1_%CE%B5%CE%BC%CF%80%CE%B9%CF%83%CF%84%CE%BF%CF%83%CF%8D%CE%BD%CE%B7%CF%82">Διάστημα
 εμπιστοσύνης</a>).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>DiastEmpist <span class="ot">&lt;-</span> <span class="cf">function</span>(mesi_timi, tipiki_apokl, plithos, pith) {</span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  s <span class="ot">&lt;-</span> tipiki_apokl<span class="sc">/</span><span class="fu">sqrt</span>(plithos)</span>
@@ -927,7 +934,8 @@ number="2">
 <h1><span class="header-section-number">3</span> Τιμή σημαντικότητας –
 (p-τιμή)</h1>
 <p>Πώς διαψεύδεται σ’ αυτή την περίπτωση η μηδενική υπόθεση; Στην
-ενότητα <a href="tTest.html#2_Τιμή_σημαντικότητας_–_(p-τιμή)">Τιμή
+ενότητα <a
+href="tTest.html#2_%CE%A4%CE%B9%CE%BC%CE%AE_%CF%83%CE%B7%CE%BC%CE%B1%CE%BD%CF%84%CE%B9%CE%BA%CF%8C%CF%84%CE%B7%CF%84%CE%B1%CF%82_%E2%80%93_(p-%CF%84%CE%B9%CE%BC%CE%AE)">Τιμή
 σημαντικότητας – (p-τιμή)</a> εξηγήσαμε πως η <span
 class="math inline">\(\boldsymbol{\mathcal{H}_0}\)</span> διαψεύδεται
 όταν καταλήγει να θεωρεί απίθανα τα γεγονότα που παρατηρούμε. Έτσι κι
@@ -991,7 +999,8 @@ number="4">
 <h1><span class="header-section-number">4</span> Επίπεδο σημαντικότητας
 – (α-τιμή)</h1>
 <p>Εναλλακτική προσέγγιση στο ζήτημα, όπως έχουμε δει και στην ενότητα
-<a href="tTest.html#3_Επίπεδο_σημαντικότητας_–_(α-τιμή)">Επίπεδο
+<a
+href="tTest.html#3_%CE%95%CF%80%CE%AF%CF%80%CE%B5%CE%B4%CE%BF_%CF%83%CE%B7%CE%BC%CE%B1%CE%BD%CF%84%CE%B9%CE%BA%CF%8C%CF%84%CE%B7%CF%84%CE%B1%CF%82_%E2%80%93_(%CE%B1-%CF%84%CE%B9%CE%BC%CE%AE)">Επίπεδο
 σημαντικότητας – (α-τιμή)</a>, θα ήταν να βρίσκαμε πρώτα το επίπεδο
 σημαντικότητας και κατόπιν να ελέγχαμε αν το δείγμα μας ήταν στατιστικά
 σημαντικό. Έτσι λοιπόν, όπως και εκεί, έτσι κι εδώ θα θεωρήσουμε ως

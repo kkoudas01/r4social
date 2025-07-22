@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>Ραβδόγραμμα</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -622,6 +622,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -724,7 +730,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Ραβδόγραμμα</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -907,7 +913,8 @@ number="4">
 κατάσταση των αντρών και των γυναικών μαζί. Προς τούτο θα χρειαστεί να
 αναδιαμορφώσουμε πάλι τον πίνακα. Αυτό θα γίνει ακολουθώντας τις οδηγίες
 από την ενότητα <a
-href="pinakes.html#4_Αναδιαμόρφωση_πίνακα">Αναδιαμόρφωση πίνακα</a>:</p>
+href="pinakes.html#4_%CE%91%CE%BD%CE%B1%CE%B4%CE%B9%CE%B1%CE%BC%CF%8C%CF%81%CF%86%CF%89%CF%83%CE%B7_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Αναδιαμόρφωση
+πίνακα</a>:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(reshape)){</span>
 <span id="cb18-2"><a href="#cb18-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;reshape&quot;</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" tabindex="-1"></a>    <span class="fu">library</span>(reshape)</span>
@@ -1032,9 +1039,9 @@ href="pinakes.html#4_Αναδιαμόρφωση_πίνακα">Αναδιαμόρ
 <p>Στην παρούσα ενότητα θ’ ασχοληθούμε με τον πίνακα
 <code>parabiaseis19</code> που φτιάξαμε στην ενότητα Συγχώνευση πινάκων
 κάτω-κάτω της ενότητας <a
-href="pinakes.html#3_Προσθήκη_στοιχείων_σε_πίνακα">Προσθήκη στοιχείων σε
-πίνακα</a>, αφού πρώτα διαγράψουμε τις μεταβλητές των προηγούμενων
-ενοτήτων:</p>
+href="pinakes.html#3_%CE%A0%CF%81%CE%BF%CF%83%CE%B8%CE%AE%CE%BA%CE%B7_%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CF%83%CE%B5_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Προσθήκη
+στοιχείων σε πίνακα</a>, αφού πρώτα διαγράψουμε τις μεταβλητές των
+προηγούμενων ενοτήτων:</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
 <p>Είχαμε, όπως είπαμε, τα κάτωθι αρχεία:</p>
 <ul>

@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>t-έλεγχος για το ποσοστό</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -622,6 +622,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -724,7 +730,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">t-έλεγχος για το ποσοστό</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -2786,13 +2792,14 @@ class="math inline">\(\boldsymbol{\mathcal{H}_0}\)</span>, αφού αυτή δ�
 <p>Παρατηρούμε ότι η δικιά μας περίπτωση, το 48.21% ξεφεύγει ήδη πολύ,
 από τα επιτρεπτά πλαίσια που οριοθετούν το σύνηθες από το σπάνιο. Ως εκ
 τούτου διαπιστώνουμε και πάλι (βλ. προηγούμενη ενότητα <a
-href="#τιμή-σημαντικότητας-p-τιμή">Τιμή σημαντικότητας – (p-τιμή)</a>)
-ότι κάτι το ξεχωριστό συμβαίνει στην περίπτωση των θανατοποινιτών, όσον
-αφορά τους λευκούς. Αυτό που μάς εκπλήσσει είναι ότι δεν θεωρούνται
-ύποπτες οι αναλογίες των λευκών της τάξης του 65%. Είναι αυτό δυνατόν;
-Αυτό το μεγάλο εύρος «φυσιολογικών» ποσοστών οφείλεται στο μικρό μέγεθος
-που πήραμε. Ενδεικτικά, αν το δείγμα μας αποτελούνταν από 500 άτομα κι
-όχι από 56, τότε ο υπολογισμός:</p>
+href="#%CF%84%CE%B9%CE%BC%CE%AE-%CF%83%CE%B7%CE%BC%CE%B1%CE%BD%CF%84%CE%B9%CE%BA%CF%8C%CF%84%CE%B7%CF%84%CE%B1%CF%82-p-%CF%84%CE%B9%CE%BC%CE%AE">Τιμή
+σημαντικότητας – (p-τιμή)</a>) ότι κάτι το ξεχωριστό συμβαίνει στην
+περίπτωση των θανατοποινιτών, όσον αφορά τους λευκούς. Αυτό που μάς
+εκπλήσσει είναι ότι δεν θεωρούνται ύποπτες οι αναλογίες των λευκών της
+τάξης του 65%. Είναι αυτό δυνατόν; Αυτό το μεγάλο εύρος «φυσιολογικών»
+ποσοστών οφείλεται στο μικρό μέγεθος που πήραμε. Ενδεικτικά, αν το
+δείγμα μας αποτελούνταν από 500 άτομα κι όχι από 56, τότε ο
+υπολογισμός:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">a_timiPos</span>(<span class="fl">0.755</span>, <span class="dv">500</span>, <span class="fl">0.05</span>)</span></code></pre></div>
 <pre><code>## [1] 0.7172102 0.7927898</code></pre>
 <p>θα μας έδινε ότι οι συνήθεις αναλογίες λευκών είναι ανάμεσα στα

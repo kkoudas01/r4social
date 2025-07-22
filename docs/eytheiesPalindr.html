@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>Ευθείες παλινδρόμησης</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -622,6 +622,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -724,7 +730,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Ευθείες παλινδρόμησης</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -6019,8 +6025,8 @@ NA
 </div>
 <p>Αυτά ενοποιήθηκαν, κατά τα γνωστά (βλ. υποενότητα «Συγχώνευση πινάκων
 δίπλα-δίπλα» της <a
-href="pinakes.html#3_Προσθήκη_στοιχείων_σε_πίνακα">Προσθήκη στοιχείων σε
-πίνακα</a>), γράφοντας:</p>
+href="pinakes.html#3_%CE%A0%CF%81%CE%BF%CF%83%CE%B8%CE%AE%CE%BA%CE%B7_%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CF%83%CE%B5_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Προσθήκη
+στοιχείων σε πίνακα</a>), γράφοντας:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>DocNurc <span class="ot">&lt;-</span> <span class="fu">merge</span>(doctorsPer1000,nurcesPer1000,<span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;LOCATION&quot;</span>,<span class="st">&quot;TIME&quot;</span>))</span></code></pre></div>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; ">
@@ -10498,7 +10504,7 @@ class="math display">\[[giatroi]=\alpha+\beta\cdot[nosok]\]</span></p>
 <p>Πόσο δυνατόν όμως είναι αυτό; Το πλήθος των γιατρών είναι γραμμικώς
 συσχετισμένο με το πλήθος των νοσοκόμων; Σύμφωνα με όσα έχουμε πει (βλ.
 ενότητα <a
-href="metrasysxetisis.html#1_Συντελεστής_γραμμικής_συσχέτισης_Pearson">Συντελεστής
+href="metrasysxetisis.html#1_%CE%A3%CF%85%CE%BD%CF%84%CE%B5%CE%BB%CE%B5%CF%83%CF%84%CE%AE%CF%82_%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%B9%CE%BA%CE%AE%CF%82_%CF%83%CF%85%CF%83%CF%87%CE%AD%CF%84%CE%B9%CF%83%CE%B7%CF%82_Pearson">Συντελεστής
 γραμμικής συσχέτισης Pearson</a>), γράφουμε:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">cor</span>(giatroi,nosok)</span></code></pre></div>
 <pre><code>## [1] 0.5528042</code></pre>
@@ -10549,7 +10555,7 @@ class="math inline">\([giatroi]=1.9248+0.1308\cdot[nosok]\)</span> δεν
 να σχεδιαστεί η εν λόγω ευθεία στην θα χρησιμοποιήσουμε την συνάρτηση
 <code>abline()</code>. Βέβαια, πριν την σχεδιάσουμε, πρέπει να ’χουμε
 ήδη φτιαγμένο ένα σύστημα συντεταγμένων, οπότε γράφουμε (βλ. ενότητα <a
-href="diagramSysxet.html#1_Διάγραμμα_διασποράς">Διάγραμμα
+href="diagramSysxet.html#1_%CE%94%CE%B9%CE%AC%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%B1_%CE%B4%CE%B9%CE%B1%CF%83%CF%80%CE%BF%CF%81%CE%AC%CF%82">Διάγραμμα
 διασποράς</a>):</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">plot</span>(giatroi <span class="sc">~</span> nosok)</span></code></pre></div>
 <p><img src="eytheiesPalindr_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
@@ -23753,7 +23759,8 @@ class="math inline">\([giatroi]=1.9248+0.1308\cdot[nosok]\)</span> κάνει
 ## F-statistic: 418.1 on 1 and 950 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>οπότε παίρνουμε την απάντηση
 <code>Residual standard error: 0.815</code>. Αυτό σημαίνει ότι (βλ. και
-ενότητα <a href="metradiasporas.html#21_Απομονωμένα_σημεία">Απομονωμένα
+ενότητα <a
+href="metradiasporas.html#21_%CE%91%CF%80%CE%BF%CE%BC%CE%BF%CE%BD%CF%89%CE%BC%CE%AD%CE%BD%CE%B1_%CF%83%CE%B7%CE%BC%CE%B5%CE%AF%CE%B1">Απομονωμένα
 σημεία</a>) ότι σχεδόν όλες οι μετρήσεις (περίπου το 88.8%) θα είναι σε
 απόσταση <span class="math inline">\(\pm 3\cdot 0.815\)</span> από αυτήν
 που προβλέπει η ευθεία γραμμικής παλινδρόμησης.</p>
@@ -23805,8 +23812,8 @@ class="math inline">\([giatroi]=1.9248+0.1308\cdot[nosok]\)</span> κάνει
 class="math display">\[[giatroi]=1.6962080+0.1466408\cdot[nosok]\]</span></p>
 <p>Το ίδιο μπορούμε να κάνουμε και με άλλα μέτρα θέσης, συγγενικά προς
 την διάμεσο, τα ποσοστημόρια (βλ. ενότητα <a
-href="metrathesis.html#3_Τεταρτημόρια_–_Ποσοστημόρια">Τεταρτημόρια –
-Ποσοστημόρια</a>). Θέλοντας μία ευθεία που να προσεγγίζει π.χ. το
+href="metrathesis.html#3_%CE%A4%CE%B5%CF%84%CE%B1%CF%81%CF%84%CE%B7%CE%BC%CF%8C%CF%81%CE%B9%CE%B1_%E2%80%93_%CE%A0%CE%BF%CF%83%CE%BF%CF%83%CF%84%CE%B7%CE%BC%CF%8C%CF%81%CE%B9%CE%B1">Τεταρτημόρια
+– Ποσοστημόρια</a>). Θέλοντας μία ευθεία που να προσεγγίζει π.χ. το
 0.15-ποσοστημόριο μπορούμε να συμπληρώσουμε την παράμετρο
 <code>tau=</code>, δηλαδή γράφουμε:</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">rq</span>(giatroi <span class="sc">~</span> nosok, <span class="at">tau =</span> <span class="fl">0.15</span>)</span></code></pre></div>

@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>Μελέτη εποχικότητας</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -622,6 +622,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -724,7 +730,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μελέτη εποχικότητας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -3303,9 +3309,10 @@ class="section level1" number="2">
 βάσει διαπιστώσεων εποχικότητας</h1>
 <p>Στο σημείο αυτό είμαστε σε θέση να εισάγουμε τον χρόνο στις
 χρονοσειρές μας. Θα ακολουθήσουμε τη <a
-href="timeBasic.html#2_Καταχώρηση_χρονοσειράς">γνωστή πορεία</a>, με μία
-διαφορά στην τιμή της παραμέτρου <code>freq</code>. Στην ενότητα <a
-href="timeBasic.html#2_Καταχώρηση_χρονοσειράς">Καταχώρηση
+href="timeBasic.html#2_%CE%9A%CE%B1%CF%84%CE%B1%CF%87%CF%8E%CF%81%CE%B7%CF%83%CE%B7_%CF%87%CF%81%CE%BF%CE%BD%CE%BF%CF%83%CE%B5%CE%B9%CF%81%CE%AC%CF%82">γνωστή
+πορεία</a>, με μία διαφορά στην τιμή της παραμέτρου <code>freq</code>.
+Στην ενότητα <a
+href="timeBasic.html#2_%CE%9A%CE%B1%CF%84%CE%B1%CF%87%CF%8E%CF%81%CE%B7%CF%83%CE%B7_%CF%87%CF%81%CE%BF%CE%BD%CE%BF%CF%83%CE%B5%CE%B9%CF%81%CE%AC%CF%82">Καταχώρηση
 χρονοσειράς</a> αναφέραμε ότι η <code>freq</code> είναι κατά το μάλλον ή
 ήττον για να περιγράφουμε το χρόνο που εξελίσσεται η χρονοσειρά μας.
 Στην πραγματικότητα η <code>freq</code> περιγράφει τον χρόνο ενός κύκλου
@@ -3483,8 +3490,8 @@ Lomb-Scargle</strong>.</p>
 μας με μια λίστα ημιτονοειδών χρονοσειρών διαφόρων συχνοτήτων. Οι
 συγκρίσεις γίνονται μέσω του τεστ <span
 class="math inline">\(\chi^2\)</span> (βλ. <a
-href="findDist.html#3_Έλεγχος_χ2_για_διακριτές_κατανομές">Έλεγχος χ2 για
-διακριτές κατανομές</a>).</p>
+href="findDist.html#3_%CE%88%CE%BB%CE%B5%CE%B3%CF%87%CE%BF%CF%82_%CF%872_%CE%B3%CE%B9%CE%B1_%CE%B4%CE%B9%CE%B1%CE%BA%CF%81%CE%B9%CF%84%CE%AD%CF%82_%CE%BA%CE%B1%CF%84%CE%B1%CE%BD%CE%BF%CE%BC%CE%AD%CF%82">Έλεγχος
+χ2 για διακριτές κατανομές</a>).</p>
 <p>Τέλος πάντων, ας το δούμε και πρακτικά. Για να το φτιάξουμε θα
 χρειαστούμε το πακέτο <code>lomb</code>:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lomb)){</span>

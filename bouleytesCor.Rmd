@@ -1,0 +1,808 @@
+---
+title: "Συσχέτιση καταθέσεων βουλευτών"
+author: "Κώστας Κούδας"
+cache: TRUE
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+```
+
+<div class="alert-danger">⚠️️ΥΠΟ ΚΑΤΑΣΚΕΥΗ⚠️</div>
+
+
+
+Αν εξερέσουμε κάποιες μεμονωμένες περιπτώσεις (όπως των βουλευτών Μαρτίνου Γεωργία, Κυριάκος Μητσοτάκης, Θεοδώδρα Μπακογιάννη, Βασίλειος Κικίλιας, Μάκης Βορίδης, Νικόλαος Δένδιας, Νίκη Κεραμέως), δεν παρατηρήθηκε κάποια γενική τέτοια εισοδηματική αύξηση σε όλα τα μέλη της ΝΔ με την άνοδό τους στην εξουσία.
+
+
+
+
+
+
+```{r, echo=FALSE, message=FALSE}
+# Δειώχνουμε ΝΑ
+
+pothen_esxes_totalNoNA <- pothen_esxes_total[!is.na(pothen_esxes_total$ΕΙΣΟΔΗΜΑ)
+,]
+pothen_esxes_totalNoNA <- pothen_esxes_totalNoNA[!is.na(pothen_esxes_totalNoNA$ΚΟΜΜΑ),]
+
+
+
+# Ταυτιζουμε τα ΠΑΣΟΚ
+
+pothen_esxes_totalNoNA$ΚΟΜΜΑ[pothen_esxes_totalNoNA$ΚΟΜΜΑ == "ΠΑΣΟΚ-Κίνημα Αλλαγής"] <- "Πανελλήνιο Σοσιαλιστικό Κίνημα"
+```
+
+```{r, echo=FALSE, message=FALSE}
+pothen_esxes_filtered <- pothen_esxes_totalNoNA
+```
+
+
+
+```{r, echo=FALSE, message=FALSE}
+# Αυτό διασφαλίζει ότι ψάχνουμε για την πλήρη 7ετία 2015-2021
+desired_years <- 2015:2021
+num_desired_years <- length(desired_years)
+
+# Προαιρετικό: Φιλτράρουμε το dataframe ώστε να περιέχει μόνο τα έτη που μας ενδιαφέρουν
+pothen_esxes_filtered <- pothen_esxes_filtered %>%
+  filter(ΕΤΟΣ_ΧΡΗΣΗΣ %in% desired_years)
+
+# 3. Βρίσκουμε τους βουλευτές που έχουν καταγραφές για ΟΛΑ τα επιθυμητά έτη
+vouleutes_all_years <- pothen_esxes_filtered %>%
+  group_by(ΚΩΔΙΚΟ_ΟΝΟΜΑ) %>%
+  # Μετράμε τις μοναδικές χρονιές για κάθε βουλευτή
+  summarise(num_years_recorded = n_distinct(ΕΤΟΣ_ΧΡΗΣΗΣ)) %>%
+  # Κρατάμε μόνο αυτούς που έχουν καταγραφές όσες και οι επιθυμητές χρονιές
+  filter(num_years_recorded == num_desired_years) %>%
+  pull(ΚΩΔΙΚΟ_ΟΝΟΜΑ)
+
+# 4. Δημιουργούμε το τελικό dataframe
+pothen_esxes_complete_years <- pothen_esxes_filtered %>%
+  filter(ΚΩΔΙΚΟ_ΟΝΟΜΑ %in% vouleutes_all_years)
+```
+
+```{r}
+pothen_esxes_complete_years$diafora <- pothen_esxes_complete_years$ΚΑΤΑΘΕΣΕΙΣ-pothen_esxes_complete_years$ΕΙΣΟΔΗΜΑ
+```
+
+```{r}
+pothen_esxes_ND <- pothen_esxes_complete_years[pothen_esxes_complete_years$ΚΟΜΜΑ=="Νέα Δημοκρατία",]
+pothen_esxes_KKE <- pothen_esxes_complete_years[pothen_esxes_complete_years$ΚΟΜΜΑ=="Κομμουνιστικό Κόμμα Ελλάδος",]
+```
+
+```{r, echo=FALSE, message=FALSE}
+eisodimaCommaPlot <- ggplot(pothen_esxes_ND, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=ΕΙΣΟΔΗΜΑ, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))
+
+ggplotly(eisodimaCommaPlot +
+  geom_line(colour="blue") +
+  labs(title = "Εισόδημα Βουλευτών ΝΔ ανά Έτος"))
+```
+
+Από αυτή την άποψη στράφηκα προς τις καταθέσεις των βουλευτών.
+
+```{r, echo=FALSE, message=FALSE}
+katatheseisCommaPlot <- ggplot(pothen_esxes_ND, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=ΚΑΤΑΘΕΣΕΙΣ, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))
+
+ggplotly(katatheseisCommaPlot +
+  geom_line(colour="blue") +
+  labs(title = "Καταθέσεις Βουλευτών ΝΔ ανά Έτος"))
+```
+
+```{r, echo=FALSE, message=FALSE}
+katatheseisCommaPlot <- ggplot(pothen_esxes_ND, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=diafora, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))
+
+ggplotly(katatheseisCommaPlot +
+  geom_line(colour="blue") +
+  labs(title = "Καταθέσεις Βουλευτών ΝΔ ανά Έτος"))
+```
+
+
+Αρκετά, όμως, φλιαρήσαμε. Ας δούμε τα δεδομένα μας. Αρχικά παραθέτουμε τα αναλυτικά στοιχεία του εισοδήματος μόνο κάποιων τυχαία επιλεγμένων βουλευτών, διότι η παρουσίαση του πίνακα με όλα τα στοιχεία όλων των βουλευτών διόγκωνε δραματικά την εκτέλεση του κώδικα. Φυσικά, η μελέτη μας δεν θα αρκεστεί σε αυτά τα λίγα ονόματα. Τέλος, πριν προχωρήσουμε, να επισημάνουμε πως οι γραμμές που στη στήλη `ΣΥΖΥΓΟΣ` γράφουν `1` αφορούν το εισόδημα του συζύγου κι όχι του βουλευτή.
+
+
+
+
+Αποφασίσαμε να διώξουμε από τη μελέτη μας τις περιπτώσεις που δεν υπήρχε καταγεγραμμένο κόμμα. Επίσης, για λόγους απλοποίησης της διαδικασίας, ταυτίσαμε τα `"Πανελλήνιο Σοσιαλιστικό Κίνημα"` και `"ΠΑΣΟΚ-Κίνημα Αλλαγής"`.
+
+
+
+
+
+```{r, echo=FALSE, message=FALSE}
+peAllWide <- dcast(pothen_esxes_complete_years, ΕΤΟΣ_ΧΡΗΣΗΣ ~ ΚΩΔΙΚΟ_ΟΝΟΜΑ, value.var="ΚΑΤΑΘΕΣΕΙΣ")
+peNDWide <- dcast(pothen_esxes_ND, ΕΤΟΣ_ΧΡΗΣΗΣ ~ ΚΩΔΙΚΟ_ΟΝΟΜΑ, value.var="ΚΑΤΑΘΕΣΕΙΣ")
+peKKEWide <- dcast(pothen_esxes_KKE, ΕΤΟΣ_ΧΡΗΣΗΣ ~ ΚΩΔΙΚΟ_ΟΝΟΜΑ, value.var="ΚΑΤΑΘΕΣΕΙΣ")
+dentrogramma <- function(stiles){
+  stiles <- stiles %>% select_if(~ !any(is.na(.)))
+  stiles_m <- as.matrix(stiles)
+  stiles_m.t <- t(stiles_m)
+  dist.stiles_m <- dist(stiles_m.t, diag = TRUE, upper = TRUE)
+  dist.stiles_m <- as.matrix(dist.stiles_m)
+  pheatmap(dist.stiles_m)
+}
+```
+
+
+```{r, echo=FALSE, message=FALSE}
+dentrogramma(peAllWide[,-1])
+```
+
+
+```{r}
+interactive_dentrogramma <- function(stiles) {
+  # Επιλέγουμε στήλες που δεν έχουν ΚΑΘΟΛΟΥ τιμές ΝΑ (όπως στον κώδικά σας)
+  stiles_no_na <- stiles %>% select_if(~ !any(is.na(.)))
+  
+  # Μετατροπή σε matrix
+  stiles_m <- as.matrix(stiles_no_na)
+  
+  # Ανάστροφος πίνακας για να υπολογίσουμε τις αποστάσεις μεταξύ των ΚΩΔΙΚΟ_ΟΝΟΜΑ
+  stiles_m_t <- t(stiles_m)
+  
+  # Δημιουργία του διαδραστικού χάρτη θερμότητας.
+  # Το heatmaply θα υπολογίσει αυτόματα τις αποστάσεις και θα κάνει την ομαδοποίηση (clustering).
+  # Το αποτέλεσμα είναι ένα αντικείμενο HTML widget που ενσωματώνεται στο R Markdown.
+  heatmaply(
+    stiles_m_t,
+    main = "Διαδραστικό Δεντρόγραμμα & Μήτρα Αποστάσεων",
+    xlab = "Κωδικοί",
+    ylab = "Κωδικοί",
+    #width = "100%", # Για να πιάνει όλο το πλάτος του container
+    #height = 800,   # Μπορείτε να προσαρμόσετε το ύψος
+    showticklabels = c(FALSE, FALSE), # Απόκρυψη ετικετών από τους άξονες (θα φαίνονται στο hover)
+    k_col = 5, # Μπορείτε να ορίσετε τον αριθμό των ομάδων για χρωματισμό
+    k_row = 5
+  )
+}
+
+# --- Βήμα 4: Εκτέλεση της συνάρτησης ---
+
+# Καλούμε τη συνάρτηση περνώντας τα δεδομένα χωρίς την πρώτη στήλη (ΕΤΟΣ_ΧΡΗΣΗΣ)
+interactive_dentrogramma(peKKEWide[, -1])
+```
+
+```{r}
+custom_distance <- function(u, v) {
+  # u και v είναι τα διανύσματα (οι στήλες) των δεδομένων
+  
+  # Ενώνουμε τα δύο διανύσματα για τον υπολογισμό του συνολικού μέσου όρου
+  combined_vector <- c(u, v)
+  
+  # Υπολογίζουμε τον μέσο όρο των ενωμένων διανυσμάτων
+  m <- mean(combined_vector)
+  
+  # Υπολογίζουμε την άθροιση των τετραγώνων των διαφορών
+  sum_of_squares <- sum(((u + v)/2 - m)^2)
+  
+  # Επιστρέφουμε την απόσταση σύμφωνα με τον τύπο σου
+  dist_val <- sqrt(sum_of_squares)
+  
+  return(dist_val)
+}
+dentrogramma2 <- function(stiles) {
+  stiles_no_na <- stiles %>% select_if(~ !any(is.na(.)))
+  stiles_m <- as.matrix(stiles_no_na)
+  stiles_m.t <- t(stiles_m) # Οι αρχικές στήλες γίνονται γραμμές εδώ
+  
+  # Παίρνουμε τα ονόματα των στηλών (τώρα γραμμές στον ανάστροφο πίνακα)
+  col_names <- colnames(stiles_no_na)
+  num_cols <- ncol(stiles_no_na)
+  
+  # Δημιουργούμε μια κενή μήτρα για τις προσαρμοσμένες αποστάσεις
+  custom_dist_matrix <- matrix(0, nrow = num_cols, ncol = num_cols)
+  colnames(custom_dist_matrix) <- col_names
+  rownames(custom_dist_matrix) <- col_names
+  
+  # Υπολογίζουμε τις αποστάσεις
+  for (i in 1:num_cols) {
+    for (j in i:num_cols) { # Ξεκινάμε από i για να υπολογίσουμε μόνο το πάνω τρίγωνο (και τη διαγώνιο)
+      if (i == j) {
+        custom_dist_matrix[i, j] <- 0 # Η απόσταση ενός διανύσματος από τον εαυτό του είναι 0
+      } else {
+        # Εδώ καλούμε την προσαρμοσμένη συνάρτηση απόστασης
+        dist_val <- custom_distance(stiles_m.t[i, ], stiles_m.t[j, ])
+        custom_dist_matrix[i, j] <- dist_val
+        custom_dist_matrix[j, i] <- dist_val # Η μήτρα αποστάσεων είναι συμμετρική
+      }
+    }
+  }
+  
+  # Χρησιμοποιούμε pheatmap για την απεικόνιση της προσαρμοσμένης μήτρας αποστάσεων
+  pheatmap(custom_dist_matrix, 
+           main = "Δεντρόγραμμα με Προσαρμοσμένη Απόσταση",
+           clustering_distance_rows = as.dist(custom_dist_matrix), # Χρησιμοποιούμε τη δική μας απόσταση για clustering
+           clustering_distance_cols = as.dist(custom_dist_matrix)) # Και για τις στήλες
+}
+interactive_dentrogramma2 <- function(stiles) {
+  stiles_no_na <- stiles %>% select_if(~ !any(is.na(.)))
+  stiles_m <- as.matrix(stiles_no_na)
+  stiles_m.t <- t(stiles_m) # Οι αρχικές στήλες γίνονται γραμμές εδώ
+  
+  col_names <- colnames(stiles_no_na)
+  num_cols <- ncol(stiles_no_na)
+  
+  custom_dist_matrix <- matrix(0, nrow = num_cols, ncol = num_cols)
+  colnames(custom_dist_matrix) <- col_names
+  rownames(custom_dist_matrix) <- col_names
+  
+  # Υπολογίζουμε τις αποστάσεις με τη δική μας συνάρτηση
+  for (i in 1:num_cols) {
+    for (j in i:num_cols) {
+      if (i == j) {
+        custom_dist_matrix[i, j] <- 0
+      } else {
+        dist_val <- custom_distance(stiles_m.t[i, ], stiles_m.t[j, ])
+        custom_dist_matrix[i, j] <- dist_val
+        custom_dist_matrix[j, i] <- dist_val
+      }
+    }
+  }
+  
+  # Το heatmaply χρειάζεται ένα αντικείμενο 'dist' για clustering,
+  # οπότε μετατρέπουμε τη μήτρα μας σε αντικείμενο 'dist'.
+  custom_dist_obj <- as.dist(custom_dist_matrix)
+  
+  # Δημιουργία του διαδραστικού χάρτη θερμότητας
+  heatmaply(
+    custom_dist_matrix, # Περάστε τη μήτρα αποστάσεων απευθείας
+    main = "Διαδραστικό Δεντρόγραμμα & Μήτρα Αποστάσεων (Προσαρμοσμένη Απόσταση)",
+    xlab = "Κωδικοί",
+    ylab = "Κωδικοί",
+    height = 800,
+    showticklabels = c(FALSE, FALSE),
+    # Χρησιμοποιούμε τη δική μας μήτρα αποστάσεων για το clustering
+    distfun_row = function(x) custom_dist_obj, # x είναι ο πίνακας, επιστρέφουμε το dist object
+    distfun_col = function(x) custom_dist_obj,
+    k_col = 5,
+    k_row = 5
+  )
+}
+```
+
+```{r}
+dentrogramma2(peKKEWide[, -1])
+```
+
+```{r}
+dr_distance <- function(u, v) {
+  # Υπολογισμός συσχέτισης Pearson
+  correlation_val <- cor(u, v, method = "pearson")
+
+  if (correlation_val > 0) {
+    # Θετική συσχέτιση: Ευκλείδεια απόσταση
+    dist_val <- dist(rbind(u, v), method = "euclidean")
+  } else {
+    # Αρνητική ή μηδενική συσχέτιση: Η custom_distance που όρισες
+    # custom_distance <- function(u, v) { ... }
+    
+    # Ενώνουμε τα δύο διανύσματα για τον υπολογισμό του συνολικού μέσου όρου
+    combined_vector <- c(u, v)
+    
+    # Υπολογίζουμε τον μέσο όρο των ενωμένων διανυσμάτων
+    m <- mean(combined_vector)
+    
+    # Υπολογίζουμε την άθροιση των τετραγώνων των διαφορών
+    sum_of_squares <- sum(((u + v)/2 - m)^2)
+    
+    # Επιστρέφουμε την απόσταση σύμφωνα με τον τύπο σου
+    dist_val <- sqrt(sum_of_squares)
+  }
+  
+  return(as.numeric(dist_val)) # Επιστρέφουμε αριθμητική τιμή
+}
+dentrogramma3 <- function(stiles) {
+  # Φιλτράρισμα στηλών χωρίς NA
+  stiles_no_na <- stiles %>% select_if(~ !any(is.na(.)))
+  
+  # Μετατροπή σε μήτρα και ανάστροφος (ώστε οι αρχικές στήλες να είναι γραμμές)
+  stiles_m <- as.matrix(stiles_no_na)
+  stiles_m.t <- t(stiles_m)
+  
+  # Ονόματα στηλών (τώρα γραμμές στον ανάστροφο πίνακα)
+  col_names <- colnames(stiles_no_na)
+  num_cols <- ncol(stiles_no_na)
+  
+  # Δημιουργία κενής μήτρας για τις προσαρμοσμένες αποστάσεις
+  dr_dist_matrix <- matrix(0, nrow = num_cols, ncol = num_cols)
+  colnames(dr_dist_matrix) <- col_names
+  rownames(dr_dist_matrix) <- col_names
+  
+  # Υπολογισμός αποστάσεων με τη νέα μετρική 'dr'
+  for (i in 1:num_cols) {
+    for (j in i:num_cols) {
+      if (i == j) {
+        dr_dist_matrix[i, j] <- 0
+      } else {
+        # Κλήση της προσαρμοσμένης συνάρτησης απόστασης dr_distance
+        dist_val <- dr_distance(stiles_m.t[i, ], stiles_m.t[j, ])
+        dr_dist_matrix[i, j] <- dist_val
+        dr_dist_matrix[j, i] <- dist_val # Η μήτρα αποστάσεων είναι συμμετρική
+      }
+    }
+  }
+  
+  # Απεικόνιση με pheatmap
+  pheatmap(dr_dist_matrix, 
+           main = "Δεντρόγραμμα με Προσαρμοσμένη Μετρική 'dr'",
+           clustering_distance_rows = as.dist(dr_dist_matrix),
+           clustering_distance_cols = as.dist(dr_dist_matrix))
+}
+interactive_dentrogramma3 <- function(stiles) {
+  # Φιλτράρισμα στηλών χωρίς NA
+  stiles_no_na <- stiles %>% select_if(~ !any(is.na(.)))
+  
+  # Μετατροπή σε μήτρα και ανάστροφος
+  stiles_m <- as.matrix(stiles_no_na)
+  stiles_m.t <- t(stiles_m)
+  
+  # Ονόματα στηλών
+  col_names <- colnames(stiles_no_na)
+  num_cols <- ncol(stiles_no_na)
+  
+  # Δημιουργία κενής μήτρας για τις προσαρμοσμένες αποστάσεις
+  dr_dist_matrix <- matrix(0, nrow = num_cols, ncol = num_cols)
+  colnames(dr_dist_matrix) <- col_names
+  rownames(dr_dist_matrix) <- col_names
+  
+  # Υπολογισμός αποστάσεων με τη νέα μετρική 'dr'
+  for (i in 1:num_cols) {
+    for (j in i:num_cols) {
+      if (i == j) {
+        dr_dist_matrix[i, j] <- 0
+      } else {
+        # Κλήση της προσαρμοσμένης συνάρτησης απόστασης dr_distance
+        dist_val <- dr_distance(stiles_m.t[i, ], stiles_m.t[j, ])
+        dr_dist_matrix[i, j] <- dist_val
+        dr_dist_matrix[j, i] <- dist_val
+      }
+    }
+  }
+  
+  # Μετατροπή της μήτρας αποστάσεων σε αντικείμενο 'dist'
+  dr_dist_obj <- as.dist(dr_dist_matrix)
+  
+  # Δημιουργία του διαδραστικού χάρτη θερμότητας με heatmaply
+  heatmaply(
+    dr_dist_matrix, # Περάστε τη μήτρα αποστάσεων απευθείας
+    main = "Διαδραστικό Δεντρόγραμμα & Μήτρα Αποστάσεων (Μετρική 'dr')",
+    xlab = "Κωδικοί",
+    ylab = "Κωδικοί",
+    height = 800,
+    showticklabels = c(FALSE, FALSE),
+    # Χρησιμοποιούμε τη δική μας μήτρα αποστάσεων για το clustering
+    distfun_row = function(x) dr_dist_obj,
+    distfun_col = function(x) dr_dist_obj,
+    k_col = 5,
+    k_row = 5
+  )
+}
+```
+
+```{r}
+interactive_dentrogramma3(peNDWide[, -1])
+```
+
+```{r}
+dentrogramma3_with_clusters_formatted <- function(stiles, k_clusters = 5) {
+  # (Ο ίδιος κώδικας για τον υπολογισμό της dr_dist_matrix)
+  stiles_no_na <- stiles %>% select_if(~ !any(is.na(.)))
+  stiles_m <- as.matrix(stiles_no_na)
+  stiles_m.t <- t(stiles_m)
+  
+  col_names <- colnames(stiles_no_na)
+  num_cols <- ncol(stiles_no_na)
+  
+  dr_dist_matrix <- matrix(0, nrow = num_cols, ncol = num_cols)
+  colnames(dr_dist_matrix) <- col_names
+  rownames(dr_dist_matrix) <- col_names
+  
+  dr_distance <- function(u, v) {
+    correlation_val <- cor(u, v, method = "pearson")
+    if (correlation_val > 0) {
+      dist_val <- dist(rbind(u, v), method = "euclidean")
+    } else {
+      combined_vector <- c(u, v)
+      m <- mean(combined_vector)
+      sum_of_squares <- sum(((u + v)/2 - m)^2)
+      dist_val <- sqrt(sum_of_squares)
+    }
+    return(as.numeric(dist_val))
+  }
+
+  for (i in 1:num_cols) {
+    for (j in i:num_cols) {
+      if (i == j) {
+        dr_dist_matrix[i, j] <- 0
+      } else {
+        dist_val <- dr_distance(stiles_m.t[i, ], stiles_m.t[j, ])
+        dr_dist_matrix[i, j] <- dist_val
+        dr_dist_matrix[j, i] <- dist_val
+      }
+    }
+  }
+  
+  dr_dist_obj <- as.dist(dr_dist_matrix)
+  
+  pheatmap_result <- pheatmap(dr_dist_matrix, 
+                              main = "Δεντρόγραμμα με Προσαρμοσμένη Μετρική 'dr'",
+                              clustering_distance_rows = dr_dist_obj,
+                              clustering_distance_cols = dr_dist_obj)
+  
+  clusters <- cutree(pheatmap_result$tree_col, k = k_clusters)
+  
+  # *** ΝΕΟ: Μορφοποίηση των αποτελεσμάτων των ομάδων ***
+  
+  # Δημιουργούμε μια κενή λίστα για να αποθηκεύσουμε τα μορφοποιημένα strings
+  formatted_clusters_list <- list()
+  
+  # Βρίσκουμε τους μοναδικούς αριθμούς ομάδων
+  unique_cluster_ids <- sort(unique(clusters))
+  
+  for (cluster_id in unique_cluster_ids) {
+    # Βρίσκουμε τα ονόματα των στοιχείων που ανήκουν στην τρέχουσα ομάδα
+    members <- names(clusters[clusters == cluster_id])
+    
+    # Ενώνουμε τα ονόματα με κόμμα και κενό
+    members_string <- paste(members, collapse = ", ")
+    
+    # Προσθέτουμε στην τελική λίστα
+    formatted_clusters_list[[paste0("Ομάδα", cluster_id)]] <- members_string
+  }
+  
+  return(formatted_clusters_list)
+}
+interactive_dentrogramma3_with_clusters_formatted <- function(stiles, k_clusters = 5) {
+  # (Ο ίδιος κώδικας για τον υπολογισμό της dr_dist_matrix και dr_distance)
+  stiles_no_na <- stiles %>% select_if(~ !any(is.na(.)))
+  stiles_m <- as.matrix(stiles_no_na)
+  stiles_m.t <- t(stiles_m)
+  
+  col_names <- colnames(stiles_no_na)
+  num_cols <- ncol(stiles_no_na)
+  
+  dr_dist_matrix <- matrix(0, nrow = num_cols, ncol = num_cols)
+  colnames(dr_dist_matrix) <- col_names
+  rownames(dr_dist_matrix) <- col_names
+  
+  dr_distance <- function(u, v) {
+    correlation_val <- cor(u, v, method = "pearson")
+    if (correlation_val > 0) {
+      dist_val <- dist(rbind(u, v), method = "euclidean")
+    } else {
+      combined_vector <- c(u, v)
+      m <- mean(combined_vector)
+      sum_of_squares <- sum(((u + v)/2 - m)^2)
+      dist_val <- sqrt(sum_of_squares)
+    }
+    return(as.numeric(dist_val))
+  }
+
+  for (i in 1:num_cols) {
+    for (j in i:num_cols) {
+      if (i == j) {
+        dr_dist_matrix[i, j] <- 0
+      } else {
+        dist_val <- dr_distance(stiles_m.t[i, ], stiles_m.t[j, ])
+        dr_dist_matrix[i, j] <- dist_val
+        dr_dist_matrix[j, i] <- dist_val
+      }
+    }
+  }
+  
+  dr_dist_obj <- as.dist(dr_dist_matrix)
+  hclust_result <- hclust(dr_dist_obj, method = "complete")
+  
+  # Δημιουργία του διαδραστικού χάρτη θερμότητας με heatmaply (οπτικοποίηση)
+  heatmaply(
+    dr_dist_matrix,
+    main = "Διαδραστικό Δεντρόγραμμα & Μήτρα Αποστάσεων (Μετρική 'dr')",
+    xlab = "Κωδικοί",
+    ylab = "Κωδικοί",
+    height = 800,
+    showticklabels = c(FALSE, FALSE),
+    Rowv = as.dendrogram(hclust_result),
+    Colv = as.dendrogram(hclust_result),
+    k_col = k_clusters,
+    k_row = k_clusters
+  )
+  
+  clusters <- cutree(hclust_result, k = k_clusters)
+  
+  # *** ΝΕΟ: Μορφοποίηση των αποτελεσμάτων των ομάδων ***
+  
+  formatted_clusters_list <- list()
+  unique_cluster_ids <- sort(unique(clusters))
+  
+  for (cluster_id in unique_cluster_ids) {
+    members <- names(clusters[clusters == cluster_id])
+    members_string <- paste(members, collapse = ", ")
+    formatted_clusters_list[[paste0("Ομάδα", cluster_id)]] <- members_string
+  }
+  
+  return(formatted_clusters_list)
+}
+```
+
+```{r}
+# Παράδειγμα χρήσης:
+clusters_formatted_interactive <- interactive_dentrogramma3_with_clusters_formatted(peAllWide[,-1], k_clusters = 7)
+print(clusters_formatted_interactive)
+
+# Παράδειγμα χρήσης:
+clusters_formatted_dendro <- dentrogramma3_with_clusters_formatted(peNDWide[,-1], k_clusters = 7)
+print(clusters_formatted_dendro)
+```
+
+```{r}
+present_clusters_nicely_table <- function(clusters_list) {
+  # Μετατροπή της λίστας σε data frame
+  cluster_df <- tibble(
+    Ομάδα = names(clusters_list),
+    Στοιχεία = unlist(clusters_list)
+  )
+  
+  # Δημιουργία πίνακα με knitr::kable και μορφοποίηση με kableExtra
+  cluster_df %>%
+    kable("html", escape = FALSE) %>% # 'html' για R Markdown, 'latex' για PDF
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), 
+                  full_width = F) %>%
+    column_spec(1, bold = T, width = "10em") %>% # Έντονη γραφή για την στήλη Ομάδα
+    column_spec(2, width = "30em") %>%
+    add_header_above(c("Αποτελέσματα Ομαδοποίησης" = 2), bold = T) %>%
+    footnote(paste0("Σύνολο Ομάδων: ", length(clusters_list)))
+}
+```
+
+```{r}
+
+# Κλήση της συνάρτησης για παρουσίαση:
+present_clusters_nicely_table(clusters_formatted_dendro)
+present_clusters_nicely_table(clusters_formatted_interactive)
+```
+
+```{r, echo=FALSE, message=FALSE}
+
+automate_correlation_analysis <- function(data) {
+  # 1. Μετατροπή δεδομένων σε ευρεία μορφή
+  katatheseis_wide <- data %>%
+    dplyr::select(ΕΤΟΣ_ΧΡΗΣΗΣ, ΚΩΔΙΚΟ_ΟΝΟΜΑ, ΚΑΤΑΘΕΣΕΙΣ) %>%
+    pivot_wider(names_from = ΚΩΔΙΚΟ_ΟΝΟΜΑ, values_from = ΚΑΤΑΘΕΣΕΙΣ, id_cols = ΕΤΟΣ_ΧΡΗΣΗΣ)
+
+  # Αφαίρεση της στήλης ΕΤΟΣ_ΧΡΗΣΗΣ πριν τον υπολογισμό συσχέτισης
+  katatheseis_for_cor <- katatheseis_wide %>%
+    dplyr::select(-ΕΤΟΣ_ΧΡΗΣΗΣ)
+
+  # Έλεγχος για μη-αριθμητικές στήλες (αν και η pivot_wider θα πρέπει να διασφαλίζει αριθμητικές τιμές για τις καταθέσεις)
+  # και μετατροπή τους σε αριθμητικές αν χρειάζεται.
+  # Αυτό είναι σημαντικό αν τα αρχικά δεδομένα έχουν λανθασμένο τύπο δεδομένων.
+  if (any(!sapply(katatheseis_for_cor, is.numeric))) {
+    warning("Μη-αριθμητικές στήλες εντοπίστηκαν και μετατράπηκαν σε αριθμητικές. Ελέγξτε τα αρχικά σας δεδομένα.")
+    katatheseis_for_cor <- as.data.frame(lapply(katatheseis_for_cor, as.numeric))
+  }
+
+  # Έλεγχος για NA τιμές και χειρισμός τους.
+  # Χρησιμοποιούμε use = "pairwise.complete.obs" για να χειριστούμε τα NA στις συσχετίσεις.
+  # Αυτό σημαίνει ότι για κάθε ζεύγος μεταβλητών, θα χρησιμοποιηθούν μόνο οι πλήρεις παρατηρήσεις.
+  if (any(is.na(katatheseis_for_cor))) {
+    message("NA τιμές εντοπίστηκαν. Ο υπολογισμός συσχέτισης θα χρησιμοποιήσει 'pairwise.complete.obs'.")
+    correlation_matrix <- cor(katatheseis_for_cor, method = "pearson", use = "pairwise.complete.obs")
+  } else {
+    # 2. Υπολογισμός πίνακα συσχετίσεων Pearson
+    correlation_matrix <- cor(katatheseis_for_cor, method = "pearson")
+  }
+
+  return(correlation_matrix)
+}
+```
+
+```{r, echo=FALSE, message=FALSE}
+corAll <- automate_correlation_analysis(pothen_esxes_complete_years)
+corND <- automate_correlation_analysis(pothen_esxes_ND)
+corKKE <- automate_correlation_analysis(pothen_esxes_KKE)
+
+```
+
+
+
+
+```{r, echo=FALSE, message=FALSE}
+pinakas_metabasis <- function(dedomena, arxi = NULL, telos = NULL) {
+  dedomenaM <- as.matrix(dedomena)
+  eyros <- c(arxi, telos)
+  corrplot(dedomenaM, is.corr = FALSE, method="color", col.lim = eyros,
+           tl.pos = "n")
+}
+pinakas_metabasis(corKKE)
+
+```
+
+
+```{r, echo=FALSE, message=FALSE}
+# Η συνάρτηση θα δέχεται τον πίνακα συσχετίσεων (ή οποιονδήποτε πίνακα που θέλουμε να μετατρέψουμε σε αποστάσεις)
+# και θα υπολογίζει τις αποστάσεις από αυτόν.
+kykliko_dentrogrammaCOL <- function(corr_matrix, mikos_dendrogrammatos = 0.5, omades = 3) {
+
+  # 1. Μετατροπή συσχέτισης σε απόσταση
+  # Χρησιμοποιούμε την ίδια λογική: Απόσταση = 1 - Συσχέτιση
+  distances <- as.dist(1 - corr_matrix)
+
+  # 2. Ιεραρχική ομαδοποίηση
+  hc <- hclust(distances, method = "ward.D2") # Χρησιμοποιούμε την ίδια μέθοδο ομαδοποίησης
+
+  # Μετατροπή του hclust αντικειμένου σε dendrogram object για χρωματισμό
+  dend <- as.dendrogram(hc)
+
+  # 3. Χρωματισμός των κλάδων και των ετικετών με βάση τον αριθμό των ομάδων
+  dend <- dend %>%
+    color_branches(k = omades) %>%
+    color_labels(k = omades)
+
+  # 4. Οπτικοποίηση του κυκλικού δενδρογράμματος
+  # Πριν σχεδιάσετε, μπορείτε να καθαρίσετε το plotting device αν χρειάζεται
+  # plot.new() # Αν αντιμετωπίσετε προβλήματα με προηγούμενα plots
+  # dev.off() # Αν ο plotter είναι ήδη ανοιχτός
+
+  circlize_dendrogram(dend,
+                      labels_track_height = 0.1, # Ρυθμίστε το ύψος για τις ετικέτες
+                      dend_track_height = mikos_dendrogrammatos) # Ύψος του δενδρογράμματος
+
+  # Προαιρετικά: Μπορείτε να προσθέσετε έναν τίτλο στο plot
+  title("Κυκλικό Δενδρόγραμμα Βουλευτών", line = -2) # Το line=-2 μπορεί να χρειαστεί ρύθμιση για να εμφανιστεί ο τίτλος σωστά
+}
+
+
+# Καλέστε τη συνάρτηση με τον πίνακα συσχετίσεων
+# Εδώ ορίζουμε το μήκος του δενδρογράμματος (mikos_dendrogrammatos) και τον αριθμό των ομάδων (omades)
+# Μπορείτε να αλλάξετε τις τιμές αυτές.
+# Για παράδειγμα, αν θέλετε 4 ομάδες και μεγαλύτερο δενδρόγραμμα:
+# kykliko_dentrogrammaCOL(correlation_matrix, mikos_dendrogrammatos = 0.6, omades = 4)
+kykliko_dentrogrammaCOL(corKKE, mikos_dendrogrammatos = 0.7, omades = 3)
+```
+
+
+```{r}
+kykliko_dentrogrammaCOL <- function(corr_matrix, 
+                                   mikos_dendrogrammatos = 0.5, 
+                                   omades = 3, 
+                                   label_height = 0.25,
+                                   label_cex = 0.8) {
+  
+  # Έλεγχος και αυτόματη διόρθωση ύψους
+  total_height <- mikos_dendrogrammatos + label_height
+  if (total_height > 0.95) {  # Αφήνουμε περιθώριο 5%
+    reduction_factor <- 0.95 / total_height
+    mikos_dendrogrammatos <- mikos_dendrogrammatos * reduction_factor
+    label_height <- label_height * reduction_factor
+    warning("Τα ύψη μειώθηκαν αυτόματα για να αποφευχθεί υπέρβαση ορίου")
+  }
+  
+  distances <- as.dist(1 - corr_matrix)
+  hc <- hclust(distances, method = "ward.D2")
+  
+  dend <- as.dendrogram(hc) %>%
+    dendextend::color_branches(k = omades) %>%
+    dendextend::color_labels(k = omades) %>%
+    dendextend::set("labels_cex", label_cex)
+
+  dendextend::circlize_dendrogram(dend,
+                      labels_track_height = label_height,
+                      dend_track_height = mikos_dendrogrammatos)
+  
+  title("Κυκλικό Δενδρόγραμμα Βουλευτών", line = -1)
+}
+```
+
+```{r}
+kykliko_dentrogrammaCOL <- function(corr_matrix, 
+                                   mikos_dendrogrammatos = 0.4, 
+                                   omades = 3, 
+                                   label_height = 0.25,
+                                   label_cex = 0.8) {
+  
+  # Έλεγχος και αυτόματη διόρθωση ύψους
+  total_height <- mikos_dendrogrammatos + label_height
+  if (total_height > 0.95) {  # Αφήνουμε περιθώριο 5%
+    reduction_factor <- 0.95 / total_height
+    mikos_dendrogrammatos <- mikos_dendrogrammatos * reduction_factor
+    label_height <- label_height * reduction_factor
+    warning("Τα ύψη μειώθηκαν αυτόματα για να αποφευχθεί υπέρβαση ορίου")
+  }
+  
+  distances <- as.dist(1 - corr_matrix)
+  hc <- hclust(distances, method = "ward.D2")
+  
+  dend <- as.dendrogram(hc) %>%
+    dendextend::color_branches(k = omades) %>%
+    dendextend::color_labels(k = omades) %>%
+    dendextend::set("labels_cex", label_cex)
+
+  dendextend::circlize_dendrogram(dend,
+                      labels_track_height = label_height,
+                      dend_track_height = mikos_dendrogrammatos)
+  
+  title("Κυκλικό Δενδρόγραμμα Βουλευτών", line = -1)
+}
+kykliko_dentrogrammaCOL(corKKE, mikos_dendrogrammatos = 0.4, omades = 3)
+
+```
+
+```{r}
+kykliko_dentrogrammaCOL(corAll, 
+                       mikos_dendrogrammatos = 0.3,  # Μειώθηκε από 0.7
+                       omades = 3,
+                       label_height = 0.2,   # Μειώθηκε από 0.35
+                       label_cex = 0.4)
+```
+
+```{r}
+kykliko_dentrogrammaCOL <- function(corr_matrix, 
+                                   mikos_dendrogrammatos = 0.3,  # ΜΕΙΩΣΗ: από 0.5 σε 0.3
+                                   omades = 3, 
+                                   label_height = 0.4,           # ΑΥΞΗΣΗ: από 0.25 σε 0.4
+                                   label_cex = 0.7) {
+  
+  # Έλεγχος και αυτόματη ρύθμιση ύψους
+  if (mikos_dendrogrammatos + label_height > 0.9) {
+    # Διατήρηση αναλογίας 2:3 (δέντρο:ετικέτες)
+    new_ratio <- 0.9 * c(0.4, 0.6)  # 40% δέντρο, 60% ετικέτες
+    mikos_dendrogrammatos <- new_ratio[1]
+    label_height <- new_ratio[2]
+    message("Αυτόματη ρύθμιση ύψους: dend = ", round(mikos_dendrogrammatos, 2), 
+            ", labels = ", round(label_height, 2))
+  }
+  
+  distances <- as.dist(1 - corr_matrix)
+  hc <- hclust(distances, method = "ward.D2")
+  
+  dend <- as.dendrogram(hc) %>%
+    dendextend::color_branches(k = omades) %>%
+    dendextend::color_labels(k = omades) %>%
+    dendextend::set("labels_cex", label_cex)  # Μικρότερα γράμματα
+
+  # Προσθήκη περιθωρίου για ετικέτες
+  par(mar = c(0, 0, 2, 0))  # Πάνω περιθώριο για τίτλο
+  
+  dendextend::circlize_dendrogram(dend,
+                      labels_track_height = label_height,
+                      dend_track_height = mikos_dendrogrammatos)
+  
+}
+```
+
+```{r}
+kykliko_dentrogrammaCOL(corND, 
+                       mikos_dendrogrammatos = 0.25,  # Πολύ μικρότερο δέντρο
+                       label_height = 0.5,            # Περισσότερος χώρος για ετικέτες
+                       label_cex = 0.65)             # Ελαφρώς μικρότερα γράμματα
+```
+
+
+```{r}
+corAll_melted <- melt(corAll)
+
+filtered_correlationsAll <- corAll_melted[
+  (corAll_melted$value < -0.7 | corAll_melted$value > 0.7) &
+  corAll_melted$value < 1,
+]
+
+# Εμφάνιση του φιλτραρισμένου dataframe
+View(filtered_correlationsAll)
+```
+
+
+```{r}
+corAllNEG <- corAll * -1
+corAllABS <- abs(corAll)
+kykliko_dentrogrammaCOL(corAllNEG, mikos_dendrogrammatos = 0.6, omades = 4)
+kykliko_dentrogrammaCOL(corAllABS, mikos_dendrogrammatos = 0.6, omades = 4)
+```
+

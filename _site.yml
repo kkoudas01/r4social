@@ -1,5 +1,7 @@
 name: "r-koudas"
 output_dir: "docs"
+render_site:
+  new_session: true
 navbar:
   title: "🐈 Αρχική"
   left:
@@ -115,6 +117,10 @@ navbar:
         href: workHexitPov.html
       - text: "Μετρώντας την ανισότητα"
         href: gini.html
+      - text: "Συσχέτιση καταθέσεων βουλευτών"
+        href: bouleytesCor.html
+      - text: "Πόθεν Έσχες βουλευτών"
+        href: pothenesxes.html
       - text: "Απεργιακές κινητοποιήσεις"
         href: strikes.html
       - text: "Εξέταση τιμών ακινήτων"

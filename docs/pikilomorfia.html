@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>Μέτρηση ποικιλομορφίας</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -622,6 +622,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -724,7 +730,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μέτρηση ποικιλομορφίας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -768,7 +774,7 @@ Shannon</h1>
 1996 και του 2000. Προς τούτο αντλήσαμε στοιχεία από τη σελίδα του
 Υπουργείου Εσωτερικών και τ’ αποθηκεύσαμε σε ένα αρχείο ονόματι
 <em>ekloges9600.xlsx</em> ακολουθώντας τις οδηγίες από την ενότητα <a
-href="pinakes.html#13_Εισαγωγή_αρχείων_από_άλλα_προγράμματα">Εισαγωγή
+href="pinakes.html#13_%CE%95%CE%B9%CF%83%CE%B1%CE%B3%CF%89%CE%B3%CE%AE_%CE%B1%CF%81%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CE%B1%CF%80%CF%8C_%CE%AC%CE%BB%CE%BB%CE%B1_%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1">Εισαγωγή
 αρχείων από άλλα προγράμματα</a>.</p>
 <div
 style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; ">
@@ -1668,7 +1674,8 @@ etos
 μας απασχολούν. Θα φτιάξουμε μια λίστα με τις ψήφους του 1996
 (<code>psifoi1996</code>) και μία με τις ψήφους του 2000
 (<code>psifoi1996</code>). Ακολουθώντας τις οδηγίες της υποενότητας <a
-href="pinakes.html#21_Νέος_πίνακας">Νέος πίνακας</a> έχουμε:</p>
+href="pinakes.html#21_%CE%9D%CE%AD%CE%BF%CF%82_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1%CF%82">Νέος
+πίνακας</a> έχουμε:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>etos1996 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">1996</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>psifoi1996 <span class="ot">&lt;-</span> ekloges9600[etos1996,<span class="st">&quot;psifoi&quot;</span>]</span>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>etos2000 <span class="ot">&lt;-</span> ekloges9600<span class="sc">$</span>etos <span class="sc">==</span> <span class="dv">2000</span></span>

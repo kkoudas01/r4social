@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>Συχνότητες</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -622,6 +622,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -724,7 +730,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Συχνότητες</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -740,7 +746,7 @@ href="http://www.math.ntua.gr/~loulakis/info/probabF12SHMMY_files/ProbabSHMMY201
 ένα αρχείο Excel κι έχουμε διαθέσιμο το αρχείο <em>bathmoi.xlsx</em>.
 Αυτό το εισάγουμε στην R σύμφωνα με τις οδηγίες που έχουμε δει στην
 υποενότητα Αρχεία Excel (.xls, .xlsx) της <a
-href="pinakes.html#13_Εισαγωγή_αρχείων_από_άλλα_προγράμματα">Εισαγωγή
+href="pinakes.html#13_%CE%95%CE%B9%CF%83%CE%B1%CE%B3%CF%89%CE%B3%CE%AE_%CE%B1%CF%81%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CE%B1%CF%80%CF%8C_%CE%AC%CE%BB%CE%BB%CE%B1_%CF%80%CF%81%CE%BF%CE%B3%CF%81%CE%AC%CE%BC%CE%BC%CE%B1%CF%84%CE%B1">Εισαγωγή
 αρχείων από άλλα προγράμματα</a>, αφού πρώτα διαγράψαμε ό,τι είχαμε
 εισάγει μέχρι τώρα στην R:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
@@ -3321,13 +3327,14 @@ NA
 κατώτερο).</p>
 <p>Στην περίπτωση που θέλουμε να μεταχειριστούμε τον έναν ή τον άλλον
 πίνακα με όσα μάθαμε στις ενότητες <a
-href="pinakes.html#2_Επιλογή_στοιχείων_πίνακα">Επιλογή στοιχείων
-πίνακα</a>, <a
-href="pinakes.html#3_Προσθήκη_στοιχείων_σε_πίνακα">Προσθήκη στοιχείων σε
-πίνακα</a> και <a
-href="pinakes.html#4_Αναδιαμόρφωση_πίνακα">Αναδιαμόρφωση πίνακα</a>,
-τότε χρησιμοποιούμε τη συνάρτηση <code>as.data.frame.table()</code>. Για
-παράδειγμα, αν θέλουμε ν’ ασχοληθούμε με τον πίνακα απόλυτων συχνοτήτων
+href="pinakes.html#2_%CE%95%CF%80%CE%B9%CE%BB%CE%BF%CE%B3%CE%AE_%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Επιλογή
+στοιχείων πίνακα</a>, <a
+href="pinakes.html#3_%CE%A0%CF%81%CE%BF%CF%83%CE%B8%CE%AE%CE%BA%CE%B7_%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CF%83%CE%B5_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Προσθήκη
+στοιχείων σε πίνακα</a> και <a
+href="pinakes.html#4_%CE%91%CE%BD%CE%B1%CE%B4%CE%B9%CE%B1%CE%BC%CF%8C%CF%81%CF%86%CF%89%CF%83%CE%B7_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Αναδιαμόρφωση
+πίνακα</a>, τότε χρησιμοποιούμε τη συνάρτηση
+<code>as.data.frame.table()</code>. Για παράδειγμα, αν θέλουμε ν’
+ασχοληθούμε με τον πίνακα απόλυτων συχνοτήτων
 <code>ApolSyxnBathm</code>, τότε γράφουμε:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>ASBdataframe <span class="ot">&lt;-</span> <span class="fu">as.data.frame.table</span>(ApolSyxnBathm)</span></code></pre></div>
 <div
@@ -3454,16 +3461,17 @@ class="section level1" number="2">
 συχνότητα είναι η απόλυτη συχνότητα δια το συνολικό πλήθος των
 μετρήσεων. Έτσι υπολογίζουμε αρχικά το συνολικό πλήθος των μετρήσεων
 προσθέτοντας απλά όλες τις συχνότητες (βλ. <a
-href="pinakes.html#22_Νέα_λίστα">Νέα λίστα</a> και <a
-href="pinakes.html#12_Κατασκευή_λίστας_ή_πίνακα_τιμών_στην_R">Κατασκευή
+href="pinakes.html#22_%CE%9D%CE%AD%CE%B1_%CE%BB%CE%AF%CF%83%CF%84%CE%B1">Νέα
+λίστα</a> και <a
+href="pinakes.html#12_%CE%9A%CE%B1%CF%84%CE%B1%CF%83%CE%BA%CE%B5%CF%85%CE%AE_%CE%BB%CE%AF%CF%83%CF%84%CE%B1%CF%82_%CE%AE_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1_%CF%84%CE%B9%CE%BC%CF%8E%CE%BD_%CF%83%CF%84%CE%B7%CE%BD_R">Κατασκευή
 λίστας ή πίνακα τιμών στην R</a>):</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>athrisma <span class="ot">&lt;-</span> <span class="fu">sum</span>(ASBdataframe<span class="sc">$</span>Freq)</span></code></pre></div>
 <p>και ακολούθως διαιρούμε κάθε στοιχείο της στήλης <code>Freq</code> με
 το <code>athrisma</code> και συγχρόνως επισυνάπτοντας την
 κατασκευασθείσα λίστα ως νέα στήλη ονόματι <code>SxetSyxn</code> σύμφωνα
 με αυτά που μάθαμε στην υποενότητα Προσθήκη στήλης της <a
-href="pinakes.html#3_Προσθήκη_στοιχείων_σε_πίνακα">Προσθήκη στοιχείων σε
-πίνακα</a>:</p>
+href="pinakes.html#3_%CE%A0%CF%81%CE%BF%CF%83%CE%B8%CE%AE%CE%BA%CE%B7_%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CF%83%CE%B5_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Προσθήκη
+στοιχείων σε πίνακα</a>:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>ASBdataframe<span class="sc">$</span>SxetSyxn <span class="ot">&lt;-</span> (ASBdataframe<span class="sc">$</span>Freq)<span class="sc">/</span>athrisma</span></code></pre></div>
 <p>Οπότε γράφοντας:</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">View</span>(ASBdataframe)</span></code></pre></div>

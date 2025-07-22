@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-04-28" />
+<meta name="date" content="2025-07-14" />
 
 <title>Μέτρα ασυμμετρίας</title>
 
-<script src="site_libs/header-attrs-2.27/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -37,8 +37,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -622,6 +622,12 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
+      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+    </li>
+    <li>
+      <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
+    </li>
+    <li>
       <a href="strikes.html">Απεργιακές κινητοποιήσεις</a>
     </li>
     <li>
@@ -724,7 +730,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μέτρα ασυμμετρίας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-04-28</h4>
+<h4 class="date">2025-07-14</h4>
 
 </div>
 
@@ -20405,8 +20411,8 @@ VNM
 </div>
 <p>Αρχικά συλλέγουμε τα στοιχεία για το 2021 από το ένα και το άλλο
 αρχείο, με τον τρόπο που μάθαμε <a
-href="pinakes.html#2_Επιλογή_στοιχείων_πίνακα">Επιλογή στοιχείων
-πίνακα</a>. Οπότε γράφουμε:</p>
+href="pinakes.html#2_%CE%95%CF%80%CE%B9%CE%BB%CE%BF%CE%B3%CE%AE_%CF%83%CF%84%CE%BF%CE%B9%CF%87%CE%B5%CE%AF%CF%89%CE%BD_%CF%80%CE%AF%CE%BD%CE%B1%CE%BA%CE%B1">Επιλογή
+στοιχείων πίνακα</a>. Οπότε γράφουμε:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>kostos2021 <span class="ot">&lt;-</span> costHealthyDiet[costHealthyDiet<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>, ]</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>kost2021 <span class="ot">&lt;-</span> kostos2021<span class="sc">$</span>Cost.of.a.healthy.diet</span>
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>fagito2021 <span class="ot">&lt;-</span> foodExpenditureYear[foodExpenditureYear<span class="sc">$</span>Year <span class="sc">==</span> <span class="dv">2021</span>, ]</span>
@@ -20470,9 +20476,9 @@ href="histogram.html">Ιστόγραμμα</a>) για να οπτικοποιή
 αφετηρία, για να δούμε γραφικά την ασυμμετρία που μπορεί να έχει ένα
 σύνολο δεδομένων. Θα ήταν πολύ πιο χρήσιμο, αν μαζί με αυτό υπήρχε κι
 ένα θηκόγραμμα (βλ. υποενότητα <a
-href="metradiasporas.html#4_Θηκόγραμμα">Θηκόγραμμα</a>), που να δείχνει
-πού είναι συγκεντρωμένη η μεγάλη μάζα των δεδομένων. Προς τούτο θα
-χρειαστούμε το πακέτο <code>packHV</code>, οπότε γράφουμε:</p>
+href="metradiasporas.html#4_%CE%98%CE%B7%CE%BA%CF%8C%CE%B3%CF%81%CE%B1%CE%BC%CE%BC%CE%B1">Θηκόγραμμα</a>),
+που να δείχνει πού είναι συγκεντρωμένη η μεγάλη μάζα των δεδομένων. Προς
+τούτο θα χρειαστούμε το πακέτο <code>packHV</code>, οπότε γράφουμε:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(packHV)){</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;packHV&quot;</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>    <span class="fu">library</span>(packHV)</span>
@@ -20491,14 +20497,16 @@ href="metradiasporas.html#4_Θηκόγραμμα">Θηκόγραμμα</a>), π�
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">hist_boxplot</span>(fag2021)</span></code></pre></div>
 <p><img src="asymmetria_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
 <p>Παρατηρώντας τα απομονωμένα σημεία (βλ. υποενότητα <a
-href="metradiasporas.html#21_Απομονωμένα_σημεία">Απομονωμένα σημεία</a>)
-αλλά και την όχι κεντραρισμένη γραμμή της διαμέσου (βλ.ενότητα <a
-href="metrathesis.html#2_Διάμεσος">Διάμεσος</a>) βλέπουμε λιγάκι πιο
-καθαρά τώρα ότι τα ημερήσια κόστη είναι σχεδόν συμμετρικά κατανεμημένα
-γύρω από τη μέση τιμή, αλλά στην πραγματικότητα όχι τόσο, όσο πιστεύαμε
-ενδεχομένως μόνο από το ιστόγραμμα. Στα δε ετήσια κόστη φαίνεται η
-ασυμμετρία ακόμα καθαρότερα παρατηρώντας από το θηκόγραμμα ότι το
-κεντρικό 50% των δεδομένων μας βρίσκεται κοντά στις μικρές τιμές.</p>
+href="metradiasporas.html#21_%CE%91%CF%80%CE%BF%CE%BC%CE%BF%CE%BD%CF%89%CE%BC%CE%AD%CE%BD%CE%B1_%CF%83%CE%B7%CE%BC%CE%B5%CE%AF%CE%B1">Απομονωμένα
+σημεία</a>) αλλά και την όχι κεντραρισμένη γραμμή της διαμέσου
+(βλ.ενότητα <a
+href="metrathesis.html#2_%CE%94%CE%B9%CE%AC%CE%BC%CE%B5%CF%83%CE%BF%CF%82">Διάμεσος</a>)
+βλέπουμε λιγάκι πιο καθαρά τώρα ότι τα ημερήσια κόστη είναι σχεδόν
+συμμετρικά κατανεμημένα γύρω από τη μέση τιμή, αλλά στην πραγματικότητα
+όχι τόσο, όσο πιστεύαμε ενδεχομένως μόνο από το ιστόγραμμα. Στα δε
+ετήσια κόστη φαίνεται η ασυμμετρία ακόμα καθαρότερα παρατηρώντας από το
+θηκόγραμμα ότι το κεντρικό 50% των δεδομένων μας βρίσκεται κοντά στις
+μικρές τιμές.</p>
 </div>
 <div id="γράφημα-ασυμμετρίας" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> Γράφημα
