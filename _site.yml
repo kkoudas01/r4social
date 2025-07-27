@@ -105,7 +105,11 @@ navbar:
         - text: "Πολυδιάστατη προσαρμογή κλίμακας"
           menu:
           - text: "Διατακτική πολυδιάστατη προσαρμογή κλίμακας"
-            href: mds.html    
+            href: mds.html 
+          - text: "Ανάλυση κυρίων συνιστωσών"
+            href: pca.html
+          - text: "Ανάλυση Αντιστοιχίας"
+            href: cora.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:
