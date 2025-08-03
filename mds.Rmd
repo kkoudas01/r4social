@@ -104,7 +104,7 @@ eyresiDiastasis <- function(dedomena, entasi = 0.05, ar_epan=500, metriki = "euc
   k0 <- 1
   nmds_result <- metaMDS(dissimilarities, k = k0, trymax=ar_epan, trace=FALSE)
   stress0 <- nmds_result$stress
-  while (k0 < length(deimografikoiDeiktes[1,]) && entasi<stress0) {
+  while (k0 < length(dedomena[1,]) && entasi<stress0) {
     k0 <- k0+1
     nmds_result <- metaMDS(dissimilarities, k = k0, trymax=ar_epan, trace=FALSE)
     stress0 <- nmds_result$stress
@@ -151,7 +151,7 @@ eyresiEntasis <- function(dedomena, diastasi = 2, ar_epan=500, metriki = "euclid
   k0 <- 1
   nmds_result <- metaMDS(dissimilarities, k = k0, trymax=ar_epan, trace=FALSE)
   stress0 <- nmds_result$stress
-  while (k0 < min(diastasi,length(deimografikoiDeiktes[1,]))) {
+  while (k0 < min(diastasi,length(dedomena[1,]))) {
     k0 <- k0+1
     nmds_result <- metaMDS(dissimilarities, k = k0, trymax=ar_epan, trace=FALSE)
     stress0 <- nmds_result$stress
@@ -227,6 +227,62 @@ PoPrKlim(deimografikoiDeiktes)
 PoPrKlim(deimografikoiDeiktes, diastasi = 3)
 ```
 
+Για κάτι πιο διαδραστικό θα χρησιμοποιήσουμε το πακέτο `rgl` και θα φτιάξουμε μια καινούρια συνάρτηση, την `PoPrKlim_interactive` αμμειγώς για 3D.
+
+```{r}
+if(!require(rgl)){
+  install.packages("rgl")
+  library(rgl)
+}
+# Η Συνάρτηση
+PoPrKlim_interactive <- function(dedomena, ar_epan = 500, metriki = "euclidean"){
+  
+  # Κλιμάκωση των δεδομένων, εξαιρουμένης της πρώτης στήλης με τις ετικέτες
+  dedomenaS <- scale(dedomena[,-1])
+  
+  # Υπολογισμός των ανομοιοτήτων
+  dissimilarities <- vegdist(dedomenaS, metriki)
+  
+  # Δημιουργία του NMDS με k = 3
+  nmds_result <- metaMDS(dissimilarities, k = 3, trymax = ar_epan, trace = FALSE)
+  
+  # Δημιουργία του διαδραστικού 3D γραφήματος με το 'rgl'
+  # Χρησιμοποιούμε τη συνάρτηση plot3d
+  plot3d(nmds_result$points, 
+         type = "p", 
+         col = "blue", 
+         size = 8, 
+         xlab = "NMDS1", 
+         ylab = "NMDS2", 
+         zlab = "NMDS3")
+  
+  # Προσθήκη των ετικετών των σημείων
+  text3d(nmds_result$points, 
+         texts = dedomena[,1], 
+         adj = c(-0.2, -0.2),
+         cex = 0.8)
+  
+  # Προσθήκη των αξόνων
+  axes3d()
+  
+  # Προσθήκη του πλαισίου
+  box3d()
+  
+  # Εμφάνιση του γραφήματος
+  # Το rgl.snapshot() ή η αποθήκευση σε html είναι απαραίτητα για την εμφάνιση στο τελικό αρχείο
+  # Στο R Markdown, το γράφημα θα εμφανιστεί αυτόματα ως διαδραστικό
+  
+  # Επιστρέφει το διαδραστικό widget για ενσωμάτωση στο HTML
+  return(rglwidget())
+}
+```
+
+Έτσι έχουμε:
+
+```{r}
+PoPrKlim_interactive(deimografikoiDeiktes)
+```
+
 Βεβαίως, όπως είδαμε και στην προηγούμενη ενότητα, οι δύο διαστάσεις είναι υπεραρκετές.
 
 Ένα ερώτημα που ίσως έχει απασχολήσει από πριν τον αναγνώστη είναι «Και ποιοι είναι οι παράμετροι `NMDS1` και `NMDS2` οι οποίοι περιγράφουν τις χώρες μας;». Αυτό η παρούσα ανάλυση δεν μπορεί να το απαντήσει. Ίσως να είναι δύο εκ των `ayxisi`, `zoi`, `pbth`, `spg` και `aep`. Ίσως να είναι δύο συνδυασμοί αυτών. Ίσως και να είναι δύο τελείως καινούριες παράμετροι, οι οποίες απλά να συνεπιρεάζουν τους παράγοντες `ayxisi`, `zoi`, `pbth`, `spg` και `aep`. Η απάντηση σε αυτή την ερώτηση σίγουρα θέλει παραπάνω δουλειά από αυτόν τον μικρό κώδικα.
@@ -297,4 +353,50 @@ PoPrKlim <- function(dedomena, diastasi = 2, ar_epan=500, metriki = "euclidean")
 }
 PoPrKlim(deimografikoiDeiktes)
 PoPrKlim(deimografikoiDeiktes, diastasi = 3)
+if(!require(rgl)){
+  install.packages("rgl")
+  library(rgl)
+}
+# Η Συνάρτηση
+PoPrKlim_interactive <- function(dedomena, ar_epan = 500, metriki = "euclidean"){
+  
+  # Κλιμάκωση των δεδομένων, εξαιρουμένης της πρώτης στήλης με τις ετικέτες
+  dedomenaS <- scale(dedomena[,-1])
+  
+  # Υπολογισμός των ανομοιοτήτων
+  dissimilarities <- vegdist(dedomenaS, metriki)
+  
+  # Δημιουργία του NMDS με k = 3
+  nmds_result <- metaMDS(dissimilarities, k = 3, trymax = ar_epan, trace = FALSE)
+  
+  # Δημιουργία του διαδραστικού 3D γραφήματος με το 'rgl'
+  # Χρησιμοποιούμε τη συνάρτηση plot3d
+  plot3d(nmds_result$points, 
+         type = "p", 
+         col = "blue", 
+         size = 8, 
+         xlab = "NMDS1", 
+         ylab = "NMDS2", 
+         zlab = "NMDS3")
+  
+  # Προσθήκη των ετικετών των σημείων
+  text3d(nmds_result$points, 
+         texts = dedomena[,1], 
+         adj = c(-0.2, -0.2),
+         cex = 0.8)
+  
+  # Προσθήκη των αξόνων
+  axes3d()
+  
+  # Προσθήκη του πλαισίου
+  box3d()
+  
+  # Εμφάνιση του γραφήματος
+  # Το rgl.snapshot() ή η αποθήκευση σε html είναι απαραίτητα για την εμφάνιση στο τελικό αρχείο
+  # Στο R Markdown, το γράφημα θα εμφανιστεί αυτόματα ως διαδραστικό
+  
+  # Επιστρέφει το διαδραστικό widget για ενσωμάτωση στο HTML
+  return(rglwidget())
+}
+PoPrKlim_interactive(deimografikoiDeiktes)
 ```

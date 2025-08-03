@@ -102,14 +102,14 @@ navbar:
           menu:
           - text: "Μήτρα απόστασης – δεντρόγραμμα"
             href: distTree.html
-        - text: "Πολυδιάστατη προσαρμογή κλίμακας"
+        - text: "Απεικόνιση σε λιγότερες διαστάσεις"
           menu:
           - text: "Διατακτική πολυδιάστατη προσαρμογή κλίμακας"
             href: mds.html 
-          - text: "Ανάλυση κυρίων συνιστωσών"
-            href: pca.html
           - text: "Ανάλυση Αντιστοιχίας"
             href: cora.html
+          - text: "Ανάλυση κυρίων συνιστωσών"
+            href: pca.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:
