@@ -11,7 +11,7 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-08-01" />
+<meta name="date" content="2025-08-03" />
 
 <title>Ανάλυση Αντιστοιχίας</title>
 
@@ -628,7 +628,7 @@ div.tocify {
       <a href="gini.html">Μετρώντας την ανισότητα</a>
     </li>
     <li>
-      <a href="bouleytesCor.html">Συσχέτιση καταθέσεων βουλευτών</a>
+      <a href="bouleytesCor.html">Το πολιτικό προφίλ των Ελλήνων εστιασμένο στ’ αριστερά</a>
     </li>
     <li>
       <a href="pothenesxes.html">Πόθεν Έσχες βουλευτών</a>
@@ -736,7 +736,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Ανάλυση Αντιστοιχίας</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-08-01</h4>
+<h4 class="date">2025-08-03</h4>
 
 </div>
 
@@ -4082,15 +4082,11 @@ MERA25
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(FactoMineR)){</span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;FactoMineR&quot;</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>    <span class="fu">library</span>(FactoMineR)</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Loading required package: FactoMineR</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(factoextra)){</span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;factoextra&quot;</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>    <span class="fu">library</span>(factoextra)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>## Loading required package: factoextra</code></pre>
-<pre><code>## Loading required package: ggplot2</code></pre>
-<pre><code>## Welcome! Want to learn more? See two factoextra-related books at https://goo.gl/ve3WBa</code></pre>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(factoextra)){</span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;factoextra&quot;</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a>    <span class="fu">library</span>(factoextra)</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a>}</span></code></pre></div>
 <p>Ο πυρήνας της δουλειάς μας είναι τα αποτελέσματα της συνάρτησης
 <code>CA()</code>. Έχοντας έναν πίνακα δεδομένων <code>💻💻💻</code>,
 σαν τον <code>prothesiPsifoy</code> και γράφοντας
@@ -4100,17 +4096,17 @@ MERA25
 απασχολήσουν παραπάνω. Τα εν λόγω αποτελέσματα τα αποθηκεύουμε με το
 όνομα <code>apotelesmataCORA</code>, ώστε να τα χρησιμοποιήσουμε και
 μετά.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>apotelesmataCORA <span class="ot">&lt;-</span> <span class="fu">CA</span>(prothesiPsifoy)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>apotelesmataCORA <span class="ot">&lt;-</span> <span class="fu">CA</span>(prothesiPsifoy)</span></code></pre></div>
 <p><img src="cora_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>Πριν εμβαθύνουμε στο διάγραμμά μας, να πούμε ότι μπορούμε να το
 σχεδιάσουμε και χρησιμοποιώντας τη συνάρτηση
 <code>fviz_ca_biplot()</code> ως ακολούθως:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">fviz_ca_biplot</span>(apotelesmataCORA,</span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>               <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="co"># Αποτρέπει την επικάλυψη ετικετών</span></span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>               <span class="at">col.row =</span> <span class="st">&quot;purple&quot;</span>, <span class="co"># Χρώμα για τις γραμμές (πολιτικές ταυτότητες)</span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>               <span class="at">col.col =</span> <span class="st">&quot;orange&quot;</span>,  <span class="co"># Χρώμα για τις στήλες (κόμματα)</span></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>               <span class="at">title =</span> <span class="st">&quot;Γράφημα Διπλής Προβολής πολιτικών κομμάτων και ταυτοτήτων&quot;</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>               )</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">fviz_ca_biplot</span>(apotelesmataCORA,</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>               <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="co"># Αποτρέπει την επικάλυψη ετικετών</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>               <span class="at">col.row =</span> <span class="st">&quot;purple&quot;</span>, <span class="co"># Χρώμα για τις γραμμές (πολιτικές ταυτότητες)</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>               <span class="at">col.col =</span> <span class="st">&quot;orange&quot;</span>,  <span class="co"># Χρώμα για τις στήλες (κόμματα)</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>               <span class="at">title =</span> <span class="st">&quot;Γράφημα Διπλής Προβολής πολιτικών κομμάτων και ταυτοτήτων&quot;</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a>               )</span></code></pre></div>
 <p><img src="cora_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>Για να ερμηνεύσουμε τι σημαίνει η θέση σε αυτό το σύστημα
 συντεταγμένων, θα πρέπει να νοηματοδοτήσουμε τις αποστάσεις σε αυτό. Το
@@ -4206,8 +4202,8 @@ class="math inline">\(\approx 90^\circ\)</span>. Π.χ. οι γραμμές
 <code>fviz_eig(✍️✍️✍️, addlabels = TRUE)</code>, βλέπουμε πόση
 πληροφορία προσθέτει η κάθε επιπλέον διάσταση και προσθέτουμε τόσες,
 όσες απαιτεί η ακρίβεια που επιθυμούμε.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Scree plot</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="fu">fviz_eig</span>(apotelesmataCORA, <span class="at">addlabels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Scree plot</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="fu">fviz_eig</span>(apotelesmataCORA, <span class="at">addlabels =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="cora_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Έτσι, η τρίτη διάσταση δίνει ένα ακόμα 13.1% πληροφορίας. Συνολικά με
 τρεις διαστάσεις τα δεδομένα μας περιγράφονται κατά 79.7%, κάτι αρκετά
@@ -4225,19 +4221,19 @@ number="3">
 Δεν είναι σε κάθε κόμμα και σε κάθε πολιτική ταυτότητα η ίδια απάντηση.
 Σε αυτό θα μας βοηθήσουν τα παρακάτω γραφήματα (βλ.
 <code>cos2</code>).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;cos2&quot;</span>,</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποιες πολιτικές ταυτότητες εκπροσωπούνται καλά;&quot;</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;cos2&quot;</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποιες πολιτικές ταυτότητες εκπροσωπούνται καλά;&quot;</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a>            )</span></code></pre></div>
 <p><img src="cora_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Βλέπουμε, λοιπόν, ότι οι πολιτικές ταυτότητες (βλ.
 <code>col.row</code>) «δεξιός» και «αναρχικός» απεικονίζονται αξιόπιστα,
 ενώ όχι πολύ καλά οι αναποφάσιστοι (ΔΞ/ΔΑ). Ας δούμε και τα κόμματα (βλ.
 <code>col.col</code>:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;cos2&quot;</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποια πολιτικά κόμματα εκπροσωπούνται καλά;&quot;</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;cos2&quot;</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποια πολιτικά κόμματα εκπροσωπούνται καλά;&quot;</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>            )</span></code></pre></div>
 <p><img src="cora_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Η Πλεύση Ελευθερίας δεν απεικονίζεται καθόλου καλά, ενώ το ΜΕΡΑ25
 είναι εντάξει.</p>
@@ -4251,160 +4247,160 @@ class="section level1" number="4">
 Ποιες πολιτικές ταυτότητες συνείσφεραν περισσότερο στον σχηματισμό των
 αξόνων; Σε αυτό θα μάς βοηθήσουν τα παρακάτω γραφήματα (βλ.
 <code>contrib</code>).</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;contrib&quot;</span>,</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά πολιτικών ταυτοτήτων στη διαμόρφωση των αξόνων&quot;</span></span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;contrib&quot;</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά πολιτικών ταυτοτήτων στη διαμόρφωση των αξόνων&quot;</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>            )</span></code></pre></div>
 <p><img src="cora_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Στη διαμόρφωση των αξόνων βλέπουμε ότι συνείσφεραν περισσότερο οι
 πολιτικές ταυτότητες (βλ. <code>col.row</code>) «πατριώτης» και
 «αριστερός», παρά η πολιτική ταυτότητα «φεμινιστής». Ας δούμε και κάτι
 αντίστοιχο για τα κόμματα (βλ. <code>col.col</code>)</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;contrib&quot;</span>,</span>
-<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά κομμάτων στη διαμόρφωση των αξόνων&quot;</span></span>
-<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;contrib&quot;</span>,</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά κομμάτων στη διαμόρφωση των αξόνων&quot;</span></span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>            )</span></code></pre></div>
 <p><img src="cora_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Βλέπουμε ότι στη διαμόρφωση των αξόνων συνείσφεραν περισσότερο οι
 Σπαρτιάτες, παρά η ΝΔ. Αυτό, ίσως, καταδεικνύει την ανεπάρκεια των
 αρχικών μας δεδομένων, την οποία και επισημάναμε αρχικά.</p>
 <p>Συνολικά ο κώδικας έχει ως εξής.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="co"># Δημιουρία στηλών</span></span>
-<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a>politiki_taytotita <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a>  <span class="st">&quot;Πατριώτης&quot;</span>, <span class="st">&quot;Κεντρώος&quot;</span>, <span class="st">&quot;Προοδευτικός&quot;</span>, <span class="st">&quot;Κεντροδεξιός&quot;</span>,</span>
-<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>  <span class="st">&quot;Κεντροαριστερός&quot;</span>, <span class="st">&quot;Φιλελεύθερος&quot;</span>, <span class="st">&quot;Οικολόγος&quot;</span>, <span class="st">&quot;Αριστερός&quot;</span>,</span>
-<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>  <span class="st">&quot;Φεμινιστής&quot;</span>, <span class="st">&quot;Σοσιαλδημοκράτης&quot;</span>, <span class="st">&quot;Υπέρμαχος_ελεύθερης_αγοράς&quot;</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  <span class="st">&quot;Δεξιός&quot;</span>, <span class="st">&quot;Συντηρητικός&quot;</span>, <span class="st">&quot;Σοσιαλιστής&quot;</span>, <span class="st">&quot;Εθνικιστής&quot;</span>,</span>
-<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>  <span class="st">&quot;Αντικαπιταλιστής&quot;</span>, <span class="st">&quot;Κομμουνιστής&quot;</span>, <span class="st">&quot;Αναρχικός&quot;</span>,</span>
-<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a>  <span class="st">&quot;Ακροδεξιός&quot;</span>, <span class="st">&quot;Ακροαριστερός&quot;</span>, <span class="st">&quot;Λαϊκιστής&quot;</span>, <span class="st">&quot;ΔΞ/ΔΑ&quot;</span></span>
-<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a>)</span>
-<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a></span>
-<span id="cb17-12"><a href="#cb17-12" tabindex="-1"></a>synolo <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-13"><a href="#cb17-13" tabindex="-1"></a>  <span class="dv">23</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">6</span></span>
-<span id="cb17-14"><a href="#cb17-14" tabindex="-1"></a>)</span>
-<span id="cb17-15"><a href="#cb17-15" tabindex="-1"></a></span>
-<span id="cb17-16"><a href="#cb17-16" tabindex="-1"></a>ilikia17_34 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-17"><a href="#cb17-17" tabindex="-1"></a>  <span class="dv">28</span>, <span class="dv">19</span>, <span class="dv">30</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">26</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span></span>
-<span id="cb17-18"><a href="#cb17-18" tabindex="-1"></a>)</span>
-<span id="cb17-19"><a href="#cb17-19" tabindex="-1"></a></span>
-<span id="cb17-20"><a href="#cb17-20" tabindex="-1"></a>ilikia35_54 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-21"><a href="#cb17-21" tabindex="-1"></a>  <span class="dv">27</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">8</span></span>
-<span id="cb17-22"><a href="#cb17-22" tabindex="-1"></a>)</span>
-<span id="cb17-23"><a href="#cb17-23" tabindex="-1"></a></span>
-<span id="cb17-24"><a href="#cb17-24" tabindex="-1"></a>ilikia55ano <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-25"><a href="#cb17-25" tabindex="-1"></a>  <span class="dv">17</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span></span>
-<span id="cb17-26"><a href="#cb17-26" tabindex="-1"></a>)</span>
-<span id="cb17-27"><a href="#cb17-27" tabindex="-1"></a></span>
-<span id="cb17-28"><a href="#cb17-28" tabindex="-1"></a>ND <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-29"><a href="#cb17-29" tabindex="-1"></a>  <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">19</span>, <span class="dv">43</span>, <span class="dv">4</span>, <span class="dv">28</span>, <span class="dv">9</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span></span>
-<span id="cb17-30"><a href="#cb17-30" tabindex="-1"></a>)</span>
-<span id="cb17-31"><a href="#cb17-31" tabindex="-1"></a></span>
-<span id="cb17-32"><a href="#cb17-32" tabindex="-1"></a>SYRIZA <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-33"><a href="#cb17-33" tabindex="-1"></a>  <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">34</span>, <span class="dv">3</span>, <span class="dv">49</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">29</span>, <span class="dv">11</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span></span>
-<span id="cb17-34"><a href="#cb17-34" tabindex="-1"></a>)</span>
-<span id="cb17-35"><a href="#cb17-35" tabindex="-1"></a></span>
-<span id="cb17-36"><a href="#cb17-36" tabindex="-1"></a>PASOK <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-37"><a href="#cb17-37" tabindex="-1"></a>  <span class="dv">13</span>, <span class="dv">39</span>, <span class="dv">25</span>, <span class="dv">7</span>, <span class="dv">43</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">30</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">14</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
-<span id="cb17-38"><a href="#cb17-38" tabindex="-1"></a>)</span>
-<span id="cb17-39"><a href="#cb17-39" tabindex="-1"></a></span>
-<span id="cb17-40"><a href="#cb17-40" tabindex="-1"></a>KKE <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-41"><a href="#cb17-41" tabindex="-1"></a>  <span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">32</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">16</span>, <span class="dv">40</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span></span>
-<span id="cb17-42"><a href="#cb17-42" tabindex="-1"></a>)</span>
-<span id="cb17-43"><a href="#cb17-43" tabindex="-1"></a></span>
-<span id="cb17-44"><a href="#cb17-44" tabindex="-1"></a>Spartiates <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-45"><a href="#cb17-45" tabindex="-1"></a>  <span class="dv">54</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">19</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">46</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">0</span></span>
-<span id="cb17-46"><a href="#cb17-46" tabindex="-1"></a>)</span>
-<span id="cb17-47"><a href="#cb17-47" tabindex="-1"></a></span>
-<span id="cb17-48"><a href="#cb17-48" tabindex="-1"></a>Elliniki_Lysi <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-49"><a href="#cb17-49" tabindex="-1"></a>  <span class="dv">52</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">19</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">1</span>, <span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span></span>
-<span id="cb17-50"><a href="#cb17-50" tabindex="-1"></a>)</span>
-<span id="cb17-51"><a href="#cb17-51" tabindex="-1"></a></span>
-<span id="cb17-52"><a href="#cb17-52" tabindex="-1"></a>Niki <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-53"><a href="#cb17-53" tabindex="-1"></a>  <span class="dv">71</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">27</span>, <span class="dv">29</span>, <span class="dv">2</span>, <span class="dv">15</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span></span>
-<span id="cb17-54"><a href="#cb17-54" tabindex="-1"></a>)</span>
-<span id="cb17-55"><a href="#cb17-55" tabindex="-1"></a></span>
-<span id="cb17-56"><a href="#cb17-56" tabindex="-1"></a>Pleysi_Eleytherias <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-57"><a href="#cb17-57" tabindex="-1"></a>  <span class="dv">29</span>, <span class="dv">19</span>, <span class="dv">35</span>, <span class="dv">3</span>, <span class="dv">23</span>, <span class="dv">10</span>, <span class="dv">19</span>, <span class="dv">10</span>, <span class="dv">26</span>, <span class="dv">13</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">16</span></span>
-<span id="cb17-58"><a href="#cb17-58" tabindex="-1"></a>)</span>
-<span id="cb17-59"><a href="#cb17-59" tabindex="-1"></a></span>
-<span id="cb17-60"><a href="#cb17-60" tabindex="-1"></a>Nea_Aristera <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-61"><a href="#cb17-61" tabindex="-1"></a>  <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">27</span>, <span class="dv">2</span>, <span class="dv">37</span>, <span class="dv">4</span>, <span class="dv">27</span>, <span class="dv">57</span>, <span class="dv">24</span>, <span class="dv">16</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">22</span>, <span class="dv">0</span>, <span class="dv">14</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">2</span></span>
-<span id="cb17-62"><a href="#cb17-62" tabindex="-1"></a>)</span>
-<span id="cb17-63"><a href="#cb17-63" tabindex="-1"></a></span>
-<span id="cb17-64"><a href="#cb17-64" tabindex="-1"></a>MERA25 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-65"><a href="#cb17-65" tabindex="-1"></a>  <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">29</span>, <span class="dv">2</span>, <span class="dv">24</span>, <span class="dv">7</span>, <span class="dv">22</span>, <span class="dv">37</span>, <span class="dv">29</span>, <span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">22</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">7</span></span>
-<span id="cb17-66"><a href="#cb17-66" tabindex="-1"></a>)</span>
-<span id="cb17-67"><a href="#cb17-67" tabindex="-1"></a></span>
-<span id="cb17-68"><a href="#cb17-68" tabindex="-1"></a>Aristera_Kentroaristera <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb17-69"><a href="#cb17-69" tabindex="-1"></a>  <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">30</span>, <span class="dv">0</span>, <span class="dv">48</span>, <span class="dv">5</span>, <span class="dv">16</span>, <span class="dv">31</span>, <span class="dv">16</span>, <span class="dv">15</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
-<span id="cb17-70"><a href="#cb17-70" tabindex="-1"></a>)</span>
-<span id="cb17-71"><a href="#cb17-71" tabindex="-1"></a></span>
-<span id="cb17-72"><a href="#cb17-72" tabindex="-1"></a><span class="co"># Δημιουργία του dataframe</span></span>
-<span id="cb17-73"><a href="#cb17-73" tabindex="-1"></a>prothesiPsifoy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb17-74"><a href="#cb17-74" tabindex="-1"></a>  politiki_taytotita,</span>
-<span id="cb17-75"><a href="#cb17-75" tabindex="-1"></a>  synolo,</span>
-<span id="cb17-76"><a href="#cb17-76" tabindex="-1"></a>  ilikia17_34,</span>
-<span id="cb17-77"><a href="#cb17-77" tabindex="-1"></a>  ilikia35_54,</span>
-<span id="cb17-78"><a href="#cb17-78" tabindex="-1"></a>  ilikia55ano,</span>
-<span id="cb17-79"><a href="#cb17-79" tabindex="-1"></a>  ND,</span>
-<span id="cb17-80"><a href="#cb17-80" tabindex="-1"></a>  SYRIZA,</span>
-<span id="cb17-81"><a href="#cb17-81" tabindex="-1"></a>  PASOK,</span>
-<span id="cb17-82"><a href="#cb17-82" tabindex="-1"></a>  KKE,</span>
-<span id="cb17-83"><a href="#cb17-83" tabindex="-1"></a>  Spartiates,</span>
-<span id="cb17-84"><a href="#cb17-84" tabindex="-1"></a>  Elliniki_Lysi,</span>
-<span id="cb17-85"><a href="#cb17-85" tabindex="-1"></a>  Niki,</span>
-<span id="cb17-86"><a href="#cb17-86" tabindex="-1"></a>  Pleysi_Eleytherias,</span>
-<span id="cb17-87"><a href="#cb17-87" tabindex="-1"></a>  Nea_Aristera,</span>
-<span id="cb17-88"><a href="#cb17-88" tabindex="-1"></a>  MERA25,</span>
-<span id="cb17-89"><a href="#cb17-89" tabindex="-1"></a>  Aristera_Kentroaristera</span>
-<span id="cb17-90"><a href="#cb17-90" tabindex="-1"></a>)</span>
-<span id="cb17-91"><a href="#cb17-91" tabindex="-1"></a></span>
-<span id="cb17-92"><a href="#cb17-92" tabindex="-1"></a><span class="fu">rownames</span>(prothesiPsifoy) <span class="ot">&lt;-</span> prothesiPsifoy<span class="sc">$</span>politiki_taytotita</span>
-<span id="cb17-93"><a href="#cb17-93" tabindex="-1"></a></span>
-<span id="cb17-94"><a href="#cb17-94" tabindex="-1"></a>prothesiPsifoy <span class="ot">&lt;-</span> prothesiPsifoy[, <span class="sc">!</span><span class="fu">colnames</span>(prothesiPsifoy) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;politiki_taytotita&quot;</span>, <span class="st">&quot;synolo&quot;</span>, <span class="st">&quot;Aristera_Kentroaristera&quot;</span>, <span class="st">&quot;ilikia17_34&quot;</span>, <span class="st">&quot;ilikia35_54&quot;</span>, <span class="st">&quot;ilikia55ano&quot;</span>)]</span>
-<span id="cb17-95"><a href="#cb17-95" tabindex="-1"></a></span>
-<span id="cb17-96"><a href="#cb17-96" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(FactoMineR)){</span>
-<span id="cb17-97"><a href="#cb17-97" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;FactoMineR&quot;</span>)</span>
-<span id="cb17-98"><a href="#cb17-98" tabindex="-1"></a>    <span class="fu">library</span>(FactoMineR)</span>
-<span id="cb17-99"><a href="#cb17-99" tabindex="-1"></a>}</span>
-<span id="cb17-100"><a href="#cb17-100" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(factoextra)){</span>
-<span id="cb17-101"><a href="#cb17-101" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;factoextra&quot;</span>)</span>
-<span id="cb17-102"><a href="#cb17-102" tabindex="-1"></a>    <span class="fu">library</span>(factoextra)</span>
-<span id="cb17-103"><a href="#cb17-103" tabindex="-1"></a>}</span>
-<span id="cb17-104"><a href="#cb17-104" tabindex="-1"></a></span>
-<span id="cb17-105"><a href="#cb17-105" tabindex="-1"></a>apotelesmataCORA <span class="ot">&lt;-</span> <span class="fu">CA</span>(prothesiPsifoy)</span>
-<span id="cb17-106"><a href="#cb17-106" tabindex="-1"></a></span>
-<span id="cb17-107"><a href="#cb17-107" tabindex="-1"></a></span>
-<span id="cb17-108"><a href="#cb17-108" tabindex="-1"></a><span class="fu">fviz_ca_biplot</span>(apotelesmataCORA,</span>
-<span id="cb17-109"><a href="#cb17-109" tabindex="-1"></a>               <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="co"># Αποτρέπει την επικάλυψη ετικετών</span></span>
-<span id="cb17-110"><a href="#cb17-110" tabindex="-1"></a>               <span class="at">col.row =</span> <span class="st">&quot;purple&quot;</span>, <span class="co"># Χρώμα για τις γραμμές (πολιτικές ταυτότητες)</span></span>
-<span id="cb17-111"><a href="#cb17-111" tabindex="-1"></a>               <span class="at">col.col =</span> <span class="st">&quot;orange&quot;</span>,  <span class="co"># Χρώμα για τις στήλες (κόμματα)</span></span>
-<span id="cb17-112"><a href="#cb17-112" tabindex="-1"></a>               <span class="at">title =</span> <span class="st">&quot;Γράφημα Διπλής Προβολής πολιτικών κομμάτων και ταυτοτήτων&quot;</span></span>
-<span id="cb17-113"><a href="#cb17-113" tabindex="-1"></a>               )</span>
-<span id="cb17-114"><a href="#cb17-114" tabindex="-1"></a></span>
-<span id="cb17-115"><a href="#cb17-115" tabindex="-1"></a><span class="fu">fviz_eig</span>(apotelesmataCORA, <span class="at">addlabels =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb17-116"><a href="#cb17-116" tabindex="-1"></a></span>
-<span id="cb17-117"><a href="#cb17-117" tabindex="-1"></a></span>
-<span id="cb17-118"><a href="#cb17-118" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-119"><a href="#cb17-119" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;cos2&quot;</span>,</span>
-<span id="cb17-120"><a href="#cb17-120" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποιες πολιτικές ταυτότητες εκπροσωπούνται καλά;&quot;</span></span>
-<span id="cb17-121"><a href="#cb17-121" tabindex="-1"></a>            )</span>
-<span id="cb17-122"><a href="#cb17-122" tabindex="-1"></a></span>
-<span id="cb17-123"><a href="#cb17-123" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-124"><a href="#cb17-124" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;cos2&quot;</span>,</span>
-<span id="cb17-125"><a href="#cb17-125" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποια πολιτικά κόμματα εκπροσωπούνται καλά;&quot;</span></span>
-<span id="cb17-126"><a href="#cb17-126" tabindex="-1"></a>            )</span>
-<span id="cb17-127"><a href="#cb17-127" tabindex="-1"></a></span>
-<span id="cb17-128"><a href="#cb17-128" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-129"><a href="#cb17-129" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;contrib&quot;</span>,</span>
-<span id="cb17-130"><a href="#cb17-130" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά πολιτικών ταυτοτήτων στη διαμόρφωση των αξόνων&quot;</span></span>
-<span id="cb17-131"><a href="#cb17-131" tabindex="-1"></a>            )</span>
-<span id="cb17-132"><a href="#cb17-132" tabindex="-1"></a></span>
-<span id="cb17-133"><a href="#cb17-133" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb17-134"><a href="#cb17-134" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;contrib&quot;</span>,</span>
-<span id="cb17-135"><a href="#cb17-135" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά κομμάτων στη διαμόρφωση των αξόνων&quot;</span></span>
-<span id="cb17-136"><a href="#cb17-136" tabindex="-1"></a>            )</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="co"># Δημιουρία στηλών</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>politiki_taytotita <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="st">&quot;Πατριώτης&quot;</span>, <span class="st">&quot;Κεντρώος&quot;</span>, <span class="st">&quot;Προοδευτικός&quot;</span>, <span class="st">&quot;Κεντροδεξιός&quot;</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="st">&quot;Κεντροαριστερός&quot;</span>, <span class="st">&quot;Φιλελεύθερος&quot;</span>, <span class="st">&quot;Οικολόγος&quot;</span>, <span class="st">&quot;Αριστερός&quot;</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  <span class="st">&quot;Φεμινιστής&quot;</span>, <span class="st">&quot;Σοσιαλδημοκράτης&quot;</span>, <span class="st">&quot;Υπέρμαχος_ελεύθερης_αγοράς&quot;</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="st">&quot;Δεξιός&quot;</span>, <span class="st">&quot;Συντηρητικός&quot;</span>, <span class="st">&quot;Σοσιαλιστής&quot;</span>, <span class="st">&quot;Εθνικιστής&quot;</span>,</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="st">&quot;Αντικαπιταλιστής&quot;</span>, <span class="st">&quot;Κομμουνιστής&quot;</span>, <span class="st">&quot;Αναρχικός&quot;</span>,</span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="st">&quot;Ακροδεξιός&quot;</span>, <span class="st">&quot;Ακροαριστερός&quot;</span>, <span class="st">&quot;Λαϊκιστής&quot;</span>, <span class="st">&quot;ΔΞ/ΔΑ&quot;</span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>)</span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>synolo <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a>  <span class="dv">23</span>, <span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">17</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">7</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">6</span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a>)</span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>ilikia17_34 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>  <span class="dv">28</span>, <span class="dv">19</span>, <span class="dv">30</span>, <span class="dv">16</span>, <span class="dv">19</span>, <span class="dv">26</span>, <span class="dv">15</span>, <span class="dv">15</span>, <span class="dv">16</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">5</span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>)</span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>ilikia35_54 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a>  <span class="dv">27</span>, <span class="dv">19</span>, <span class="dv">22</span>, <span class="dv">17</span>, <span class="dv">14</span>, <span class="dv">15</span>, <span class="dv">10</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">8</span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a>)</span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a>ilikia55ano <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a>  <span class="dv">17</span>, <span class="dv">22</span>, <span class="dv">15</span>, <span class="dv">19</span>, <span class="dv">19</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">4</span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a>)</span>
+<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a></span>
+<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a>ND <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a>  <span class="dv">20</span>, <span class="dv">29</span>, <span class="dv">19</span>, <span class="dv">43</span>, <span class="dv">4</span>, <span class="dv">28</span>, <span class="dv">9</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">4</span>, <span class="dv">15</span>, <span class="dv">11</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span></span>
+<span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a>)</span>
+<span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a></span>
+<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a>SYRIZA <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a>  <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">34</span>, <span class="dv">3</span>, <span class="dv">49</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">29</span>, <span class="dv">11</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">11</span>, <span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span></span>
+<span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a>)</span>
+<span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" tabindex="-1"></a>PASOK <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-37"><a href="#cb12-37" tabindex="-1"></a>  <span class="dv">13</span>, <span class="dv">39</span>, <span class="dv">25</span>, <span class="dv">7</span>, <span class="dv">43</span>, <span class="dv">11</span>, <span class="dv">14</span>, <span class="dv">4</span>, <span class="dv">9</span>, <span class="dv">30</span>, <span class="dv">6</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">14</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span></span>
+<span id="cb12-38"><a href="#cb12-38" tabindex="-1"></a>)</span>
+<span id="cb12-39"><a href="#cb12-39" tabindex="-1"></a></span>
+<span id="cb12-40"><a href="#cb12-40" tabindex="-1"></a>KKE <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-41"><a href="#cb12-41" tabindex="-1"></a>  <span class="dv">12</span>, <span class="dv">10</span>, <span class="dv">18</span>, <span class="dv">2</span>, <span class="dv">11</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">32</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">16</span>, <span class="dv">40</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">5</span></span>
+<span id="cb12-42"><a href="#cb12-42" tabindex="-1"></a>)</span>
+<span id="cb12-43"><a href="#cb12-43" tabindex="-1"></a></span>
+<span id="cb12-44"><a href="#cb12-44" tabindex="-1"></a>Spartiates <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-45"><a href="#cb12-45" tabindex="-1"></a>  <span class="dv">54</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">0</span>, <span class="dv">12</span>, <span class="dv">19</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">19</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">46</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">8</span>, <span class="dv">0</span></span>
+<span id="cb12-46"><a href="#cb12-46" tabindex="-1"></a>)</span>
+<span id="cb12-47"><a href="#cb12-47" tabindex="-1"></a></span>
+<span id="cb12-48"><a href="#cb12-48" tabindex="-1"></a>Elliniki_Lysi <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-49"><a href="#cb12-49" tabindex="-1"></a>  <span class="dv">52</span>, <span class="dv">8</span>, <span class="dv">9</span>, <span class="dv">19</span>, <span class="dv">3</span>, <span class="dv">9</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">7</span>, <span class="dv">15</span>, <span class="dv">18</span>, <span class="dv">1</span>, <span class="dv">18</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">4</span></span>
+<span id="cb12-50"><a href="#cb12-50" tabindex="-1"></a>)</span>
+<span id="cb12-51"><a href="#cb12-51" tabindex="-1"></a></span>
+<span id="cb12-52"><a href="#cb12-52" tabindex="-1"></a>Niki <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-53"><a href="#cb12-53" tabindex="-1"></a>  <span class="dv">71</span>, <span class="dv">12</span>, <span class="dv">8</span>, <span class="dv">17</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">27</span>, <span class="dv">29</span>, <span class="dv">2</span>, <span class="dv">15</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span></span>
+<span id="cb12-54"><a href="#cb12-54" tabindex="-1"></a>)</span>
+<span id="cb12-55"><a href="#cb12-55" tabindex="-1"></a></span>
+<span id="cb12-56"><a href="#cb12-56" tabindex="-1"></a>Pleysi_Eleytherias <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-57"><a href="#cb12-57" tabindex="-1"></a>  <span class="dv">29</span>, <span class="dv">19</span>, <span class="dv">35</span>, <span class="dv">3</span>, <span class="dv">23</span>, <span class="dv">10</span>, <span class="dv">19</span>, <span class="dv">10</span>, <span class="dv">26</span>, <span class="dv">13</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">6</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">16</span></span>
+<span id="cb12-58"><a href="#cb12-58" tabindex="-1"></a>)</span>
+<span id="cb12-59"><a href="#cb12-59" tabindex="-1"></a></span>
+<span id="cb12-60"><a href="#cb12-60" tabindex="-1"></a>Nea_Aristera <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-61"><a href="#cb12-61" tabindex="-1"></a>  <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">27</span>, <span class="dv">2</span>, <span class="dv">37</span>, <span class="dv">4</span>, <span class="dv">27</span>, <span class="dv">57</span>, <span class="dv">24</span>, <span class="dv">16</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">22</span>, <span class="dv">0</span>, <span class="dv">14</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">0</span>, <span class="dv">2</span></span>
+<span id="cb12-62"><a href="#cb12-62" tabindex="-1"></a>)</span>
+<span id="cb12-63"><a href="#cb12-63" tabindex="-1"></a></span>
+<span id="cb12-64"><a href="#cb12-64" tabindex="-1"></a>MERA25 <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-65"><a href="#cb12-65" tabindex="-1"></a>  <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">29</span>, <span class="dv">2</span>, <span class="dv">24</span>, <span class="dv">7</span>, <span class="dv">22</span>, <span class="dv">37</span>, <span class="dv">29</span>, <span class="dv">12</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">22</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">7</span></span>
+<span id="cb12-66"><a href="#cb12-66" tabindex="-1"></a>)</span>
+<span id="cb12-67"><a href="#cb12-67" tabindex="-1"></a></span>
+<span id="cb12-68"><a href="#cb12-68" tabindex="-1"></a>Aristera_Kentroaristera <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-69"><a href="#cb12-69" tabindex="-1"></a>  <span class="dv">10</span>, <span class="dv">6</span>, <span class="dv">30</span>, <span class="dv">0</span>, <span class="dv">48</span>, <span class="dv">5</span>, <span class="dv">16</span>, <span class="dv">31</span>, <span class="dv">16</span>, <span class="dv">15</span>, <span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">15</span>, <span class="dv">0</span>, <span class="dv">11</span>, <span class="dv">11</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span></span>
+<span id="cb12-70"><a href="#cb12-70" tabindex="-1"></a>)</span>
+<span id="cb12-71"><a href="#cb12-71" tabindex="-1"></a></span>
+<span id="cb12-72"><a href="#cb12-72" tabindex="-1"></a><span class="co"># Δημιουργία του dataframe</span></span>
+<span id="cb12-73"><a href="#cb12-73" tabindex="-1"></a>prothesiPsifoy <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-74"><a href="#cb12-74" tabindex="-1"></a>  politiki_taytotita,</span>
+<span id="cb12-75"><a href="#cb12-75" tabindex="-1"></a>  synolo,</span>
+<span id="cb12-76"><a href="#cb12-76" tabindex="-1"></a>  ilikia17_34,</span>
+<span id="cb12-77"><a href="#cb12-77" tabindex="-1"></a>  ilikia35_54,</span>
+<span id="cb12-78"><a href="#cb12-78" tabindex="-1"></a>  ilikia55ano,</span>
+<span id="cb12-79"><a href="#cb12-79" tabindex="-1"></a>  ND,</span>
+<span id="cb12-80"><a href="#cb12-80" tabindex="-1"></a>  SYRIZA,</span>
+<span id="cb12-81"><a href="#cb12-81" tabindex="-1"></a>  PASOK,</span>
+<span id="cb12-82"><a href="#cb12-82" tabindex="-1"></a>  KKE,</span>
+<span id="cb12-83"><a href="#cb12-83" tabindex="-1"></a>  Spartiates,</span>
+<span id="cb12-84"><a href="#cb12-84" tabindex="-1"></a>  Elliniki_Lysi,</span>
+<span id="cb12-85"><a href="#cb12-85" tabindex="-1"></a>  Niki,</span>
+<span id="cb12-86"><a href="#cb12-86" tabindex="-1"></a>  Pleysi_Eleytherias,</span>
+<span id="cb12-87"><a href="#cb12-87" tabindex="-1"></a>  Nea_Aristera,</span>
+<span id="cb12-88"><a href="#cb12-88" tabindex="-1"></a>  MERA25,</span>
+<span id="cb12-89"><a href="#cb12-89" tabindex="-1"></a>  Aristera_Kentroaristera</span>
+<span id="cb12-90"><a href="#cb12-90" tabindex="-1"></a>)</span>
+<span id="cb12-91"><a href="#cb12-91" tabindex="-1"></a></span>
+<span id="cb12-92"><a href="#cb12-92" tabindex="-1"></a><span class="fu">rownames</span>(prothesiPsifoy) <span class="ot">&lt;-</span> prothesiPsifoy<span class="sc">$</span>politiki_taytotita</span>
+<span id="cb12-93"><a href="#cb12-93" tabindex="-1"></a></span>
+<span id="cb12-94"><a href="#cb12-94" tabindex="-1"></a>prothesiPsifoy <span class="ot">&lt;-</span> prothesiPsifoy[, <span class="sc">!</span><span class="fu">colnames</span>(prothesiPsifoy) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;politiki_taytotita&quot;</span>, <span class="st">&quot;synolo&quot;</span>, <span class="st">&quot;Aristera_Kentroaristera&quot;</span>, <span class="st">&quot;ilikia17_34&quot;</span>, <span class="st">&quot;ilikia35_54&quot;</span>, <span class="st">&quot;ilikia55ano&quot;</span>)]</span>
+<span id="cb12-95"><a href="#cb12-95" tabindex="-1"></a></span>
+<span id="cb12-96"><a href="#cb12-96" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(FactoMineR)){</span>
+<span id="cb12-97"><a href="#cb12-97" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;FactoMineR&quot;</span>)</span>
+<span id="cb12-98"><a href="#cb12-98" tabindex="-1"></a>    <span class="fu">library</span>(FactoMineR)</span>
+<span id="cb12-99"><a href="#cb12-99" tabindex="-1"></a>}</span>
+<span id="cb12-100"><a href="#cb12-100" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(factoextra)){</span>
+<span id="cb12-101"><a href="#cb12-101" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;factoextra&quot;</span>)</span>
+<span id="cb12-102"><a href="#cb12-102" tabindex="-1"></a>    <span class="fu">library</span>(factoextra)</span>
+<span id="cb12-103"><a href="#cb12-103" tabindex="-1"></a>}</span>
+<span id="cb12-104"><a href="#cb12-104" tabindex="-1"></a></span>
+<span id="cb12-105"><a href="#cb12-105" tabindex="-1"></a>apotelesmataCORA <span class="ot">&lt;-</span> <span class="fu">CA</span>(prothesiPsifoy)</span>
+<span id="cb12-106"><a href="#cb12-106" tabindex="-1"></a></span>
+<span id="cb12-107"><a href="#cb12-107" tabindex="-1"></a></span>
+<span id="cb12-108"><a href="#cb12-108" tabindex="-1"></a><span class="fu">fviz_ca_biplot</span>(apotelesmataCORA,</span>
+<span id="cb12-109"><a href="#cb12-109" tabindex="-1"></a>               <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="co"># Αποτρέπει την επικάλυψη ετικετών</span></span>
+<span id="cb12-110"><a href="#cb12-110" tabindex="-1"></a>               <span class="at">col.row =</span> <span class="st">&quot;purple&quot;</span>, <span class="co"># Χρώμα για τις γραμμές (πολιτικές ταυτότητες)</span></span>
+<span id="cb12-111"><a href="#cb12-111" tabindex="-1"></a>               <span class="at">col.col =</span> <span class="st">&quot;orange&quot;</span>,  <span class="co"># Χρώμα για τις στήλες (κόμματα)</span></span>
+<span id="cb12-112"><a href="#cb12-112" tabindex="-1"></a>               <span class="at">title =</span> <span class="st">&quot;Γράφημα Διπλής Προβολής πολιτικών κομμάτων και ταυτοτήτων&quot;</span></span>
+<span id="cb12-113"><a href="#cb12-113" tabindex="-1"></a>               )</span>
+<span id="cb12-114"><a href="#cb12-114" tabindex="-1"></a></span>
+<span id="cb12-115"><a href="#cb12-115" tabindex="-1"></a><span class="fu">fviz_eig</span>(apotelesmataCORA, <span class="at">addlabels =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb12-116"><a href="#cb12-116" tabindex="-1"></a></span>
+<span id="cb12-117"><a href="#cb12-117" tabindex="-1"></a></span>
+<span id="cb12-118"><a href="#cb12-118" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-119"><a href="#cb12-119" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;cos2&quot;</span>,</span>
+<span id="cb12-120"><a href="#cb12-120" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποιες πολιτικές ταυτότητες εκπροσωπούνται καλά;&quot;</span></span>
+<span id="cb12-121"><a href="#cb12-121" tabindex="-1"></a>            )</span>
+<span id="cb12-122"><a href="#cb12-122" tabindex="-1"></a></span>
+<span id="cb12-123"><a href="#cb12-123" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-124"><a href="#cb12-124" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;cos2&quot;</span>,</span>
+<span id="cb12-125"><a href="#cb12-125" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Ποια πολιτικά κόμματα εκπροσωπούνται καλά;&quot;</span></span>
+<span id="cb12-126"><a href="#cb12-126" tabindex="-1"></a>            )</span>
+<span id="cb12-127"><a href="#cb12-127" tabindex="-1"></a></span>
+<span id="cb12-128"><a href="#cb12-128" tabindex="-1"></a><span class="fu">fviz_ca_row</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-129"><a href="#cb12-129" tabindex="-1"></a>            <span class="at">col.row =</span> <span class="st">&quot;contrib&quot;</span>,</span>
+<span id="cb12-130"><a href="#cb12-130" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά πολιτικών ταυτοτήτων στη διαμόρφωση των αξόνων&quot;</span></span>
+<span id="cb12-131"><a href="#cb12-131" tabindex="-1"></a>            )</span>
+<span id="cb12-132"><a href="#cb12-132" tabindex="-1"></a></span>
+<span id="cb12-133"><a href="#cb12-133" tabindex="-1"></a><span class="fu">fviz_ca_col</span>(apotelesmataCORA, <span class="at">repel =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb12-134"><a href="#cb12-134" tabindex="-1"></a>            <span class="at">col.col =</span> <span class="st">&quot;contrib&quot;</span>,</span>
+<span id="cb12-135"><a href="#cb12-135" tabindex="-1"></a>            <span class="at">title =</span> <span class="st">&quot;Συνεισφορά κομμάτων στη διαμόρφωση των αξόνων&quot;</span></span>
+<span id="cb12-136"><a href="#cb12-136" tabindex="-1"></a>            )</span></code></pre></div>
 </div>
 
 
