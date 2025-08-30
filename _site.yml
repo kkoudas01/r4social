@@ -125,6 +125,8 @@ navbar:
         href: bouleytesCor.html
       - text: "Πόθεν Έσχες βουλευτών"
         href: pothenesxes.html
+      - text: "Τι φέρνει την ευτυχία;"
+        href: happy.html
       - text: "Απεργιακές κινητοποιήσεις"
         href: strikes.html
       - text: "Εξέταση τιμών ακινήτων"
