@@ -127,6 +127,8 @@ navbar:
         href: pothenesxes.html
       - text: "Τι φέρνει την ευτυχία;"
         href: happy.html
+      - text: "Αξιολόγηση Δημόσιων Υπηρεσιών"
+        href: axiologisiDimon.html
       - text: "Απεργιακές κινητοποιήσεις"
         href: strikes.html
       - text: "Εξέταση τιμών ακινήτων"

@@ -1,0 +1,205 @@
+---
+title: "Το πολιτικό προφίλ των Ελλήνων εστιασμένο στ' αριστερά"
+author: "Κώστας Κούδας"
+cache: TRUE
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(kableExtra)
+```
+
+
+[Αξιολόγηση Δημόσιων Υπηρεσιών Μάιος 2025](https://www.ypes.gr/wp-content/uploads/2025/06/Axiologisi_May_2025.pdf)
+
+[Ψηφιακά Χαρτογραφικά Υπόβαθρα](https://www.statistics.gr/digital-cartographical-data)
+
+# Πακέτα
+
+```{r, eval=FALSE}
+rm(list = ls())
+
+# 1. Εγκατάσταση και φόρτωση βασικών βιβλιοθηκών (αν δεν τις έχετε ήδη)
+# install.packages(c("sf", "dplyr", "ggplot2", "viridis")) 
+if(!require(sf)){
+    install.packages("sf")
+    library(sf)
+}
+if(!require(dplyr)){
+    install.packages("dplyr")
+    library(dplyr)
+}
+if(!require(ggplot2)){
+    install.packages("ggplot2")
+    library(ggplot2)
+}
+if(!require(stringi)){
+    install.packages("stringi")
+    library(stringi)
+}
+if(!require(stringr)){
+    install.packages("stringr")
+    library(stringr)
+}
+if(!require(viridis)){
+    install.packages("viridis")
+    library(viridis)
+} # Για μια καλή χρωματική παλέτα
+
+```
+
+
+
+
+```{r, eval=FALSE}
+# Χρώμα των γραμμών που διαχωρίζουν τους δήμους
+MAIN_COLOR <- "gray"         
+
+# Πάχος των γραμμών συνόρων (σε μονάδες γραφικών)
+LINE_WIDTH <- 0.05             
+
+# Χρώμα για τους δήμους που δεν έχουν δεδομένα (NA values)
+NA_COLOR <- "white"  
+# Υπολογισμός του midpoint (π.χ. ο Μέσος Όρος)
+# ΣΗΜΑΝΤΙΚΟ: Βάζουμε na.rm = TRUE για να αγνοήσουμε τα NA κατά τον υπολογισμό.
+my_midpoint <- median(sf_final$ΨΗΦΙΑΚΕΣ_ΥΠΗΡΕΣΙΕΣ, na.rm = TRUE)
+
+my_low_color <- "red"
+my_high_color <- "green"
+
+# Βήμα 3.2: Δημιουργία Χρωροπληθούς Χάρτη
+choropleth_map <- ggplot(data = sf_final) +
+  geom_sf(aes(fill = ΨΗΦΙΑΚΕΣ_ΥΠΗΡΕΣΙΕΣ),  
+          color = "gray70", 
+          linewidth = 0.001) +
+  
+  scale_fill_gradient2(
+    low = my_low_color,    # Χαμηλά: Μπλε
+    mid = "yellow",        # Κέντρο: Κίτρινο
+    high = my_high_color,  # Υψηλά: Κόκκινο
+    
+    # === Η ΛΥΣΗ ΕΙΝΑΙ ΕΔΩ! ===
+    midpoint = my_midpoint,
+    # ==========================
+    
+    name = "Ψηφιακές Υπηρεσίες Δήμου",
+    na.value = "white"
+  ) +
+  
+  theme_void() +
+  
+  labs(
+    title = "Βαθμολογία Υπηρεσιών Δήμων (2025)",
+    caption = "Δεδομένα: Υπουργείο Εσωτερικών - Ελληνική Στατιστική Αρχή"
+  ) +
+  
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    legend.position = "right"
+  )
+
+# Προβολή του χάρτη
+print(choropleth_map)
+```
+
+```{r, eval=FALSE}
+# 1. Υπολογισμός των 5 σημείων ελέγχου (Quantiles)
+# Αυτά είναι τα σημεία στα οποία θέλεις να αντιστοιχίσεις συγκεκριμένα χρώματα.
+quantiles <- quantile(sf_final$ΨΗΦΙΑΚΕΣ_ΥΠΗΡΕΣΙΕΣ, 
+                      probs = c(0, 0.25, 0.50, 0.75, 1), 
+                      na.rm = TRUE)
+
+# 2. Ορισμός των 5 χρωμάτων
+# Επέλεξε 5 διαφορετικά χρώματα για τα 5 σημεία ελέγχου.
+my_5_colors <- c("red", "orange", "yellow", "lightgreen", "darkgreen")
+
+# 3. Ορισμός των θέσεων (values)
+# Καθώς το scale_fill_gradientn λειτουργεί με τιμές από 0 έως 1,
+# πρέπει να μετατρέψουμε τις τιμές των ποσοστημορίων σε κλίμακα 0-1
+# (δηλαδή, να τις κανονικοποιήσουμε).
+min_val <- min(sf_final$ΨΗΦΙΑΚΕΣ_ΥΠΗΡΕΣΙΕΣ, na.rm = TRUE)
+max_val <- max(sf_final$ΨΗΦΙΑΚΕΣ_ΥΠΗΡΕΣΙΕΣ, na.rm = TRUE)
+
+# Υπολογισμός κανονικοποιημένων θέσεων (τιμές από 0 έως 1)
+# Η φόρμουλα είναι: (τιμή - min) / (max - min)
+normalized_values <- (quantiles - min_val) / (max_val - min_val)
+
+# Βήμα 3.2: Δημιουργία Χρωροπληθούς Χάρτη
+choropleth_map <- ggplot(data = sf_final) +
+  geom_sf(aes(fill = ΨΗΦΙΑΚΕΣ_ΥΠΗΡΕΣΙΕΣ),  
+          color = "gray70",  
+          linewidth = 0.001) +
+  
+  # === Η ΤΕΛΙΚΗ ΛΥΣΗ ΕΙΝΑΙ ΕΔΩ! ===
+  scale_fill_gradientn(
+    colors = my_5_colors, # Τα 5 χρώματα που ορίσαμε
+    values = normalized_values, # Οι 5 κανονικοποιημένες θέσεις (0 έως 1)
+    
+    name = "Ψηφιακές Υπηρεσίες Δήμου",
+    na.value = "white"
+  ) +
+  # =================================
+
+  theme_void() +
+  
+  labs(
+    title = "Βαθμολογία Υπηρεσιών Δήμων (2025)",
+    caption = "Δεδομένα: Υπουργείο Εσωτερικών - Ελληνική Στατιστική Αρχή"
+  ) +
+  
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    legend.position = "right"
+  )
+
+# Προβολή του χάρτη
+print(choropleth_map)
+```
+
+
+```{r, eval=FALSE}
+# 1. Όρισε την παλέτα σου εδώ
+#my_palette_choice <- "magma" 
+# Αν μετανιώσεις, απλώς άλλαξέ το εδώ, π.χ.:
+ my_palette_choice <- "viridis" 
+# my_palette_choice <- "plasma"
+# my_palette_choice <- "cividis"
+
+# 2. Χρησιμοποίησε τη μεταβλητή στον κώδικα του χάρτη
+choropleth_map <- ggplot(data = sf_final) +
+  geom_sf(aes(fill = ΨΗΦΙΑΚΕΣ_ΥΠΗΡΕΣΙΕΣ),  
+          color = "gray80", # Χρώμα για σύνωρα δήμων
+          linewidth = 0.05) +
+  
+  scale_fill_viridis_c(
+    option = my_palette_choice,  # <-- Η αλλαγή είναι εδώ!
+    name = "Ψηφιακές Υπηρεσίες Δήμου", # Ο τίτλος της μέτρησης
+    na.value = "gray95", # Οι δήμοι χωρίς δεδομένα θα είναι ανοιχτό γκρι
+    direction = -1 # Αντιστροφή χρώματος
+  ) +
+  
+  theme_void() +
+  
+  labs(
+    title = "Βαθμολογία Υπηρεσιών Δήμων (2025)",
+    caption = "Δεδομένα: Υπουργείο Εσωτερικών - Ελληνική Στατιστική Αρχή"
+  ) +
+  
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    legend.position = "right"
+  )
+
+# Προβολή του χάρτη
+print(choropleth_map)
+```
