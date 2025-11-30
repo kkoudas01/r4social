@@ -42,6 +42,8 @@ navbar:
               href: eytheiesPalindr.html
             - text: "Καμπύλες παλινδρόμησης"
               href: kampylesPalindr.html
+        - text: "Απεικονιση γεωχωρικών δεδομένων"
+          href: geosp.html
       - text: "Πιθανότητες"
         menu:
         - text: "Η έννοια της πιθανότητας"
