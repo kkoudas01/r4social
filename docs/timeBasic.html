@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-11-02" />
+<meta name="date" content="2025-12-29" />
 
 <title>Βασικά εργαλεία</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -608,6 +608,36 @@ div.tocify {
         </li>
       </ul>
     </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μηχανική Μάθηση</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Επιβλεπόμενη Μάθηση (Πρόβλεψη)</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="randomForests.html">Δέντρα Απόφασης &amp; Random Forests</a>
+            </li>
+            <li>
+              <a href="knn.html">k-Πλησιέστεροι Γείτονες (k-NN)</a>
+            </li>
+            <li>
+              <a href="neuralNets.html">Εισαγωγή στα Νευρωνικά Δίκτυα</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μη Επιβλεπόμενη Μάθηση (Ομαδοποίηση)</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="kmeans.html">Ομαδοποίηση k-Means</a>
+            </li>
+            <li>
+              <a href="dbscan.html">Ομαδοποίηση βάσει πυκνότητας (DBSCAN)</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -746,7 +776,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Βασικά εργαλεία</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-11-02</h4>
+<h4 class="date">2025-12-29</h4>
 
 </div>
 
@@ -4548,13 +4578,21 @@ href="diagramSysxet.html">ξαναδεί</a>:</p>
 μπορούμε να έχουμε μεγαλύτερη ποικιλία γραφημάτων. Επί παραδείγματι, ας
 γράψουμε:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl)</span></code></pre></div>
+<pre><code>## Warning in fortify(data, ...): Arguments in `...` must be used.
+## ✖ Problematic argument:
+## • na.rm = TRUE
+## ℹ Did you misspell an argument name?</code></pre>
 <p><img src="timeBasic_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>Έχουμε την μηνιαία εξέλιξη των εμπλοκών για κάθε έτος ξεχωριστά.
 Δηλαδή το ένα χρονοδιάγραμμα δείχνει πώς εξελίσσονταν οι εμπλοκές το
 έτος 2009, το άλλο δείχνει πώς εξελίσσονταν το 2010 κ.τ.λ.</p>
 <p>Η αλήθεια είναι ότι δεν είναι πολύ κατανοητό ποια γραμμή αντιστοιχεί
 σε ποιο έτος. Αυτό διορθώνεται γράφοντας:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">year.labels=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">year.labels=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning in fortify(data, ...): Arguments in `...` must be used.
+## ✖ Problematic argument:
+## • na.rm = TRUE
+## ℹ Did you misspell an argument name?</code></pre>
 <p><img src="timeBasic_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>Οπότε το κάθε χρονοδιάγραμμα έχει από δίπλα το έτος που του
 αντιστοιχεί.</p>
@@ -4562,7 +4600,11 @@ href="diagramSysxet.html">ξαναδεί</a>:</p>
 καλά η εξέλιξη της κατάστασης από έτος σε έτος. Είναι καλή για να δούμε
 το κάθε έτος ξεχωριστά, αλλά για μια παράλληλη σύγκριση όλων των ετών
 δεν βολεύει πολύ. Προς τούτο μπορούμε να γράψουμε εναλλακτικά:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">continuous=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">continuous=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## Warning in fortify(data, ...): Arguments in `...` must be used.
+## ✖ Problematic argument:
+## • na.rm = TRUE
+## ℹ Did you misspell an argument name?</code></pre>
 <p><img src="timeBasic_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>Έτσι, η πορεία των εμπλοκών από έτος σε έτος φαίνεται καλύτερα μέσω
 της διαβάθμισης των χρωμάτων. Βέβαια, είναι πλέον δύσκολο να δούμε ποια
@@ -4570,7 +4612,11 @@ href="diagramSysxet.html">ξαναδεί</a>:</p>
 εξέλιξη. Κάτι κερδίζεις, κάτι χάνεις σ’ αυτή τη ζωή.</p>
 <p>Πέραν της κλασσικής μορφής χρονοδιαγράμματος, έχουμε και το πολικό
 διάγραμμα. Αυτό δημιουργείται γράφοντας:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">polar =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">polar =</span> T)</span></code></pre></div>
+<pre><code>## Warning in fortify(data, ...): Arguments in `...` must be used.
+## ✖ Problematic argument:
+## • na.rm = TRUE
+## ℹ Did you misspell an argument name?</code></pre>
 <p><img src="timeBasic_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Έτσι, οι εμπλοκές παρουσιάζονται να εξελίσσονται στο χρόνο
 περιστρεφόμενες γύρο από ένα κέντρο, όπως οι δείκτες του ρολογιού. Κάθε
@@ -4579,7 +4625,11 @@ href="diagramSysxet.html">ξαναδεί</a>:</p>
 μεγάλη απόσταση, ενώ λίγες εμπλοκές σημαίνει μικρή απόσταση.</p>
 <p>Τέλος θα δούμε ένα λίγο-πολύ αντίστροφης λογικής διάγραμμα.
 Γράφουμε:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">ggsubseriesplot</span>(parab_xs_empl)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="fu">ggsubseriesplot</span>(parab_xs_empl)</span></code></pre></div>
+<pre><code>## Warning in fortify(data, ...): Arguments in `...` must be used.
+## ✖ Problematic argument:
+## • na.rm = TRUE
+## ℹ Did you misspell an argument name?</code></pre>
 <p><img src="timeBasic_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>Έχουμε, λοιπόν, 12 χρονοδιαγράμματα, ένα για κάθε μήνα. Έτσι, το 1ο
 χρονοδιάγραμμα που αντιστοιχεί στον Ιανουάριο, δείχνει την ετήσια πορεία
@@ -4593,23 +4643,23 @@ href="diagramSysxet.html">ξαναδεί</a>:</p>
 τιμή των εμπλοκών που συνέβαιναν τον Φεβρουάριο κατά τα έτη που
 χειριζόμαστε εδώ κ.τ.λ.</p>
 <p>Όλος ο κώδικας που γράψαμε παρατίθεται μαζεμένος παρακάτω:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>parab_xs <span class="ot">&lt;-</span> <span class="fu">ts</span>(enaerParab[ , <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">7</span>)], <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">12</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>parab_xs_10<span class="fl">.18</span> <span class="ot">&lt;-</span> <span class="fu">window</span>(parab_xs, <span class="at">start =</span> <span class="dv">2010</span>, <span class="at">end =</span> <span class="dv">2018</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="fu">plot</span>(parab_xs)</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>}</span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs)</span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs, <span class="at">facets =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs_10<span class="fl">.18</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a>parab_xs_empl <span class="ot">&lt;-</span> <span class="fu">ts</span>(enaerParab[ , <span class="dv">6</span>], <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">12</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs_empl)</span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl)</span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">year.labels=</span><span class="cn">TRUE</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">continuous=</span><span class="cn">TRUE</span>)</span>
-<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">polar =</span> T)</span>
-<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="fu">ggsubseriesplot</span>(parab_xs_empl)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>parab_xs <span class="ot">&lt;-</span> <span class="fu">ts</span>(enaerParab[ , <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">7</span>)], <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">12</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" tabindex="-1"></a>parab_xs_10<span class="fl">.18</span> <span class="ot">&lt;-</span> <span class="fu">window</span>(parab_xs, <span class="at">start =</span> <span class="dv">2010</span>, <span class="at">end =</span> <span class="dv">2018</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" tabindex="-1"></a><span class="fu">plot</span>(parab_xs)</span>
+<span id="cb20-4"><a href="#cb20-4" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(forecast)){</span>
+<span id="cb20-5"><a href="#cb20-5" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;forecast&quot;</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" tabindex="-1"></a>    <span class="fu">library</span>(forecast)</span>
+<span id="cb20-7"><a href="#cb20-7" tabindex="-1"></a>}</span>
+<span id="cb20-8"><a href="#cb20-8" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs)</span>
+<span id="cb20-9"><a href="#cb20-9" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs, <span class="at">facets =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs_10<span class="fl">.18</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" tabindex="-1"></a>parab_xs_empl <span class="ot">&lt;-</span> <span class="fu">ts</span>(enaerParab[ , <span class="dv">6</span>], <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2009</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">12</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" tabindex="-1"></a><span class="fu">autoplot</span>(parab_xs_empl)</span>
+<span id="cb20-13"><a href="#cb20-13" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl)</span>
+<span id="cb20-14"><a href="#cb20-14" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">year.labels=</span><span class="cn">TRUE</span>)</span>
+<span id="cb20-15"><a href="#cb20-15" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">continuous=</span><span class="cn">TRUE</span>)</span>
+<span id="cb20-16"><a href="#cb20-16" tabindex="-1"></a><span class="fu">ggseasonplot</span>(parab_xs_empl, <span class="at">polar =</span> T)</span>
+<span id="cb20-17"><a href="#cb20-17" tabindex="-1"></a><span class="fu">ggsubseriesplot</span>(parab_xs_empl)</span></code></pre></div>
 </div>
 </div>
 

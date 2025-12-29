@@ -11,11 +11,11 @@
 
 <meta name="author" content="Κώστας Κούδας" />
 
-<meta name="date" content="2025-11-02" />
+<meta name="date" content="2025-12-29" />
 
 <title>Μέτρα διασποράς</title>
 
-<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.30/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -608,6 +608,36 @@ div.tocify {
         </li>
       </ul>
     </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μηχανική Μάθηση</a>
+      <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Επιβλεπόμενη Μάθηση (Πρόβλεψη)</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="randomForests.html">Δέντρα Απόφασης &amp; Random Forests</a>
+            </li>
+            <li>
+              <a href="knn.html">k-Πλησιέστεροι Γείτονες (k-NN)</a>
+            </li>
+            <li>
+              <a href="neuralNets.html">Εισαγωγή στα Νευρωνικά Δίκτυα</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Μη Επιβλεπόμενη Μάθηση (Ομαδοποίηση)</a>
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a href="kmeans.html">Ομαδοποίηση k-Means</a>
+            </li>
+            <li>
+              <a href="dbscan.html">Ομαδοποίηση βάσει πυκνότητας (DBSCAN)</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -746,7 +776,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Μέτρα διασποράς</h1>
 <h4 class="author">Κώστας Κούδας</h4>
-<h4 class="date">2025-11-02</h4>
+<h4 class="date">2025-12-29</h4>
 
 </div>
 
@@ -5706,6 +5736,8 @@ ggplot2, το οποίο επικαλούμαστε μέσω της εντολή
 γράφοντας <code>x=""</code>). Αν όμως γράψουμε:</p>
 <div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>ETOS, <span class="at">y=</span>PARAB_EEX))</span>
 <span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<pre><code>## Warning: Orientation is not uniquely specified when both the x and y aesthetics are continuous. Picking
+## default orientation &#39;x&#39;.</code></pre>
 <pre><code>## Warning: Continuous x aesthetic
 ## ℹ did you forget `aes(group = ...)`?</code></pre>
 <p><img src="metradiasporas_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
@@ -5713,64 +5745,64 @@ ggplot2, το οποίο επικαλούμαστε μέσω της εντολή
 σφάλαματος. Αυτό λόγω του ότι οι τιμές της στήλης <code>ETOS</code>
 είναι αριθμητικές. Θα υπερβούμε αυτό το πρόβλημα μετατρέποντάς τες σε
 χαρακτήρες, γράφοντας <code>as.character(ETOS)</code>, δηλαδή:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.character</span>(ETOS), <span class="at">y=</span>PARAB_EEX))</span>
-<span id="cb30-2"><a href="#cb30-2" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.character</span>(ETOS), <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="metradiasporas_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>Φυσικά, αν θελήσουμε να υπάρχουν και σημεία συγχρόνως, γράφουμε:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span></code></pre></div>
 <p><img src="metradiasporas_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>Πάνω στα τελευταία θηκογράμματα θα μπορούσαμε να κάναμε κάποιες
 αισθητικές παρεμβάσεις μέσω των επιλογών <code>color=</code> και
 <code>fill=</code>. Ας υποθέσουμε ότι φτιάχνουμε μια νέα σειρά από
 θηκογράμματα με βάση τις παραβιάσεις του κάθε μήνα. Αυτό θα γίνει
 γράφοντας αρχικά:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a>mines <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ir&quot;</span>,<span class="st">&quot;Fe&quot;</span>,<span class="st">&quot;Mr&quot;</span>,<span class="st">&quot;Ar&quot;</span>,<span class="st">&quot;Ma&quot;</span>,<span class="st">&quot;In&quot;</span>,<span class="st">&quot;Il&quot;</span>,<span class="st">&quot;Au&quot;</span>,<span class="st">&quot;Se&quot;</span>,<span class="st">&quot;Ok&quot;</span>,<span class="st">&quot;No&quot;</span>,<span class="st">&quot;De&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>mines <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ir&quot;</span>,<span class="st">&quot;Fe&quot;</span>,<span class="st">&quot;Mr&quot;</span>,<span class="st">&quot;Ar&quot;</span>,<span class="st">&quot;Ma&quot;</span>,<span class="st">&quot;In&quot;</span>,<span class="st">&quot;Il&quot;</span>,<span class="st">&quot;Au&quot;</span>,<span class="st">&quot;Se&quot;</span>,<span class="st">&quot;Ok&quot;</span>,<span class="st">&quot;No&quot;</span>,<span class="st">&quot;De&quot;</span>)</span></code></pre></div>
 <p>και ακολούθως:</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a>ParabEEXboxMinas1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">color=</span>MHNAS))</span>
-<span id="cb33-2"><a href="#cb33-2" tabindex="-1"></a>ParabEEXboxMinas1 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>ParabEEXboxMinas1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">color=</span>MHNAS))</span>
+<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>ParabEEXboxMinas1 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
 <p><img src="metradiasporas_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Όπου, φυσικά, η προσθήκη της <code>xlim(mines)</code> έγινε για να
 μπουν οι μήνες στη σωστή σειρά.</p>
 <p>Αν τώρα θέλουμε να διαφοροποιούνται βάσει του χρώματος γεμίσματος,
 γράφουμε:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a>ParabEEXboxMinas2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">fill=</span>MHNAS))</span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a>ParabEEXboxMinas2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a>ParabEEXboxMinas2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">fill=</span>MHNAS))</span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a>ParabEEXboxMinas2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
 <p><img src="metradiasporas_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <p>Ο κώδικας όλης αυτής της ενότητας είναι ο:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="fu">range</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a>sdPop <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(<span class="fu">mean</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span> <span class="dv">2</span>))</span>
-<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">+</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-8"><a href="#cb35-8" tabindex="-1"></a>enaerParabApon <span class="ot">&lt;-</span> enaerParab[enaerParab<span class="sc">$</span>PARAB_EEX<span class="sc">&gt;</span><span class="fl">634.3057</span>, ]</span>
-<span id="cb35-9"><a href="#cb35-9" tabindex="-1"></a>enaerParabApon</span>
-<span id="cb35-10"><a href="#cb35-10" tabindex="-1"></a><span class="fu">IQR</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-11"><a href="#cb35-11" tabindex="-1"></a><span class="fu">quantile</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-12"><a href="#cb35-12" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
-<span id="cb35-13"><a href="#cb35-13" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX, <span class="at">horizontal=</span><span class="cn">TRUE</span>)</span>
-<span id="cb35-14"><a href="#cb35-14" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)){</span>
-<span id="cb35-15"><a href="#cb35-15" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
-<span id="cb35-16"><a href="#cb35-16" tabindex="-1"></a>    <span class="fu">library</span>(ggplot2)</span>
-<span id="cb35-17"><a href="#cb35-17" tabindex="-1"></a>}</span>
-<span id="cb35-18"><a href="#cb35-18" tabindex="-1"></a>ParabEEXbox <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span>PARAB_EEX))</span>
-<span id="cb35-19"><a href="#cb35-19" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
-<span id="cb35-20"><a href="#cb35-20" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
-<span id="cb35-21"><a href="#cb35-21" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="dv">0</span>, <span class="at">outlier.size =</span> <span class="dv">4</span>)</span>
-<span id="cb35-22"><a href="#cb35-22" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_dotplot</span>(<span class="at">binaxis=</span><span class="st">&#39;y&#39;</span>, <span class="at">stackdir=</span><span class="st">&#39;center&#39;</span>, <span class="at">dotsize=</span><span class="dv">1</span>)</span>
-<span id="cb35-23"><a href="#cb35-23" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
-<span id="cb35-24"><a href="#cb35-24" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
-<span id="cb35-25"><a href="#cb35-25" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>ETOS, <span class="at">y=</span>PARAB_EEX))</span>
-<span id="cb35-26"><a href="#cb35-26" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
-<span id="cb35-27"><a href="#cb35-27" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.character</span>(ETOS), <span class="at">y=</span>PARAB_EEX))</span>
-<span id="cb35-28"><a href="#cb35-28" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
-<span id="cb35-29"><a href="#cb35-29" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
-<span id="cb35-30"><a href="#cb35-30" tabindex="-1"></a>mines <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ir&quot;</span>,<span class="st">&quot;Fe&quot;</span>,<span class="st">&quot;Mr&quot;</span>,<span class="st">&quot;Ar&quot;</span>,<span class="st">&quot;Ma&quot;</span>,<span class="st">&quot;In&quot;</span>,<span class="st">&quot;Il&quot;</span>,<span class="st">&quot;Au&quot;</span>,<span class="st">&quot;Se&quot;</span>,<span class="st">&quot;Ok&quot;</span>,<span class="st">&quot;No&quot;</span>,<span class="st">&quot;De&quot;</span>)</span>
-<span id="cb35-31"><a href="#cb35-31" tabindex="-1"></a>ParabEEXboxMinas1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">color=</span>MHNAS))</span>
-<span id="cb35-32"><a href="#cb35-32" tabindex="-1"></a>ParabEEXboxMinas1 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span>
-<span id="cb35-33"><a href="#cb35-33" tabindex="-1"></a>ParabEEXboxMinas2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">fill=</span>MHNAS))</span>
-<span id="cb35-34"><a href="#cb35-34" tabindex="-1"></a>ParabEEXboxMinas2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="fu">range</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a>sdPop <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">sqrt</span>(<span class="fu">mean</span>((x<span class="sc">-</span><span class="fu">mean</span>(x))<span class="sc">^</span> <span class="dv">2</span>))</span>
+<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-7"><a href="#cb36-7" tabindex="-1"></a><span class="fu">mean</span>(enaerParab<span class="sc">$</span>PARAB_EEX)<span class="sc">+</span><span class="dv">3</span><span class="sc">*</span><span class="fu">sd</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-8"><a href="#cb36-8" tabindex="-1"></a>enaerParabApon <span class="ot">&lt;-</span> enaerParab[enaerParab<span class="sc">$</span>PARAB_EEX<span class="sc">&gt;</span><span class="fl">634.3057</span>, ]</span>
+<span id="cb36-9"><a href="#cb36-9" tabindex="-1"></a>enaerParabApon</span>
+<span id="cb36-10"><a href="#cb36-10" tabindex="-1"></a><span class="fu">IQR</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-11"><a href="#cb36-11" tabindex="-1"></a><span class="fu">quantile</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-12"><a href="#cb36-12" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX)</span>
+<span id="cb36-13"><a href="#cb36-13" tabindex="-1"></a><span class="fu">boxplot</span>(enaerParab<span class="sc">$</span>PARAB_EEX, <span class="at">horizontal=</span><span class="cn">TRUE</span>)</span>
+<span id="cb36-14"><a href="#cb36-14" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)){</span>
+<span id="cb36-15"><a href="#cb36-15" tabindex="-1"></a>    <span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span>
+<span id="cb36-16"><a href="#cb36-16" tabindex="-1"></a>    <span class="fu">library</span>(ggplot2)</span>
+<span id="cb36-17"><a href="#cb36-17" tabindex="-1"></a>}</span>
+<span id="cb36-18"><a href="#cb36-18" tabindex="-1"></a>ParabEEXbox <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="st">&quot;&quot;</span>, <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb36-19"><a href="#cb36-19" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb36-20"><a href="#cb36-20" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">coord_flip</span>()</span>
+<span id="cb36-21"><a href="#cb36-21" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="dv">0</span>, <span class="at">outlier.size =</span> <span class="dv">4</span>)</span>
+<span id="cb36-22"><a href="#cb36-22" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_dotplot</span>(<span class="at">binaxis=</span><span class="st">&#39;y&#39;</span>, <span class="at">stackdir=</span><span class="st">&#39;center&#39;</span>, <span class="at">dotsize=</span><span class="dv">1</span>)</span>
+<span id="cb36-23"><a href="#cb36-23" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
+<span id="cb36-24"><a href="#cb36-24" tabindex="-1"></a>ParabEEXbox <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
+<span id="cb36-25"><a href="#cb36-25" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>ETOS, <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb36-26"><a href="#cb36-26" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb36-27"><a href="#cb36-27" tabindex="-1"></a>ParabEEXboxEtos <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span><span class="fu">as.character</span>(ETOS), <span class="at">y=</span>PARAB_EEX))</span>
+<span id="cb36-28"><a href="#cb36-28" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>()</span>
+<span id="cb36-29"><a href="#cb36-29" tabindex="-1"></a>ParabEEXboxEtos <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>) <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="at">shape=</span><span class="dv">16</span>, <span class="at">size=</span><span class="dv">1</span>,<span class="at">position=</span><span class="fu">position_jitter</span>(<span class="fl">0.2</span>))</span>
+<span id="cb36-30"><a href="#cb36-30" tabindex="-1"></a>mines <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Ir&quot;</span>,<span class="st">&quot;Fe&quot;</span>,<span class="st">&quot;Mr&quot;</span>,<span class="st">&quot;Ar&quot;</span>,<span class="st">&quot;Ma&quot;</span>,<span class="st">&quot;In&quot;</span>,<span class="st">&quot;Il&quot;</span>,<span class="st">&quot;Au&quot;</span>,<span class="st">&quot;Se&quot;</span>,<span class="st">&quot;Ok&quot;</span>,<span class="st">&quot;No&quot;</span>,<span class="st">&quot;De&quot;</span>)</span>
+<span id="cb36-31"><a href="#cb36-31" tabindex="-1"></a>ParabEEXboxMinas1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">color=</span>MHNAS))</span>
+<span id="cb36-32"><a href="#cb36-32" tabindex="-1"></a>ParabEEXboxMinas1 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span>
+<span id="cb36-33"><a href="#cb36-33" tabindex="-1"></a>ParabEEXboxMinas2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(enaerParab, <span class="fu">aes</span>(<span class="at">x=</span>MHNAS, <span class="at">y=</span>PARAB_EEX, <span class="at">fill=</span>MHNAS))</span>
+<span id="cb36-34"><a href="#cb36-34" tabindex="-1"></a>ParabEEXboxMinas2 <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlim</span>(mines)</span></code></pre></div>
 </div>
 
 

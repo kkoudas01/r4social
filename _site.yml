@@ -112,6 +112,22 @@ navbar:
             href: cora.html
           - text: "Ανάλυση κυρίων συνιστωσών"
             href: pca.html
+      - text: "Μηχανική Μάθηση"
+        menu:
+        - text: "Επιβλεπόμενη Μάθηση (Πρόβλεψη)"
+          menu:
+          - text: "Δέντρα Απόφασης & Random Forests"
+            href: randomForests.html
+          - text: "k-Πλησιέστεροι Γείτονες (k-NN)"
+            href: knn.html
+          - text: "Εισαγωγή στα Νευρωνικά Δίκτυα"
+            href: neuralNets.html
+        - text: "Μη Επιβλεπόμενη Μάθηση (Ομαδοποίηση)"
+          menu:
+          - text: "Ομαδοποίηση k-Means"
+            href: kmeans.html
+          - text: "Ομαδοποίηση βάσει πυκνότητας (DBSCAN)"
+            href: dbscan.html
     - text: "Έρευνες"
       icon: fa-solid fa-flask-vial
       menu:
