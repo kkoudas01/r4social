@@ -1,0 +1,41 @@
+{
+  "index.qmd": {
+    "index.html": "310b36de"
+  },
+  "logisticMap.qmd": {
+    "logisticMap.html": "375623e7"
+  },
+  "pca.qmd": {
+    "pca.html": "9dfb28d5"
+  },
+  "cora.qmd": {
+    "cora.html": "b56c6966"
+  },
+  "axiologisiDimon.qmd": {
+    "axiologisiDimon.html": "3983d2d2"
+  },
+  "a1codeTest.qmd": {
+    "a1codeTest.html": "e8fb28b7"
+  },
+  "anova.qmd": {
+    "anova.html": "81b1fe71"
+  },
+  "apoxi.qmd": {
+    "apoxi.html": "d9db2060"
+  },
+  "arima.qmd": {
+    "arima.html": "8009b0d5"
+  },
+  "astrogramma.qmd": {
+    "astrogramma.html": "b85a8663"
+  },
+  "asymmetria.qmd": {
+    "asymmetria.html": "498a3524"
+  },
+  "aytokinhta.qmd": {
+    "aytokinhta.html": "34262005"
+  },
+  "backup_quarto/a1codeTest.Rmd": {
+    "a1codeTest.html": "b3b348dd"
+  }
+}
