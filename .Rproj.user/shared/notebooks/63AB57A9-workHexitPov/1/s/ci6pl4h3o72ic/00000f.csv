@@ -1,0 +1,5 @@
+"0","child2Plot2 <- ggplot(child2, aes(x=SUBJECT, y=OBS_VALUE))"
+"0","child2Plot2 + geom_boxplot(outlier.shape = NA) + geom_jitter(shape=16, size=1,position=position_jitter(0.2))+"
+"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια ('01-'23)"","
+"0","       y = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
+"0","       x = ""Ζευγάρι ή μόνος;"")"

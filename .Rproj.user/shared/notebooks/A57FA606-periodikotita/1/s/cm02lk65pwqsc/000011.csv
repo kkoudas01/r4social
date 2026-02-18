@@ -1,0 +1,4 @@
+"0","massExtDF <- read.csv(""massExt.csv"")"
+"0","knitr::kable(massExtDF) %>%"
+"0","kable_styling(""striped"", full_width = F) %>%"
+"0","scroll_box(width = ""max-content"", height = ""200px"")"

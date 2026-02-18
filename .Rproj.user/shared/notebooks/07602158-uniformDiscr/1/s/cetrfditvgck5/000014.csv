@@ -1,0 +1,7 @@
+"0","par( mfrow= c(2,2) )"
+"0","for (i in 1:4) {"
+"0","  set.seed(i)"
+"0","  xilies_zaries <- sample(zari, 10000, replace = TRUE)"
+"0","  pin_syxn <- table(xilies_zaries)"
+"0","  barplot(pin_syxn, names.arg = zari)"
+"0","}"

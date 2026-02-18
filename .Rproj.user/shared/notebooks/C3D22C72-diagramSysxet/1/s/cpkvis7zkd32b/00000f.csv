@@ -1,0 +1,2 @@
+"0","ProsdokimoVSperith2 <- ProsdokimoVSperith[!(is.na(ProsdokimoVSperith$`Health Expenditure and Financing (per capita) (OECDstat (2017))`)), ]"
+"0","ProsdokimoVSperith3 <- ProsdokimoVSperith2[!(is.na(ProsdokimoVSperith2$`Life expectancy at birth, total (years)`)), ]"

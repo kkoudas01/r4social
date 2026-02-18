@@ -1,0 +1,5 @@
+"0","histReadinggrBOY <- ggplot(boyPISA, aes(y=LOCATION, x=READING, fill = isGR)) "
+"0","histReadinggrBOY + geom_density_ridges() +"
+"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ggtitle(""Κατανομή βαθμολογιών κάθε χώρας στην Κατανόηση Κειμένου (αγόρια)."")"
+"2","Picking joint bandwidth of 4.45
+"

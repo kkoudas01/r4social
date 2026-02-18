@@ -1,0 +1,4 @@
+"0","sciencePISAtot <- sciencePISA[sciencePISA$SUBJECT == ""TOT"", ]"
+"0","sciencePISAtot_wide <- dcast(sciencePISAtot, TIME ~ LOCATION, value.var=""Value"")"
+"0","sciencePISAtot_wide <- as.data.frame(sciencePISAtot_wide)"
+"0","astrogramma(sciencePISAtot_wide, FALSE)"

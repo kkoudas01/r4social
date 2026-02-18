@@ -1,0 +1,6 @@
+"0","if(!require(ggplot2)){"
+"0","    install.packages(""ggplot2"")"
+"0","    library(ggplot2)"
+"0","}"
+"0","PolDeathGr <- ggplot(ThanatoiAstyn, aes(x=Year, y=`Number of officers feloniously killed`))"
+"0","PolDeathGr +  geom_line()"

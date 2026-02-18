@@ -1,0 +1,10 @@
+"0","pothen_esxes_ND <- pothen_esxes_filtered[pothen_esxes_filtered$ΚΟΜΜΑ==""Νέα Δημοκρατία"",]"
+"0",""
+"0","eisodimaCommaPlotND <- ggplot(pothen_esxes_ND, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=ΕΙΣΟΔΗΜΑ, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))"
+"0",""
+"0","ggplotly(eisodimaCommaPlotND +"
+"0","  geom_line(color = ""blue"") +"
+"0","  labs(title = ""Εισόδημα Βουλευτών ΝΔ ανά Έτος""))"
+"2","Error in dev_fun(filename = tempfile(), width = width %||% 640, height = height %||%  : 
+  unable to start png() device
+"

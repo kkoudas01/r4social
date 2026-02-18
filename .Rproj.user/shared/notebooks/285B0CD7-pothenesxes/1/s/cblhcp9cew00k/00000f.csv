@@ -1,0 +1,7 @@
+"0","pothen_esxes_PASOK <- pothen_esxes_filtered[pothen_esxes_filtered$ΚΟΜΜΑ==""Πανελλήνιο Σοσιαλιστικό Κίνημα"",]"
+"0",""
+"0","eisodimaCommaPlotPASOK <- ggplot(pothen_esxes_PASOK, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=ΕΙΣΟΔΗΜΑ, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))"
+"0",""
+"0","eisodimaCommaPlotPASOK +"
+"0","  geom_line(color = ""green"") +"
+"0","  labs(title = ""Εισόδημα Βουλευτών ΠΑΣΟΚ ανά Έτος"")"

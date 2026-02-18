@@ -1,0 +1,8 @@
+"0","if(!require(FactoMineR)){"
+"0","    install.packages(""FactoMineR"")"
+"0","    library(FactoMineR)"
+"0","}"
+"0","if(!require(factoextra)){"
+"0","    install.packages(""factoextra"")"
+"0","    library(factoextra)"
+"0","}"

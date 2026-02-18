@@ -1,0 +1,105 @@
+n <- 2000
+
+y <- 1:n
+yy <- 1:n
+tPoints <- 1:n
+tPoints2 <- 1:n
+h <- 0.01
+
+for (t in 1:n) {
+tPoints[t] <- h*t
+y[t] <- 5*sin(2*pi*t*h/(4/3))+2*cos(2*pi*t*h/(4/3))-6*sin(2*pi*t*h/(4))+7*cos(2*pi*t*h/(4))-9*sin(2*pi*t*h/(2))+1*cos(2*pi*t*h/(2))
+yy[t] <- 5*sin(2*pi*t/(4/3))+2*cos(2*pi*t/(4/3))-6*sin(2*pi*t/(4))+7*cos(2*pi*t/(4))-9*sin(2*pi*t/(2))+1*cos(2*pi*t/(2))
+}
+
+plot(y)
+
+plot(tPoints2,yy)
+
+# Φόρτωση της λίστας τιμών y
+y <- c(...)  # Συμπληρώστε με τις τιμές της λίστας
+
+# Ο αριθμός των όρων της σειράς Fourier που θέλουμε
+n0 <- 5  # Συμπληρώστε με τον επιθυμητό αριθμό όρων
+
+# Υπολογισμός του μήκους της λίστας y
+N <- length(y)
+
+# Εφαρμογή του FFT
+Y_fft <- fft(y)
+
+# Διατήρηση μόνο των πρώτων n όρων της σειράς Fourier
+Y_fft <- Y_fft[1:n0]
+
+# Ανασύνθεση του σήματος χρησιμοποιώντας τους n όρους της σειράς Fourier
+y_reconstructed <- Re(fft(Y_fft, inverse = TRUE) / N)
+
+# Επέκταση του ανακατασκευασμένου σήματος στο αρχικό μήκος N
+y_reconstructed <- rep(y_reconstructed, length.out = N)
+
+# Εκτύπωση των αποτελεσμάτων
+cat("Αρχικό σήμα: \n")
+print(y)
+cat("Ανακατασκευασμένο σήμα με", n, "όρους της σειράς Fourier: \n")
+plot(y_reconstructed)
+
+
+
+lm(y ~ I(sin(2*pi*tPoints/(4/3)))+I(cos(2*pi*tPoints/(4/3)))+I(sin(2*pi*tPoints/(4)))+I(cos(2*pi*tPoints/(4)))+I(sin(2*pi*tPoints/(2)))+I(cos(2*pi*tPoints/(2))))
+
+lm(y ~ I(sin(2*pi*tPoints2/(4/3)))+I(cos(2*pi*tPoints2/(4/3)))+I(sin(2*pi*tPoints2/(4)))+I(cos(2*pi*tPoints2/(4)))+I(sin(2*pi*tPoints2/(2)))+I(cos(2*pi*tPoints2/(2))))
+
+
+
+seiraFourier <- function(dedomena, listPeriod){
+  t <- 1:length(dedomena)
+  n <- length(listPeriod)
+  T <- listPeriod[1]
+  seira <- paste(c("I(sin(2*pi*t/",T,"))+I(cos(2*pi*t/",T,"))"), collapse="")
+  if (n>1) {
+    for (i in 2:n) {
+      T <- listPeriod[i]
+      orosN <- paste(c("I(sin(2*pi*t/",T,"))+I(cos(2*pi*t/",T,"))"), collapse="")
+      seira <- paste(c(seira,orosN), collapse="+")
+    }
+  }
+  formula_string <- paste("dedomena ~", seira)
+  lm_model <- lm(as.formula(formula_string))
+  lm_model
+}
+
+seiraFourier(y,c(4,2,4/3))
+
+
+# cs is the vector of complex points to convert
+convert.fft <- function(cs, sample.rate=1) {
+  cs <- cs / length(cs) # normalize
+  
+  distance.center <- function(c)signif( Mod(c),        4)
+  angle           <- function(c)signif( 180*Arg(c)/pi, 3)
+  
+  df <- data.frame(cycle    = 0:(length(cs)-1),
+                   freq     = 0:(length(cs)-1) * sample.rate / length(cs),
+                   strength = sapply(cs, distance.center),
+                   delay    = sapply(cs, angle))
+  df
+}
+
+convert.fft(fft(y)[250:300,2]
+
+            # returns the x.n time series for a given time sequence (ts) and
+            # a vector with the amount of frequencies k in the signal (X.k)
+            get.trajectory <- function(X.k,ts,acq.freq) {
+              
+              N   <- length(ts)
+              i   <- complex(real = 0, imaginary = 1)
+              x.n <- rep(0,N)           # create vector to keep the trajectory
+              ks  <- 0:(length(X.k)-1)
+              
+              for(n in 0:(N-1)) {       # compute each time point x_n based on freqs X.k
+                x.n[n+1] <- sum(X.k * exp(i*2*pi*ks*n/N)) / N
+              }
+              
+              x.n * acq.freq 
+            }
+            

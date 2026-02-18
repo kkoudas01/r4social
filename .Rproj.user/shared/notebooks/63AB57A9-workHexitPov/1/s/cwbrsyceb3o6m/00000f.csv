@@ -1,0 +1,6 @@
+"0","ggplot(childNO, aes(x = OBS_VALUE, y = as.factor(TIME_PERIOD), fill = SUBJECT)) +"
+"0","  geom_density_ridges(alpha=0.7) +"
+"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια ('01-'23)"","
+"0","       x = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
+"0","       y = ""έτος"","
+"0","       fill = ""Ζευγάρι ή μόνος"")"

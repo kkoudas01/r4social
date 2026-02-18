@@ -1,0 +1,1 @@
+"0","corrplot(typeExam_boy.K, method=""color"", addCoef.col = 'black', is.corr = FALSE, col.lim = c(0.6, 1), title=""Kendall"")"

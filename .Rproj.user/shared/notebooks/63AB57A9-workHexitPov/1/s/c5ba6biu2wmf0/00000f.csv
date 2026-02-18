@@ -1,0 +1,5 @@
+"0","singleNOchild23grPlot2 <- ggplot(singleNOchild23gr, aes(x=is23, y=OBS_VALUE))"
+"0","singleNOchild23grPlot2 + geom_boxplot(outlier.shape = NA)+"
+"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια στην Ελλάδα"","
+"0","       y = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
+"0","       x = ""Έτος"")"

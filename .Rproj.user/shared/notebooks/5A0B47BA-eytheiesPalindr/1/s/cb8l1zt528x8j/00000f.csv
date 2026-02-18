@@ -1,0 +1,8 @@
+"0","if(!require(ggplot2)){"
+"0","    install.packages(""ggplot2"")"
+"0","    library(ggplot2)"
+"0","}"
+"2","Loading required package: ggplot2
+"
+"0","DocNurcEyth <- ggplot(DocNurc, aes(x = nosok, y = giatroi))"
+"0","DocNurcEyth + geom_smooth(method='lm')"

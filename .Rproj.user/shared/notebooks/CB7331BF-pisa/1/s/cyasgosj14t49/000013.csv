@@ -1,0 +1,5 @@
+"0","hist_bg2 <- ggplot(allPISAbglong, aes(y=SUBJECT, x=Value, fill = TYPE_exam, alpha = 0.4)) "
+"0","hist_bg2 + geom_density_ridges() +"
+"0","  scale_fill_manual(values = c(""red"", ""green"", ""yellow""))+ggtitle(""Σύγκριση επιδόσεων στα διάφορα αντικείμενα εξέτασης σε αγόρια και κορίτσια."")"
+"2","Picking joint bandwidth of 7.88
+"

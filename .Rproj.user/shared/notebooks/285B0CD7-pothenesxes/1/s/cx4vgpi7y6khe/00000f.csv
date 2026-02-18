@@ -1,0 +1,5 @@
+"0","View(anagnosimo$top10$revenue$`2017`)"
+"0","anagnosimo$top10$revenue$`2017`[,c(""financialyear"", ""year_of_use"", ""total_revenue"",""total_properties"", ""total_loans"", ""total_deposits"", ""total_companies"",       ""total_mobiles"", ""total_stocks"", ""member$last_name"")]"
+"2","Error in `[.data.frame`(anagnosimo$top10$revenue$`2017`, , c(""financialyear"",  : 
+  undefined columns selected
+"

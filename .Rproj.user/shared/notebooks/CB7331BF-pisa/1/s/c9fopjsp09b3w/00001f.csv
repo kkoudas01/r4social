@@ -1,0 +1,5 @@
+"0","histBOYgr <- ggplot(boyPISAlong, aes(y=TYPE_exam, x=Value, fill = isGR, alpha = 0.4))  "
+"0","histBOYgr + geom_density_ridges() +"
+"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ ggtitle(""Σύγκριση αποτελεσμάτων της Ελλάδας με υπολοίπων χωρών (αγόρια)."")"
+"2","Picking joint bandwidth of 6.73
+"

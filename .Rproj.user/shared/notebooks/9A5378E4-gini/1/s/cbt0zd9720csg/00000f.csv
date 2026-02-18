@@ -1,0 +1,2 @@
+"0","giniAEPpopPlot <- ggplot(giniAEPpop, aes(x=GDP, y=Gini_coefficient))"
+"0","giniAEPpopPlot + geom_point(aes(colour = REF_AREA))+  geom_smooth()"

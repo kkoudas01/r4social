@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+<link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+</head>
+<body>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> AM...1 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> BATHMOS...2 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> AM...3 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> BATHMOS...4 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> AM...5 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> BATHMOS...6 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> AM...7 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> BATHMOS...8 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> AM...9 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> BATHMOS...10 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> AM...11 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> BATHMOS...12 </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 3094673 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3108086 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3110073 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110812 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111088 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111192 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3098622 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3108098 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110075 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111002 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111089 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111193 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3100689 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3108120 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110087 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111003 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111090 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111194 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3102688 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3108144 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110088 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111004 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111091 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111196 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3103156 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3108184 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110089 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111005 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 3111092 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111198 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3103626 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3108191 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110089 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111006 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111095 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111202 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3103683 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3108203 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110093 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111007 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111096 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111204 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3103784 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3108217 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110095 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111008 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111098 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111205 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104616 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3108608 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110101 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111010 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111099 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111207 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104654 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3108636 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110112 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111011 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111101 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111403 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104660 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3108644 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3110115 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111012 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111103 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111409 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104673 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3108659 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110129 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111013 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111104 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111416 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104694 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3108719 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110130 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111014 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111107 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111417 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104732 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3108720 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110136 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111015 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111109 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111418 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104740 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3108726 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110137 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111016 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111112 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111420 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3104775 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3108727 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110147 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111017 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111113 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111423 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105055 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3108771 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110158 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111018 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111114 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111424 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105071 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3108784 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110164 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111019 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111115 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111428 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105149 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3108798 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3110188 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111020 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111116 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111501 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105182 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3109028 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110197 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111021 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111117 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111506 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105184 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3109043 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110201 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111023 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 3111119 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111507 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105218 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3109054 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3110209 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111024 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111121 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111508 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105637 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109072 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3110401 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111025 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111122 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111509 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105645 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3109079 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3110417 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111026 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111123 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111511 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105647 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3109127 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110623 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111027 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111125 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111517 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105654 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3109130 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110630 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111028 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111126 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111526 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105671 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3109147 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110657 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111029 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111128 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111551 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105710 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109173 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110659 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111031 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111129 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111555 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105730 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109189 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110661 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111032 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111131 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 3111556 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105737 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3109196 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110671 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111033 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111132 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111559 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105742 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3109218 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110678 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111034 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111134 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111560 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105774 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109603 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3110680 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111035 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111135 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111561 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3105786 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3109617 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3110688 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111036 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111138 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111566 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106091 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3109630 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110689 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111038 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111141 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111569 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106092 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109631 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110692 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111040 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111142 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111572 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106126 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109648 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110693 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111042 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111143 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111573 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106130 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3109650 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110697 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111045 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111147 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111574 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106160 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109664 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110698 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111046 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111148 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111575 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106175 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3109665 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110704 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111047 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111149 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111576 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106227 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3109671 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110707 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111049 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111151 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111602 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106628 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3109683 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110708 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111050 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111152 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111610 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106649 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3109698 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3110709 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111051 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111153 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 3111614 </td>
+   <td style="text-align:right;"> 3 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106686 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3109701 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110712 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111053 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111154 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111620 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106702 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3109715 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110716 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111054 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111155 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111701 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106708 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109724 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110719 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111055 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111156 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111712 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106736 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3109735 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3110725 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111056 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111157 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111714 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106762 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3109737 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110726 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111059 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111159 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111717 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106780 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109746 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3110741 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111060 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111161 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111718 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106800 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3109751 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110742 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111064 </td>
+   <td style="text-align:right;"> 9 </td>
+   <td style="text-align:right;"> 3111162 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111720 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3106802 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3109761 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110743 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111065 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111163 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111722 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107058 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3109775 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110744 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111068 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111165 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111724 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107111 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109789 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110747 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111069 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111169 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111727 </td>
+   <td style="text-align:right;"> 9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107182 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3109801 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110750 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111072 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111171 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111731 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107196 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3110003 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110753 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111073 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111172 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111739 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107219 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110006 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110757 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111074 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3111173 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111743 </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107229 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110021 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3110764 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3111076 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 3111174 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111901 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107632 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110024 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110775 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111077 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111178 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3111904 </td>
+   <td style="text-align:right;"> 5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107639 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110033 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3110777 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111078 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111181 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111907 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107650 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110045 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110781 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111080 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111185 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3112602 </td>
+   <td style="text-align:right;"> 7 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107730 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110049 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110783 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111081 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111186 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107754 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110057 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110787 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111082 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111187 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107762 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3110063 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3110788 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111083 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3111189 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107779 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110069 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3110795 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 3111084 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111190 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 3107790 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3110072 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 3110807 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 3111087 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 3111191 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+  </tr>
+</tbody>
+</table></div> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"]]}})</script><script async src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

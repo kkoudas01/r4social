@@ -1,0 +1,4 @@
+"0","EpipEmpistPos <- function(pososto, plithos, apost) {"
+"0","  s <- sqrt(pososto*(1-pososto)/plithos)"
+"0","  2*pt(apost/s,plithos-1)-1"
+"0","}"

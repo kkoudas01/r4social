@@ -1,0 +1,1 @@
+"0","DocNurcAm <- DocNurcCont[DocNurcCont$Continent_Name == ""South America"" | DocNurcCont$Continent_Name == ""North America"", ]"

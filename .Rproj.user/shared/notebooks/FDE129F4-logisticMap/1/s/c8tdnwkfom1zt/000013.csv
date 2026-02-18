@@ -1,0 +1,8 @@
+"0",""
+"0","# Creating the Sequence"
+"0","gfg = seq(0,1, by=0.01)"
+"0"," "
+"0","# Case 3"
+"0","plot(gfg, dbeta(gfg, 0.424975,0.480757), xlab = ""X"","
+"0","     ylab = ""Beta Density"", type = ""l"","
+"0","     col = ""Red"")"

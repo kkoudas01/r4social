@@ -1,0 +1,7 @@
+"0","pothen_esxes_SYRIZA <- pothen_esxes_filtered[pothen_esxes_filtered$ΚΟΜΜΑ==""Συνασπισμός Ριζοσπαστικής Αριστεράς"",]"
+"0",""
+"0","eisodimaCommaPlotSYRIZA <- ggplot(pothen_esxes_SYRIZA, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=ΕΙΣΟΔΗΜΑ, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))"
+"0",""
+"0","eisodimaCommaPlotSYRIZA +"
+"0","  geom_line(color = ""purple"") +"
+"0","  labs(title = ""Εισόδημα Βουλευτών ΣΥΡΙΖΑ ανά Έτος"")"

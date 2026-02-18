@@ -1,0 +1,2 @@
+"0","eis <- eisodima[eisodima$SUBJECT == ""GROSSADJ"", c(1,6,7)]"
+"0","eis_wide <- dcast(eis, TIME ~ LOCATION, value.var=""Value"")"

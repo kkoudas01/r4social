@@ -1,0 +1,3 @@
+"0","pop2022 <- read.csv(""pop2022.csv"", na.string = """")"
+"0","giniAEPpop <- merge(giniAEP, pop2022, by = c(""TIME_PERIOD"", ""REF_AREA""))"
+"0","giniAEPpop$GDP <- giniAEPpop$OBS_VALUE.x*giniAEPpop$OBS_VALUE.y"

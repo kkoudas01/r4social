@@ -1,0 +1,2 @@
+"0","xx <- rnorm(1000, mean =4, sd=1)"
+"0","myDatax <- data.frame(xx= xx)"

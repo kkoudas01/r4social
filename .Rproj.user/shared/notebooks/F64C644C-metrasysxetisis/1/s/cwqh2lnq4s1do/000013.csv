@@ -1,0 +1,4 @@
+"0","PosostoAtheoi <- read.csv(""PosostoAtheoi.csv"")"
+"0","knitr::kable(PosostoAtheoi) %>%"
+"0","  kable_styling(""striped"", full_width = F) %>%"
+"0","  scroll_box(width = ""max-content"", height = ""200px"")"

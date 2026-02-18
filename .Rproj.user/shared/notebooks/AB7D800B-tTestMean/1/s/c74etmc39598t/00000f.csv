@@ -1,0 +1,3 @@
+"0","d_cohen <- function(mesi_timiDigm, tipiki_apoklPlith, mesi_timiPlith){"
+"0","  (mesi_timiDigm-mesi_timiPlith)/tipiki_apoklPlith"
+"0","}"

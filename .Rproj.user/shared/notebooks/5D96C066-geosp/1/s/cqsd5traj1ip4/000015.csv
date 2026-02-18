@@ -1,0 +1,2 @@
+"0","xoroplithis_xartis <- ggplot(data = xartis_cpi) "
+"0","xoroplithis_xartis +  geom_sf(aes(fill = Score))"

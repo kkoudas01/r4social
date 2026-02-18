@@ -1,0 +1,6 @@
+"0","if(!require(ggplot2)){"
+"0","    install.packages(""ggplot2"")"
+"0","    library(ggplot2)"
+"0","}"
+"0","ParabEEXbox <- ggplot(enaerParab, aes(x="""", y=PARAB_EEX))"
+"0","ParabEEXbox + geom_boxplot()"

@@ -1,0 +1,4 @@
+"0","boxplot_bg +"
+"0","  geom_boxplot(outlier.shape = NA)+"
+"0","  geom_jitter(position=position_jitterdodge(), alpha = 0.2)+"
+"0","  scale_fill_manual(values = c(""cyan"", ""pink"")) + ggtitle(""Σύγκριση επίδοσης σε αγόρια και κορίτσια σε κάθε μάθημα."")"

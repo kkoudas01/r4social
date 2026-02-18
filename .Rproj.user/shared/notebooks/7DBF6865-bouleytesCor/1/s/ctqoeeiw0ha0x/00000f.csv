@@ -1,0 +1,2 @@
+"0","# Scree plot"
+"0","fviz_eig(apotelesmataCORA, addlabels = TRUE)"

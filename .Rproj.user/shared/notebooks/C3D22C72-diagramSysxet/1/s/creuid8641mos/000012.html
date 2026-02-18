@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+<link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+</head>
+<body>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:max-content; "><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Year </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Number of officers feloniously killed </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Number of officers (non-civilian) </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Felonious killings per 100,000 officers </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Five year averages of felonious fatalities </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Source (Uniform Crime Report for that year) </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1961 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 62.8 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1961unit/uniformcrimerepo1961unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1962 </td>
+   <td style="text-align:right;"> 78 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 62.8 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1962unit/uniformcrimerepo1962unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1963 </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 62.8 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1963unit/uniformcrimerepo1963unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1964 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 62.8 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1964unit/uniformcrimerepo1964unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1965 </td>
+   <td style="text-align:right;"> 53 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 62.8 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1965unit/uniformcrimerepo1965unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1966 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 76.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1966unit/uniformcrimerepo1966unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1967 </td>
+   <td style="text-align:right;"> 76 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 76.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1967unit/uniformcrimerepo1967unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1968 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 76.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1968unit/uniformcrimerepo1968unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1969 </td>
+   <td style="text-align:right;"> 86 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 76.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1969unit/uniformcrimerepo1969unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1970 </td>
+   <td style="text-align:right;"> 100 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 76.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1970unit/uniformcrimerepo1970unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1971 </td>
+   <td style="text-align:right;"> 126 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 125.2 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1971unit/uniformcrimerepo1971unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1972 </td>
+   <td style="text-align:right;"> 112 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 125.2 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1972unit/uniformcrimerepo1972unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1973 </td>
+   <td style="text-align:right;"> 127 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 125.2 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1973unit/uniformcrimerepo1973unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1974 </td>
+   <td style="text-align:right;"> 132 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 125.2 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1974unit/uniformcrimerepo1974unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1975 </td>
+   <td style="text-align:right;"> 129 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 125.2 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1975unit/uniformcrimerepo1975unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1976 </td>
+   <td style="text-align:right;"> 106 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 100.4 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1976unit/uniformcrimerepo1976unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1977 </td>
+   <td style="text-align:right;"> 93 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 100.4 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1977unit/uniformcrimerepo1977unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1978 </td>
+   <td style="text-align:right;"> 93 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 100.4 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1978unit/uniformcrimerepo1978unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1979 </td>
+   <td style="text-align:right;"> 106 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 100.4 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1979unit/uniformcrimerepo1979unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1980 </td>
+   <td style="text-align:right;"> 104 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 100.4 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1980unit/uniformcrimerepo1980unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1981 </td>
+   <td style="text-align:right;"> 91 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 82.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1981unit/uniformcrimerepo1981unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1982 </td>
+   <td style="text-align:right;"> 92 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 82.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1982unit/uniformcrimerepo1982unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1983 </td>
+   <td style="text-align:right;"> 80 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 82.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1983unit/uniformcrimerepo1983unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1984 </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 82.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1984unit/uniformcrimerepo1984unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1985 </td>
+   <td style="text-align:right;"> 78 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 82.6 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1985unit/uniformcrimerepo1985unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1986 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 67.5 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1986unit/uniformcrimerepo1986unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1987 </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 67.5 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1987unit/uniformcrimerepo1987unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1988 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> 67.5 </td>
+   <td style="text-align:left;"> ? </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:right;"> 67 </td>
+   <td style="text-align:right;"> 369.743 </td>
+   <td style="text-align:right;"> 18.12 </td>
+   <td style="text-align:right;"> 67.5 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1989unit/uniformcrimerepo1989unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 380.232 </td>
+   <td style="text-align:right;"> 17.09 </td>
+   <td style="text-align:right;"> 67.5 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1990unit/uniformcrimerepo1990unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 69 </td>
+   <td style="text-align:right;"> 414.037 </td>
+   <td style="text-align:right;"> 16.67 </td>
+   <td style="text-align:right;"> 70.0 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1991unit/uniformcrimerepo1991unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 61 </td>
+   <td style="text-align:right;"> 405.069 </td>
+   <td style="text-align:right;"> 15.06 </td>
+   <td style="text-align:right;"> 70.0 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1992unit/uniformcrimerepo1992unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 70 </td>
+   <td style="text-align:right;"> 460.430 </td>
+   <td style="text-align:right;"> 15.20 </td>
+   <td style="text-align:right;"> 70.0 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1993unit/uniformcrimerepo1993unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 76 </td>
+   <td style="text-align:right;"> 454.105 </td>
+   <td style="text-align:right;"> 16.74 </td>
+   <td style="text-align:right;"> 70.0 </td>
+   <td style="text-align:left;"> http://www.archive.org/stream/uniformcrimerepo1994unit/uniformcrimerepo1994unit_djvu.txt </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 74 </td>
+   <td style="text-align:right;"> 421.414 </td>
+   <td style="text-align:right;"> 17.56 </td>
+   <td style="text-align:right;"> 70.0 </td>
+   <td style="text-align:left;"> 1995 to 2010, see annual reports: http://www.fbi.gov/about-us/cjis/ucr/ucr </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 373.575 </td>
+   <td style="text-align:right;"> 14.72 </td>
+   <td style="text-align:right;"> 54.8 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/1996/leoka96.pdf </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 451.980 </td>
+   <td style="text-align:right;"> 14.38 </td>
+   <td style="text-align:right;"> 54.8 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/1997/leoka97.pdf </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 61 </td>
+   <td style="text-align:right;"> 445.898 </td>
+   <td style="text-align:right;"> 13.68 </td>
+   <td style="text-align:right;"> 54.8 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/1998 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 42 </td>
+   <td style="text-align:right;"> 470.145 </td>
+   <td style="text-align:right;"> 8.93 </td>
+   <td style="text-align:right;"> 54.8 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/1999/leoka99.pdf </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> 441.311 </td>
+   <td style="text-align:right;"> 11.56 </td>
+   <td style="text-align:right;"> 54.8 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/2000/leoka00.pdf </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 70 </td>
+   <td style="text-align:right;"> 464.515 </td>
+   <td style="text-align:right;"> 15.07 </td>
+   <td style="text-align:right;"> 58.0 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/2001/leoka01.pdf </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 56 </td>
+   <td style="text-align:right;"> 482.762 </td>
+   <td style="text-align:right;"> 11.60 </td>
+   <td style="text-align:right;"> 58.0 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/2002/leoka02.pdf </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 52 </td>
+   <td style="text-align:right;"> 482.985 </td>
+   <td style="text-align:right;"> 10.77 </td>
+   <td style="text-align:right;"> 58.0 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/2003/leoka03.pdf </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> 499.396 </td>
+   <td style="text-align:right;"> 11.41 </td>
+   <td style="text-align:right;"> 58.0 </td>
+   <td style="text-align:left;"> https://www2.fbi.gov/ucr/killed/2004/openpage.htm </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> 485.048 </td>
+   <td style="text-align:right;"> 11.34 </td>
+   <td style="text-align:right;"> 58.0 </td>
+   <td style="text-align:left;"> https://www2.fbi.gov/ucr/killed/2005/ </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 495.270 </td>
+   <td style="text-align:right;"> 9.69 </td>
+   <td style="text-align:right;"> 50.0 </td>
+   <td style="text-align:left;"> https://www2.fbi.gov/ucr/killed/2006/ </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 57 </td>
+   <td style="text-align:right;"> 517.875 </td>
+   <td style="text-align:right;"> 11.01 </td>
+   <td style="text-align:right;"> 50.0 </td>
+   <td style="text-align:left;"> https://www2.fbi.gov/ucr/killed/2007/ </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 41 </td>
+   <td style="text-align:right;"> 518.120 </td>
+   <td style="text-align:right;"> 7.91 </td>
+   <td style="text-align:right;"> 50.0 </td>
+   <td style="text-align:left;"> https://www2.fbi.gov/ucr/killed/2008/ </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> 556.155 </td>
+   <td style="text-align:right;"> 8.63 </td>
+   <td style="text-align:right;"> 50.0 </td>
+   <td style="text-align:left;"> https://www2.fbi.gov/ucr/killed/2009/ </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 56 </td>
+   <td style="text-align:right;"> 532.395 </td>
+   <td style="text-align:right;"> 10.52 </td>
+   <td style="text-align:right;"> 50.0 </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/2011 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 72 </td>
+   <td style="text-align:right;"> 535.651 </td>
+   <td style="text-align:right;"> 13.44 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/leoka-2010 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 49 </td>
+   <td style="text-align:right;"> 520.047 </td>
+   <td style="text-align:right;"> 9.42 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/2012 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 27 </td>
+   <td style="text-align:right;"> 533.895 </td>
+   <td style="text-align:right;"> 5.06 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> https://www.fbi.gov/about-us/cjis/ucr/leoka/2012 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 51 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 41 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 55 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 48 </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:right;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table></div> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"]]}})</script><script async src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

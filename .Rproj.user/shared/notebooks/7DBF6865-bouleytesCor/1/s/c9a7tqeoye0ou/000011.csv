@@ -1,0 +1,6 @@
+"0","koinonikesTaxeisTemp <- koinonikesTaxeis[,-1]"
+"0","row.names(koinonikesTaxeisTemp) <- koinonikesTaxeis[,1]"
+"0","koinonikesTaxeisTemp2 <- data.frame(t(koinonikesTaxeisTemp))"
+"0","koinonikesTaxeisTemp2$omada <- colnames(koinonikesTaxeisTemp)"
+"0","koinonikesTaxeisTemp2 <- koinonikesTaxeisTemp2[, c(""omada"", setdiff(names(koinonikesTaxeisTemp2), ""omada""))]"
+"0",""

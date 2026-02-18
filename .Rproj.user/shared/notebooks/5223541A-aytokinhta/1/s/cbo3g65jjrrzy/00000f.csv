@@ -1,0 +1,46 @@
+"0","if(!require(rvest)){"
+"0","  install.packages(""rvest"")"
+"0","  library(rvest)"
+"0","}"
+"2","Loading required package: rvest
+"
+"0","if(!require(dplyr)){"
+"0","  install.packages(""dplyr"")"
+"0","  library(dplyr)"
+"0","}"
+"2","Loading required package: dplyr
+"
+"2","
+Attaching package: ‘dplyr’
+
+"
+"2","The following object is masked from ‘package:kableExtra’:
+
+    group_rows
+
+"
+"2","The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+"
+"2","The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+"
+"0","if(!require(readr)){"
+"0","  install.packages(""readr"")"
+"0","  library(readr)"
+"0","}"
+"2","Loading required package: readr
+"
+"2","
+Attaching package: ‘readr’
+
+"
+"2","The following object is masked from ‘package:rvest’:
+
+    guess_encoding
+
+"

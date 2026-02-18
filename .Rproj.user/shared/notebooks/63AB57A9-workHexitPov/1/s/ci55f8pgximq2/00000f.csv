@@ -1,0 +1,5 @@
+"0","single2child23globalPlot2 <- ggplot(single2child23global, aes(x=is23, y=OBS_VALUE))"
+"0","single2child23globalPlot2 + geom_boxplot()+"
+"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια σε παγκόσμιο επίπεδο"","
+"0","       y = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
+"0","       x = ""Έτος"")"

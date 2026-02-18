@@ -1,0 +1,4 @@
+"0","workingHours <- read.csv(""workingHours.csv"")"
+"0","knitr::kable(head(workingHours, n=100)) %>%"
+"0","kable_styling(""striped"", full_width = F) %>%"
+"0","scroll_box(width = ""max-content"", height = ""200px"")"

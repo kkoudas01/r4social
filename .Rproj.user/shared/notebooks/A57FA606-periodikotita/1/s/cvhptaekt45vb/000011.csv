@@ -1,0 +1,2 @@
+"0","yTsCompSeasonal <- seasonal(yTsComp)"
+"0","lsp(yTsCompSeasonal, ofac=100, type = ""period"", from=1, to=8)"

@@ -1,0 +1,1 @@
+"0","happyANDgdpPerCapitaPlot <- ggplot(happyANDgdpPerCapita, aes(x = GDP.per.capita, y = Cantril.ladder.score))"

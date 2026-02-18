@@ -1,0 +1,1 @@
+"0","DocNurc <- merge(doctorsPer1000,nurcesPer1000,by=c(""LOCATION"",""TIME""))"

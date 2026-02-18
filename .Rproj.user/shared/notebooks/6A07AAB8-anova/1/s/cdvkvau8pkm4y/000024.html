@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+<link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+</head>
+<body>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Indicator.Name </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Indicator.Code </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Country.Name </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Country.Code </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Year </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Value </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Disaggregation </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1988 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1987 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1986 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1985 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1984 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1983 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1982 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1981 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1980 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1979 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1978 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1977 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1976 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1975 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1974 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1973 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1972 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1971 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Afghanistan </td>
+   <td style="text-align:left;"> AFG </td>
+   <td style="text-align:right;"> 1970 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1996 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1988 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1987 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1986 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1985 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1984 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1983 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1982 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1981 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1980 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1979 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1978 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1977 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:left;"> ALB </td>
+   <td style="text-align:right;"> 1976 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table></div> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"]]}})</script><script async src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

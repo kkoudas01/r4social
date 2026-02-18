@@ -1,0 +1,2 @@
+"0","massExttsComp <- stl(massExtts, s.window = ""periodic"")"
+"0","plot(massExttsComp)"

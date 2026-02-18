@@ -1,0 +1,6 @@
+"0",""
+"0","ggplotly(happyANDgdpPerCapitaPlot + geom_line(alpha = 3/5, aes(colour = Code), show.legend = FALSE) +"
+"0","  labs("
+"0","    x = ""Κατά κεφαλήν ΑΕΠ"",  # Αλλάζει την ετικέτα του άξονα Χ"
+"0","    y = ""Επίπεδο ευχαρίστησης""   # Αλλάζει την ετικέτα του άξονα Υ"
+"0","  ))"

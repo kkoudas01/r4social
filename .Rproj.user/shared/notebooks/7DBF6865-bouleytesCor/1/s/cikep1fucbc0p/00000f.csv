@@ -1,0 +1,5 @@
+"0","fviz_ca_col(apotelesmataCORA, repel = TRUE,"
+"0","            col.col = ""contrib"","
+"0","            gradient.cols = c(""blue"", ""red""),"
+"0","            title = ""Συνεισφορά κομμάτων στη διαμόρφωση των αξόνων"""
+"0","            )"

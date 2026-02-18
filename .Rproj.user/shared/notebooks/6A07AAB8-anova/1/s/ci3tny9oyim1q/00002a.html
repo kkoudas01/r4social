@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+<link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+</head>
+<body>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> LOCATION </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> INDICATOR </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> SUBJECT </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> MEASURE </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> FREQUENCY </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> TIME </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Value </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Flag.Codes </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:right;"> 44.65064 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 44.12706 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 47.15905 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 49.80203 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 44.93585 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 46.69527 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 43.95596 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 42.61008 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 41.21231 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 41.07614 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 39.05032 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 37.51982 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 35.87904 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 34.96797 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 33.28984 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 31.81673 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 30.06402 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 28.97252 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 26.79274 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 25.92254 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 23.56339 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 24.28443 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 22.89584 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 20.98090 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 20.06735 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 19.01266 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 18.10864 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 17.13266 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:right;"> 16.24498 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:right;"> 15.46888 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:right;"> 14.76060 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:right;"> 30.58148 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 31.15881 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 22.46919 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 23.07237 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 24.31545 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 24.30127 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 25.42071 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 26.69340 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 27.47575 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 28.97732 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 30.75979 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 31.31415 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 30.82308 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 31.69115 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 33.02221 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 33.73671 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 36.14999 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 36.88135 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 37.60431 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 38.34207 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 41.28236 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 39.53993 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 41.90185 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 42.88876 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 43.74390 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 45.35567 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 45.72748 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 47.12998 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:right;"> 49.33745 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:right;"> 49.76787 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:right;"> 51.49590 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:right;"> 24.76788 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:right;"> 24.71413 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:right;"> 30.37176 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:right;"> 27.12561 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:right;"> 30.74870 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:right;"> 29.00345 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:right;"> 30.62333 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:right;"> 30.69652 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 31.31195 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:right;"> 29.94654 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:right;"> 30.18990 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 31.16603 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 33.29789 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 33.34088 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 33.68794 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 34.44656 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 33.78599 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 34.14612 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 35.60295 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:right;"> 35.73539 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:right;"> 35.15425 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:right;"> 36.17564 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:right;"> 35.20231 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:right;"> 36.13035 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:right;"> 36.18875 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:right;"> 35.63167 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:right;"> 36.16388 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:right;"> 35.73737 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:right;"> 34.41757 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:right;"> 34.76325 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> UPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:right;"> 33.74350 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:right;"> 23.66626 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:right;"> 23.05507 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:right;"> 19.87161 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:right;"> 20.06289 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:right;"> 19.12009 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:right;"> 18.35498 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> BUPPSRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 17.64749 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table></div> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"]]}})</script><script async src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

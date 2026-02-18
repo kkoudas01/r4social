@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+<link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+</head>
+<body>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> LOCATION </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> TIME </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Indicator.Name </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Indicator.Code </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Country.Name </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Value.x </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Disaggregation </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> INDICATOR </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> SUBJECT </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> MEASURE </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> FREQUENCY </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> Value.y </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> Flag.Codes </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 16.711861 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 17.471054 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 17.830963 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 18.973812 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 19.518599 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 20.111586 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 20.237337 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 20.556126 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 21.056189 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 20.534544 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 21.406713 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 21.924601 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 22.811752 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 22.400209 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ARG </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Argentina </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 24.765341 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 30.581482 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 31.158810 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1993 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 22.469191 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 23.072365 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 24.315445 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1997 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 24.301270 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1998 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 25.420708 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 1999 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 26.693399 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 27.475746 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 28.977322 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 30.759785 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 31.314152 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 30.823080 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 31.691153 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 33.022213 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 33.736710 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 36.149986 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 36.881355 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 37.604309 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 38.342072 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 41.282364 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 39.539928 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 41.901855 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 42.888756 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 43.743900 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 45.355675 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 45.727478 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 47.129978 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 49.337452 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 49.767868 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUS </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Australia </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 51.495899 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 24.783438 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 24.639351 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 25.356432 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 25.092672 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 26.191858 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 26.895824 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 27.743721 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 27.956152 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 28.739943 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 29.738844 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 29.904896 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 30.550726 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 31.383963 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 32.394390 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 32.711426 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 33.773777 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 34.205894 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 34.604504 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> AUT </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Austria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 35.553291 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1989 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 16.864670 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1991 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 19.620007 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1992 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 20.226023 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1994 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 22.345255 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 1995 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 24.604177 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 27.084993 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2001 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 27.626753 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2002 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 28.134819 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 29.031809 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2004 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 30.400860 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2005 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 31.045088 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2006 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 31.754845 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 32.094864 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 32.310043 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 33.397053 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 34.989502 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 34.612984 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 35.316551 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2013 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 35.535332 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2014 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 36.855022 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 36.857422 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2016 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 37.503956 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2017 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 40.257053 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2018 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 40.638546 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2019 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 40.670090 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2020 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 42.442284 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2021 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 44.873066 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BEL </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 45.769352 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BGR </td>
+   <td style="text-align:right;"> 2015 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Bulgaria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 27.498056 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BGR </td>
+   <td style="text-align:right;"> 2022 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Bulgaria </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 29.780050 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 2007 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 9.623828 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 2008 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 10.795494 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 2009 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 10.863071 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 2011 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 11.614742 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> BRA </td>
+   <td style="text-align:right;"> 2012 </td>
+   <td style="text-align:left;"> Law mandates equal remuneration for females and males for work of equal value (1=yes; 0=no) </td>
+   <td style="text-align:left;"> SG.LAW.EQRM.WK </td>
+   <td style="text-align:left;"> Brazil </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> EDUADULT </td>
+   <td style="text-align:left;"> TRY </td>
+   <td style="text-align:left;"> PC_25_64 </td>
+   <td style="text-align:left;"> A </td>
+   <td style="text-align:right;"> 12.993286 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table></div> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"]]}})</script><script async src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+"0","boxplotSciencegrGIRL <- ggplot(girlPISA, aes(y=LOCATION, x=SCIENCE, fill = isGR)) "
+"0","boxplotSciencegrGIRL +"
+"0","  geom_boxplot(outlier.shape = NA) +"
+"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ggtitle(""Κατανομή βαθμολογιών κάθε χώρας στις Φυσικές Επιστήμες (κορίτσια)."")"

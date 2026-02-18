@@ -1,0 +1,5 @@
+"0","eisodimaKybernNDplot <- ggplot(eisodimaKybernND, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=ΕΙΣΟΔΗΜΑ, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))"
+"0",""
+"0","eisodimaKybernNDplot +"
+"0","  geom_line(color = ""blue"") +"
+"0","  labs(title = ""Εισόδημα Βουλευτών ΝΔ ανά Έτος"")"

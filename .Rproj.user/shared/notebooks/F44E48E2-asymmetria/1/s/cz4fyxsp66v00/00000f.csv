@@ -1,0 +1,4 @@
+"0","kostos2021 <- costHealthyDiet[costHealthyDiet$Year == 2021, ]"
+"0","kost2021 <- kostos2021$Cost.of.a.healthy.diet"
+"0","fagito2021 <- foodExpenditureYear[foodExpenditureYear$Year == 2021, ]"
+"0","fag2021 <- fagito2021$Total.food.expenditure"

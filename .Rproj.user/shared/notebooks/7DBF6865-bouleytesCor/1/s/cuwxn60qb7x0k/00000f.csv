@@ -1,0 +1,5 @@
+"0","fviz_ca_col(apotelesmataCORA, repel = TRUE,"
+"0","            col.col = ""cos2"","
+"0","            gradient.cols = c(""blue"", ""red""), # Κλίμακα χρωμάτων"
+"0","            title = ""Ποια πολιτικά κόμματα εκπροσωπούνται καλά;"""
+"0","            )"

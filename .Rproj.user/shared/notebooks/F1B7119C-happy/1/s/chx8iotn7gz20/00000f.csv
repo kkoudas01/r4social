@@ -1,0 +1,1 @@
+"0","happyANDmedianPlot <- ggplot(happyANDmedian, aes(x = Median..2021.prices....Income.or.consumption.consolidated, y = Cantril.ladder.score))"

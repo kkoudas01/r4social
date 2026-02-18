@@ -1,0 +1,7 @@
+"0","# Moore–Penrose για πρόθεση ψήφου σε κάθε κόμμα"
+"0","pM <- as.matrix(prothesiPsifoyTemp/100)"
+"0","pMt <- t(pM)"
+"0","pInv <- solve(pMt %*% pM) %*% pMt # Use solve() for inverse and %*% for matrix multiplication"
+"0","prAprrox <- pInv %*% synolo"
+"0","prAprrox <- data.frame(prAprrox)"
+"0","prAprrox"

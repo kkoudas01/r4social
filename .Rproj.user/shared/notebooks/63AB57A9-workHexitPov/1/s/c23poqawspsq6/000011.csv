@@ -1,0 +1,8 @@
+"0","ggplot(couple2child23global, aes(x = OBS_VALUE, y = as.factor(TIME_PERIOD), fill = after_stat(x))) +"
+"0","  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01, gradient_lwd = 1.) +"
+"0","  scale_x_continuous(expand = c(0.01, 0)) +"
+"0","  scale_y_discrete(expand = c(0.01, 0)) +"
+"0","  scale_fill_viridis(name = ""ώρες"", option = ""C"") +"
+"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια \n('01-'23)"","
+"0","       x = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
+"0","       y = ""έτος"")"

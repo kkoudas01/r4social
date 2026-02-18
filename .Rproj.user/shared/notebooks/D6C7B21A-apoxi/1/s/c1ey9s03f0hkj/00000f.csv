@@ -1,0 +1,22 @@
+"0","lm(simetoxiN_EU$EGGEGRAMMENOI ~ plithismosGR)"
+"1","
+Call:
+"
+"1",""
+"1","lm(formula = simetoxiN_EU$EGGEGRAMMENOI ~ plithismosGR)"
+"1",""
+"1","
+
+"
+"1","Coefficients:
+"
+"1"," (Intercept)  "
+"1","plithismosGR  "
+"1","
+"
+"1","  -1.182e+07  "
+"1","   1.995e+00  "
+"1","
+"
+"1","
+"

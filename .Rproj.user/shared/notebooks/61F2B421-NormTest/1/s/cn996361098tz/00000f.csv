@@ -1,0 +1,4 @@
+"0","if(!require(nortest)){"
+"0","    install.packages(""nortest"")"
+"0","    library(nortest)"
+"0","}"

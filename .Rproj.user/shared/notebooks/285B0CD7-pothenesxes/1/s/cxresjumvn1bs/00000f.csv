@@ -1,0 +1,8 @@
+"0","p <- ggplot(eisodimafilteredND2019, aes(y = ΕΙΣΟΔΗΜΑ, x = ΚΥΒΕΡΝΗΣΗ, group = ΚΩΔΙΚΟ_ΟΝΟΜΑ)) +"
+"0","  geom_boxplot(outlier.shape = 1, color = ""red"") + # Use + instead of ++"
+"0","  labs(title = ""Κατανομή εισοδημάτων βουλευτών ΝΔ"","
+"0","       y = ""Εισόδημα"") +"
+"0","  scale_y_log10() +"
+"0","  geom_jitter(shape = 16, size = 1, position = position_jitter(0.2), color = ""blue"", alpha = 0.4)"
+"0",""
+"0","ggplotly(p)"

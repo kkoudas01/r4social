@@ -1,0 +1,4 @@
+"0","if(!require(Chaos01)){"
+"0","  install.packages(""Chaos01"")"
+"0","  library(Chaos01)"
+"0","}"

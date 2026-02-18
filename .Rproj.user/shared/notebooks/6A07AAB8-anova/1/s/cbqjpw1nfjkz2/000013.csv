@@ -1,0 +1,4 @@
+"0","names(IsiAntimErg)[names(IsiAntimErg) == ""Country.Code""] <- ""LOCATION"""
+"0","names(IsiAntimErg)[names(IsiAntimErg) == ""Year""] <- ""TIME"""
+"0","epipedoEkpALL <- epipedoEkp[epipedoEkp$SUBJECT == ""TRY"",]"
+"0","EkpErgALL <- merge(IsiAntimErg, epipedoEkpALL, by = c(""LOCATION"",""TIME""))"

@@ -1,0 +1,2 @@
+"0","ParabEEXboxEtos <- ggplot(enaerParab, aes(x=ETOS, y=PARAB_EEX))"
+"0","ParabEEXboxEtos + geom_boxplot()"

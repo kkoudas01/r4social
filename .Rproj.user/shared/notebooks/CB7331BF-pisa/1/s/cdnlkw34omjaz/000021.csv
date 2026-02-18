@@ -1,0 +1,4 @@
+"0","readingBoyGirl <- ggplot(readingPISAbgwide, aes(x = BOY, y = GIRL))"
+"0","readingBoyGirl + geom_point() + geom_smooth(method='lm') + ggtitle(""Συσχέτιση επίδοσης αγοριών – κοριτσιών στην Κατανόηση Κειμένου."")"
+"1","[38;5;232m`geom_smooth()` using formula = 'y ~ x'[39m
+"

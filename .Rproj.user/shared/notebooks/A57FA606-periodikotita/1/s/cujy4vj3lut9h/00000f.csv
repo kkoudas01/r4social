@@ -1,0 +1,19 @@
+"0","isSeasonal(massExtts)"
+"2","Registered S3 method overwritten by 'quantmod':
+  method            from
+  as.zoo.data.frame zoo 
+"
+"1","[1]"
+"1"," TRUE"
+"1","
+"
+"0","isSeasonal(ts(rnorm(1200, 10,10), frequency=7))"
+"1","[1]"
+"1"," FALSE"
+"1","
+"
+"0","isSeasonal(yTs)"
+"1","[1]"
+"1"," TRUE"
+"1","
+"

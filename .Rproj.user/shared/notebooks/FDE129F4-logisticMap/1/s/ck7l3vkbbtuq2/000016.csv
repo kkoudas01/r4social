@@ -1,0 +1,2 @@
+"0","# Εφαρμογή της MyFunc() σε κάθε λίστα της result_lists"
+"0","new_list <- as.numeric(lapply(result_lists, elegxos01))"

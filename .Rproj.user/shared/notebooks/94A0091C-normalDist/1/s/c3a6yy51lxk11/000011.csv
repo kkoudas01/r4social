@@ -1,0 +1,6 @@
+"0","par( mfrow= c(2,2) )"
+"0","for (i in 1:4) {"
+"0","  set.seed(100*i)"
+"0","  xilia_kafasia <- rnorm(1000, mean = 50, sd = 1/2) "
+"0","  hist(xilia_kafasia)"
+"0","}"

@@ -1,0 +1,8 @@
+"0","fores <- 0:10"
+"0","par( mfrow= c(2,2) )"
+"0","for (i in 1:4) {"
+"0","  set.seed(100*i)"
+"0","  xilia_paixnidia <- rbinom(1000, size = 10, prob = 1 / 6)"
+"0","  pin_syxn <- table(factor(xilia_paixnidia, levels=fores))"
+"0","  barplot(pin_syxn, names.arg = fores)"
+"0","}"

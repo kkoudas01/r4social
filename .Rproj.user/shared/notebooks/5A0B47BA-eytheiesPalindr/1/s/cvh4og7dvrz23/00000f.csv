@@ -1,0 +1,22 @@
+"0","lm(giatroi ~ nosok)"
+"1","
+Call:
+"
+"1",""
+"1","lm(formula = giatroi ~ nosok)"
+"1",""
+"1","
+
+"
+"1","Coefficients:
+"
+"1","(Intercept)  "
+"1","      nosok  "
+"1","
+"
+"1","     1.9248  "
+"1","     0.1308  "
+"1","
+"
+"1","
+"

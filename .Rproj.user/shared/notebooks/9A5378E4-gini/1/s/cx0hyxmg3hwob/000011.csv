@@ -1,0 +1,4 @@
+"0","giniTotalPlot <- ggplot(giniTotal, aes(x=TIME_PERIOD, y=Gini_coefficient, colour = REF_AREA))"
+"0","#giniTotalPlot + geom_line()+scale_color_viridis_d()"
+"0",""
+"0","ggplotly(giniTotalPlot + geom_line())"

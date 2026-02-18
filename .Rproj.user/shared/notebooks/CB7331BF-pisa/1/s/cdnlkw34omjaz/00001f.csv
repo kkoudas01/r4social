@@ -1,0 +1,4 @@
+"0","scienceBoyGirl <- ggplot(sciencePISAbgwide, aes(x = BOY, y = GIRL))"
+"0","scienceBoyGirl + geom_point() + geom_smooth(method='lm') + ggtitle(""Συσχέτιση επίδοσης αγοριών – κοριτσιών στις Φυσικές Επιστήμες."")"
+"1","[38;5;232m`geom_smooth()` using formula = 'y ~ x'[39m
+"

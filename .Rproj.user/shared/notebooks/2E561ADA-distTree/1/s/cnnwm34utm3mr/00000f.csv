@@ -1,0 +1,8 @@
+"0","if(!require(pheatmap)){"
+"0","  install.packages(""pheatmap"")"
+"0","  library(pheatmap)"
+"0","}"
+"0","if(!require(dplyr)){"
+"0","  install.packages(""dplyr"")"
+"0","  library(dplyr)"
+"0","}"

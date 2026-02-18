@@ -1,0 +1,6 @@
+"0","par( mfrow= c(2,2) )"
+"0","for (i in 1:4) {"
+"0","  set.seed(100*i)"
+"0","  xilioi_pelates <- rexp(1000, 8) "
+"0","  hist(xilioi_pelates)"
+"0","}"

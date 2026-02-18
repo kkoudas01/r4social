@@ -1,0 +1,4 @@
+"0","totMathScience <- ggplot(allPISAtot, aes(x = MATH, y = SCIENCE))"
+"0","totMathScience + geom_point() + geom_smooth()+ggtitle(""Συσχέτιση επίδοσης Μαθηματικών και Φυσικών Επιστημών."")"
+"1","[38;5;232m`geom_smooth()` using method = 'loess' and formula = 'y ~ x'[39m
+"

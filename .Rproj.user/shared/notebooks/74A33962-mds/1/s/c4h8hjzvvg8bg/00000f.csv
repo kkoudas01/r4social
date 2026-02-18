@@ -1,0 +1,4 @@
+"0","if(!require(vegan3d)){"
+"0","  install.packages(""vegan3d"")"
+"0","  library(vegan3d)"
+"0","}"

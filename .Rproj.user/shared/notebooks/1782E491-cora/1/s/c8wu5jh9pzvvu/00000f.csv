@@ -1,0 +1,1 @@
+"0","prothesiPsifoy <- prothesiPsifoy[, !colnames(prothesiPsifoy) %in% c(""politiki_taytotita"", ""synolo"", ""Aristera_Kentroaristera"", ""ilikia17_34"", ""ilikia35_54"", ""ilikia55ano"")]"

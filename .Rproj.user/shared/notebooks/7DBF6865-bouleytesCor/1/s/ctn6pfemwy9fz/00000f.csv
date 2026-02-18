@@ -1,0 +1,6 @@
+"0","prothesiPsifoyTemp <- prothesiPsifoy[,-c(1,2,3,4,5,16)]"
+"0","row.names(prothesiPsifoyTemp) <- prothesiPsifoy[,1]"
+"0","prothesiPsifoyTemp2 <- data.frame(t(prothesiPsifoyTemp))"
+"0","prothesiPsifoyTemp2$komma <- colnames(prothesiPsifoyTemp)"
+"0","prothesiPsifoyTemp2 <- prothesiPsifoyTemp2[, c(""komma"", setdiff(names(prothesiPsifoyTemp2), ""komma""))]"
+"0","astrogramma(prothesiPsifoyTemp2, FALSE)"

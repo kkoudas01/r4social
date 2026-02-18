@@ -1,0 +1,1 @@
+"0","FertilityRate2 <- FertilityRate[FertilityRate$Value<mean(neoi)+3*sd(neoi),]"

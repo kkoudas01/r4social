@@ -1,0 +1,4 @@
+"0","totScienceReading <- ggplot(allPISAtot, aes(x = SCIENCE, y = READING))"
+"0","totScienceReading + geom_point() + geom_smooth()+ggtitle(""Συσχέτιση επίδοσης Φυσικών Επιστημών και Κατανόησης Κειμένου."")"
+"1","[38;5;232m`geom_smooth()` using method = 'loess' and formula = 'y ~ x'[39m
+"

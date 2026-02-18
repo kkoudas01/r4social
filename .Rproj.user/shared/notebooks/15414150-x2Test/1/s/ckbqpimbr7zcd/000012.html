@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+<link href="lib/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+</head>
+<body>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:200px; overflow-x: scroll; width:100%; "><table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> stud.id </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> name </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> gender </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> age </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> height </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> weight </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> religion </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> nc.score </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> semester </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> major </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> minor </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> score1 </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> score2 </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> online.tutorial </th>
+   <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;"> graduated </th>
+   <th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;"> salary </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 833917 </td>
+   <td style="text-align:left;"> Gonzales, Christina </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 160 </td>
+   <td style="text-align:right;"> 64.8 </td>
+   <td style="text-align:left;"> Muslim </td>
+   <td style="text-align:right;"> 1.91 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 898539 </td>
+   <td style="text-align:left;"> Lozano, T'Hani </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 172 </td>
+   <td style="text-align:right;"> 73.0 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.56 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 379678 </td>
+   <td style="text-align:left;"> Williams, Hanh </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 70.6 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.24 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 45 </td>
+   <td style="text-align:left;"> 46 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 807564 </td>
+   <td style="text-align:left;"> Nem, Denzel </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 183 </td>
+   <td style="text-align:right;"> 79.7 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.37 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 383291 </td>
+   <td style="text-align:left;"> Powell, Heather </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 175 </td>
+   <td style="text-align:right;"> 71.4 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.46 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 256074 </td>
+   <td style="text-align:left;"> Perez, Jadrian </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 189 </td>
+   <td style="text-align:right;"> 85.8 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.34 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 754591 </td>
+   <td style="text-align:left;"> Clardy, Anita </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 156 </td>
+   <td style="text-align:right;"> 65.9 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.11 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 146494 </td>
+   <td style="text-align:left;"> Allen, Rebecca Marie </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 167 </td>
+   <td style="text-align:right;"> 65.7 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.03 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 58 </td>
+   <td style="text-align:left;"> 62 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 723584 </td>
+   <td style="text-align:left;"> Tracy, Robert </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 195 </td>
+   <td style="text-align:right;"> 94.4 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.29 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 57 </td>
+   <td style="text-align:left;"> 67 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 314281 </td>
+   <td style="text-align:left;"> Nimmons, Laura </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 165 </td>
+   <td style="text-align:right;"> 66.0 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.19 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 200803 </td>
+   <td style="text-align:left;"> Lang, Mackenzie </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 162 </td>
+   <td style="text-align:right;"> 66.8 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.04 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 62 </td>
+   <td style="text-align:left;"> 61 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 45254.108020687003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 444907 </td>
+   <td style="text-align:left;"> Rodriguez, Brianna </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 172 </td>
+   <td style="text-align:right;"> 66.8 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 3.81 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:left;"> 82 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 354271 </td>
+   <td style="text-align:left;"> Covar Orendain, Christopher </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 185 </td>
+   <td style="text-align:right;"> 84.6 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.00 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 71 </td>
+   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 40552.790242531002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 317812 </td>
+   <td style="text-align:left;"> Lopez, Monique </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 158 </td>
+   <td style="text-align:right;"> 64.4 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.50 </td>
+   <td style="text-align:left;"> 6th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 66 </td>
+   <td style="text-align:left;"> 70 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 27007.030294282002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 604115 </td>
+   <td style="text-align:left;"> Davis, Shagun </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 157 </td>
+   <td style="text-align:right;"> 66.3 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.92 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 889551 </td>
+   <td style="text-align:left;"> Adams, Jose </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 172 </td>
+   <td style="text-align:right;"> 73.9 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 3.61 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 87 </td>
+   <td style="text-align:left;"> 91 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 350040 </td>
+   <td style="text-align:left;"> Hines, Haileigh </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 156 </td>
+   <td style="text-align:right;"> 61.7 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.27 </td>
+   <td style="text-align:left;"> 6th </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> 57 </td>
+   <td style="text-align:left;"> 54 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 33969.159268048999 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 240279 </td>
+   <td style="text-align:left;"> Daugherty, Jesus </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 82.1 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.42 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 865835 </td>
+   <td style="text-align:left;"> Roybal, Ebony </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 162 </td>
+   <td style="text-align:right;"> 69.2 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.32 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 69 </td>
+   <td style="text-align:left;"> 46 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 137196 </td>
+   <td style="text-align:left;"> Baysinger, Tanisha </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 70.9 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 2.33 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 708242 </td>
+   <td style="text-align:left;"> Phillips, Laiba </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 167 </td>
+   <td style="text-align:right;"> 68.5 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.79 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 77 </td>
+   <td style="text-align:left;"> 80 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 499002 </td>
+   <td style="text-align:left;"> Culbertson, Deshawn </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 37 </td>
+   <td style="text-align:right;"> 175 </td>
+   <td style="text-align:right;"> 70.4 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.97 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 873149 </td>
+   <td style="text-align:left;"> O Reilly, Joshua </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 164 </td>
+   <td style="text-align:right;"> 70.3 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.68 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 807361 </td>
+   <td style="text-align:left;"> Johnson, Stephanie </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 38 </td>
+   <td style="text-align:right;"> 155 </td>
+   <td style="text-align:right;"> 67.0 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.30 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 531029 </td>
+   <td style="text-align:left;"> Mix, Aziel </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 183 </td>
+   <td style="text-align:right;"> 81.8 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.11 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 69 </td>
+   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 970589 </td>
+   <td style="text-align:left;"> Gonzalez, Dixie </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 145 </td>
+   <td style="text-align:right;"> 54.0 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.14 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 250298 </td>
+   <td style="text-align:left;"> Clark, Janelle </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 161 </td>
+   <td style="text-align:right;"> 66.8 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.45 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 45 </td>
+   <td style="text-align:left;"> 37 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 763393 </td>
+   <td style="text-align:left;"> Woolsey, Bronson </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 80.1 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.09 </td>
+   <td style="text-align:left;"> 5th </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 61 </td>
+   <td style="text-align:left;"> 73 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 50617.641869938998 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 544433 </td>
+   <td style="text-align:left;"> Diawara, Erica </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 54 </td>
+   <td style="text-align:right;"> 169 </td>
+   <td style="text-align:right;"> 71.4 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.75 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 252935 </td>
+   <td style="text-align:left;"> Lord, Benjamin </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 172 </td>
+   <td style="text-align:right;"> 69.6 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 3.94 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 89 </td>
+   <td style="text-align:left;"> 90 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 453762 </td>
+   <td style="text-align:left;"> Cordova, Justin </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 172 </td>
+   <td style="text-align:right;"> 73.0 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.26 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 759365 </td>
+   <td style="text-align:left;"> Hayes, Vamshi </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 192 </td>
+   <td style="text-align:right;"> 88.9 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.19 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 44 </td>
+   <td style="text-align:left;"> 36 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 662678 </td>
+   <td style="text-align:left;"> French, Sidney </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 175 </td>
+   <td style="text-align:right;"> 72.6 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 3.03 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:left;"> 70 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 188703 </td>
+   <td style="text-align:left;"> Torres, Andrew </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 173 </td>
+   <td style="text-align:right;"> 75.7 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.19 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 74 </td>
+   <td style="text-align:left;"> 74 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 806369 </td>
+   <td style="text-align:left;"> Medina, Diamond </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 170 </td>
+   <td style="text-align:right;"> 71.6 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 2.27 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 679521 </td>
+   <td style="text-align:left;"> Pascua, Burphy </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 176 </td>
+   <td style="text-align:right;"> 74.1 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 4.00 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 72 </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 371307 </td>
+   <td style="text-align:left;"> Glenn-Bracey, Mia </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 180 </td>
+   <td style="text-align:right;"> 75.6 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.09 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 411253 </td>
+   <td style="text-align:left;"> Yang, Manuel </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 185 </td>
+   <td style="text-align:right;"> 80.7 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 3.15 </td>
+   <td style="text-align:left;"> 5th </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 54 </td>
+   <td style="text-align:left;"> 46 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 37391.872365386 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 835757 </td>
+   <td style="text-align:left;"> Lujan, Malia </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 172 </td>
+   <td style="text-align:right;"> 68.3 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 2.12 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 86 </td>
+   <td style="text-align:left;"> 92 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 35598.881686346998 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 232384 </td>
+   <td style="text-align:left;"> Formby, Christina </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 171 </td>
+   <td style="text-align:right;"> 74.5 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.43 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 871735 </td>
+   <td style="text-align:left;"> Nelson, Anddi </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 153 </td>
+   <td style="text-align:right;"> 64.9 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.15 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 503879 </td>
+   <td style="text-align:left;"> Lucas, Asashia </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 157 </td>
+   <td style="text-align:right;"> 64.4 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.66 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 52 </td>
+   <td style="text-align:left;"> 33 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 186259 </td>
+   <td style="text-align:left;"> Holguin, Lance </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 190 </td>
+   <td style="text-align:right;"> 89.3 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 3.46 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 890074 </td>
+   <td style="text-align:left;"> Ontiveros, Aleena </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 173 </td>
+   <td style="text-align:right;"> 78.3 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 2.67 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 493398 </td>
+   <td style="text-align:left;"> Clark, Marlana </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 170 </td>
+   <td style="text-align:right;"> 68.0 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.45 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 902697 </td>
+   <td style="text-align:left;"> Phan, Edeer </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 160 </td>
+   <td style="text-align:right;"> 62.2 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.92 </td>
+   <td style="text-align:left;"> 5th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 78 </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 39703.744884975997 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 679949 </td>
+   <td style="text-align:left;"> Robles Escamilla, Rosario </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 170 </td>
+   <td style="text-align:right;"> 69.6 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 3.23 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 509606 </td>
+   <td style="text-align:left;"> Longwolf, Addam </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 171 </td>
+   <td style="text-align:right;"> 72.1 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 2.03 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 773757 </td>
+   <td style="text-align:left;"> Romero, Keyanna </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 160 </td>
+   <td style="text-align:right;"> 66.2 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.37 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 83 </td>
+   <td style="text-align:left;"> 73 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 889115 </td>
+   <td style="text-align:left;"> Carter, Robert </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 181 </td>
+   <td style="text-align:right;"> 76.2 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.32 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 280980 </td>
+   <td style="text-align:left;"> Jumbo, Isiah </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 161 </td>
+   <td style="text-align:right;"> 66.7 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.41 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 55 </td>
+   <td style="text-align:left;"> 42 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 879108 </td>
+   <td style="text-align:left;"> Dillenberg, Soraya </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 164 </td>
+   <td style="text-align:right;"> 65.9 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.43 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 756828 </td>
+   <td style="text-align:left;"> Nguyen, Juancarlos </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 170 </td>
+   <td style="text-align:right;"> 68.0 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.83 </td>
+   <td style="text-align:left;"> 5th </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 71 </td>
+   <td style="text-align:left;"> 69 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 873225 </td>
+   <td style="text-align:left;"> Shanahan, Carlos </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 174 </td>
+   <td style="text-align:right;"> 72.8 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.89 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 267025 </td>
+   <td style="text-align:left;"> Brown, Nhan </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 171 </td>
+   <td style="text-align:right;"> 65.7 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.77 </td>
+   <td style="text-align:left;"> &gt;6th </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 57 </td>
+   <td style="text-align:left;"> 58 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 30086.764812451998 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 865072 </td>
+   <td style="text-align:left;"> Tak, Ruben </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 184 </td>
+   <td style="text-align:right;"> 83.3 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.87 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> 63 </td>
+   <td style="text-align:left;"> 67 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 180057 </td>
+   <td style="text-align:left;"> Hussainy, Luis </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 173 </td>
+   <td style="text-align:right;"> 73.2 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.80 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 350628 </td>
+   <td style="text-align:left;"> Maven, Yee Joo </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 167 </td>
+   <td style="text-align:right;"> 73.3 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.13 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 809000 </td>
+   <td style="text-align:left;"> Payte, Alexander </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 83.5 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 2.23 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 286216 </td>
+   <td style="text-align:left;"> Tate, Shelby </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 159 </td>
+   <td style="text-align:right;"> 63.0 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.01 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 373120 </td>
+   <td style="text-align:left;"> Livingston, Sarah </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 44 </td>
+   <td style="text-align:right;"> 167 </td>
+   <td style="text-align:right;"> 69.0 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.51 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 56 </td>
+   <td style="text-align:left;"> 52 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 31494.320815455001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 797140 </td>
+   <td style="text-align:left;"> Vang, Austin </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 183 </td>
+   <td style="text-align:right;"> 81.8 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 3.14 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 201130 </td>
+   <td style="text-align:left;"> Cebrun, Linda </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 157 </td>
+   <td style="text-align:right;"> 62.9 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 2.59 </td>
+   <td style="text-align:left;"> &gt;6th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 64 </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 32519.224081044998 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 655450 </td>
+   <td style="text-align:left;"> Meza Ramirez, Maricela </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 173 </td>
+   <td style="text-align:right;"> 78.1 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 2.08 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 401840 </td>
+   <td style="text-align:left;"> Nicholson, Willow </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 32 </td>
+   <td style="text-align:right;"> 171 </td>
+   <td style="text-align:right;"> 67.6 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.53 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 88 </td>
+   <td style="text-align:left;"> 93 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 358005 </td>
+   <td style="text-align:left;"> Eydi Shahroodi, Erik </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 77.4 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 3.82 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:left;"> 63 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 42593.260382113003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 680483 </td>
+   <td style="text-align:left;"> Truong, Patrick </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 169 </td>
+   <td style="text-align:right;"> 71.6 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 3.80 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 73 </td>
+   <td style="text-align:left;"> 73 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 60407.317266003003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 275470 </td>
+   <td style="text-align:left;"> Vasquez, Timothy </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 167 </td>
+   <td style="text-align:right;"> 65.9 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 3.96 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 89 </td>
+   <td style="text-align:left;"> 93 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 258961 </td>
+   <td style="text-align:left;"> Warren, Justin </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 174 </td>
+   <td style="text-align:right;"> 70.7 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.46 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 495076 </td>
+   <td style="text-align:left;"> Frost, Yuvorn </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 41 </td>
+   <td style="text-align:right;"> 194 </td>
+   <td style="text-align:right;"> 94.9 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.78 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 156460 </td>
+   <td style="text-align:left;"> Minor, Alex </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 182 </td>
+   <td style="text-align:right;"> 82.7 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 1.22 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 38 </td>
+   <td style="text-align:left;"> 49 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 249571 </td>
+   <td style="text-align:left;"> Arkadie, Houa </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 152 </td>
+   <td style="text-align:right;"> 64.9 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.73 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:left;"> 83 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 962284 </td>
+   <td style="text-align:left;"> Iverson, Sierra </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 154 </td>
+   <td style="text-align:right;"> 63.0 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.30 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 870282 </td>
+   <td style="text-align:left;"> Bustamante-Harrison, Sierra </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 159 </td>
+   <td style="text-align:right;"> 60.6 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.88 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 42 </td>
+   <td style="text-align:left;"> 42 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 308092 </td>
+   <td style="text-align:left;"> Treto, Teonna </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 153 </td>
+   <td style="text-align:right;"> 63.2 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 3.18 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 694127 </td>
+   <td style="text-align:left;"> Gonzales, Brianna </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 150 </td>
+   <td style="text-align:right;"> 63.3 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.62 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 841076 </td>
+   <td style="text-align:left;"> Pacheco, Cydney </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 167 </td>
+   <td style="text-align:right;"> 72.8 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.73 </td>
+   <td style="text-align:left;"> &gt;6th </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 74 </td>
+   <td style="text-align:left;"> 81 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 49111.427488433997 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 794058 </td>
+   <td style="text-align:left;"> Castaneda-Amaya, Tyandra </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 149 </td>
+   <td style="text-align:right;"> 56.2 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.02 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:left;"> 61 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 518947 </td>
+   <td style="text-align:left;"> Garcia, Yamel </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 155 </td>
+   <td style="text-align:right;"> 62.1 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.36 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 216224 </td>
+   <td style="text-align:left;"> Ho, Javier </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 177 </td>
+   <td style="text-align:right;"> 77.5 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 2.17 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 980136 </td>
+   <td style="text-align:left;"> Munoz, Derrick </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 180 </td>
+   <td style="text-align:right;"> 77.1 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.63 </td>
+   <td style="text-align:left;"> 5th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 69 </td>
+   <td style="text-align:left;"> 68 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 33068.848645060003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 253731 </td>
+   <td style="text-align:left;"> Castillo, Anastasia </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 159 </td>
+   <td style="text-align:right;"> 62.2 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.27 </td>
+   <td style="text-align:left;"> 6th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> 63 </td>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 37803.513208607001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 416538 </td>
+   <td style="text-align:left;"> Serrano, Shanae </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 174 </td>
+   <td style="text-align:right;"> 71.1 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.42 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 83 </td>
+   <td style="text-align:left;"> 79 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 888830 </td>
+   <td style="text-align:left;"> Park, Damien </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 174 </td>
+   <td style="text-align:right;"> 74.9 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.49 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 71 </td>
+   <td style="text-align:left;"> 74 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 306032 </td>
+   <td style="text-align:left;"> Lesley, Tiffany </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 159 </td>
+   <td style="text-align:right;"> 62.4 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.76 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 536813 </td>
+   <td style="text-align:left;"> Turner, Savannah </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 160 </td>
+   <td style="text-align:right;"> 65.3 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.38 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> 78 </td>
+   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 732709 </td>
+   <td style="text-align:left;"> Begay-Watson, Anthony </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 22 </td>
+   <td style="text-align:right;"> 169 </td>
+   <td style="text-align:right;"> 68.0 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 3.06 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> 53 </td>
+   <td style="text-align:left;"> 46 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 514389 </td>
+   <td style="text-align:left;"> Picard, Brittney </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 166 </td>
+   <td style="text-align:right;"> 67.9 </td>
+   <td style="text-align:left;"> Muslim </td>
+   <td style="text-align:right;"> 2.26 </td>
+   <td style="text-align:left;"> 5th </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> 72 </td>
+   <td style="text-align:left;"> 77 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 35191.662764719003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 367719 </td>
+   <td style="text-align:left;"> Wilson, Navya </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 155 </td>
+   <td style="text-align:right;"> 67.5 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.03 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> 71 </td>
+   <td style="text-align:left;"> 74 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 362637 </td>
+   <td style="text-align:left;"> Dinh, Fidel </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 26 </td>
+   <td style="text-align:right;"> 178 </td>
+   <td style="text-align:right;"> 76.7 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.45 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 76 </td>
+   <td style="text-align:left;"> 79 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 409917 </td>
+   <td style="text-align:left;"> Huddleston, Tina </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 162 </td>
+   <td style="text-align:right;"> 61.8 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.21 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 977593 </td>
+   <td style="text-align:left;"> Gonzalez, Merissa </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 181 </td>
+   <td style="text-align:right;"> 79.0 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.53 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 884302 </td>
+   <td style="text-align:left;"> Norris, Lauren </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 168 </td>
+   <td style="text-align:right;"> 69.4 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 2.45 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 689045 </td>
+   <td style="text-align:left;"> Kim, Eaba </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 181 </td>
+   <td style="text-align:right;"> 80.0 </td>
+   <td style="text-align:left;"> Other </td>
+   <td style="text-align:right;"> 2.83 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 706060 </td>
+   <td style="text-align:left;"> Miranda Quintero, Olivia </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 158 </td>
+   <td style="text-align:right;"> 60.6 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 1.46 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> 43 </td>
+   <td style="text-align:left;"> 52 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 168184 </td>
+   <td style="text-align:left;"> Briseno, Davie </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 177 </td>
+   <td style="text-align:right;"> 79.4 </td>
+   <td style="text-align:left;"> Muslim </td>
+   <td style="text-align:right;"> 2.02 </td>
+   <td style="text-align:left;"> 4th </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 93 </td>
+   <td style="text-align:left;"> 87 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:left;"> 39342.522668919002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 890431 </td>
+   <td style="text-align:left;"> Garcia, Kush </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 18 </td>
+   <td style="text-align:right;"> 169 </td>
+   <td style="text-align:right;"> 73.8 </td>
+   <td style="text-align:left;"> Catholic </td>
+   <td style="text-align:right;"> 1.41 </td>
+   <td style="text-align:left;"> 5th </td>
+   <td style="text-align:left;"> Mathematics and Statistics </td>
+   <td style="text-align:left;"> Social Sciences </td>
+   <td style="text-align:left;"> 78 </td>
+   <td style="text-align:left;"> 90 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 345772 </td>
+   <td style="text-align:left;"> Chandramouli, Nelson </td>
+   <td style="text-align:left;"> Male </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 176 </td>
+   <td style="text-align:right;"> 76.4 </td>
+   <td style="text-align:left;"> Orthodox </td>
+   <td style="text-align:right;"> 2.56 </td>
+   <td style="text-align:left;"> 2nd </td>
+   <td style="text-align:left;"> Environmental Sciences </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 167649 </td>
+   <td style="text-align:left;"> Edwards, Linh </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 166 </td>
+   <td style="text-align:right;"> 64.3 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.99 </td>
+   <td style="text-align:left;"> 1st </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Economics and Finance </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 372924 </td>
+   <td style="text-align:left;"> Cook, Macallyson </td>
+   <td style="text-align:left;"> Female </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 173 </td>
+   <td style="text-align:right;"> 71.6 </td>
+   <td style="text-align:left;"> Protestant </td>
+   <td style="text-align:right;"> 1.41 </td>
+   <td style="text-align:left;"> 3rd </td>
+   <td style="text-align:left;"> Biology </td>
+   <td style="text-align:left;"> Political Science </td>
+   <td style="text-align:left;"> 80 </td>
+   <td style="text-align:left;"> 79 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:left;"> NA </td>
+  </tr>
+</tbody>
+</table></div> <script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"]]}})</script><script async src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+"0","couple2child23globalPlot <- ggplot(couple2child23global, aes(x=OBS_VALUE, fill = is23))"
+"0","couple2child23globalPlot + geom_density(aes(y = after_stat(density) * 100),alpha=0.3) +"
+"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια \n('01-'23)"","
+"0","       x = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
+"0","       y = ""ποσοστό (%)"","
+"0","       fill = ""Έτος"")"

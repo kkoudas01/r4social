@@ -1,0 +1,2 @@
+"0","happyANDmedian <-merge(x=happinessCantrilLadder,y=medianIncome,by=c(""Code"",""Year""))"
+"0","happyANDmedian <- happyANDmedian[!is.na(happyANDmedian$Code),]"

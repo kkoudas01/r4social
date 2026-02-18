@@ -1,0 +1,6 @@
+"0","par( mfrow= c(2,2) )"
+"0","for (i in 1:4) {"
+"0","  set.seed(100*i)"
+"0","  xilies_imeres <- runif(1000, min = 0, max = 900) "
+"0","  hist(xilies_imeres)"
+"0","}"
