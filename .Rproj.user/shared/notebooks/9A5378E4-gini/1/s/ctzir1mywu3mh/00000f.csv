@@ -1,2 +1,0 @@
-"0","giniAEPPlot <- ggplot(giniAEP, aes(x=GDP.per.capita, y=Gini_coefficient))"
-"0","giniAEPPlot + geom_point(aes(colour = REF_AREA))+  geom_smooth()"

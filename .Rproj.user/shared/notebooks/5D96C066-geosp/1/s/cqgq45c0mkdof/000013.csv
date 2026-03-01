@@ -1,6 +1,0 @@
-"0","xoroplithis_xartis +"
-"0","  geom_sf(aes(fill = Score)) +"
-"0","  labs("
-"0","    title = ""Βαθμολογία CPI χωρών"","
-"0","    caption = ""Δεδομένα: Transparency International"""
-"0","  ) "

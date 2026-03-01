@@ -1,4 +1,0 @@
-"0","dataPloth <- ggplot(myDatax, aes(x=xx))"
-"0","dataPloth +"
-"0","  geom_histogram(aes(y = after_stat(density))) +"
-"0","  geom_density(linewidth = 1, alpha = 0.6, fill = ""green"")"

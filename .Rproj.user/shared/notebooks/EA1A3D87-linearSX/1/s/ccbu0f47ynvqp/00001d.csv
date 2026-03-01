@@ -1,2 +1,0 @@
-"0","dataPlot <- ggplot(myDatax, aes(x="""", y=xx))"
-"0","dataPlot + geom_boxplot() + geom_boxplot(outlier.shape = NA) + geom_jitter(shape=16, size=1,position=position_jitter(0.2))"

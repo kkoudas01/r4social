@@ -1,1 +1,0 @@
-"0","boxplot_bg <- ggplot(allPISAbglong, aes(x=TYPE_exam, y=Value, fill = factor(SUBJECT))) + ggtitle(""Σύγκριση επίδοσης σε αγόρια και κορίτσια σε κάθε μάθημα."")"

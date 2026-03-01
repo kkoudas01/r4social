@@ -1,2 +1,0 @@
-"0","yTsComp <- stl(yTs, s.window = ""periodic"")"
-"0","plot(yTsComp)"

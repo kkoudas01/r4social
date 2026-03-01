@@ -1,4 +1,0 @@
-"0","girlScienceReading <- ggplot(girlPISA, aes(x = SCIENCE, y = READING))"
-"0","girlScienceReading + geom_point() + geom_smooth()+ggtitle(""Συσχέτιση επίδοσης:\n Φυσικών Επιστημών και Κατανόησης Κειμένου\n (κορίτσια)."")"
-"1","[38;5;232m`geom_smooth()` using method = 'loess' and formula = 'y ~ x'[39m
-"

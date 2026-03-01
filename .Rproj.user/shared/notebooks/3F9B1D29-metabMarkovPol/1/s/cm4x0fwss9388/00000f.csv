@@ -1,4 +1,0 @@
-"0","if(!require(expm)){"
-"0","    install.packages(""expm"")"
-"0","    library(expm)"
-"0","}"

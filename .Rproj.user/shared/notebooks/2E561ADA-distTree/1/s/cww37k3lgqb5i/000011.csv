@@ -1,3 +1,0 @@
-"0","dentrogramma(as.data.frame(eis_wide[,-1]))"
-"2","Error in hclust(d, method = method) : must have n >= 2 objects to cluster
-"

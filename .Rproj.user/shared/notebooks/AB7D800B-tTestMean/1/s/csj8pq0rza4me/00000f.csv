@@ -1,8 +1,0 @@
-"0","a_timi <- function(mesi_timiPlith, tipiki_apokl, plithos, spaniotita) {"
-"0","  s <- tipiki_apokl/sqrt(plithos)"
-"0","  a <- spaniotita/2"
-"0","  t <- qt(a, plithos-1, lower.tail=F)"
-"0","  m1 <- mesi_timiPlith-t*s"
-"0","  m2 <- mesi_timiPlith+t*s"
-"0","  c(m1, m2)"
-"0","}"

@@ -1,3 +1,0 @@
-"0","AEP2023 <- read.csv(""AEP2023.csv"", na.string = """")"
-"0","giniAEP <- merge(giniTotal, AEP2023, by = c(""TIME_PERIOD"", ""REF_AREA""))"
-"0","giniAEP$GDP.per.capita <- giniAEP$OBS_VALUE"

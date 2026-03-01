@@ -1,8 +1,0 @@
-"0","n <- length(XrimataYgeia)"
-"0","delete_items <- rep(TRUE,n)"
-"0","for (i in 1:n) {"
-"0","  if (XrimataYgeia[i] == "".."") {"
-"0","    delete_items[i] <- FALSE"
-"0","  }"
-"0","}"
-"0","ProsdokimoVSperith2 <- ProsdokimoVSperith2[delete_items, ]"

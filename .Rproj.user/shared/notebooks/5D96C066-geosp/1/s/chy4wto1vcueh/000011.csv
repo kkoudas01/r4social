@@ -1,7 +1,0 @@
-"0","xoroplithis_xartis +"
-"0","  geom_sf(aes(fill = Score)) + "
-"0","  scale_fill_viridis_c("
-"0","    option = ""mako"", "
-"0","    name = ""βαθμός CPI"", "
-"0","    na.value = ""lightgray"""
-"0","  )"

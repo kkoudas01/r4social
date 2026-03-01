@@ -1,6 +1,0 @@
-"0","p_timiDifPos <- function(pos1, plithos1, pos2, plithos2) {"
-"0","  a <- abs(pos1-pos2)"
-"0","  pos <- (pos1*plithos1+pos2*plithos2)/(plithos1+plithos2)"
-"0","  s <- sqrt(pos*(1-pos)*(1/plithos1+1/plithos2))"
-"0","  2-2*pnorm(a/s)"
-"0","}"

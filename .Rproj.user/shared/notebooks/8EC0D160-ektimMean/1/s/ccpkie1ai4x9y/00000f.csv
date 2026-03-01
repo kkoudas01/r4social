@@ -1,7 +1,0 @@
-"0","bathmoi_synolo <- c(bathmoi$BATHMOS...2,"
-"0","                    bathmoi$BATHMOS...4,"
-"0","                    bathmoi$BATHMOS...6,"
-"0","                    bathmoi$BATHMOS...8,"
-"0","                    bathmoi$BATHMOS...10,"
-"0","                    bathmoi$BATHMOS...12)"
-"0","bathmoi_synolo <- na.omit(bathmoi_synolo)"

@@ -1,5 +1,0 @@
-"0","histReadinggr <- ggplot(allPISAtot, aes(y=LOCATION, x=READING, fill = isGR)) "
-"0","histReadinggr + geom_density_ridges() +"
-"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ggtitle(""Κατανομή βαθμολογιών κάθε χώρας στην Κατανόηση Κειμένου."")"
-"2","Picking joint bandwidth of 4.23
-"

@@ -1,3 +1,0 @@
-"0","gini22 <- gini[gini$TIME_PERIOD==2022,]"
-"0","gini22plot <- ggplot(gini22, aes(x=Age, y=Gini_coefficient, fill=REF_AREA))"
-"0","ggplotly(gini22plot+geom_bar(stat=""identity"", position=position_dodge(), colour=""black""))"

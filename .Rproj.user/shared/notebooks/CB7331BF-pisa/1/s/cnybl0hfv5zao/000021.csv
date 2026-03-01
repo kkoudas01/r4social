@@ -1,5 +1,0 @@
-"0","boxplotGIRLgr <- ggplot(girlPISAlong, aes(x=TYPE_exam, y=Value, fill = isGR)) "
-"0","boxplotGIRLgr +"
-"0","  geom_boxplot(outlier.shape = NA) +"
-"0","  geom_jitter(position=position_jitterdodge(), alpha = 0.2, size = 1) +"
-"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ ggtitle(""Σύγκριση αποτελεσμάτων της Ελλάδας με υπολοίπων χωρών (κορότσια)."")"

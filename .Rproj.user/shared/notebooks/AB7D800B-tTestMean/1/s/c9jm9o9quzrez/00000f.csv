@@ -1,5 +1,0 @@
-"0","p_timi <- function(mesi_timiDigm, tipiki_apoklPlith, mesi_timiPlith, plithos) {"
-"0","  a <- abs(mesi_timiDigm-mesi_timiPlith)"
-"0","  s <- tipiki_apoklPlith/sqrt(plithos)"
-"0","  2-2*pt(a/s, plithos-1)"
-"0","}"

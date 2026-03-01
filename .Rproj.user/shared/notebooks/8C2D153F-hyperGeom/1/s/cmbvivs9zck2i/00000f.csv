@@ -1,8 +1,0 @@
-"0","plithos_figoures <- 0:5"
-"0","par( mfrow= c(2,2) )"
-"0","for (i in 1:4) {"
-"0","  set.seed(100*i)"
-"0","  xilia_paixnidia <- rhyper(1000, 12, 40, 5)"
-"0","  pin_syxn <- table(factor(xilia_paixnidia, levels=plithos_figoures))"
-"0","  barplot(pin_syxn, names.arg = plithos_figoures)"
-"0","}"

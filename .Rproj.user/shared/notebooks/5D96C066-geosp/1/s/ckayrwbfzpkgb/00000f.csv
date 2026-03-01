@@ -1,4 +1,0 @@
-"0","mikroteri_timi <- min(tetartimoria)"
-"0","megaliteri_timi <- max(tetartimoria)"
-"0",""
-"0","kanonikopoiimenes_times <- (tetartimoria - mikroteri_timi) / (megaliteri_timi - mikroteri_timi)"

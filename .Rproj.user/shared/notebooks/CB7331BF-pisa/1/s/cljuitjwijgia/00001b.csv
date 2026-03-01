@@ -1,5 +1,0 @@
-"0","histMathgrGIRL <- ggplot(girlPISA, aes(y=LOCATION, x=MATH, fill = isGR)) "
-"0","histMathgrGIRL + geom_density_ridges() +"
-"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ggtitle(""Κατανομή βαθμολογιών κάθε χώρας στα Μαθηματικά (κορίτσια)."")"
-"2","Picking joint bandwidth of 3.63
-"

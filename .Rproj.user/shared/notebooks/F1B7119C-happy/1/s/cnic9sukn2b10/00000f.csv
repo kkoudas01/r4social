@@ -1,2 +1,0 @@
-"0","happyANDwork <-merge(x=happinessCantrilLadder,y=workingHours2r,by=c(""Code"",""Year""))"
-"0","happyANDwork <- happyANDwork[!is.na(happyANDwork$Code),]"

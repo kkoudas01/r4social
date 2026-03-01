@@ -1,4 +1,0 @@
-"0","readingPISAtot <- readingPISA[readingPISA$SUBJECT == ""TOT"", ]"
-"0","readingPISAtot_wide <- dcast(readingPISAtot, TIME ~ LOCATION, value.var=""Value"")"
-"0","readingPISAtot_wide <- as.data.frame(readingPISAtot_wide)"
-"0","astrogramma(readingPISAtot_wide, FALSE)"

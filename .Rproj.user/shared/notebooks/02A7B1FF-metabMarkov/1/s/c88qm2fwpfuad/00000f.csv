@@ -1,8 +1,0 @@
-"0","diagramma_metabasis <- function(dedomena) {"
-"0","  dedomena2 <- dedomena/rowSums(dedomena)"
-"0","  graph <- graph_from_adjacency_matrix(as.matrix(dedomena2), mode = ""directed"", weighted = TRUE)"
-"0","# Σχεδίαση του γράφου με καμπυλόγραμμα βέλη και ετικέτες"
-"0","plot_result <- plot(graph, layout = layout.circle(graph), edge.curved = 0.3, arrow.size = 0.5,"
-"0","                    edge.label = round(edge_attr(graph, ""weight""), 3),"
-"0","                    edge.label.pos = 0.5, edge.label.dist = 0.2)"
-"0","}"

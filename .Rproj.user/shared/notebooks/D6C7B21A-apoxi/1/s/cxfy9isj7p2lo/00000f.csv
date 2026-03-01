@@ -1,4 +1,0 @@
-"0","EnilikesKampili <- ggplot(simetoxiN_EU, aes(x = ETOS, y = ENILIKES_p))"
-"0","EnilikesKampili + geom_point() + geom_smooth()"
-"1","[38;5;232m`geom_smooth()` using method = 'loess' and formula = 'y ~ x'[39m
-"

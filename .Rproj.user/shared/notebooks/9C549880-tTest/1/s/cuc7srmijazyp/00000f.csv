@@ -1,8 +1,0 @@
-"0","a_timiPos<- function(posPlithismos, plithos, spaniotita) {"
-"0","  s <- sqrt(posPlithismos*(1-posPlithismos)/plithos)"
-"0","  a <- spaniotita/2"
-"0","  t <- qt(a, plithos-1, lower.tail=F)"
-"0","  m1 <- posPlithismos-t*s"
-"0","  m2 <- posPlithismos+t*s"
-"0","  c(m1, m2)"
-"0","}"

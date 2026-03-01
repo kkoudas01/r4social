@@ -1,6 +1,0 @@
-"0","singleNOchild23globalPlot <- ggplot(singleNOchild23global, aes(x=OBS_VALUE, fill = is23))"
-"0","singleNOchild23globalPlot + geom_density(aes(y = after_stat(density) * 100),alpha=0.3) +"
-"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια"","
-"0","       x = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
-"0","       y = ""ποσοστό (%)"","
-"0","       fill = ""Έτος"")"

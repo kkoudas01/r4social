@@ -1,2 +1,0 @@
-"0","thermNYf <- average_monthly_temperature_by_state_1950_2022[average_monthly_temperature_by_state_1950_2022$state == ""New York"", 5]"
-"0","thermNY <- (5*thermNYf-160)/9"

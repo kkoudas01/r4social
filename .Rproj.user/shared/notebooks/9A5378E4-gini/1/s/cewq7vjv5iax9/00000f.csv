@@ -1,2 +1,0 @@
-"0","gini <- giniA[giniA$METHODOLOGY== ""METH2012"",]"
-"0","giniTotal <- gini[gini$AGE==""_T"",]"

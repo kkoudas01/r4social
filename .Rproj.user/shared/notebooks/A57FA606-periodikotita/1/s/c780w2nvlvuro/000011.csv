@@ -1,2 +1,0 @@
-"0","gamoiSynolotsComp <- stl(gamoiSynolots, s.window = ""periodic"")"
-"0","plot(gamoiSynolotsComp)"

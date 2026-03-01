@@ -1,4 +1,0 @@
-"0","par(mfrow = c(1,2))"
-"0","set.seed(1)"
-"0","symmetricCenter <- rnorm(1000)"
-"0","hist_boxplot(symmetricCenter)"

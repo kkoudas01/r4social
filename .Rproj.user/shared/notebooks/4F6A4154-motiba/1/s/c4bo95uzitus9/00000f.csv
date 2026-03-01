@@ -1,2 +1,0 @@
-"0","toyristEU <- tourism[tourism$Entity == ""Europe"", 4]"
-"0","toyristEU_ts <- ts(toyristEU, start = 1995, frequency = 1)"

@@ -1,1 +1,0 @@
-"0","curve(dnorm(x, mean(Center), sd(Center)), add=TRUE, col=""red"", lwd=2)"

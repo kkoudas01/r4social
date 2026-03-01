@@ -1,5 +1,0 @@
-"0","ggplotly(happyANDmedianPlot + geom_point(alpha = 1/5, aes(colour = Code), show.legend = FALSE) +"
-"0","  labs("
-"0","    x = ""Διάμεσο ημερίσιο εισόδημα"",  # Αλλάζει την ετικέτα του άξονα Χ"
-"0","    y = ""Επίπεδο ευχαρίστησης""   # Αλλάζει την ετικέτα του άξονα Υ"
-"0","  )+ geom_smooth())"

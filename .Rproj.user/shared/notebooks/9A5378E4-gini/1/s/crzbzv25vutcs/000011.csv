@@ -1,7 +1,0 @@
-"0","gini <- read.csv(""gini.csv"", na.string = """")"
-"0","exeption <- -which(names(gini) %in% c(""STRUCTURE"", ""STRUCTURE_ID"", ""STRUCTURE_NAME"",""ACTION"", ""FREQ"", ""Frequency.of.observation"", ""MEASURE"", ""Measure"", ""STATISTICAL_OPERATION"", ""Statistical.operation"", ""UNIT_MEASURE"", ""Unit.of.measure"", ""DEFINITION"", ""Definition"", ""POVERTY_LINE"", ""Poverty.line"", ""Time.period"",""Observation.value"", ""OBS_STATUS"", ""Observation.status"", ""UNIT_MULT"", ""Unit.multiplier"", ""CURRENCY"", ""Currency"", ""DECIMALS"", ""Decimals"", ""PRICE_BASE"", ""Price.base"", ""BASE_PER"", ""Base.period"", ""CONF_STATUS"", ""Confidentiality.status""))"
-"0","gini <- gini[,exeption]"
-"0","gini <- dcast(gini, REF_AREA+Age+AGE+TIME_PERIOD ~ Methodology, value.var = ""OBS_VALUE"")"
-"0","knitr::kable(head(gini)) %>%"
-"0","  kable_styling(""striped"", full_width = F) %>%"
-"0","  scroll_box(width = ""100%"", height = ""200px"")"

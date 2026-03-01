@@ -1,2 +1,0 @@
-"0","ParabEEXboxMinas2 <- ggplot(enaerParab, aes(x=MHNAS, y=PARAB_EEX, fill=MHNAS))"
-"0","ParabEEXboxMinas2 + geom_boxplot() + xlim(mines)"

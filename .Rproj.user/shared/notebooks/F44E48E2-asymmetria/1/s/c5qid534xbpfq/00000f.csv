@@ -1,7 +1,0 @@
-"0","par(mfrow = c(1,2))"
-"0","nn <- 1e3"
-"0","set.seed(1)"
-"0","betas<-rbeta(nn,2,2)"
-"0","symmetricBimodal <- c(betas[1:(nn/2)]*2+1,"
-"0","          betas[(nn/2+1):nn]*2+3)"
-"0","hist_boxplot(symmetricBimodal)"

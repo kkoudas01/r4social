@@ -1,1 +1,0 @@
-"0","WORKEXPOV$ISgr <- ifelse(WORKEXPOV$Country==""Greece"", ""GR"", ""notGr"")"

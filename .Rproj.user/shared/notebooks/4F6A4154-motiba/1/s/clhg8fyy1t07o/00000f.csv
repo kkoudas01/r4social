@@ -1,2 +1,0 @@
-"0","sigkroysis <- conflicts[conflicts$Entity == ""World"", c(3,4,5,6,7)]"
-"0","sigkroysis_ts <- ts(sigkroysis[ , c(2,3,4,5)], start = 1946, frequency = 1)"

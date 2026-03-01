@@ -1,6 +1,0 @@
-"0","pinakas_sysxetisis <- function(dedomena, methodos = ""pearson"", morfi = ""color"") {"
-"0","  dedomenaNA <- dedomena %>% select_if(~ !any(is.na(.)))"
-"0","  dedomenaCor <- cor(dedomenaNA, method = methodos)"
-"0","  dedomenaCor <- as.matrix(dedomenaCor)"
-"0","  corrplot(dedomenaCor, method=morfi, addCoef.col = 'black')"
-"0","}"

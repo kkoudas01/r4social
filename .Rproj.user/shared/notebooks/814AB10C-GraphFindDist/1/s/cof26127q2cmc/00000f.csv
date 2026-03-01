@@ -1,2 +1,0 @@
-"0","thesis <- Parking_Bays$Parking.Spaces"
-"0","thesisNA <- thesis[!is.na(thesis)]"

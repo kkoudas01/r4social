@@ -1,4 +1,0 @@
-"0","par(mfrow = c(1,2))"
-"0","set.seed(3.14)"
-"0","Center <- 0.1*rnorm(1000)^3"
-"0","hist(Center, freq=F, xlim=c(-2.5, 2.5), ylim=c(0, 1.1))"

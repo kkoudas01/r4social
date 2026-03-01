@@ -1,4 +1,0 @@
-"0","astrogramma(e_aKALOK)"
-"2","Warning: Setting row names on a tibble is deprecated."
-"2","Error in `.rowNamesDF<-`(x, value = value) : invalid 'row.names' length
-"

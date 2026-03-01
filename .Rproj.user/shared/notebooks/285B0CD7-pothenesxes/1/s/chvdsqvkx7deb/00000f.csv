@@ -1,7 +1,0 @@
-"0","pothen_esxes_KKE <- pothen_esxes_filtered[pothen_esxes_filtered$ΚΟΜΜΑ==""Κομμουνιστικό Κόμμα Ελλάδος"",]"
-"0",""
-"0","eisodimaCommaPlotKKE <- ggplot(pothen_esxes_KKE, aes(x=ΕΤΟΣ_ΧΡΗΣΗΣ, y=ΕΙΣΟΔΗΜΑ, group=ΚΩΔΙΚΟ_ΟΝΟΜΑ))"
-"0",""
-"0","eisodimaCommaPlotKKE +"
-"0","  geom_line(color = ""red"") +"
-"0","  labs(title = ""Εισόδημα Βουλευτών ΚΚΕ ανά Έτος"")"

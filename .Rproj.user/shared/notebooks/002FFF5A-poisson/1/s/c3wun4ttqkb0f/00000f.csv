@@ -1,7 +1,0 @@
-"0","par( mfrow= c(2,2) )"
-"0","for (i in 1:4) {"
-"0","  set.seed(100*i)"
-"0","  xilies_ores <- rpois(1000, 8)"
-"0","  pin_syxn <- table(xilies_ores)"
-"0","  barplot(pin_syxn)"
-"0","}"

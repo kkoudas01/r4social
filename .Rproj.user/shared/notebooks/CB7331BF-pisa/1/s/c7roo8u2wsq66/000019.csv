@@ -1,5 +1,0 @@
-"0","boxplot_tot2 <- ggplot(allPISAtotlong, aes(x="""", y=Value, fill = TYPE_exam)) "
-"0","boxplot_tot2 +"
-"0","  geom_boxplot(outlier.shape = NA)+"
-"0","  scale_fill_manual(values = c(""red"", ""green"", ""yellow""))+"
-"0","  geom_jitter(position=position_jitterdodge(), alpha = 0.2)+ggtitle(""Σύγκριση επιδόσεων στα διάφορα αντικείμενα εξέτασης."")"

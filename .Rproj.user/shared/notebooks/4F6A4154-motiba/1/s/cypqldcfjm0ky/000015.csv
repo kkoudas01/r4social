@@ -1,2 +1,0 @@
-"0","aeropAtyx_ts <- ts(fatal_airliner_accidents_per_million_flights$Fatal.accidents.per.million.commercial.flights, start = 1995, frequency = 1)"
-"0","autoplot(aeropAtyx_ts)"

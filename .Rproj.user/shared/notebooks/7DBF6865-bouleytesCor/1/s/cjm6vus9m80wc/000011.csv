@@ -1,6 +1,0 @@
-"0","ekmetaleysiProblimaTemp <- ekmetaleysiProblima[,-1]"
-"0","row.names(ekmetaleysiProblimaTemp) <- ekmetaleysiProblima[,1]"
-"0","ekmetaleysiProblimaTemp2 <- data.frame(t(ekmetaleysiProblimaTemp))"
-"0","ekmetaleysiProblimaTemp2$omada <- colnames(ekmetaleysiProblimaTemp)"
-"0","ekmetaleysiProblimaTemp2 <- ekmetaleysiProblimaTemp2[, c(""omada"", setdiff(names(ekmetaleysiProblimaTemp2), ""omada""))]"
-"0",""

@@ -1,4 +1,0 @@
-"0","if(!require(quantreg)){"
-"0","    install.packages(""quantreg"")"
-"0","    library(quantreg)"
-"0","}"

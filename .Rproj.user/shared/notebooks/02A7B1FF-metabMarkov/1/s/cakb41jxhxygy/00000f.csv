@@ -1,5 +1,0 @@
-"0","pinakas_metabasis <- function(dedomena, arxi = NULL, telos = NULL) {"
-"0","  dedomenaM <- as.matrix(dedomena)"
-"0","  eyros <- c(arxi, telos)"
-"0","  corrplot(dedomenaM, is.corr = FALSE, method=""color"", col.lim = eyros, addCoef.col = 'black')"
-"0","}"

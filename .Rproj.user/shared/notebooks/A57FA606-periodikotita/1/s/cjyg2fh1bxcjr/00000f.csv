@@ -1,1 +1,0 @@
-"0","massExtts <- ts(massExtDF$mass.extinction...United.States., start = c(2004, 1), freq=12)"

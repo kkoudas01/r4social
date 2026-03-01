@@ -1,3 +1,0 @@
-"0","asimetriaP <- function(v){"
-"0","  3*(mean(v)-median(v))/sd(v)"
-"0","}"

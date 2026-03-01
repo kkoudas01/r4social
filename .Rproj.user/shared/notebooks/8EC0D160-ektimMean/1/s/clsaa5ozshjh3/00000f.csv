@@ -1,4 +1,0 @@
-"0","EpipEmpist <- function(tipiki_apokl, plithos, apost) {"
-"0","  s <- tipiki_apokl/sqrt(plithos)"
-"0","  2*pt(apost/s, plithos-1)-1"
-"0","}"

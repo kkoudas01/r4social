@@ -1,4 +1,0 @@
-"0","ProsdokimoVSperith <- read.csv(""ProsdokimoVSperith.csv"", na.string = """")"
-"0","knitr::kable(head(ProsdokimoVSperith, n=100)) %>%"
-"0","  kable_styling(""striped"", full_width = F) %>%"
-"0","  scroll_box(width = ""max-content"", height = ""200px"")"

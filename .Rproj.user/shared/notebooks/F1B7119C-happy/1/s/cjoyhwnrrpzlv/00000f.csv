@@ -1,3 +1,0 @@
-"0","happinessCantrilLadder2024 <- happinessCantrilLadder[happinessCantrilLadder$Year==2024 & !is.na(happinessCantrilLadder$Code),-1]"
-"0","happinessCantrilLadder2024wide <- dcast(happinessCantrilLadder2024, Year ~ Code, value.var=""Cantril.ladder.score"")"
-"0","happinessCantrilLadder2024wide <- happinessCantrilLadder2024wide[,-1]"

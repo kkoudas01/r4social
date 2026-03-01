@@ -1,8 +1,0 @@
-"0","DiastEmpist <- function(mesi_timi, tipiki_apokl, plithos, pith) {"
-"0","  s <- tipiki_apokl/sqrt(plithos)"
-"0","  a <- (1-pith)/2"
-"0","  t <- qt(a, plithos-1, lower.tail=F)"
-"0","  m1 <- mesi_timi-t*s"
-"0","  m2 <- mesi_timi+t*s"
-"0","  c(m1, m2)"
-"0","}"

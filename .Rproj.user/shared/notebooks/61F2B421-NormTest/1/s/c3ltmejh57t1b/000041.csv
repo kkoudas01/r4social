@@ -1,1 +1,0 @@
-"0","curve(dnorm(x, mean=mean(students$weight), sd=sd(students$weight)), add=TRUE)"

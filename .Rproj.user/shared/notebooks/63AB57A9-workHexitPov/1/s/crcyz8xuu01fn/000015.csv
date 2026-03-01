@@ -1,5 +1,0 @@
-"0","couple2child23globalPlot <- ggplot(couple2child23global, aes(x=is23, y=OBS_VALUE))"
-"0","ggplotly(couple2child23globalPlot + geom_boxplot()+"
-"0","  labs(title = ""Κατανομή ωρών εργασίας για έξοδο από φτώχεια \n('01-'23)"","
-"0","       y = ""εβδομαδιαίες ώρες μέχρι να εξέλθει από τη φτώχεια"","
-"0","       x = ""Έτος""))"

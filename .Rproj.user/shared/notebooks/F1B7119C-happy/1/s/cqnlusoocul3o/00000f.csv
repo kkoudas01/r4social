@@ -1,2 +1,0 @@
-"0","happyANDgdpPerCapita <-merge(x=happinessCantrilLadder,y=gdpPerCapita,by=c(""Code"",""Year""))"
-"0","happyANDgdpPerCapita <- happyANDgdpPerCapita[!is.na(happyANDgdpPerCapita$Code),]"

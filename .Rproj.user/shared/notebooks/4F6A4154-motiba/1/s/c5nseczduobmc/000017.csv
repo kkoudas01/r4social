@@ -1,4 +1,0 @@
-"0","fatal_airliner_accidents_per_million_flights <- read.csv(""fatal-airliner-accidents-per-million-flights.csv"")"
-"0","knitr::kable(fatal_airliner_accidents_per_million_flights) %>%"
-"0","  kable_styling(""striped"", full_width = F) %>%"
-"0","  scroll_box(width = ""max-content"", height = ""200px"")"

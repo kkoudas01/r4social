@@ -1,8 +1,0 @@
-"0","if(!require(readxl)){"
-"0","	install.packages(""readxl"")"
-"0","	library(readxl)"
-"0","}"
-"0","gamoi <- readxl::read_excel(""gamoi.xlsx"")"
-"0","knitr::kable(gamoi) %>%"
-"0","kable_styling(""striped"", full_width = F) %>%"
-"0","scroll_box(width = ""max-content"", height = ""200px"")"

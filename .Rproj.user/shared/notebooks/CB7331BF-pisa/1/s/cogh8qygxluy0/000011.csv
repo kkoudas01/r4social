@@ -1,4 +1,0 @@
-"0","mathPISAtot <- mathPISA[mathPISA$SUBJECT == ""TOT"", ]"
-"0","mathPISAtot_wide <- dcast(mathPISAtot, TIME ~ LOCATION, value.var=""Value"")"
-"0","mathPISAtot_wide <- as.data.frame(mathPISAtot_wide)"
-"0","astrogramma(mathPISAtot_wide, FALSE)"

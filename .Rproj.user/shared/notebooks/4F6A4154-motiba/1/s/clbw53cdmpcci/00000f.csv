@@ -1,4 +1,0 @@
-"0","sigkrKraton <- sigkroysis$Number.of.conflicts.between.states"
-"0","emfilii <- sigkroysis$Number.of.civil.conflicts.with.foreign.state.intervention"
-"0","sigkrKraton_ts <- ts(sigkrKraton, start = 1946, frequency = 1)"
-"0","emfilii_ts <- ts(emfilii, start = 1946, frequency = 1)"

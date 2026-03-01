@@ -1,3 +1,0 @@
-"0","vList <- seq(3.5, 4, by = 0.001)"
-"0","plot(vList,new_list,type = ""l"", xlab = ""λ"", "
-"0","        ylab = ""K"")"

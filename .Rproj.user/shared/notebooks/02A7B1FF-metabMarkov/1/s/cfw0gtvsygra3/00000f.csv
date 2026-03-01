@@ -1,6 +1,0 @@
-"0","MX <- c(0.594, 0.211, 0.252)"
-"0","XR <- c(0.396, 0.782, 0.641)"
-"0","KT <- c(0.009, 0.007, 0.108)"
-"0","pin_met2 <- data.frame(MX, XR, KT)"
-"0","rownames(pin_met2) <- colnames(pin_met2)"
-"0","pin_met2"

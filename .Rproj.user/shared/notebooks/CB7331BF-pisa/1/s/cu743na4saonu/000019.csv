@@ -1,5 +1,0 @@
-"0","histMathgr <- ggplot(allPISAtot, aes(y=LOCATION, x=MATH, fill = isGR)) "
-"0","histMathgr + geom_density_ridges() +"
-"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ggtitle(""Κατανομή βαθμολογιών κάθε χώρας στα Μαθηματικά."")"
-"2","Picking joint bandwidth of 4.12
-"

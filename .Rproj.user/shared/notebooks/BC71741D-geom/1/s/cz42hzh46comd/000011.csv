@@ -1,7 +1,0 @@
-"0","par( mfrow= c(2,2) )"
-"0","for (i in 1:4) {"
-"0","  set.seed(100*i)"
-"0","  xilia_paixnidia <- rgeom(1000, 1/6)"
-"0","  pin_syxn <- table(xilia_paixnidia)"
-"0","  barplot(pin_syxn)"
-"0","}"

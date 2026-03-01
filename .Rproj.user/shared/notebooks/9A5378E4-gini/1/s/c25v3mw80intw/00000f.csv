@@ -1,1 +1,0 @@
-"0","giniWide <- dcast(gini, REF_AREA+TIME_PERIOD~ Age, value.var = ""Gini_coefficient"")"

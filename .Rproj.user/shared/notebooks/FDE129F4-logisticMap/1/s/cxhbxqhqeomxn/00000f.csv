@@ -1,5 +1,0 @@
-"0","elegxos01 <- function(values){"
-"0","  res2 <- testChaos01(values, out = TRUE)"
-"0","  K <- median(getVal(res2, vars = ""Kc""))"
-"0","  K"
-"0","}"

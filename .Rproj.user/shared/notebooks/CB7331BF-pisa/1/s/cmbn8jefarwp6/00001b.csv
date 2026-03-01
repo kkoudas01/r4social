@@ -1,5 +1,0 @@
-"0","histScienceGIRL <- ggplot(girlPISA, aes(y=LOCATION, x=SCIENCE, fill = isGR)) "
-"0","histScienceGIRL + geom_density_ridges() +"
-"0","  scale_fill_manual(values = c(""blue"", ""orange""))+ggtitle(""Κατανομή βαθμολογιών κάθε χώρας στις Φυσικές Επιστήμες (κορίτσια)."")"
-"2","Picking joint bandwidth of 4.37
-"

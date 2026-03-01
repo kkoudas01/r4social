@@ -1,4 +1,0 @@
-"0","mathBoyGirl <- ggplot(mathPISAbgwide, aes(x = BOY, y = GIRL))"
-"0","mathBoyGirl + geom_point() + geom_smooth(method='lm') + ggtitle(""Συσχέτιση επίδοσης αγοριών – κοριτσιών στα Μαθηματικά."")"
-"1","[38;5;232m`geom_smooth()` using formula = 'y ~ x'[39m
-"

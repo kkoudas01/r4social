@@ -1,1 +1,0 @@
-"0","curve(dnorm(x, mean(rightSkewed), sd(rightSkewed)), add=TRUE, col=""red"", lwd=2)"

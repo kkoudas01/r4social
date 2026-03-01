@@ -1,2 +1,0 @@
-"0","DocNurcEythAm <- ggplot(DocNurcAm, aes(x = Value.y, y = Value.x, color=LOCATION))"
-"0","DocNurcEythAm + geom_point() + geom_smooth(method='lm')"
